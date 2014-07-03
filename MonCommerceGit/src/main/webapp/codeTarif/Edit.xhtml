@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="CodeTarifEditDlg" widgetVar="CodeTarifEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditCodeTarifTitle}" closeOnEscape="true">
+
+            <h:form id="CodeTarifEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{codeTarifController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditCodeTarifLabel_IDCodetarif}" for="IDCodetarif" />
+                        <h:outputText id="IDCodetarif" value="#{codeTarifController.selected.IDCodetarif}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditCodeTarifLabel_codetaif}" for="codetaif" />
+                        <p:inputText id="codetaif" value="#{codeTarifController.selected.codetaif}" title="#{myBundle.EditCodeTarifTitle_codetaif}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCodeTarifLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{codeTarifController.selected.dateHeure}" title="#{myBundle.EditCodeTarifTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditCodeTarifRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{codeTarifController.save}" value="#{myBundle.Save}" update="display,:CodeTarifListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CodeTarifEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CodeTarifEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

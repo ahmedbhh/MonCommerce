@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="FamilleClientEditDlg" widgetVar="FamilleClientEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditFamilleClientTitle}" closeOnEscape="true">
+
+            <h:form id="FamilleClientEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{familleClientController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditFamilleClientLabel_IDFamilleclient}" for="IDFamilleclient" />
+                        <h:outputText id="IDFamilleclient" value="#{familleClientController.selected.IDFamilleclient}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditFamilleClientLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{familleClientController.selected.libelle}" title="#{myBundle.EditFamilleClientTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFamilleClientLabel_obsersavation}" for="obsersavation" />
+                        <p:inputTextarea rows="4" cols="30" id="obsersavation" value="#{familleClientController.selected.obsersavation}" title="#{myBundle.EditFamilleClientTitle_obsersavation}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditFamilleClientLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{familleClientController.selected.dateHeure}" title="#{myBundle.EditFamilleClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditFamilleClientRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{familleClientController.save}" value="#{myBundle.Save}" update="display,:FamilleClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FamilleClientEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FamilleClientEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

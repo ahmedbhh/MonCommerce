@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="BondetransfertListForm">
+
+        <p:panel header="#{myBundle.ListBondetransfertTitle}">
+            <p:dataTable id="datalist" value="#{bondetransfertController.items}" var="item"
+                         selectionMode="single" selection="#{bondetransfertController.selected}"
+                         rowKey="#{item.IDBonDeTransfert}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDBonDeTransfert}" filterBy="#{item.IDBonDeTransfert}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_IDBonDeTransfert}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDBonDeTransfert}"/>
+                </p:column>
+                <p:column sortBy="#{item.date}" filterBy="#{item.date}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_date}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.referance}" filterBy="#{item.referance}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_referance}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.referance}"/>
+                </p:column>
+                <p:column sortBy="#{item.codeBarres}" filterBy="#{item.codeBarres}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_codeBarres}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codeBarres}"/>
+                </p:column>
+                <p:column sortBy="#{item.heure}" filterBy="#{item.heure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_heure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.heure}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.validee}" filterBy="#{item.validee}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_validee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.validee}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.IDdepot.IDdepot}" filterBy="#{item.IDdepot.IDdepot}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_IDdepot}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDdepot.IDdepot}"/>
+                </p:column>
+                <p:column sortBy="#{item.idDepotRecepteur.IDdepot}" filterBy="#{item.idDepotRecepteur.IDdepot}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_idDepotRecepteur}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idDepotRecepteur.IDdepot}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{bondetransfertController.prepareCreate}" update=":BondetransfertCreateForm" oncomplete="BondetransfertCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":BondetransfertViewForm" oncomplete="BondetransfertViewDialog.show()" disabled="#{empty bondetransfertController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":BondetransfertEditForm" oncomplete="BondetransfertEditDialog.show()" disabled="#{empty bondetransfertController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{bondetransfertController.delete}" update=":growl,datalist" disabled="#{empty bondetransfertController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

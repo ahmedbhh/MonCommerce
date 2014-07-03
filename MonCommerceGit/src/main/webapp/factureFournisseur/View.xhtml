@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureFournisseurViewDlg" widgetVar="FactureFournisseurViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFactureFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="FactureFournisseurViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factureFournisseurController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_IDFactureFournisseur}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.IDFactureFournisseur}" title="#{myBundle.ViewFactureFournisseurTitle_IDFactureFournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_referance}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.referance}" title="#{myBundle.ViewFactureFournisseurTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_codeBarres}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.codeBarres}" title="#{myBundle.ViewFactureFournisseurTitle_codeBarres}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_date}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.date}" title="#{myBundle.ViewFactureFournisseurTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_description}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.description}" title="#{myBundle.ViewFactureFournisseurTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_dateEcheance}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.dateEcheance}" title="#{myBundle.ViewFactureFournisseurTitle_dateEcheance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_dateHeure}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.dateHeure}" title="#{myBundle.ViewFactureFournisseurTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_totalHT}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.totalHT}" title="#{myBundle.ViewFactureFournisseurTitle_totalHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_totalttc}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.totalttc}" title="#{myBundle.ViewFactureFournisseurTitle_totalttc}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_totalTVA}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.totalTVA}" title="#{myBundle.ViewFactureFournisseurTitle_totalTVA}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_remisetotal}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.remisetotal}" title="#{myBundle.ViewFactureFournisseurTitle_remisetotal}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_soldee}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.soldee}" title="#{myBundle.ViewFactureFournisseurTitle_soldee}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_IDFournisseur}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.IDFournisseur.IDFournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_IDCommandefournisseur}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.IDCommandefournisseur.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FactureFournisseurViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

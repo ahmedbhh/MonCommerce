@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BondetransfertCreateDlg" widgetVar="BondetransfertCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateBondetransfertTitle}" closeOnEscape="true">
+
+            <h:form id="BondetransfertCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{bondetransfertController.selected.date}" title="#{myBundle.CreateBondetransfertTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{bondetransfertController.selected.referance}" title="#{myBundle.CreateBondetransfertTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_codeBarres}" for="codeBarres" />
+                        <p:inputText id="codeBarres" value="#{bondetransfertController.selected.codeBarres}" title="#{myBundle.CreateBondetransfertTitle_codeBarres}" size="100" maxlength="100"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_heure}" for="heure" />
+                        <p:calendar id="heure" pattern="HH:mm:ss" value="#{bondetransfertController.selected.heure}" title="#{myBundle.CreateBondetransfertTitle_heure}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{bondetransfertController.selected.validee}" title="#{myBundle.CreateBondetransfertTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bondetransfertController.selected.dateHeure}" title="#{myBundle.CreateBondetransfertTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateBondetransfertRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_IDdepot}" for="IDdepot" />
+                        <p:selectOneMenu id="IDdepot" value="#{bondetransfertController.selected.IDdepot}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{depotController.items}"
+                                           var="IDdepotItem"
+                                           itemValue="#{IDdepotItem}"
+                                           itemLabel="#{IDdepotItem.IDdepot.toString()}"
+                                           />
+                            <f:converter binding="#{depotConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_idDepotRecepteur}" for="idDepotRecepteur" />
+                        <p:selectOneMenu id="idDepotRecepteur" value="#{bondetransfertController.selected.idDepotRecepteur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{depotController.items}"
+                                           var="idDepotRecepteurItem"
+                                           itemValue="#{idDepotRecepteurItem}"
+                                           itemLabel="#{idDepotRecepteurItem.IDdepot.toString()}"
+                                           />
+                            <f:converter binding="#{depotConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bondetransfertController.saveNew}" value="#{myBundle.Save}" update="display,:BondetransfertListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BondetransfertCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BondetransfertCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

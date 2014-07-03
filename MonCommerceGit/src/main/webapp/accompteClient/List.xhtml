@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AccompteClientListForm">
+
+        <p:panel header="#{myBundle.ListAccompteClientTitle}">
+            <p:dataTable id="datalist" value="#{accompteClientController.items}" var="item"
+                         selectionMode="single" selection="#{accompteClientController.selected}"
+                         rowKey="#{item.IDAccompteClient}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDAccompteClient}" filterBy="#{item.IDAccompteClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_IDAccompteClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDAccompteClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.date}" filterBy="#{item.date}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_date}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.montant}" filterBy="#{item.montant}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_montant}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.montant}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.IDFactureClients.IDFactureClients}" filterBy="#{item.IDFactureClients.IDFactureClients}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_IDFactureClients}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDFactureClients.IDFactureClients}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDCommandeClient.IDCommandeClient}" filterBy="#{item.IDCommandeClient.IDCommandeClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_IDCommandeClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDCommandeClient.IDCommandeClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDModedereglement.description}" filterBy="#{item.IDModedereglement.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_IDModedereglement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDModedereglement.description}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{accompteClientController.prepareCreate}" update=":AccompteClientCreateForm" oncomplete="AccompteClientCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":AccompteClientViewForm" oncomplete="AccompteClientViewDialog.show()" disabled="#{empty accompteClientController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":AccompteClientEditForm" oncomplete="AccompteClientEditDialog.show()" disabled="#{empty accompteClientController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{accompteClientController.delete}" update=":growl,datalist" disabled="#{empty accompteClientController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

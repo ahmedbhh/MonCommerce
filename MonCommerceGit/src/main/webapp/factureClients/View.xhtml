@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureClientsViewDlg" widgetVar="FactureClientsViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFactureClientsTitle}" closeOnEscape="true">
+
+            <h:form id="FactureClientsViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factureClientsController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDFactureClients}"/>
+                        <h:outputText value="#{factureClientsController.selected.IDFactureClients}" title="#{myBundle.ViewFactureClientsTitle_IDFactureClients}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_referance}"/>
+                        <h:outputText value="#{factureClientsController.selected.referance}" title="#{myBundle.ViewFactureClientsTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_codeBarres}"/>
+                        <h:outputText value="#{factureClientsController.selected.codeBarres}" title="#{myBundle.ViewFactureClientsTitle_codeBarres}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_date}"/>
+                        <h:outputText value="#{factureClientsController.selected.date}" title="#{myBundle.ViewFactureClientsTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_remarque}"/>
+                        <h:outputText value="#{factureClientsController.selected.remarque}" title="#{myBundle.ViewFactureClientsTitle_remarque}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_echeance}"/>
+                        <h:outputText value="#{factureClientsController.selected.echeance}" title="#{myBundle.ViewFactureClientsTitle_echeance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_dateHeure}"/>
+                        <h:outputText value="#{factureClientsController.selected.dateHeure}" title="#{myBundle.ViewFactureClientsTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_validee}"/>
+                        <h:outputText value="#{factureClientsController.selected.validee}" title="#{myBundle.ViewFactureClientsTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_remisetotal}"/>
+                        <h:outputText value="#{factureClientsController.selected.remisetotal}" title="#{myBundle.ViewFactureClientsTitle_remisetotal}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_totalTVA}"/>
+                        <h:outputText value="#{factureClientsController.selected.totalTVA}" title="#{myBundle.ViewFactureClientsTitle_totalTVA}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_totalHT}"/>
+                        <h:outputText value="#{factureClientsController.selected.totalHT}" title="#{myBundle.ViewFactureClientsTitle_totalHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_totalttc}"/>
+                        <h:outputText value="#{factureClientsController.selected.totalttc}" title="#{myBundle.ViewFactureClientsTitle_totalttc}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_soldee}"/>
+                        <h:outputText value="#{factureClientsController.selected.soldee}" title="#{myBundle.ViewFactureClientsTitle_soldee}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_tembree}"/>
+                        <h:outputText value="#{factureClientsController.selected.tembree}" title="#{myBundle.ViewFactureClientsTitle_tembree}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_reglementClientCollection}"/>
+                        <h:selectManyMenu>
+                            <f:selectItems value="#{factureClientsController.selected.reglementClientCollection}"
+                                           var="reglementClientCollectionItem"
+                                           itemValue="#{reglementClientCollectionItem}"
+                                           itemLabel="#{reglementClientCollectionItem.IDReglementClient.toString()}"
+                                           />
+                            <f:converter binding="#{reglementClientConverter}"/>
+                        </h:selectManyMenu>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDCommandeClient}"/>
+                        <h:outputText value="#{factureClientsController.selected.IDCommandeClient.IDCommandeClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDClient}"/>
+                        <h:outputText value="#{factureClientsController.selected.IDClient.IDClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDModedereglement}"/>
+                        <h:outputText value="#{factureClientsController.selected.IDModedereglement.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDCaisse}"/>
+                        <h:outputText value="#{factureClientsController.selected.IDCaisse.IDCaisse}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FactureClientsViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

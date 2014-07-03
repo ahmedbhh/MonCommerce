@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitViewDlg" widgetVar="ProduitViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewProduitTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produitController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_IDProduit}"/>
+                        <h:outputText value="#{produitController.selected.IDProduit}" title="#{myBundle.ViewProduitTitle_IDProduit}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_referance}"/>
+                        <h:outputText value="#{produitController.selected.referance}" title="#{myBundle.ViewProduitTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_libelle}"/>
+                        <h:outputText value="#{produitController.selected.libelle}" title="#{myBundle.ViewProduitTitle_libelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_prixAchatHT}"/>
+                        <h:outputText value="#{produitController.selected.prixAchatHT}" title="#{myBundle.ViewProduitTitle_prixAchatHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_prixMoyenPondere}"/>
+                        <h:outputText value="#{produitController.selected.prixMoyenPondere}" title="#{myBundle.ViewProduitTitle_prixMoyenPondere}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_produitAVendre}"/>
+                        <h:outputText value="#{produitController.selected.produitAVendre}" title="#{myBundle.ViewProduitTitle_produitAVendre}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_produitComposer}"/>
+                        <h:outputText value="#{produitController.selected.produitComposer}" title="#{myBundle.ViewProduitTitle_produitComposer}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_photo}"/>
+                        <h:outputText value="#{produitController.selected.photo}" title="#{myBundle.ViewProduitTitle_photo}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_prixVente}"/>
+                        <h:outputText value="#{produitController.selected.prixVente}" title="#{myBundle.ViewProduitTitle_prixVente}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_description}"/>
+                        <h:outputText value="#{produitController.selected.description}" title="#{myBundle.ViewProduitTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_stockAlert}"/>
+                        <h:outputText value="#{produitController.selected.stockAlert}" title="#{myBundle.ViewProduitTitle_stockAlert}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_stockrepture}"/>
+                        <h:outputText value="#{produitController.selected.stockrepture}" title="#{myBundle.ViewProduitTitle_stockrepture}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_codeBarres}"/>
+                        <h:outputText value="#{produitController.selected.codeBarres}" title="#{myBundle.ViewProduitTitle_codeBarres}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_dateHeure}"/>
+                        <h:outputText value="#{produitController.selected.dateHeure}" title="#{myBundle.ViewProduitTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_marque}"/>
+                        <h:outputText value="#{produitController.selected.marque}" title="#{myBundle.ViewProduitTitle_marque}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_IDUniteeMesure}"/>
+                        <h:outputText value="#{produitController.selected.IDUniteeMesure.IDUniteeMesure}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_famille}"/>
+                        <h:outputText value="#{produitController.selected.famille.IDFamille}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_sousfamille}"/>
+                        <h:outputText value="#{produitController.selected.sousfamille.libelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitLabel_tva}"/>
+                        <h:outputText value="#{produitController.selected.tva.idtva}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ProduitViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

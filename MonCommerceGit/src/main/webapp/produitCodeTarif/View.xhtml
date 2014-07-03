@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitCodeTarifViewDlg" widgetVar="ProduitCodeTarifViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewProduitCodeTarifTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitCodeTarifViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produitCodeTarifController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewProduitCodeTarifLabel_prixVente}"/>
+                        <h:outputText value="#{produitCodeTarifController.selected.prixVente}" title="#{myBundle.ViewProduitCodeTarifTitle_prixVente}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitCodeTarifLabel_quantitee}"/>
+                        <h:outputText value="#{produitCodeTarifController.selected.quantitee}" title="#{myBundle.ViewProduitCodeTarifTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitCodeTarifLabel_dateHeure}"/>
+                        <h:outputText value="#{produitCodeTarifController.selected.dateHeure}" title="#{myBundle.ViewProduitCodeTarifTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewProduitCodeTarifLabel_codeTarif}"/>
+                        <h:outputText value="#{produitCodeTarifController.selected.codeTarif.IDCodetarif}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitCodeTarifLabel_produit}"/>
+                        <h:outputText value="#{produitCodeTarifController.selected.produit.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ProduitCodeTarifViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

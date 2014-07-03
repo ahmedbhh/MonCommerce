@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SousfamilleCreateDlg" widgetVar="SousfamilleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateSousfamilleTitle}" closeOnEscape="true">
+
+            <h:form id="SousfamilleCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <h:outputLabel value="#{myBundle.CreateSousfamilleLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{sousfamilleController.selected.libelle}" title="#{myBundle.CreateSousfamilleTitle_libelle}" required="true" requiredMessage="#{myBundle.CreateSousfamilleRequiredMessage_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateSousfamilleLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{sousfamilleController.selected.dateHeure}" title="#{myBundle.CreateSousfamilleTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateSousfamilleRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateSousfamilleLabel_famillesup}" for="famillesup" />
+                        <p:selectOneMenu id="famillesup" value="#{sousfamilleController.selected.famillesup}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{familleController.items}"
+                                           var="famillesupItem"
+                                           itemValue="#{famillesupItem}"
+                                           itemLabel="#{famillesupItem.IDFamille.toString()}"
+                                           />
+                            <f:converter binding="#{familleConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sousfamilleController.saveNew}" value="#{myBundle.Save}" update="display,:SousfamilleListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,SousfamilleCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="SousfamilleCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

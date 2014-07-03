@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModeDeReglementCreateDlg" widgetVar="ModeDeReglementCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateModeDeReglementTitle}" closeOnEscape="true">
+
+            <h:form id="ModeDeReglementCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateModeDeReglementLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{modeDeReglementController.selected.libelle}" title="#{myBundle.CreateModeDeReglementTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateModeDeReglementLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{modeDeReglementController.selected.description}" title="#{myBundle.CreateModeDeReglementTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateModeDeReglementLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{modeDeReglementController.selected.dateHeure}" title="#{myBundle.CreateModeDeReglementTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateModeDeReglementRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{modeDeReglementController.saveNew}" value="#{myBundle.Save}" update="display,:ModeDeReglementListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ModeDeReglementCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ModeDeReglementCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

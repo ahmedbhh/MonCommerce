@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitFactureFournisseurCreateDlg" widgetVar="ProduitFactureFournisseurCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateProduitFactureFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitFactureFournisseurCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{produitFactureFournisseurController.selected.quantitee}" title="#{myBundle.CreateProduitFactureFournisseurTitle_quantitee}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_prixAchatHT}" for="prixAchatHT" />
+                        <p:inputText id="prixAchatHT" value="#{produitFactureFournisseurController.selected.prixAchatHT}" title="#{myBundle.CreateProduitFactureFournisseurTitle_prixAchatHT}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_prixAchatHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_remise}" for="remise" />
+                        <p:inputText id="remise" value="#{produitFactureFournisseurController.selected.remise}" title="#{myBundle.CreateProduitFactureFournisseurTitle_remise}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_remise}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{produitFactureFournisseurController.selected.dateHeure}" title="#{myBundle.CreateProduitFactureFournisseurTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{produitFactureFournisseurController.selected.description}" title="#{myBundle.CreateProduitFactureFournisseurTitle_description}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_description}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_poidsUnitaireBrute}" for="poidsUnitaireBrute" />
+                        <p:inputText id="poidsUnitaireBrute" value="#{produitFactureFournisseurController.selected.poidsUnitaireBrute}" title="#{myBundle.CreateProduitFactureFournisseurTitle_poidsUnitaireBrute}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_poidsUnitaireBrute}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_poidsUnitaireNet}" for="poidsUnitaireNet" />
+                        <p:inputText id="poidsUnitaireNet" value="#{produitFactureFournisseurController.selected.poidsUnitaireNet}" title="#{myBundle.CreateProduitFactureFournisseurTitle_poidsUnitaireNet}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_poidsUnitaireNet}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_nombreParcolis}" for="nombreParcolis" />
+                        <p:inputText id="nombreParcolis" value="#{produitFactureFournisseurController.selected.nombreParcolis}" title="#{myBundle.CreateProduitFactureFournisseurTitle_nombreParcolis}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_nombreParcolis}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_nombreColis}" for="nombreColis" />
+                        <p:inputText id="nombreColis" value="#{produitFactureFournisseurController.selected.nombreColis}" title="#{myBundle.CreateProduitFactureFournisseurTitle_nombreColis}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_nombreColis}"/>
+
+                        <h:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{produitFactureFournisseurController.selected.produit}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_produit}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produitController.items}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"
+                                           itemLabel="#{produitItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{produitConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateProduitFactureFournisseurLabel_factureFournisseur}" for="factureFournisseur" />
+                        <p:selectOneMenu id="factureFournisseur" value="#{produitFactureFournisseurController.selected.factureFournisseur}" required="true" requiredMessage="#{myBundle.CreateProduitFactureFournisseurRequiredMessage_factureFournisseur}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{factureFournisseurController.items}"
+                                           var="factureFournisseurItem"
+                                           itemValue="#{factureFournisseurItem}"
+                                           itemLabel="#{factureFournisseurItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{factureFournisseurConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produitFactureFournisseurController.saveNew}" value="#{myBundle.Save}" update="display,:ProduitFactureFournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitFactureFournisseurCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProduitFactureFournisseurCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

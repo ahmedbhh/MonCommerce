@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureClientProduitViewDlg" widgetVar="FactureClientProduitViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFactureClientProduitTitle}" closeOnEscape="true">
+
+            <h:form id="FactureClientProduitViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factureClientProduitController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_quantitee}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.quantitee}" title="#{myBundle.ViewFactureClientProduitTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_prixUnitaireHT}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.prixUnitaireHT}" title="#{myBundle.ViewFactureClientProduitTitle_prixUnitaireHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_remise}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.remise}" title="#{myBundle.ViewFactureClientProduitTitle_remise}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_dateHeure}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.dateHeure}" title="#{myBundle.ViewFactureClientProduitTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_description}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.description}" title="#{myBundle.ViewFactureClientProduitTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_poidsUnitaireBrute}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.poidsUnitaireBrute}" title="#{myBundle.ViewFactureClientProduitTitle_poidsUnitaireBrute}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_poidsUnitaireNet}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.poidsUnitaireNet}" title="#{myBundle.ViewFactureClientProduitTitle_poidsUnitaireNet}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_nombreParcolis}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.nombreParcolis}" title="#{myBundle.ViewFactureClientProduitTitle_nombreParcolis}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_nombreColis}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.nombreColis}" title="#{myBundle.ViewFactureClientProduitTitle_nombreColis}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_factureClients}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.factureClients.IDFactureClients}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientProduitLabel_produit}"/>
+                        <h:outputText value="#{factureClientProduitController.selected.produit.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FactureClientProduitViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

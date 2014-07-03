@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ProduitCodeTarifEditDlg" widgetVar="ProduitCodeTarifEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditProduitCodeTarifTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitCodeTarifEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{produitCodeTarifController.selected != null}">
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitCodeTarifLabel_prixVente}" for="prixVente" />
+                        <p:inputText id="prixVente" value="#{produitCodeTarifController.selected.prixVente}" title="#{myBundle.EditProduitCodeTarifTitle_prixVente}" required="true" requiredMessage="#{myBundle.EditProduitCodeTarifRequiredMessage_prixVente}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitCodeTarifLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{produitCodeTarifController.selected.quantitee}" title="#{myBundle.EditProduitCodeTarifTitle_quantitee}" required="true" requiredMessage="#{myBundle.EditProduitCodeTarifRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitCodeTarifLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{produitCodeTarifController.selected.dateHeure}" title="#{myBundle.EditProduitCodeTarifTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditProduitCodeTarifRequiredMessage_dateHeure}" showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.EditProduitCodeTarifLabel_codeTarif}" for="codeTarif" />
+                        <h:outputText id="codeTarif" value="#{produitCodeTarifController.selected.codeTarif}" />
+
+                        <h:outputLabel value="#{myBundle.EditProduitCodeTarifLabel_produit}" for="produit" />
+                        <h:outputText id="produit" value="#{produitCodeTarifController.selected.produit}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produitCodeTarifController.save}" value="#{myBundle.Save}" update="display,:ProduitCodeTarifListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitCodeTarifEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProduitCodeTarifEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

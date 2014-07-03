@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="UniteemesureEditDlg" widgetVar="UniteemesureEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditUniteemesureTitle}" closeOnEscape="true">
+
+            <h:form id="UniteemesureEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{uniteemesureController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditUniteemesureLabel_IDUniteeMesure}" for="IDUniteeMesure" />
+                        <h:outputText id="IDUniteeMesure" value="#{uniteemesureController.selected.IDUniteeMesure}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditUniteemesureLabel_unitee}" for="unitee" />
+                        <p:inputText id="unitee" value="#{uniteemesureController.selected.unitee}" title="#{myBundle.EditUniteemesureTitle_unitee}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditUniteemesureLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{uniteemesureController.selected.dateHeure}" title="#{myBundle.EditUniteemesureTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditUniteemesureRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{uniteemesureController.save}" value="#{myBundle.Save}" update="display,:UniteemesureListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UniteemesureEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="UniteemesureEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

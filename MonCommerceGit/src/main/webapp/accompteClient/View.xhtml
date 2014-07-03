@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AccompteClientViewDlg" widgetVar="AccompteClientViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewAccompteClientTitle}" closeOnEscape="true">
+
+            <h:form id="AccompteClientViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{accompteClientController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDAccompteClient}"/>
+                        <h:outputText value="#{accompteClientController.selected.IDAccompteClient}" title="#{myBundle.ViewAccompteClientTitle_IDAccompteClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_date}"/>
+                        <h:outputText value="#{accompteClientController.selected.date}" title="#{myBundle.ViewAccompteClientTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_montant}"/>
+                        <h:outputText value="#{accompteClientController.selected.montant}" title="#{myBundle.ViewAccompteClientTitle_montant}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_dateHeure}"/>
+                        <h:outputText value="#{accompteClientController.selected.dateHeure}" title="#{myBundle.ViewAccompteClientTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDFactureClients}"/>
+                        <h:outputText value="#{accompteClientController.selected.IDFactureClients.IDFactureClients}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDCommandeClient}"/>
+                        <h:outputText value="#{accompteClientController.selected.IDCommandeClient.IDCommandeClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDModedereglement}"/>
+                        <h:outputText value="#{accompteClientController.selected.IDModedereglement.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="AccompteClientViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

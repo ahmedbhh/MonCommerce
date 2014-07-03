@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureFournisseurReglementFournisseursViewDlg" widgetVar="FactureFournisseurReglementFournisseursViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFactureFournisseurReglementFournisseursTitle}" closeOnEscape="true">
+
+            <h:form id="FactureFournisseurReglementFournisseursViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factureFournisseurReglementFournisseursController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurReglementFournisseursLabel_type}"/>
+                        <h:outputText value="#{factureFournisseurReglementFournisseursController.selected.type}" title="#{myBundle.ViewFactureFournisseurReglementFournisseursTitle_type}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurReglementFournisseursLabel_soldee}"/>
+                        <h:outputText value="#{factureFournisseurReglementFournisseursController.selected.soldee}" title="#{myBundle.ViewFactureFournisseurReglementFournisseursTitle_soldee}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurReglementFournisseursLabel_factureFournisseur}"/>
+                        <h:outputText value="#{factureFournisseurReglementFournisseursController.selected.factureFournisseur.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurReglementFournisseursLabel_reglementFournisseurs}"/>
+                        <h:outputText value="#{factureFournisseurReglementFournisseursController.selected.reglementFournisseurs.IDReglementfournisseurs}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FactureFournisseurReglementFournisseursViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

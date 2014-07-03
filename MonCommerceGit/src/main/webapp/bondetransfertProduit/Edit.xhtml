@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="BondetransfertProduitEditDlg" widgetVar="BondetransfertProduitEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditBondetransfertProduitTitle}" closeOnEscape="true">
+
+            <h:form id="BondetransfertProduitEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{bondetransfertProduitController.selected != null}">
+
+
+                        <p:outputLabel value="#{myBundle.EditBondetransfertProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{bondetransfertProduitController.selected.quantitee}" title="#{myBundle.EditBondetransfertProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.EditBondetransfertProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondetransfertProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bondetransfertProduitController.selected.dateHeure}" title="#{myBundle.EditBondetransfertProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditBondetransfertProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.EditBondetransfertProduitLabel_bondetransfert}" for="bondetransfert" />
+                        <h:outputText id="bondetransfert" value="#{bondetransfertProduitController.selected.bondetransfert}" />
+
+                        <h:outputLabel value="#{myBundle.EditBondetransfertProduitLabel_produit}" for="produit" />
+                        <h:outputText id="produit" value="#{bondetransfertProduitController.selected.produit}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bondetransfertProduitController.save}" value="#{myBundle.Save}" update="display,:BondetransfertProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BondetransfertProduitEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BondetransfertProduitEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

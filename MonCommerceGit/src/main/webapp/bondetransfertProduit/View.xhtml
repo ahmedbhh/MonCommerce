@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BondetransfertProduitViewDlg" widgetVar="BondetransfertProduitViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewBondetransfertProduitTitle}" closeOnEscape="true">
+
+            <h:form id="BondetransfertProduitViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bondetransfertProduitController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertProduitLabel_quantitee}"/>
+                        <h:outputText value="#{bondetransfertProduitController.selected.quantitee}" title="#{myBundle.ViewBondetransfertProduitTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertProduitLabel_dateHeure}"/>
+                        <h:outputText value="#{bondetransfertProduitController.selected.dateHeure}" title="#{myBundle.ViewBondetransfertProduitTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertProduitLabel_bondetransfert}"/>
+                        <h:outputText value="#{bondetransfertProduitController.selected.bondetransfert.IDBonDeTransfert}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertProduitLabel_produit}"/>
+                        <h:outputText value="#{bondetransfertProduitController.selected.produit.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="BondetransfertProduitViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

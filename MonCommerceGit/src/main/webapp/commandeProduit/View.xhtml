@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommandeProduitViewDlg" widgetVar="CommandeProduitViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewCommandeProduitTitle}" closeOnEscape="true">
+
+            <h:form id="CommandeProduitViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{commandeProduitController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_quantitee}"/>
+                        <h:outputText value="#{commandeProduitController.selected.quantitee}" title="#{myBundle.ViewCommandeProduitTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_prixAchatHT}"/>
+                        <h:outputText value="#{commandeProduitController.selected.prixAchatHT}" title="#{myBundle.ViewCommandeProduitTitle_prixAchatHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_remise}"/>
+                        <h:outputText value="#{commandeProduitController.selected.remise}" title="#{myBundle.ViewCommandeProduitTitle_remise}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_dateHeure}"/>
+                        <h:outputText value="#{commandeProduitController.selected.dateHeure}" title="#{myBundle.ViewCommandeProduitTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_remisetotal}"/>
+                        <h:outputText value="#{commandeProduitController.selected.remisetotal}" title="#{myBundle.ViewCommandeProduitTitle_remisetotal}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_tva}"/>
+                        <h:outputText value="#{commandeProduitController.selected.tva}" title="#{myBundle.ViewCommandeProduitTitle_tva}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_description}"/>
+                        <h:outputText value="#{commandeProduitController.selected.description}" title="#{myBundle.ViewCommandeProduitTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_produit}"/>
+                        <h:outputText value="#{commandeProduitController.selected.produit.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeProduitLabel_commande}"/>
+                        <h:outputText value="#{commandeProduitController.selected.commande.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="CommandeProduitViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

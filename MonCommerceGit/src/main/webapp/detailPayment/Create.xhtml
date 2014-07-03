@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetailPaymentCreateDlg" widgetVar="DetailPaymentCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateDetailPaymentTitle}" closeOnEscape="true">
+
+            <h:form id="DetailPaymentCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateDetailPaymentLabel_banque}" for="banque" />
+                        <p:inputText id="banque" value="#{detailPaymentController.selected.banque}" title="#{myBundle.CreateDetailPaymentTitle_banque}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDetailPaymentLabel_numCheque}" for="numCheque" />
+                        <p:inputText id="numCheque" value="#{detailPaymentController.selected.numCheque}" title="#{myBundle.CreateDetailPaymentTitle_numCheque}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDetailPaymentLabel_nomproprietaire}" for="nomproprietaire" />
+                        <p:inputText id="nomproprietaire" value="#{detailPaymentController.selected.nomproprietaire}" title="#{myBundle.CreateDetailPaymentTitle_nomproprietaire}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDetailPaymentLabel_dateversement}" for="dateversement" />
+                        <p:calendar id="dateversement" pattern="MM/dd/yyyy" value="#{detailPaymentController.selected.dateversement}" title="#{myBundle.CreateDetailPaymentTitle_dateversement}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDetailPaymentLabel_ALordre}" for="ALordre" />
+                        <p:inputText id="ALordre" value="#{detailPaymentController.selected.ALordre}" title="#{myBundle.CreateDetailPaymentTitle_ALordre}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDetailPaymentLabel_IDAccompteClient}" for="IDAccompteClient" />
+                        <p:selectOneMenu id="IDAccompteClient" value="#{detailPaymentController.selected.IDAccompteClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{accompteClientController.items}"
+                                           var="IDAccompteClientItem"
+                                           itemValue="#{IDAccompteClientItem}"
+                                           itemLabel="#{IDAccompteClientItem.IDAccompteClient.toString()}"
+                                           />
+                            <f:converter binding="#{accompteClientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDetailPaymentLabel_IDReglementClient}" for="IDReglementClient" />
+                        <p:selectOneMenu id="IDReglementClient" value="#{detailPaymentController.selected.IDReglementClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{reglementClientController.items}"
+                                           var="IDReglementClientItem"
+                                           itemValue="#{IDReglementClientItem}"
+                                           itemLabel="#{IDReglementClientItem.IDReglementClient.toString()}"
+                                           />
+                            <f:converter binding="#{reglementClientConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detailPaymentController.saveNew}" value="#{myBundle.Save}" update="display,:DetailPaymentListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DetailPaymentCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="DetailPaymentCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

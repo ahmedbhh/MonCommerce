@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitCodeTarifCreateDlg" widgetVar="ProduitCodeTarifCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateProduitCodeTarifTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitCodeTarifCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitCodeTarifLabel_prixVente}" for="prixVente" />
+                        <p:inputText id="prixVente" value="#{produitCodeTarifController.selected.prixVente}" title="#{myBundle.CreateProduitCodeTarifTitle_prixVente}" required="true" requiredMessage="#{myBundle.CreateProduitCodeTarifRequiredMessage_prixVente}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitCodeTarifLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{produitCodeTarifController.selected.quantitee}" title="#{myBundle.CreateProduitCodeTarifTitle_quantitee}" required="true" requiredMessage="#{myBundle.CreateProduitCodeTarifRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitCodeTarifLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{produitCodeTarifController.selected.dateHeure}" title="#{myBundle.CreateProduitCodeTarifTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateProduitCodeTarifRequiredMessage_dateHeure}" showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.CreateProduitCodeTarifLabel_codeTarif}" for="codeTarif" />
+                        <p:selectOneMenu id="codeTarif" value="#{produitCodeTarifController.selected.codeTarif}" required="true" requiredMessage="#{myBundle.CreateProduitCodeTarifRequiredMessage_codeTarif}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{codeTarifController.items}"
+                                           var="codeTarifItem"
+                                           itemValue="#{codeTarifItem}"
+                                           itemLabel="#{codeTarifItem.IDCodetarif.toString()}"
+                                           />
+                            <f:converter binding="#{codeTarifConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateProduitCodeTarifLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{produitCodeTarifController.selected.produit}" required="true" requiredMessage="#{myBundle.CreateProduitCodeTarifRequiredMessage_produit}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produitController.items}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"
+                                           itemLabel="#{produitItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{produitConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produitCodeTarifController.saveNew}" value="#{myBundle.Save}" update="display,:ProduitCodeTarifListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitCodeTarifCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProduitCodeTarifCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

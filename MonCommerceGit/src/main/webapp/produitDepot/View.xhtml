@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitDepotViewDlg" widgetVar="ProduitDepotViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewProduitDepotTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitDepotViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produitDepotController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewProduitDepotLabel_quantitee}"/>
+                        <h:outputText value="#{produitDepotController.selected.quantitee}" title="#{myBundle.ViewProduitDepotTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitDepotLabel_dateHeure}"/>
+                        <h:outputText value="#{produitDepotController.selected.dateHeure}" title="#{myBundle.ViewProduitDepotTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewProduitDepotLabel_emplacement}"/>
+                        <h:outputText value="#{produitDepotController.selected.emplacement}" title="#{myBundle.ViewProduitDepotTitle_emplacement}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitDepotLabel_depot}"/>
+                        <h:outputText value="#{produitDepotController.selected.depot.IDdepot}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitDepotLabel_produit}"/>
+                        <h:outputText value="#{produitDepotController.selected.produit.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ProduitDepotViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

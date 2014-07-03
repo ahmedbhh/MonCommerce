@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdresseFacturationCreateDlg" widgetVar="AdresseFacturationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateAdresseFacturationTitle}" closeOnEscape="true">
+
+            <h:form id="AdresseFacturationCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_adresse}" for="adresse" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse" value="#{adresseFacturationController.selected.adresse}" title="#{myBundle.CreateAdresseFacturationTitle_adresse}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_codePostale}" for="codePostale" />
+                        <p:inputText id="codePostale" value="#{adresseFacturationController.selected.codePostale}" title="#{myBundle.CreateAdresseFacturationTitle_codePostale}" size="10" maxlength="10"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_ville}" for="ville" />
+                        <p:inputText id="ville" value="#{adresseFacturationController.selected.ville}" title="#{myBundle.CreateAdresseFacturationTitle_ville}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_pays}" for="pays" />
+                        <p:inputText id="pays" value="#{adresseFacturationController.selected.pays}" title="#{myBundle.CreateAdresseFacturationTitle_pays}" size="64" maxlength="64"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_adresseemail}" for="adresseemail" />
+                        <p:inputTextarea rows="4" cols="30" id="adresseemail" value="#{adresseFacturationController.selected.adresseemail}" title="#{myBundle.CreateAdresseFacturationTitle_adresseemail}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_siteInternet}" for="siteInternet" />
+                        <p:inputTextarea rows="4" cols="30" id="siteInternet" value="#{adresseFacturationController.selected.siteInternet}" title="#{myBundle.CreateAdresseFacturationTitle_siteInternet}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{adresseFacturationController.selected.telephone}" title="#{myBundle.CreateAdresseFacturationTitle_telephone}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{adresseFacturationController.selected.fax}" title="#{myBundle.CreateAdresseFacturationTitle_fax}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_telephone2}" for="telephone2" />
+                        <p:inputText id="telephone2" value="#{adresseFacturationController.selected.telephone2}" title="#{myBundle.CreateAdresseFacturationTitle_telephone2}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_portable}" for="portable" />
+                        <p:inputText id="portable" value="#{adresseFacturationController.selected.portable}" title="#{myBundle.CreateAdresseFacturationTitle_portable}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_formejuridique}" for="formejuridique" />
+                        <p:inputText id="formejuridique" value="#{adresseFacturationController.selected.formejuridique}" title="#{myBundle.CreateAdresseFacturationTitle_formejuridique}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{adresseFacturationController.selected.dateHeure}" title="#{myBundle.CreateAdresseFacturationTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateAdresseFacturationRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFacturationLabel_IDClient}" for="IDClient" />
+                        <p:selectOneMenu id="IDClient" value="#{adresseFacturationController.selected.IDClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.items}"
+                                           var="IDClientItem"
+                                           itemValue="#{IDClientItem}"
+                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                                           />
+                            <f:converter binding="#{clientConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{adresseFacturationController.saveNew}" value="#{myBundle.Save}" update="display,:AdresseFacturationListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AdresseFacturationCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AdresseFacturationCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="BonentreeProduitEditDlg" widgetVar="BonentreeProduitEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditBonentreeProduitTitle}" closeOnEscape="true">
+
+            <h:form id="BonentreeProduitEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{bonentreeProduitController.selected != null}">
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{bonentreeProduitController.selected.quantitee}" title="#{myBundle.EditBonentreeProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_prixAchatHT}" for="prixAchatHT" />
+                        <p:inputText id="prixAchatHT" value="#{bonentreeProduitController.selected.prixAchatHT}" title="#{myBundle.EditBonentreeProduitTitle_prixAchatHT}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_prixAchatHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_remise}" for="remise" />
+                        <p:inputText id="remise" value="#{bonentreeProduitController.selected.remise}" title="#{myBundle.EditBonentreeProduitTitle_remise}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_remise}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bonentreeProduitController.selected.dateHeure}" title="#{myBundle.EditBonentreeProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_poidsUnitaireBrute}" for="poidsUnitaireBrute" />
+                        <p:inputText id="poidsUnitaireBrute" value="#{bonentreeProduitController.selected.poidsUnitaireBrute}" title="#{myBundle.EditBonentreeProduitTitle_poidsUnitaireBrute}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_poidsUnitaireBrute}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_poidsUnitaireNet}" for="poidsUnitaireNet" />
+                        <p:inputText id="poidsUnitaireNet" value="#{bonentreeProduitController.selected.poidsUnitaireNet}" title="#{myBundle.EditBonentreeProduitTitle_poidsUnitaireNet}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_poidsUnitaireNet}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_nombreParcolis}" for="nombreParcolis" />
+                        <p:inputText id="nombreParcolis" value="#{bonentreeProduitController.selected.nombreParcolis}" title="#{myBundle.EditBonentreeProduitTitle_nombreParcolis}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_nombreParcolis}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBonentreeProduitLabel_nombreColis}" for="nombreColis" />
+                        <p:inputText id="nombreColis" value="#{bonentreeProduitController.selected.nombreColis}" title="#{myBundle.EditBonentreeProduitTitle_nombreColis}" required="true" requiredMessage="#{myBundle.EditBonentreeProduitRequiredMessage_nombreColis}"/>
+
+                        <h:outputLabel value="#{myBundle.EditBonentreeProduitLabel_bonentree}" for="bonentree" />
+                        <h:outputText id="bonentree" value="#{bonentreeProduitController.selected.bonentree}" />
+
+                        <h:outputLabel value="#{myBundle.EditBonentreeProduitLabel_produit}" for="produit" />
+                        <h:outputText id="produit" value="#{bonentreeProduitController.selected.produit}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bonentreeProduitController.save}" value="#{myBundle.Save}" update="display,:BonentreeProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BonentreeProduitEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BonentreeProduitEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

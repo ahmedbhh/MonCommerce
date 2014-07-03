@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LigneCommandeClientViewDlg" widgetVar="LigneCommandeClientViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewLigneCommandeClientTitle}" closeOnEscape="true">
+
+            <h:form id="LigneCommandeClientViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ligneCommandeClientController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_quantitee}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.quantitee}" title="#{myBundle.ViewLigneCommandeClientTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_prixUnitaireHT}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.prixUnitaireHT}" title="#{myBundle.ViewLigneCommandeClientTitle_prixUnitaireHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_remise}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.remise}" title="#{myBundle.ViewLigneCommandeClientTitle_remise}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_dateHeure}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.dateHeure}" title="#{myBundle.ViewLigneCommandeClientTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_description}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.description}" title="#{myBundle.ViewLigneCommandeClientTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_poidsUnitaireBrute}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.poidsUnitaireBrute}" title="#{myBundle.ViewLigneCommandeClientTitle_poidsUnitaireBrute}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_poidsUnitaireNet}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.poidsUnitaireNet}" title="#{myBundle.ViewLigneCommandeClientTitle_poidsUnitaireNet}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_nombreParcolis}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.nombreParcolis}" title="#{myBundle.ViewLigneCommandeClientTitle_nombreParcolis}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_nombreColis}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.nombreColis}" title="#{myBundle.ViewLigneCommandeClientTitle_nombreColis}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_commandeClient}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.commandeClient.IDCommandeClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewLigneCommandeClientLabel_produit}"/>
+                        <h:outputText value="#{ligneCommandeClientController.selected.produit.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="LigneCommandeClientViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

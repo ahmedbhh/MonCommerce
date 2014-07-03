@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FormeJuridiqueViewDlg" widgetVar="FormeJuridiqueViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFormeJuridiqueTitle}" closeOnEscape="true">
+
+            <h:form id="FormeJuridiqueViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{formeJuridiqueController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFormeJuridiqueLabel_IDFormeJuridique}"/>
+                        <h:outputText value="#{formeJuridiqueController.selected.IDFormeJuridique}" title="#{myBundle.ViewFormeJuridiqueTitle_IDFormeJuridique}"/>
+
+                        <h:outputText value="#{myBundle.ViewFormeJuridiqueLabel_libelle}"/>
+                        <h:outputText value="#{formeJuridiqueController.selected.libelle}" title="#{myBundle.ViewFormeJuridiqueTitle_libelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewFormeJuridiqueLabel_description}"/>
+                        <h:outputText value="#{formeJuridiqueController.selected.description}" title="#{myBundle.ViewFormeJuridiqueTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFormeJuridiqueLabel_dateHeure}"/>
+                        <h:outputText value="#{formeJuridiqueController.selected.dateHeure}" title="#{myBundle.ViewFormeJuridiqueTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FormeJuridiqueViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

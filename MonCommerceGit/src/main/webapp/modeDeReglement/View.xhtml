@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModeDeReglementViewDlg" widgetVar="ModeDeReglementViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewModeDeReglementTitle}" closeOnEscape="true">
+
+            <h:form id="ModeDeReglementViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{modeDeReglementController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewModeDeReglementLabel_IDModedereglement}"/>
+                        <h:outputText value="#{modeDeReglementController.selected.IDModedereglement}" title="#{myBundle.ViewModeDeReglementTitle_IDModedereglement}"/>
+
+                        <h:outputText value="#{myBundle.ViewModeDeReglementLabel_libelle}"/>
+                        <h:outputText value="#{modeDeReglementController.selected.libelle}" title="#{myBundle.ViewModeDeReglementTitle_libelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewModeDeReglementLabel_description}"/>
+                        <h:outputText value="#{modeDeReglementController.selected.description}" title="#{myBundle.ViewModeDeReglementTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewModeDeReglementLabel_dateHeure}"/>
+                        <h:outputText value="#{modeDeReglementController.selected.dateHeure}" title="#{myBundle.ViewModeDeReglementTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ModeDeReglementViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

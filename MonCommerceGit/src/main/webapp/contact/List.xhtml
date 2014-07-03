@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ContactListForm">
+
+        <p:panel header="#{myBundle.ListContactTitle}">
+            <p:dataTable id="datalist" value="#{contactController.items}" var="item"
+                         selectionMode="single" selection="#{contactController.selected}"
+                         rowKey="#{item.IDContact}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDContact}" filterBy="#{item.IDContact}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_IDContact}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDContact}"/>
+                </p:column>
+                <p:column sortBy="#{item.nom}" filterBy="#{item.nom}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_nom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nom}"/>
+                </p:column>
+                <p:column sortBy="#{item.portable}" filterBy="#{item.portable}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_portable}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.portable}"/>
+                </p:column>
+                <p:column sortBy="#{item.fax}" filterBy="#{item.fax}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_fax}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fax}"/>
+                </p:column>
+                <p:column sortBy="#{item.adresseemail}" filterBy="#{item.adresseemail}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_adresseemail}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.adresseemail}"/>
+                </p:column>
+                <p:column sortBy="#{item.skype}" filterBy="#{item.skype}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_skype}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.skype}"/>
+                </p:column>
+                <p:column sortBy="#{item.principale}" filterBy="#{item.principale}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_principale}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.principale}"/>
+                </p:column>
+                <p:column sortBy="#{item.date}" filterBy="#{item.date}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_date}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.IDFonctionContact.IDFonctionContact}" filterBy="#{item.IDFonctionContact.IDFonctionContact}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_IDFonctionContact}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDFonctionContact.IDFonctionContact}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDClient.IDClient}" filterBy="#{item.IDClient.IDClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_IDClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDClient.IDClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDTitreContact.IDTitreContact}" filterBy="#{item.IDTitreContact.IDTitreContact}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactTitle_IDTitreContact}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDTitreContact.IDTitreContact}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{contactController.prepareCreate}" update=":ContactCreateForm" oncomplete="ContactCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":ContactViewForm" oncomplete="ContactViewDialog.show()" disabled="#{empty contactController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ContactEditForm" oncomplete="ContactEditDialog.show()" disabled="#{empty contactController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{contactController.delete}" update=":growl,datalist" disabled="#{empty contactController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

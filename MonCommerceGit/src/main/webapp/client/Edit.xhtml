@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ClientEditDlg" widgetVar="ClientEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditClientTitle}" closeOnEscape="true">
+
+            <h:form id="ClientEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{clientController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditClientLabel_IDClient}" for="IDClient" />
+                        <h:outputText id="IDClient" value="#{clientController.selected.IDClient}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{clientController.selected.nom}" title="#{myBundle.EditClientTitle_nom}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_obsersavation}" for="obsersavation" />
+                        <p:inputTextarea rows="4" cols="30" id="obsersavation" value="#{clientController.selected.obsersavation}" title="#{myBundle.EditClientTitle_obsersavation}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_risque}" for="risque" />
+                        <p:inputText id="risque" value="#{clientController.selected.risque}" title="#{myBundle.EditClientTitle_risque}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_encours}" for="encours" />
+                        <p:inputText id="encours" value="#{clientController.selected.encours}" title="#{myBundle.EditClientTitle_encours}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_bloquee}" for="bloquee" />
+                        <p:inputText id="bloquee" value="#{clientController.selected.bloquee}" title="#{myBundle.EditClientTitle_bloquee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{clientController.selected.dateHeure}" title="#{myBundle.EditClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditClientRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_matriculefiscale}" for="matriculefiscale" />
+                        <p:inputText id="matriculefiscale" value="#{clientController.selected.matriculefiscale}" title="#{myBundle.EditClientTitle_matriculefiscale}" size="30" maxlength="30"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_IDCodetarif}" for="IDCodetarif" />
+                        <p:selectOneMenu id="IDCodetarif" value="#{clientController.selected.IDCodetarif}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{codeTarifController.items}"
+                                           var="IDCodetarifItem"
+                                           itemValue="#{IDCodetarifItem}"
+                                           itemLabel="#{IDCodetarifItem.IDCodetarif.toString()}"
+                                           />
+                            <f:converter binding="#{codeTarifConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_IDFamilleclient}" for="IDFamilleclient" />
+                        <p:selectOneMenu id="IDFamilleclient" value="#{clientController.selected.IDFamilleclient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{familleClientController.items}"
+                                           var="IDFamilleclientItem"
+                                           itemValue="#{IDFamilleclientItem}"
+                                           itemLabel="#{IDFamilleclientItem.IDFamilleclient.toString()}"
+                                           />
+                            <f:converter binding="#{familleClientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_IDModeTVA}" for="IDModeTVA" />
+                        <p:selectOneMenu id="IDModeTVA" value="#{clientController.selected.IDModeTVA}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeTvaController.items}"
+                                           var="IDModeTVAItem"
+                                           itemValue="#{IDModeTVAItem}"
+                                           itemLabel="#{IDModeTVAItem.IDModeTVA.toString()}"
+                                           />
+                            <f:converter binding="#{modeTvaConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clientController.save}" value="#{myBundle.Save}" update="display,:ClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ClientEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ClientEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

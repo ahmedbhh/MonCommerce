@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetailPaymentViewDlg" widgetVar="DetailPaymentViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewDetailPaymentTitle}" closeOnEscape="true">
+
+            <h:form id="DetailPaymentViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detailPaymentController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_IDdetailpayment}"/>
+                        <h:outputText value="#{detailPaymentController.selected.IDdetailpayment}" title="#{myBundle.ViewDetailPaymentTitle_IDdetailpayment}"/>
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_banque}"/>
+                        <h:outputText value="#{detailPaymentController.selected.banque}" title="#{myBundle.ViewDetailPaymentTitle_banque}"/>
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_numCheque}"/>
+                        <h:outputText value="#{detailPaymentController.selected.numCheque}" title="#{myBundle.ViewDetailPaymentTitle_numCheque}"/>
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_nomproprietaire}"/>
+                        <h:outputText value="#{detailPaymentController.selected.nomproprietaire}" title="#{myBundle.ViewDetailPaymentTitle_nomproprietaire}"/>
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_dateversement}"/>
+                        <h:outputText value="#{detailPaymentController.selected.dateversement}" title="#{myBundle.ViewDetailPaymentTitle_dateversement}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_ALordre}"/>
+                        <h:outputText value="#{detailPaymentController.selected.ALordre}" title="#{myBundle.ViewDetailPaymentTitle_ALordre}"/>
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_IDAccompteClient}"/>
+                        <h:outputText value="#{detailPaymentController.selected.IDAccompteClient.IDAccompteClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewDetailPaymentLabel_IDReglementClient}"/>
+                        <h:outputText value="#{detailPaymentController.selected.IDReglementClient.IDReglementClient}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="DetailPaymentViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

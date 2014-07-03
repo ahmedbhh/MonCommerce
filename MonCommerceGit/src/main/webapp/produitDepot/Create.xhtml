@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitDepotCreateDlg" widgetVar="ProduitDepotCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateProduitDepotTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitDepotCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitDepotLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{produitDepotController.selected.quantitee}" title="#{myBundle.CreateProduitDepotTitle_quantitee}" required="true" requiredMessage="#{myBundle.CreateProduitDepotRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitDepotLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{produitDepotController.selected.dateHeure}" title="#{myBundle.CreateProduitDepotTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateProduitDepotRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateProduitDepotLabel_emplacement}" for="emplacement" />
+                        <p:inputText id="emplacement" value="#{produitDepotController.selected.emplacement}" title="#{myBundle.CreateProduitDepotTitle_emplacement}" required="true" requiredMessage="#{myBundle.CreateProduitDepotRequiredMessage_emplacement}" size="20" maxlength="20"/>
+
+                        <h:outputLabel value="#{myBundle.CreateProduitDepotLabel_depot}" for="depot" />
+                        <p:selectOneMenu id="depot" value="#{produitDepotController.selected.depot}" required="true" requiredMessage="#{myBundle.CreateProduitDepotRequiredMessage_depot}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{depotController.items}"
+                                           var="depotItem"
+                                           itemValue="#{depotItem}"
+                                           itemLabel="#{depotItem.IDdepot.toString()}"
+                                           />
+                            <f:converter binding="#{depotConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateProduitDepotLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{produitDepotController.selected.produit}" required="true" requiredMessage="#{myBundle.CreateProduitDepotRequiredMessage_produit}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produitController.items}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"
+                                           itemLabel="#{produitItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{produitConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produitDepotController.saveNew}" value="#{myBundle.Save}" update="display,:ProduitDepotListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitDepotCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProduitDepotCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

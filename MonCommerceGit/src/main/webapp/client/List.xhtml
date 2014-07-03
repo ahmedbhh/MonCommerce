@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ClientListForm">
+
+        <p:panel header="#{myBundle.ListClientTitle}">
+            <p:dataTable id="datalist" value="#{clientController.items}" var="item"
+                         selectionMode="single" selection="#{clientController.selected}"
+                         rowKey="#{item.IDClient}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDClient}" filterBy="#{item.IDClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_IDClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.nom}" filterBy="#{item.nom}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_nom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nom}"/>
+                </p:column>
+                <p:column sortBy="#{item.obsersavation}" filterBy="#{item.obsersavation}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_obsersavation}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.obsersavation}"/>
+                </p:column>
+                <p:column sortBy="#{item.risque}" filterBy="#{item.risque}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_risque}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.risque}"/>
+                </p:column>
+                <p:column sortBy="#{item.encours}" filterBy="#{item.encours}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_encours}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.encours}"/>
+                </p:column>
+                <p:column sortBy="#{item.bloquee}" filterBy="#{item.bloquee}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_bloquee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.bloquee}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.matriculefiscale}" filterBy="#{item.matriculefiscale}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_matriculefiscale}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.matriculefiscale}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDCodetarif.IDCodetarif}" filterBy="#{item.IDCodetarif.IDCodetarif}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_IDCodetarif}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDCodetarif.IDCodetarif}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDFamilleclient.IDFamilleclient}" filterBy="#{item.IDFamilleclient.IDFamilleclient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_IDFamilleclient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDFamilleclient.IDFamilleclient}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDModeTVA.IDModeTVA}" filterBy="#{item.IDModeTVA.IDModeTVA}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_IDModeTVA}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDModeTVA.IDModeTVA}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{clientController.prepareCreate}" update=":ClientCreateForm" oncomplete="ClientCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":ClientViewForm" oncomplete="ClientViewDialog.show()" disabled="#{empty clientController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ClientEditForm" oncomplete="ClientEditDialog.show()" disabled="#{empty clientController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{clientController.delete}" update=":growl,datalist" disabled="#{empty clientController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

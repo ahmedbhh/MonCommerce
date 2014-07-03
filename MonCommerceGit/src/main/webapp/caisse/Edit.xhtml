@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="CaisseEditDlg" widgetVar="CaisseEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditCaisseTitle}" closeOnEscape="true">
+
+            <h:form id="CaisseEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{caisseController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditCaisseLabel_IDCaisse}" for="IDCaisse" />
+                        <h:outputText id="IDCaisse" value="#{caisseController.selected.IDCaisse}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditCaisseLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{caisseController.selected.libelle}" title="#{myBundle.EditCaisseTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCaisseLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{caisseController.selected.dateHeure}" title="#{myBundle.EditCaisseTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditCaisseRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCaisseLabel_IDdepot}" for="IDdepot" />
+                        <p:selectOneMenu id="IDdepot" value="#{caisseController.selected.IDdepot}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{depotController.items}"
+                                           var="IDdepotItem"
+                                           itemValue="#{IDdepotItem}"
+                                           itemLabel="#{IDdepotItem.IDdepot.toString()}"
+                                           />
+                            <f:converter binding="#{depotConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{caisseController.save}" value="#{myBundle.Save}" update="display,:CaisseListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CaisseEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CaisseEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

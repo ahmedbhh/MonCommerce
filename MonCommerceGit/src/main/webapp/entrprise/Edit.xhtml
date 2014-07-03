@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="EntrpriseEditDlg" widgetVar="EntrpriseEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditEntrpriseTitle}" closeOnEscape="true">
+
+            <h:form id="EntrpriseEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{entrpriseController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditEntrpriseLabel_IDEntrprise}" for="IDEntrprise" />
+                        <h:outputText id="IDEntrprise" value="#{entrpriseController.selected.IDEntrprise}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{entrpriseController.selected.nom}" title="#{myBundle.EditEntrpriseTitle_nom}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{entrpriseController.selected.telephone}" title="#{myBundle.EditEntrpriseTitle_telephone}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{entrpriseController.selected.fax}" title="#{myBundle.EditEntrpriseTitle_fax}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_logo}" for="logo" />
+                        <p:inputTextarea rows="4" cols="30" id="logo" value="#{entrpriseController.selected.logo}" title="#{myBundle.EditEntrpriseTitle_logo}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_slogan}" for="slogan" />
+                        <p:inputText id="slogan" value="#{entrpriseController.selected.slogan}" title="#{myBundle.EditEntrpriseTitle_slogan}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{entrpriseController.selected.email}" title="#{myBundle.EditEntrpriseTitle_email}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_adresse}" for="adresse" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse" value="#{entrpriseController.selected.adresse}" title="#{myBundle.EditEntrpriseTitle_adresse}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_codePostal}" for="codePostal" />
+                        <p:inputText id="codePostal" value="#{entrpriseController.selected.codePostal}" title="#{myBundle.EditEntrpriseTitle_codePostal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_ville}" for="ville" />
+                        <p:inputText id="ville" value="#{entrpriseController.selected.ville}" title="#{myBundle.EditEntrpriseTitle_ville}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_pays}" for="pays" />
+                        <p:inputText id="pays" value="#{entrpriseController.selected.pays}" title="#{myBundle.EditEntrpriseTitle_pays}" size="64" maxlength="64"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEntrpriseLabel_matriculefiscale}" for="matriculefiscale" />
+                        <p:inputText id="matriculefiscale" value="#{entrpriseController.selected.matriculefiscale}" title="#{myBundle.EditEntrpriseTitle_matriculefiscale}" size="30" maxlength="30"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{entrpriseController.save}" value="#{myBundle.Save}" update="display,:EntrpriseListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,EntrpriseEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="EntrpriseEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

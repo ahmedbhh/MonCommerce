@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ModeDeReglementEditDlg" widgetVar="ModeDeReglementEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditModeDeReglementTitle}" closeOnEscape="true">
+
+            <h:form id="ModeDeReglementEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{modeDeReglementController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditModeDeReglementLabel_IDModedereglement}" for="IDModedereglement" />
+                        <h:outputText id="IDModedereglement" value="#{modeDeReglementController.selected.IDModedereglement}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditModeDeReglementLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{modeDeReglementController.selected.libelle}" title="#{myBundle.EditModeDeReglementTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditModeDeReglementLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{modeDeReglementController.selected.description}" title="#{myBundle.EditModeDeReglementTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditModeDeReglementLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{modeDeReglementController.selected.dateHeure}" title="#{myBundle.EditModeDeReglementTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditModeDeReglementRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{modeDeReglementController.save}" value="#{myBundle.Save}" update="display,:ModeDeReglementListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ModeDeReglementEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ModeDeReglementEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

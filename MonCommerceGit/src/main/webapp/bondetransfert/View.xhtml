@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BondetransfertViewDlg" widgetVar="BondetransfertViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewBondetransfertTitle}" closeOnEscape="true">
+
+            <h:form id="BondetransfertViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bondetransfertController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_IDBonDeTransfert}"/>
+                        <h:outputText value="#{bondetransfertController.selected.IDBonDeTransfert}" title="#{myBundle.ViewBondetransfertTitle_IDBonDeTransfert}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_date}"/>
+                        <h:outputText value="#{bondetransfertController.selected.date}" title="#{myBundle.ViewBondetransfertTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_referance}"/>
+                        <h:outputText value="#{bondetransfertController.selected.referance}" title="#{myBundle.ViewBondetransfertTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_codeBarres}"/>
+                        <h:outputText value="#{bondetransfertController.selected.codeBarres}" title="#{myBundle.ViewBondetransfertTitle_codeBarres}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_heure}"/>
+                        <h:outputText value="#{bondetransfertController.selected.heure}" title="#{myBundle.ViewBondetransfertTitle_heure}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_validee}"/>
+                        <h:outputText value="#{bondetransfertController.selected.validee}" title="#{myBundle.ViewBondetransfertTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_dateHeure}"/>
+                        <h:outputText value="#{bondetransfertController.selected.dateHeure}" title="#{myBundle.ViewBondetransfertTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_IDdepot}"/>
+                        <h:outputText value="#{bondetransfertController.selected.IDdepot.IDdepot}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_idDepotRecepteur}"/>
+                        <h:outputText value="#{bondetransfertController.selected.idDepotRecepteur.IDdepot}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="BondetransfertViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

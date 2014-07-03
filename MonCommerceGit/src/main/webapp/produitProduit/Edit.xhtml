@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ProduitProduitEditDlg" widgetVar="ProduitProduitEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditProduitProduitTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitProduitEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{produitProduitController.selected != null}">
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{produitProduitController.selected.quantitee}" title="#{myBundle.EditProduitProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.EditProduitProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{produitProduitController.selected.dateHeure}" title="#{myBundle.EditProduitProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditProduitProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.EditProduitProduitLabel_produit}" for="produit" />
+                        <h:outputText id="produit" value="#{produitProduitController.selected.produit}" />
+
+                        <h:outputLabel value="#{myBundle.EditProduitProduitLabel_produit1}" for="produit1" />
+                        <h:outputText id="produit1" value="#{produitProduitController.selected.produit1}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produitProduitController.save}" value="#{myBundle.Save}" update="display,:ProduitProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitProduitEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProduitProduitEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

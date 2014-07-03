@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClientViewDlg" widgetVar="ClientViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewClientTitle}" closeOnEscape="true">
+
+            <h:form id="ClientViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clientController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_IDClient}"/>
+                        <h:outputText value="#{clientController.selected.IDClient}" title="#{myBundle.ViewClientTitle_IDClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_nom}"/>
+                        <h:outputText value="#{clientController.selected.nom}" title="#{myBundle.ViewClientTitle_nom}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_obsersavation}"/>
+                        <h:outputText value="#{clientController.selected.obsersavation}" title="#{myBundle.ViewClientTitle_obsersavation}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_risque}"/>
+                        <h:outputText value="#{clientController.selected.risque}" title="#{myBundle.ViewClientTitle_risque}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_encours}"/>
+                        <h:outputText value="#{clientController.selected.encours}" title="#{myBundle.ViewClientTitle_encours}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_bloquee}"/>
+                        <h:outputText value="#{clientController.selected.bloquee}" title="#{myBundle.ViewClientTitle_bloquee}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_dateHeure}"/>
+                        <h:outputText value="#{clientController.selected.dateHeure}" title="#{myBundle.ViewClientTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_matriculefiscale}"/>
+                        <h:outputText value="#{clientController.selected.matriculefiscale}" title="#{myBundle.ViewClientTitle_matriculefiscale}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_IDCodetarif}"/>
+                        <h:outputText value="#{clientController.selected.IDCodetarif.IDCodetarif}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_IDFamilleclient}"/>
+                        <h:outputText value="#{clientController.selected.IDFamilleclient.IDFamilleclient}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_IDModeTVA}"/>
+                        <h:outputText value="#{clientController.selected.IDModeTVA.IDModeTVA}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ClientViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

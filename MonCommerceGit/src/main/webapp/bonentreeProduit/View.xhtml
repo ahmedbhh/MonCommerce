@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BonentreeProduitViewDlg" widgetVar="BonentreeProduitViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewBonentreeProduitTitle}" closeOnEscape="true">
+
+            <h:form id="BonentreeProduitViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bonentreeProduitController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_quantitee}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.quantitee}" title="#{myBundle.ViewBonentreeProduitTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_prixAchatHT}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.prixAchatHT}" title="#{myBundle.ViewBonentreeProduitTitle_prixAchatHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_remise}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.remise}" title="#{myBundle.ViewBonentreeProduitTitle_remise}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_dateHeure}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.dateHeure}" title="#{myBundle.ViewBonentreeProduitTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_poidsUnitaireBrute}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.poidsUnitaireBrute}" title="#{myBundle.ViewBonentreeProduitTitle_poidsUnitaireBrute}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_poidsUnitaireNet}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.poidsUnitaireNet}" title="#{myBundle.ViewBonentreeProduitTitle_poidsUnitaireNet}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_nombreParcolis}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.nombreParcolis}" title="#{myBundle.ViewBonentreeProduitTitle_nombreParcolis}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_nombreColis}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.nombreColis}" title="#{myBundle.ViewBonentreeProduitTitle_nombreColis}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_bonentree}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.bonentree.IDBonEntree}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeProduitLabel_produit}"/>
+                        <h:outputText value="#{bonentreeProduitController.selected.produit.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="BonentreeProduitViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

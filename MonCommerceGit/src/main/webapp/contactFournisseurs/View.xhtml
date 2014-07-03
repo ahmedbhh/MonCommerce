@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContactFournisseursViewDlg" widgetVar="ContactFournisseursViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewContactFournisseursTitle}" closeOnEscape="true">
+
+            <h:form id="ContactFournisseursViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contactFournisseursController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDContactfournisseurs}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.IDContactfournisseurs}" title="#{myBundle.ViewContactFournisseursTitle_IDContactfournisseurs}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_nom}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.nom}" title="#{myBundle.ViewContactFournisseursTitle_nom}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_portable}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.portable}" title="#{myBundle.ViewContactFournisseursTitle_portable}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_telephone}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.telephone}" title="#{myBundle.ViewContactFournisseursTitle_telephone}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_adresseemail}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.adresseemail}" title="#{myBundle.ViewContactFournisseursTitle_adresseemail}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_dateHeure}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.dateHeure}" title="#{myBundle.ViewContactFournisseursTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDFournisseur}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.IDFournisseur.IDFournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDFonctionContact}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.IDFonctionContact.IDFonctionContact}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDTitreContact}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.IDTitreContact.IDTitreContact}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ContactFournisseursViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

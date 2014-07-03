@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContactCreateDlg" widgetVar="ContactCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateContactTitle}" closeOnEscape="true">
+
+            <h:form id="ContactCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{contactController.selected.nom}" title="#{myBundle.CreateContactTitle_nom}" size="40" maxlength="40"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_portable}" for="portable" />
+                        <p:inputText id="portable" value="#{contactController.selected.portable}" title="#{myBundle.CreateContactTitle_portable}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{contactController.selected.fax}" title="#{myBundle.CreateContactTitle_fax}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_adresseemail}" for="adresseemail" />
+                        <p:inputText id="adresseemail" value="#{contactController.selected.adresseemail}" title="#{myBundle.CreateContactTitle_adresseemail}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_skype}" for="skype" />
+                        <p:inputText id="skype" value="#{contactController.selected.skype}" title="#{myBundle.CreateContactTitle_skype}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_principale}" for="principale" />
+                        <p:inputText id="principale" value="#{contactController.selected.principale}" title="#{myBundle.CreateContactTitle_principale}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{contactController.selected.date}" title="#{myBundle.CreateContactTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{contactController.selected.dateHeure}" title="#{myBundle.CreateContactTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateContactRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_IDFonctionContact}" for="IDFonctionContact" />
+                        <p:selectOneMenu id="IDFonctionContact" value="#{contactController.selected.IDFonctionContact}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fonctionContactController.items}"
+                                           var="IDFonctionContactItem"
+                                           itemValue="#{IDFonctionContactItem}"
+                                           itemLabel="#{IDFonctionContactItem.IDFonctionContact.toString()}"
+                                           />
+                            <f:converter binding="#{fonctionContactConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_IDClient}" for="IDClient" />
+                        <p:selectOneMenu id="IDClient" value="#{contactController.selected.IDClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.items}"
+                                           var="IDClientItem"
+                                           itemValue="#{IDClientItem}"
+                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                                           />
+                            <f:converter binding="#{clientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateContactLabel_IDTitreContact}" for="IDTitreContact" />
+                        <p:selectOneMenu id="IDTitreContact" value="#{contactController.selected.IDTitreContact}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{titreContactController.items}"
+                                           var="IDTitreContactItem"
+                                           itemValue="#{IDTitreContactItem}"
+                                           itemLabel="#{IDTitreContactItem.IDTitreContact.toString()}"
+                                           />
+                            <f:converter binding="#{titreContactConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{contactController.saveNew}" value="#{myBundle.Save}" update="display,:ContactListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ContactCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ContactCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

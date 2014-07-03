@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LigneCommandeClientCreateDlg" widgetVar="LigneCommandeClientCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateLigneCommandeClientTitle}" closeOnEscape="true">
+
+            <h:form id="LigneCommandeClientCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{ligneCommandeClientController.selected.quantitee}" title="#{myBundle.CreateLigneCommandeClientTitle_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_prixUnitaireHT}" for="prixUnitaireHT" />
+                        <p:inputText id="prixUnitaireHT" value="#{ligneCommandeClientController.selected.prixUnitaireHT}" title="#{myBundle.CreateLigneCommandeClientTitle_prixUnitaireHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_remise}" for="remise" />
+                        <p:inputText id="remise" value="#{ligneCommandeClientController.selected.remise}" title="#{myBundle.CreateLigneCommandeClientTitle_remise}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{ligneCommandeClientController.selected.dateHeure}" title="#{myBundle.CreateLigneCommandeClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateLigneCommandeClientRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{ligneCommandeClientController.selected.description}" title="#{myBundle.CreateLigneCommandeClientTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_poidsUnitaireBrute}" for="poidsUnitaireBrute" />
+                        <p:inputText id="poidsUnitaireBrute" value="#{ligneCommandeClientController.selected.poidsUnitaireBrute}" title="#{myBundle.CreateLigneCommandeClientTitle_poidsUnitaireBrute}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_poidsUnitaireNet}" for="poidsUnitaireNet" />
+                        <p:inputText id="poidsUnitaireNet" value="#{ligneCommandeClientController.selected.poidsUnitaireNet}" title="#{myBundle.CreateLigneCommandeClientTitle_poidsUnitaireNet}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_nombreParcolis}" for="nombreParcolis" />
+                        <p:inputText id="nombreParcolis" value="#{ligneCommandeClientController.selected.nombreParcolis}" title="#{myBundle.CreateLigneCommandeClientTitle_nombreParcolis}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_nombreColis}" for="nombreColis" />
+                        <p:inputText id="nombreColis" value="#{ligneCommandeClientController.selected.nombreColis}" title="#{myBundle.CreateLigneCommandeClientTitle_nombreColis}"/>
+
+                        <h:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_commandeClient}" for="commandeClient" />
+                        <p:selectOneMenu id="commandeClient" value="#{ligneCommandeClientController.selected.commandeClient}" required="true" requiredMessage="#{myBundle.CreateLigneCommandeClientRequiredMessage_commandeClient}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeClientController.items}"
+                                           var="commandeClientItem"
+                                           itemValue="#{commandeClientItem}"
+                                           itemLabel="#{commandeClientItem.IDCommandeClient.toString()}"
+                                           />
+                            <f:converter binding="#{commandeClientConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateLigneCommandeClientLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{ligneCommandeClientController.selected.produit}" required="true" requiredMessage="#{myBundle.CreateLigneCommandeClientRequiredMessage_produit}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produitController.items}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"
+                                           itemLabel="#{produitItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{produitConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ligneCommandeClientController.saveNew}" value="#{myBundle.Save}" update="display,:LigneCommandeClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,LigneCommandeClientCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="LigneCommandeClientCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

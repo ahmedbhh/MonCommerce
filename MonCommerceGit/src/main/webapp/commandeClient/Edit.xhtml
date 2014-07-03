@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="CommandeClientEditDlg" widgetVar="CommandeClientEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditCommandeClientTitle}" closeOnEscape="true">
+
+            <h:form id="CommandeClientEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{commandeClientController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditCommandeClientLabel_IDCommandeClient}" for="IDCommandeClient" />
+                        <h:outputText id="IDCommandeClient" value="#{commandeClientController.selected.IDCommandeClient}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{commandeClientController.selected.referance}" title="#{myBundle.EditCommandeClientTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{commandeClientController.selected.date}" title="#{myBundle.EditCommandeClientTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{commandeClientController.selected.dateHeure}" title="#{myBundle.EditCommandeClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditCommandeClientRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_remarque}" for="remarque" />
+                        <p:inputTextarea rows="4" cols="30" id="remarque" value="#{commandeClientController.selected.remarque}" title="#{myBundle.EditCommandeClientTitle_remarque}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_echeance}" for="echeance" />
+                        <p:calendar id="echeance" pattern="MM/dd/yyyy" value="#{commandeClientController.selected.echeance}" title="#{myBundle.EditCommandeClientTitle_echeance}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{commandeClientController.selected.validee}" title="#{myBundle.EditCommandeClientTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{commandeClientController.selected.remisetotal}" title="#{myBundle.EditCommandeClientTitle_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_totalTVA}" for="totalTVA" />
+                        <p:inputText id="totalTVA" value="#{commandeClientController.selected.totalTVA}" title="#{myBundle.EditCommandeClientTitle_totalTVA}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_totalHT}" for="totalHT" />
+                        <p:inputText id="totalHT" value="#{commandeClientController.selected.totalHT}" title="#{myBundle.EditCommandeClientTitle_totalHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_totalttc}" for="totalttc" />
+                        <p:inputText id="totalttc" value="#{commandeClientController.selected.totalttc}" title="#{myBundle.EditCommandeClientTitle_totalttc}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_soldee}" for="soldee" />
+                        <p:inputText id="soldee" value="#{commandeClientController.selected.soldee}" title="#{myBundle.EditCommandeClientTitle_soldee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeClientLabel_IDClient}" for="IDClient" />
+                        <p:selectOneMenu id="IDClient" value="#{commandeClientController.selected.IDClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.items}"
+                                           var="IDClientItem"
+                                           itemValue="#{IDClientItem}"
+                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                                           />
+                            <f:converter binding="#{clientConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{commandeClientController.save}" value="#{myBundle.Save}" update="display,:CommandeClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CommandeClientEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CommandeClientEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

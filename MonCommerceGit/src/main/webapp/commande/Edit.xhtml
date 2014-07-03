@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="CommandeEditDlg" widgetVar="CommandeEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditCommandeTitle}" closeOnEscape="true">
+
+            <h:form id="CommandeEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{commandeController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditCommandeLabel_IDCommandefournisseur}" for="IDCommandefournisseur" />
+                        <h:outputText id="IDCommandefournisseur" value="#{commandeController.selected.IDCommandefournisseur}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{commandeController.selected.referance}" title="#{myBundle.EditCommandeTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{commandeController.selected.date}" title="#{myBundle.EditCommandeTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{commandeController.selected.validee}" title="#{myBundle.EditCommandeTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{commandeController.selected.description}" title="#{myBundle.EditCommandeTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_echeance}" for="echeance" />
+                        <p:calendar id="echeance" pattern="MM/dd/yyyy" value="#{commandeController.selected.echeance}" title="#{myBundle.EditCommandeTitle_echeance}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{commandeController.selected.dateHeure}" title="#{myBundle.EditCommandeTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditCommandeRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{commandeController.selected.remisetotal}" title="#{myBundle.EditCommandeTitle_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_totalTVA}" for="totalTVA" />
+                        <p:inputText id="totalTVA" value="#{commandeController.selected.totalTVA}" title="#{myBundle.EditCommandeTitle_totalTVA}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_totalHT}" for="totalHT" />
+                        <p:inputText id="totalHT" value="#{commandeController.selected.totalHT}" title="#{myBundle.EditCommandeTitle_totalHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_totalttc}" for="totalttc" />
+                        <p:inputText id="totalttc" value="#{commandeController.selected.totalttc}" title="#{myBundle.EditCommandeTitle_totalttc}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_soldee}" for="soldee" />
+                        <p:inputText id="soldee" value="#{commandeController.selected.soldee}" title="#{myBundle.EditCommandeTitle_soldee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{commandeController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{commandeController.save}" value="#{myBundle.Save}" update="display,:CommandeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CommandeEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CommandeEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

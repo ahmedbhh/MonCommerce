@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="EntrpriseListForm">
+
+        <p:panel header="#{myBundle.ListEntrpriseTitle}">
+            <p:dataTable id="datalist" value="#{entrpriseController.items}" var="item"
+                         selectionMode="single" selection="#{entrpriseController.selected}"
+                         rowKey="#{item.IDEntrprise}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDEntrprise}" filterBy="#{item.IDEntrprise}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_IDEntrprise}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDEntrprise}"/>
+                </p:column>
+                <p:column sortBy="#{item.nom}" filterBy="#{item.nom}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_nom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nom}"/>
+                </p:column>
+                <p:column sortBy="#{item.telephone}" filterBy="#{item.telephone}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_telephone}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.telephone}"/>
+                </p:column>
+                <p:column sortBy="#{item.fax}" filterBy="#{item.fax}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_fax}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fax}"/>
+                </p:column>
+                <p:column sortBy="#{item.logo}" filterBy="#{item.logo}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_logo}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.logo}"/>
+                </p:column>
+                <p:column sortBy="#{item.slogan}" filterBy="#{item.slogan}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_slogan}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.slogan}"/>
+                </p:column>
+                <p:column sortBy="#{item.email}" filterBy="#{item.email}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_email}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+                <p:column sortBy="#{item.adresse}" filterBy="#{item.adresse}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_adresse}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.adresse}"/>
+                </p:column>
+                <p:column sortBy="#{item.codePostal}" filterBy="#{item.codePostal}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_codePostal}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codePostal}"/>
+                </p:column>
+                <p:column sortBy="#{item.ville}" filterBy="#{item.ville}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_ville}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ville}"/>
+                </p:column>
+                <p:column sortBy="#{item.pays}" filterBy="#{item.pays}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_pays}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.pays}"/>
+                </p:column>
+                <p:column sortBy="#{item.matriculefiscale}" filterBy="#{item.matriculefiscale}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListEntrpriseTitle_matriculefiscale}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.matriculefiscale}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{entrpriseController.prepareCreate}" update=":EntrpriseCreateForm" oncomplete="EntrpriseCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":EntrpriseViewForm" oncomplete="EntrpriseViewDialog.show()" disabled="#{empty entrpriseController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":EntrpriseEditForm" oncomplete="EntrpriseEditDialog.show()" disabled="#{empty entrpriseController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{entrpriseController.delete}" update=":growl,datalist" disabled="#{empty entrpriseController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

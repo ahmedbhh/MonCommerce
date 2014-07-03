@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="FactureClientProduitEditDlg" widgetVar="FactureClientProduitEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditFactureClientProduitTitle}" closeOnEscape="true">
+
+            <h:form id="FactureClientProduitEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{factureClientProduitController.selected != null}">
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{factureClientProduitController.selected.quantitee}" title="#{myBundle.EditFactureClientProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_prixUnitaireHT}" for="prixUnitaireHT" />
+                        <p:inputText id="prixUnitaireHT" value="#{factureClientProduitController.selected.prixUnitaireHT}" title="#{myBundle.EditFactureClientProduitTitle_prixUnitaireHT}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_prixUnitaireHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_remise}" for="remise" />
+                        <p:inputText id="remise" value="#{factureClientProduitController.selected.remise}" title="#{myBundle.EditFactureClientProduitTitle_remise}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_remise}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{factureClientProduitController.selected.dateHeure}" title="#{myBundle.EditFactureClientProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{factureClientProduitController.selected.description}" title="#{myBundle.EditFactureClientProduitTitle_description}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_description}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_poidsUnitaireBrute}" for="poidsUnitaireBrute" />
+                        <p:inputText id="poidsUnitaireBrute" value="#{factureClientProduitController.selected.poidsUnitaireBrute}" title="#{myBundle.EditFactureClientProduitTitle_poidsUnitaireBrute}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_poidsUnitaireBrute}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_poidsUnitaireNet}" for="poidsUnitaireNet" />
+                        <p:inputText id="poidsUnitaireNet" value="#{factureClientProduitController.selected.poidsUnitaireNet}" title="#{myBundle.EditFactureClientProduitTitle_poidsUnitaireNet}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_poidsUnitaireNet}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_nombreParcolis}" for="nombreParcolis" />
+                        <p:inputText id="nombreParcolis" value="#{factureClientProduitController.selected.nombreParcolis}" title="#{myBundle.EditFactureClientProduitTitle_nombreParcolis}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_nombreParcolis}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientProduitLabel_nombreColis}" for="nombreColis" />
+                        <p:inputText id="nombreColis" value="#{factureClientProduitController.selected.nombreColis}" title="#{myBundle.EditFactureClientProduitTitle_nombreColis}" required="true" requiredMessage="#{myBundle.EditFactureClientProduitRequiredMessage_nombreColis}"/>
+
+                        <h:outputLabel value="#{myBundle.EditFactureClientProduitLabel_factureClients}" for="factureClients" />
+                        <h:outputText id="factureClients" value="#{factureClientProduitController.selected.factureClients}" />
+
+                        <h:outputLabel value="#{myBundle.EditFactureClientProduitLabel_produit}" for="produit" />
+                        <h:outputText id="produit" value="#{factureClientProduitController.selected.produit}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{factureClientProduitController.save}" value="#{myBundle.Save}" update="display,:FactureClientProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureClientProduitEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FactureClientProduitEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

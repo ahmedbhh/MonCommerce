@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="FormeJuridiqueEditDlg" widgetVar="FormeJuridiqueEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditFormeJuridiqueTitle}" closeOnEscape="true">
+
+            <h:form id="FormeJuridiqueEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{formeJuridiqueController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditFormeJuridiqueLabel_IDFormeJuridique}" for="IDFormeJuridique" />
+                        <h:outputText id="IDFormeJuridique" value="#{formeJuridiqueController.selected.IDFormeJuridique}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditFormeJuridiqueLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{formeJuridiqueController.selected.libelle}" title="#{myBundle.EditFormeJuridiqueTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFormeJuridiqueLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{formeJuridiqueController.selected.description}" title="#{myBundle.EditFormeJuridiqueTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditFormeJuridiqueLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{formeJuridiqueController.selected.dateHeure}" title="#{myBundle.EditFormeJuridiqueTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditFormeJuridiqueRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{formeJuridiqueController.save}" value="#{myBundle.Save}" update="display,:FormeJuridiqueListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FormeJuridiqueEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FormeJuridiqueEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

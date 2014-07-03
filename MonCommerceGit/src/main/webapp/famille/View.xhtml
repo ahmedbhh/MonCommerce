@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FamilleViewDlg" widgetVar="FamilleViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFamilleTitle}" closeOnEscape="true">
+
+            <h:form id="FamilleViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{familleController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFamilleLabel_IDFamille}"/>
+                        <h:outputText value="#{familleController.selected.IDFamille}" title="#{myBundle.ViewFamilleTitle_IDFamille}"/>
+
+                        <h:outputText value="#{myBundle.ViewFamilleLabel_libelle}"/>
+                        <h:outputText value="#{familleController.selected.libelle}" title="#{myBundle.ViewFamilleTitle_libelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewFamilleLabel_dateHeure}"/>
+                        <h:outputText value="#{familleController.selected.dateHeure}" title="#{myBundle.ViewFamilleTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FamilleViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

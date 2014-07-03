@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="DetailPaymentListForm">
+
+        <p:panel header="#{myBundle.ListDetailPaymentTitle}">
+            <p:dataTable id="datalist" value="#{detailPaymentController.items}" var="item"
+                         selectionMode="single" selection="#{detailPaymentController.selected}"
+                         rowKey="#{item.IDdetailpayment}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDdetailpayment}" filterBy="#{item.IDdetailpayment}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_IDdetailpayment}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDdetailpayment}"/>
+                </p:column>
+                <p:column sortBy="#{item.banque}" filterBy="#{item.banque}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_banque}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.banque}"/>
+                </p:column>
+                <p:column sortBy="#{item.numCheque}" filterBy="#{item.numCheque}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_numCheque}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numCheque}"/>
+                </p:column>
+                <p:column sortBy="#{item.nomproprietaire}" filterBy="#{item.nomproprietaire}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_nomproprietaire}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nomproprietaire}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateversement}" filterBy="#{item.dateversement}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_dateversement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateversement}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.ALordre}" filterBy="#{item.ALordre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_ALordre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ALordre}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDAccompteClient.IDAccompteClient}" filterBy="#{item.IDAccompteClient.IDAccompteClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_IDAccompteClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDAccompteClient.IDAccompteClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDReglementClient.IDReglementClient}" filterBy="#{item.IDReglementClient.IDReglementClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_IDReglementClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDReglementClient.IDReglementClient}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{detailPaymentController.prepareCreate}" update=":DetailPaymentCreateForm" oncomplete="DetailPaymentCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":DetailPaymentViewForm" oncomplete="DetailPaymentViewDialog.show()" disabled="#{empty detailPaymentController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":DetailPaymentEditForm" oncomplete="DetailPaymentEditDialog.show()" disabled="#{empty detailPaymentController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{detailPaymentController.delete}" update=":growl,datalist" disabled="#{empty detailPaymentController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

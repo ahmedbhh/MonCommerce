@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="CommandeProduitListForm">
+
+        <p:panel header="#{myBundle.ListCommandeProduitTitle}">
+            <p:dataTable id="datalist" value="#{commandeProduitController.items}" var="item"
+                         selectionMode="single" selection="#{commandeProduitController.selected}"
+                         rowKey="#{item.commandeProduitPK}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.quantitee}" filterBy="#{item.quantitee}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_quantitee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.quantitee}"/>
+                </p:column>
+                <p:column sortBy="#{item.prixAchatHT}" filterBy="#{item.prixAchatHT}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_prixAchatHT}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.prixAchatHT}"/>
+                </p:column>
+                <p:column sortBy="#{item.remise}" filterBy="#{item.remise}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_remise}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.remise}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.remisetotal}" filterBy="#{item.remisetotal}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_remisetotal}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.remisetotal}"/>
+                </p:column>
+                <p:column sortBy="#{item.tva}" filterBy="#{item.tva}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_tva}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tva}"/>
+                </p:column>
+                <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_description}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.produit.description}" filterBy="#{item.produit.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_produit}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.produit.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.commande.description}" filterBy="#{item.commande.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListCommandeProduitTitle_commande}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.commande.description}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{commandeProduitController.prepareCreate}" update=":CommandeProduitCreateForm" oncomplete="CommandeProduitCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":CommandeProduitViewForm" oncomplete="CommandeProduitViewDialog.show()" disabled="#{empty commandeProduitController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":CommandeProduitEditForm" oncomplete="CommandeProduitEditDialog.show()" disabled="#{empty commandeProduitController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{commandeProduitController.delete}" update=":growl,datalist" disabled="#{empty commandeProduitController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BondetransfertProduitCreateDlg" widgetVar="BondetransfertProduitCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateBondetransfertProduitTitle}" closeOnEscape="true">
+
+            <h:form id="BondetransfertProduitCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{bondetransfertProduitController.selected.quantitee}" title="#{myBundle.CreateBondetransfertProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.CreateBondetransfertProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bondetransfertProduitController.selected.dateHeure}" title="#{myBundle.CreateBondetransfertProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateBondetransfertProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.CreateBondetransfertProduitLabel_bondetransfert}" for="bondetransfert" />
+                        <p:selectOneMenu id="bondetransfert" value="#{bondetransfertProduitController.selected.bondetransfert}" required="true" requiredMessage="#{myBundle.CreateBondetransfertProduitRequiredMessage_bondetransfert}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bondetransfertController.items}"
+                                           var="bondetransfertItem"
+                                           itemValue="#{bondetransfertItem}"
+                                           itemLabel="#{bondetransfertItem.IDBonDeTransfert.toString()}"
+                                           />
+                            <f:converter binding="#{bondetransfertConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateBondetransfertProduitLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{bondetransfertProduitController.selected.produit}" required="true" requiredMessage="#{myBundle.CreateBondetransfertProduitRequiredMessage_produit}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produitController.items}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"
+                                           itemLabel="#{produitItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{produitConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bondetransfertProduitController.saveNew}" value="#{myBundle.Save}" update="display,:BondetransfertProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BondetransfertProduitCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BondetransfertProduitCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

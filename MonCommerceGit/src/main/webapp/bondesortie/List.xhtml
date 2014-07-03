@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="BondesortieListForm">
+
+        <p:panel header="#{myBundle.ListBondesortieTitle}">
+            <p:dataTable id="datalist" value="#{bondesortieController.items}" var="item"
+                         selectionMode="single" selection="#{bondesortieController.selected}"
+                         rowKey="#{item.IDBondeSortie}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDBondeSortie}" filterBy="#{item.IDBondeSortie}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDBondeSortie}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDBondeSortie}"/>
+                </p:column>
+                <p:column sortBy="#{item.referance}" filterBy="#{item.referance}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_referance}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.referance}"/>
+                </p:column>
+                <p:column sortBy="#{item.date}" filterBy="#{item.date}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_date}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.observation}" filterBy="#{item.observation}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_observation}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.observation}"/>
+                </p:column>
+                <p:column sortBy="#{item.validee}" filterBy="#{item.validee}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_validee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.validee}"/>
+                </p:column>
+                <p:column sortBy="#{item.codeBarres}" filterBy="#{item.codeBarres}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_codeBarres}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codeBarres}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.remisetotal}" filterBy="#{item.remisetotal}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_remisetotal}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.remisetotal}"/>
+                </p:column>
+                <p:column sortBy="#{item.totalTVA}" filterBy="#{item.totalTVA}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_totalTVA}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.totalTVA}"/>
+                </p:column>
+                <p:column sortBy="#{item.totalHT}" filterBy="#{item.totalHT}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_totalHT}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.totalHT}"/>
+                </p:column>
+                <p:column sortBy="#{item.totalttc}" filterBy="#{item.totalttc}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_totalttc}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.totalttc}"/>
+                </p:column>
+                <p:column sortBy="#{item.soldee}" filterBy="#{item.soldee}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_soldee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.soldee}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDCommandeClient.IDCommandeClient}" filterBy="#{item.IDCommandeClient.IDCommandeClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDCommandeClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDCommandeClient.IDCommandeClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDdepot.IDdepot}" filterBy="#{item.IDdepot.IDdepot}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDdepot}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDdepot.IDdepot}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDClient.IDClient}" filterBy="#{item.IDClient.IDClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDClient.IDClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDFactureClients.IDFactureClients}" filterBy="#{item.IDFactureClients.IDFactureClients}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDFactureClients}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDFactureClients.IDFactureClients}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{bondesortieController.prepareCreate}" update=":BondesortieCreateForm" oncomplete="BondesortieCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":BondesortieViewForm" oncomplete="BondesortieViewDialog.show()" disabled="#{empty bondesortieController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":BondesortieEditForm" oncomplete="BondesortieEditDialog.show()" disabled="#{empty bondesortieController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{bondesortieController.delete}" update=":growl,datalist" disabled="#{empty bondesortieController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

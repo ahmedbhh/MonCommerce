@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ReglementClientEditDlg" widgetVar="ReglementClientEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditReglementClientTitle}" closeOnEscape="true">
+
+            <h:form id="ReglementClientEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{reglementClientController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditReglementClientLabel_IDReglementClient}" for="IDReglementClient" />
+                        <h:outputText id="IDReglementClient" value="#{reglementClientController.selected.IDReglementClient}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{reglementClientController.selected.date}" title="#{myBundle.EditReglementClientTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{reglementClientController.selected.montant}" title="#{myBundle.EditReglementClientTitle_montant}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{reglementClientController.selected.dateHeure}" title="#{myBundle.EditReglementClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditReglementClientRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{reglementClientController.selected.validee}" title="#{myBundle.EditReglementClientTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{reglementClientController.selected.referance}" title="#{myBundle.EditReglementClientTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_escompte}" for="escompte" />
+                        <p:inputText id="escompte" value="#{reglementClientController.selected.escompte}" title="#{myBundle.EditReglementClientTitle_escompte}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_IDClient}" for="IDClient" />
+                        <p:selectOneMenu id="IDClient" value="#{reglementClientController.selected.IDClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.items}"
+                                           var="IDClientItem"
+                                           itemValue="#{IDClientItem}"
+                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                                           />
+                            <f:converter binding="#{clientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_IDModedereglement}" for="IDModedereglement" />
+                        <p:selectOneMenu id="IDModedereglement" value="#{reglementClientController.selected.IDModedereglement}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeDeReglementController.items}"
+                                           var="IDModedereglementItem"
+                                           itemValue="#{IDModedereglementItem}"
+                                           itemLabel="#{IDModedereglementItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{modeDeReglementConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reglementClientController.save}" value="#{myBundle.Save}" update="display,:ReglementClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ReglementClientEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ReglementClientEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

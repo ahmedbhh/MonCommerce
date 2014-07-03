@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdresseFournisseurViewDlg" widgetVar="AdresseFournisseurViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewAdresseFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="AdresseFournisseurViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{adresseFournisseurController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_IDAdresseFournisseur}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.IDAdresseFournisseur}" title="#{myBundle.ViewAdresseFournisseurTitle_IDAdresseFournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_adresse1}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.adresse1}" title="#{myBundle.ViewAdresseFournisseurTitle_adresse1}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_adresse2}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.adresse2}" title="#{myBundle.ViewAdresseFournisseurTitle_adresse2}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_adresse3}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.adresse3}" title="#{myBundle.ViewAdresseFournisseurTitle_adresse3}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_codePostal}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.codePostal}" title="#{myBundle.ViewAdresseFournisseurTitle_codePostal}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_ville}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.ville}" title="#{myBundle.ViewAdresseFournisseurTitle_ville}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_pays}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.pays}" title="#{myBundle.ViewAdresseFournisseurTitle_pays}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_adresseemail}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.adresseemail}" title="#{myBundle.ViewAdresseFournisseurTitle_adresseemail}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_siteInternet}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.siteInternet}" title="#{myBundle.ViewAdresseFournisseurTitle_siteInternet}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_telephone}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.telephone}" title="#{myBundle.ViewAdresseFournisseurTitle_telephone}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_telephone2}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.telephone2}" title="#{myBundle.ViewAdresseFournisseurTitle_telephone2}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_fax}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.fax}" title="#{myBundle.ViewAdresseFournisseurTitle_fax}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_portable}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.portable}" title="#{myBundle.ViewAdresseFournisseurTitle_portable}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_dateHeure}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.dateHeure}" title="#{myBundle.ViewAdresseFournisseurTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFournisseurLabel_IDFournisseur}"/>
+                        <h:outputText value="#{adresseFournisseurController.selected.IDFournisseur.IDFournisseur}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="AdresseFournisseurViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

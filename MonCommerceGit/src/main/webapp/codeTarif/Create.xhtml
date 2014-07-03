@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CodeTarifCreateDlg" widgetVar="CodeTarifCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateCodeTarifTitle}" closeOnEscape="true">
+
+            <h:form id="CodeTarifCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateCodeTarifLabel_codetaif}" for="codetaif" />
+                        <p:inputText id="codetaif" value="#{codeTarifController.selected.codetaif}" title="#{myBundle.CreateCodeTarifTitle_codetaif}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateCodeTarifLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{codeTarifController.selected.dateHeure}" title="#{myBundle.CreateCodeTarifTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateCodeTarifRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{codeTarifController.saveNew}" value="#{myBundle.Save}" update="display,:CodeTarifListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CodeTarifCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CodeTarifCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

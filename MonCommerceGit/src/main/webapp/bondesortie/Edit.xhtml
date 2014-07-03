@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="BondesortieEditDlg" widgetVar="BondesortieEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditBondesortieTitle}" closeOnEscape="true">
+
+            <h:form id="BondesortieEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{bondesortieController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditBondesortieLabel_IDBondeSortie}" for="IDBondeSortie" />
+                        <h:outputText id="IDBondeSortie" value="#{bondesortieController.selected.IDBondeSortie}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{bondesortieController.selected.referance}" title="#{myBundle.EditBondesortieTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{bondesortieController.selected.date}" title="#{myBundle.EditBondesortieTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_observation}" for="observation" />
+                        <p:inputTextarea rows="4" cols="30" id="observation" value="#{bondesortieController.selected.observation}" title="#{myBundle.EditBondesortieTitle_observation}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{bondesortieController.selected.validee}" title="#{myBundle.EditBondesortieTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_codeBarres}" for="codeBarres" />
+                        <p:inputText id="codeBarres" value="#{bondesortieController.selected.codeBarres}" title="#{myBundle.EditBondesortieTitle_codeBarres}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bondesortieController.selected.dateHeure}" title="#{myBundle.EditBondesortieTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditBondesortieRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{bondesortieController.selected.remisetotal}" title="#{myBundle.EditBondesortieTitle_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_totalTVA}" for="totalTVA" />
+                        <p:inputText id="totalTVA" value="#{bondesortieController.selected.totalTVA}" title="#{myBundle.EditBondesortieTitle_totalTVA}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_totalHT}" for="totalHT" />
+                        <p:inputText id="totalHT" value="#{bondesortieController.selected.totalHT}" title="#{myBundle.EditBondesortieTitle_totalHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_totalttc}" for="totalttc" />
+                        <p:inputText id="totalttc" value="#{bondesortieController.selected.totalttc}" title="#{myBundle.EditBondesortieTitle_totalttc}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_soldee}" for="soldee" />
+                        <p:inputText id="soldee" value="#{bondesortieController.selected.soldee}" title="#{myBundle.EditBondesortieTitle_soldee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDCommandeClient}" for="IDCommandeClient" />
+                        <p:selectOneMenu id="IDCommandeClient" value="#{bondesortieController.selected.IDCommandeClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeClientController.items}"
+                                           var="IDCommandeClientItem"
+                                           itemValue="#{IDCommandeClientItem}"
+                                           itemLabel="#{IDCommandeClientItem.IDCommandeClient.toString()}"
+                                           />
+                            <f:converter binding="#{commandeClientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDdepot}" for="IDdepot" />
+                        <p:selectOneMenu id="IDdepot" value="#{bondesortieController.selected.IDdepot}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{depotController.items}"
+                                           var="IDdepotItem"
+                                           itemValue="#{IDdepotItem}"
+                                           itemLabel="#{IDdepotItem.IDdepot.toString()}"
+                                           />
+                            <f:converter binding="#{depotConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDClient}" for="IDClient" />
+                        <p:selectOneMenu id="IDClient" value="#{bondesortieController.selected.IDClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.items}"
+                                           var="IDClientItem"
+                                           itemValue="#{IDClientItem}"
+                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                                           />
+                            <f:converter binding="#{clientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDFactureClients}" for="IDFactureClients" />
+                        <p:selectOneMenu id="IDFactureClients" value="#{bondesortieController.selected.IDFactureClients}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{factureClientsController.items}"
+                                           var="IDFactureClientsItem"
+                                           itemValue="#{IDFactureClientsItem}"
+                                           itemLabel="#{IDFactureClientsItem.IDFactureClients.toString()}"
+                                           />
+                            <f:converter binding="#{factureClientsConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bondesortieController.save}" value="#{myBundle.Save}" update="display,:BondesortieListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BondesortieEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BondesortieEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

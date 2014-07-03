@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="AdresseFournisseurEditDlg" widgetVar="AdresseFournisseurEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditAdresseFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="AdresseFournisseurEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{adresseFournisseurController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_IDAdresseFournisseur}" for="IDAdresseFournisseur" />
+                        <h:outputText id="IDAdresseFournisseur" value="#{adresseFournisseurController.selected.IDAdresseFournisseur}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_adresse1}" for="adresse1" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse1" value="#{adresseFournisseurController.selected.adresse1}" title="#{myBundle.EditAdresseFournisseurTitle_adresse1}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_adresse2}" for="adresse2" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse2" value="#{adresseFournisseurController.selected.adresse2}" title="#{myBundle.EditAdresseFournisseurTitle_adresse2}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_adresse3}" for="adresse3" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse3" value="#{adresseFournisseurController.selected.adresse3}" title="#{myBundle.EditAdresseFournisseurTitle_adresse3}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_codePostal}" for="codePostal" />
+                        <p:inputText id="codePostal" value="#{adresseFournisseurController.selected.codePostal}" title="#{myBundle.EditAdresseFournisseurTitle_codePostal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_ville}" for="ville" />
+                        <p:inputText id="ville" value="#{adresseFournisseurController.selected.ville}" title="#{myBundle.EditAdresseFournisseurTitle_ville}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_pays}" for="pays" />
+                        <p:inputText id="pays" value="#{adresseFournisseurController.selected.pays}" title="#{myBundle.EditAdresseFournisseurTitle_pays}" size="64" maxlength="64"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_adresseemail}" for="adresseemail" />
+                        <p:inputText id="adresseemail" value="#{adresseFournisseurController.selected.adresseemail}" title="#{myBundle.EditAdresseFournisseurTitle_adresseemail}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_siteInternet}" for="siteInternet" />
+                        <p:inputText id="siteInternet" value="#{adresseFournisseurController.selected.siteInternet}" title="#{myBundle.EditAdresseFournisseurTitle_siteInternet}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{adresseFournisseurController.selected.telephone}" title="#{myBundle.EditAdresseFournisseurTitle_telephone}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_telephone2}" for="telephone2" />
+                        <p:inputText id="telephone2" value="#{adresseFournisseurController.selected.telephone2}" title="#{myBundle.EditAdresseFournisseurTitle_telephone2}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{adresseFournisseurController.selected.fax}" title="#{myBundle.EditAdresseFournisseurTitle_fax}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_portable}" for="portable" />
+                        <p:inputText id="portable" value="#{adresseFournisseurController.selected.portable}" title="#{myBundle.EditAdresseFournisseurTitle_portable}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{adresseFournisseurController.selected.dateHeure}" title="#{myBundle.EditAdresseFournisseurTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditAdresseFournisseurRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAdresseFournisseurLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{adresseFournisseurController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{adresseFournisseurController.save}" value="#{myBundle.Save}" update="display,:AdresseFournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AdresseFournisseurEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AdresseFournisseurEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FournisseurCreateDlg" widgetVar="FournisseurCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="FournisseurCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{fournisseurController.selected.nom}" title="#{myBundle.CreateFournisseurTitle_nom}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_creditAccorde}" for="creditAccorde" />
+                        <p:inputText id="creditAccorde" value="#{fournisseurController.selected.creditAccorde}" title="#{myBundle.CreateFournisseurTitle_creditAccorde}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_risque}" for="risque" />
+                        <p:inputText id="risque" value="#{fournisseurController.selected.risque}" title="#{myBundle.CreateFournisseurTitle_risque}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{fournisseurController.selected.dateHeure}" title="#{myBundle.CreateFournisseurTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateFournisseurRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_matriculefiscale}" for="matriculefiscale" />
+                        <p:inputText id="matriculefiscale" value="#{fournisseurController.selected.matriculefiscale}" title="#{myBundle.CreateFournisseurTitle_matriculefiscale}" size="30" maxlength="30"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_IDFormeJuridique}" for="IDFormeJuridique" />
+                        <p:selectOneMenu id="IDFormeJuridique" value="#{fournisseurController.selected.IDFormeJuridique}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{formeJuridiqueController.items}"
+                                           var="IDFormeJuridiqueItem"
+                                           itemValue="#{IDFormeJuridiqueItem}"
+                                           itemLabel="#{IDFormeJuridiqueItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{formeJuridiqueConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_IDFamilleFournisseur}" for="IDFamilleFournisseur" />
+                        <p:selectOneMenu id="IDFamilleFournisseur" value="#{fournisseurController.selected.IDFamilleFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{familleFournisseurController.items}"
+                                           var="IDFamilleFournisseurItem"
+                                           itemValue="#{IDFamilleFournisseurItem}"
+                                           itemLabel="#{IDFamilleFournisseurItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{familleFournisseurConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fournisseurController.saveNew}" value="#{myBundle.Save}" update="display,:FournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FournisseurCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FournisseurCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

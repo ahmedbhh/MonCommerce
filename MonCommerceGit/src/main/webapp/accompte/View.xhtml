@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AccompteViewDlg" widgetVar="AccompteViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewAccompteTitle}" closeOnEscape="true">
+
+            <h:form id="AccompteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{accompteController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewAccompteLabel_IDAccompte}"/>
+                        <h:outputText value="#{accompteController.selected.IDAccompte}" title="#{myBundle.ViewAccompteTitle_IDAccompte}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteLabel_date}"/>
+                        <h:outputText value="#{accompteController.selected.date}" title="#{myBundle.ViewAccompteTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewAccompteLabel_montant}"/>
+                        <h:outputText value="#{accompteController.selected.montant}" title="#{myBundle.ViewAccompteTitle_montant}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteLabel_dateHeure}"/>
+                        <h:outputText value="#{accompteController.selected.dateHeure}" title="#{myBundle.ViewAccompteTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewAccompteLabel_IDFactureFournisseur}"/>
+                        <h:outputText value="#{accompteController.selected.IDFactureFournisseur.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteLabel_IDCommandefournisseur}"/>
+                        <h:outputText value="#{accompteController.selected.IDCommandefournisseur.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewAccompteLabel_IDModedereglement}"/>
+                        <h:outputText value="#{accompteController.selected.IDModedereglement.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="AccompteViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

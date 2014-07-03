@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="CommandeProduitEditDlg" widgetVar="CommandeProduitEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditCommandeProduitTitle}" closeOnEscape="true">
+
+            <h:form id="CommandeProduitEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{commandeProduitController.selected != null}">
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{commandeProduitController.selected.quantitee}" title="#{myBundle.EditCommandeProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.EditCommandeProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeProduitLabel_prixAchatHT}" for="prixAchatHT" />
+                        <p:inputText id="prixAchatHT" value="#{commandeProduitController.selected.prixAchatHT}" title="#{myBundle.EditCommandeProduitTitle_prixAchatHT}" required="true" requiredMessage="#{myBundle.EditCommandeProduitRequiredMessage_prixAchatHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeProduitLabel_remise}" for="remise" />
+                        <p:inputText id="remise" value="#{commandeProduitController.selected.remise}" title="#{myBundle.EditCommandeProduitTitle_remise}" required="true" requiredMessage="#{myBundle.EditCommandeProduitRequiredMessage_remise}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{commandeProduitController.selected.dateHeure}" title="#{myBundle.EditCommandeProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditCommandeProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeProduitLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{commandeProduitController.selected.remisetotal}" title="#{myBundle.EditCommandeProduitTitle_remisetotal}" required="true" requiredMessage="#{myBundle.EditCommandeProduitRequiredMessage_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeProduitLabel_tva}" for="tva" />
+                        <p:inputText id="tva" value="#{commandeProduitController.selected.tva}" title="#{myBundle.EditCommandeProduitTitle_tva}" required="true" requiredMessage="#{myBundle.EditCommandeProduitRequiredMessage_tva}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditCommandeProduitLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{commandeProduitController.selected.description}" title="#{myBundle.EditCommandeProduitTitle_description}" required="true" requiredMessage="#{myBundle.EditCommandeProduitRequiredMessage_description}" size="50" maxlength="50"/>
+
+                        <h:outputLabel value="#{myBundle.EditCommandeProduitLabel_produit}" for="produit" />
+                        <h:outputText id="produit" value="#{commandeProduitController.selected.produit}" />
+
+                        <h:outputLabel value="#{myBundle.EditCommandeProduitLabel_commande}" for="commande" />
+                        <h:outputText id="commande" value="#{commandeProduitController.selected.commande}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{commandeProduitController.save}" value="#{myBundle.Save}" update="display,:CommandeProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CommandeProduitEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CommandeProduitEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommandeClientViewDlg" widgetVar="CommandeClientViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewCommandeClientTitle}" closeOnEscape="true">
+
+            <h:form id="CommandeClientViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{commandeClientController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_IDCommandeClient}"/>
+                        <h:outputText value="#{commandeClientController.selected.IDCommandeClient}" title="#{myBundle.ViewCommandeClientTitle_IDCommandeClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_referance}"/>
+                        <h:outputText value="#{commandeClientController.selected.referance}" title="#{myBundle.ViewCommandeClientTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_date}"/>
+                        <h:outputText value="#{commandeClientController.selected.date}" title="#{myBundle.ViewCommandeClientTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_dateHeure}"/>
+                        <h:outputText value="#{commandeClientController.selected.dateHeure}" title="#{myBundle.ViewCommandeClientTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_remarque}"/>
+                        <h:outputText value="#{commandeClientController.selected.remarque}" title="#{myBundle.ViewCommandeClientTitle_remarque}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_echeance}"/>
+                        <h:outputText value="#{commandeClientController.selected.echeance}" title="#{myBundle.ViewCommandeClientTitle_echeance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_validee}"/>
+                        <h:outputText value="#{commandeClientController.selected.validee}" title="#{myBundle.ViewCommandeClientTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_remisetotal}"/>
+                        <h:outputText value="#{commandeClientController.selected.remisetotal}" title="#{myBundle.ViewCommandeClientTitle_remisetotal}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_totalTVA}"/>
+                        <h:outputText value="#{commandeClientController.selected.totalTVA}" title="#{myBundle.ViewCommandeClientTitle_totalTVA}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_totalHT}"/>
+                        <h:outputText value="#{commandeClientController.selected.totalHT}" title="#{myBundle.ViewCommandeClientTitle_totalHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_totalttc}"/>
+                        <h:outputText value="#{commandeClientController.selected.totalttc}" title="#{myBundle.ViewCommandeClientTitle_totalttc}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_soldee}"/>
+                        <h:outputText value="#{commandeClientController.selected.soldee}" title="#{myBundle.ViewCommandeClientTitle_soldee}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeClientLabel_IDClient}"/>
+                        <h:outputText value="#{commandeClientController.selected.IDClient.IDClient}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="CommandeClientViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

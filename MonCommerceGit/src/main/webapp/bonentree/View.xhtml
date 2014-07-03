@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BonentreeViewDlg" widgetVar="BonentreeViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewBonentreeTitle}" closeOnEscape="true">
+
+            <h:form id="BonentreeViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bonentreeController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDBonEntree}"/>
+                        <h:outputText value="#{bonentreeController.selected.IDBonEntree}" title="#{myBundle.ViewBonentreeTitle_IDBonEntree}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_date}"/>
+                        <h:outputText value="#{bonentreeController.selected.date}" title="#{myBundle.ViewBonentreeTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_referance}"/>
+                        <h:outputText value="#{bonentreeController.selected.referance}" title="#{myBundle.ViewBonentreeTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_validee}"/>
+                        <h:outputText value="#{bonentreeController.selected.validee}" title="#{myBundle.ViewBonentreeTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_codeBarres}"/>
+                        <h:outputText value="#{bonentreeController.selected.codeBarres}" title="#{myBundle.ViewBonentreeTitle_codeBarres}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_dateHeure}"/>
+                        <h:outputText value="#{bonentreeController.selected.dateHeure}" title="#{myBundle.ViewBonentreeTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_totalHT}"/>
+                        <h:outputText value="#{bonentreeController.selected.totalHT}" title="#{myBundle.ViewBonentreeTitle_totalHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_totalttc}"/>
+                        <h:outputText value="#{bonentreeController.selected.totalttc}" title="#{myBundle.ViewBonentreeTitle_totalttc}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_totalTVA}"/>
+                        <h:outputText value="#{bonentreeController.selected.totalTVA}" title="#{myBundle.ViewBonentreeTitle_totalTVA}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_remisetotal}"/>
+                        <h:outputText value="#{bonentreeController.selected.remisetotal}" title="#{myBundle.ViewBonentreeTitle_remisetotal}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_soldee}"/>
+                        <h:outputText value="#{bonentreeController.selected.soldee}" title="#{myBundle.ViewBonentreeTitle_soldee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDFactureFournisseur}"/>
+                        <h:outputText value="#{bonentreeController.selected.IDFactureFournisseur.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDdepot}"/>
+                        <h:outputText value="#{bonentreeController.selected.IDdepot.IDdepot}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDFournisseur}"/>
+                        <h:outputText value="#{bonentreeController.selected.IDFournisseur.IDFournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDCommandefournisseur}"/>
+                        <h:outputText value="#{bonentreeController.selected.IDCommandefournisseur.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="BonentreeViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BonentreeCreateDlg" widgetVar="BonentreeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateBonentreeTitle}" closeOnEscape="true">
+
+            <h:form id="BonentreeCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{bonentreeController.selected.date}" title="#{myBundle.CreateBonentreeTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{bonentreeController.selected.referance}" title="#{myBundle.CreateBonentreeTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{bonentreeController.selected.validee}" title="#{myBundle.CreateBonentreeTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_codeBarres}" for="codeBarres" />
+                        <p:inputText id="codeBarres" value="#{bonentreeController.selected.codeBarres}" title="#{myBundle.CreateBonentreeTitle_codeBarres}" size="100" maxlength="100"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bonentreeController.selected.dateHeure}" title="#{myBundle.CreateBonentreeTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateBonentreeRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_totalHT}" for="totalHT" />
+                        <p:inputText id="totalHT" value="#{bonentreeController.selected.totalHT}" title="#{myBundle.CreateBonentreeTitle_totalHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_totalttc}" for="totalttc" />
+                        <p:inputText id="totalttc" value="#{bonentreeController.selected.totalttc}" title="#{myBundle.CreateBonentreeTitle_totalttc}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_totalTVA}" for="totalTVA" />
+                        <p:inputText id="totalTVA" value="#{bonentreeController.selected.totalTVA}" title="#{myBundle.CreateBonentreeTitle_totalTVA}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{bonentreeController.selected.remisetotal}" title="#{myBundle.CreateBonentreeTitle_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_soldee}" for="soldee" />
+                        <p:inputText id="soldee" value="#{bonentreeController.selected.soldee}" title="#{myBundle.CreateBonentreeTitle_soldee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDFactureFournisseur}" for="IDFactureFournisseur" />
+                        <p:selectOneMenu id="IDFactureFournisseur" value="#{bonentreeController.selected.IDFactureFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{factureFournisseurController.items}"
+                                           var="IDFactureFournisseurItem"
+                                           itemValue="#{IDFactureFournisseurItem}"
+                                           itemLabel="#{IDFactureFournisseurItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{factureFournisseurConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDdepot}" for="IDdepot" />
+                        <p:selectOneMenu id="IDdepot" value="#{bonentreeController.selected.IDdepot}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{depotController.items}"
+                                           var="IDdepotItem"
+                                           itemValue="#{IDdepotItem}"
+                                           itemLabel="#{IDdepotItem.IDdepot.toString()}"
+                                           />
+                            <f:converter binding="#{depotConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{bonentreeController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDCommandefournisseur}" for="IDCommandefournisseur" />
+                        <p:selectOneMenu id="IDCommandefournisseur" value="#{bonentreeController.selected.IDCommandefournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeController.items}"
+                                           var="IDCommandefournisseurItem"
+                                           itemValue="#{IDCommandefournisseurItem}"
+                                           itemLabel="#{IDCommandefournisseurItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{commandeConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bonentreeController.saveNew}" value="#{myBundle.Save}" update="display,:BonentreeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BonentreeCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BonentreeCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

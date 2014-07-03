@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BondesortieProduitViewDlg" widgetVar="BondesortieProduitViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewBondesortieProduitTitle}" closeOnEscape="true">
+
+            <h:form id="BondesortieProduitViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bondesortieProduitController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_quantitee}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.quantitee}" title="#{myBundle.ViewBondesortieProduitTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_prixUnitaireHT}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.prixUnitaireHT}" title="#{myBundle.ViewBondesortieProduitTitle_prixUnitaireHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_remise}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.remise}" title="#{myBundle.ViewBondesortieProduitTitle_remise}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_dateHeure}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.dateHeure}" title="#{myBundle.ViewBondesortieProduitTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_description}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.description}" title="#{myBundle.ViewBondesortieProduitTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_poidsUnitaireBrute}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.poidsUnitaireBrute}" title="#{myBundle.ViewBondesortieProduitTitle_poidsUnitaireBrute}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_poidsUnitaireNet}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.poidsUnitaireNet}" title="#{myBundle.ViewBondesortieProduitTitle_poidsUnitaireNet}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_nombreParcolis}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.nombreParcolis}" title="#{myBundle.ViewBondesortieProduitTitle_nombreParcolis}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_nombreColis}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.nombreColis}" title="#{myBundle.ViewBondesortieProduitTitle_nombreColis}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_bondesortie}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.bondesortie.IDBondeSortie}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieProduitLabel_produit}"/>
+                        <h:outputText value="#{bondesortieProduitController.selected.produit.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="BondesortieProduitViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

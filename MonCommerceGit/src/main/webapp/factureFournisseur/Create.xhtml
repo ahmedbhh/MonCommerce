@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureFournisseurCreateDlg" widgetVar="FactureFournisseurCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateFactureFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="FactureFournisseurCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{factureFournisseurController.selected.referance}" title="#{myBundle.CreateFactureFournisseurTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_codeBarres}" for="codeBarres" />
+                        <p:inputText id="codeBarres" value="#{factureFournisseurController.selected.codeBarres}" title="#{myBundle.CreateFactureFournisseurTitle_codeBarres}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{factureFournisseurController.selected.date}" title="#{myBundle.CreateFactureFournisseurTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{factureFournisseurController.selected.description}" title="#{myBundle.CreateFactureFournisseurTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_dateEcheance}" for="dateEcheance" />
+                        <p:calendar id="dateEcheance" pattern="MM/dd/yyyy" value="#{factureFournisseurController.selected.dateEcheance}" title="#{myBundle.CreateFactureFournisseurTitle_dateEcheance}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{factureFournisseurController.selected.dateHeure}" title="#{myBundle.CreateFactureFournisseurTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateFactureFournisseurRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_totalHT}" for="totalHT" />
+                        <p:inputText id="totalHT" value="#{factureFournisseurController.selected.totalHT}" title="#{myBundle.CreateFactureFournisseurTitle_totalHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_totalttc}" for="totalttc" />
+                        <p:inputText id="totalttc" value="#{factureFournisseurController.selected.totalttc}" title="#{myBundle.CreateFactureFournisseurTitle_totalttc}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_totalTVA}" for="totalTVA" />
+                        <p:inputText id="totalTVA" value="#{factureFournisseurController.selected.totalTVA}" title="#{myBundle.CreateFactureFournisseurTitle_totalTVA}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{factureFournisseurController.selected.remisetotal}" title="#{myBundle.CreateFactureFournisseurTitle_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_soldee}" for="soldee" />
+                        <p:inputText id="soldee" value="#{factureFournisseurController.selected.soldee}" title="#{myBundle.CreateFactureFournisseurTitle_soldee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{factureFournisseurController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_IDCommandefournisseur}" for="IDCommandefournisseur" />
+                        <p:selectOneMenu id="IDCommandefournisseur" value="#{factureFournisseurController.selected.IDCommandefournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeController.items}"
+                                           var="IDCommandefournisseurItem"
+                                           itemValue="#{IDCommandefournisseurItem}"
+                                           itemLabel="#{IDCommandefournisseurItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{commandeConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{factureFournisseurController.saveNew}" value="#{myBundle.Save}" update="display,:FactureFournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureFournisseurCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FactureFournisseurCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ContactFournisseursEditDlg" widgetVar="ContactFournisseursEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditContactFournisseursTitle}" closeOnEscape="true">
+
+            <h:form id="ContactFournisseursEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{contactFournisseursController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditContactFournisseursLabel_IDContactfournisseurs}" for="IDContactfournisseurs" />
+                        <h:outputText id="IDContactfournisseurs" value="#{contactFournisseursController.selected.IDContactfournisseurs}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{contactFournisseursController.selected.nom}" title="#{myBundle.EditContactFournisseursTitle_nom}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_portable}" for="portable" />
+                        <p:inputText id="portable" value="#{contactFournisseursController.selected.portable}" title="#{myBundle.EditContactFournisseursTitle_portable}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{contactFournisseursController.selected.telephone}" title="#{myBundle.EditContactFournisseursTitle_telephone}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_adresseemail}" for="adresseemail" />
+                        <p:inputText id="adresseemail" value="#{contactFournisseursController.selected.adresseemail}" title="#{myBundle.EditContactFournisseursTitle_adresseemail}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{contactFournisseursController.selected.dateHeure}" title="#{myBundle.EditContactFournisseursTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditContactFournisseursRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{contactFournisseursController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_IDFonctionContact}" for="IDFonctionContact" />
+                        <p:selectOneMenu id="IDFonctionContact" value="#{contactFournisseursController.selected.IDFonctionContact}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fonctionContactController.items}"
+                                           var="IDFonctionContactItem"
+                                           itemValue="#{IDFonctionContactItem}"
+                                           itemLabel="#{IDFonctionContactItem.IDFonctionContact.toString()}"
+                                           />
+                            <f:converter binding="#{fonctionContactConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_IDTitreContact}" for="IDTitreContact" />
+                        <p:selectOneMenu id="IDTitreContact" value="#{contactFournisseursController.selected.IDTitreContact}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{titreContactController.items}"
+                                           var="IDTitreContactItem"
+                                           itemValue="#{IDTitreContactItem}"
+                                           itemLabel="#{IDTitreContactItem.IDTitreContact.toString()}"
+                                           />
+                            <f:converter binding="#{titreContactConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{contactFournisseursController.save}" value="#{myBundle.Save}" update="display,:ContactFournisseursListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ContactFournisseursEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ContactFournisseursEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

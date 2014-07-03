@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReglementClientViewDlg" widgetVar="ReglementClientViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewReglementClientTitle}" closeOnEscape="true">
+
+            <h:form id="ReglementClientViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reglementClientController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_IDReglementClient}"/>
+                        <h:outputText value="#{reglementClientController.selected.IDReglementClient}" title="#{myBundle.ViewReglementClientTitle_IDReglementClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_date}"/>
+                        <h:outputText value="#{reglementClientController.selected.date}" title="#{myBundle.ViewReglementClientTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_montant}"/>
+                        <h:outputText value="#{reglementClientController.selected.montant}" title="#{myBundle.ViewReglementClientTitle_montant}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_dateHeure}"/>
+                        <h:outputText value="#{reglementClientController.selected.dateHeure}" title="#{myBundle.ViewReglementClientTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_validee}"/>
+                        <h:outputText value="#{reglementClientController.selected.validee}" title="#{myBundle.ViewReglementClientTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_referance}"/>
+                        <h:outputText value="#{reglementClientController.selected.referance}" title="#{myBundle.ViewReglementClientTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_escompte}"/>
+                        <h:outputText value="#{reglementClientController.selected.escompte}" title="#{myBundle.ViewReglementClientTitle_escompte}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_IDClient}"/>
+                        <h:outputText value="#{reglementClientController.selected.IDClient.IDClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_IDModedereglement}"/>
+                        <h:outputText value="#{reglementClientController.selected.IDModedereglement.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ReglementClientViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

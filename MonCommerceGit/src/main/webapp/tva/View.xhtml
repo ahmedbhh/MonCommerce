@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TvaViewDlg" widgetVar="TvaViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewTvaTitle}" closeOnEscape="true">
+
+            <h:form id="TvaViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tvaController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewTvaLabel_idtva}"/>
+                        <h:outputText value="#{tvaController.selected.idtva}" title="#{myBundle.ViewTvaTitle_idtva}"/>
+
+                        <h:outputText value="#{myBundle.ViewTvaLabel_tva}"/>
+                        <h:outputText value="#{tvaController.selected.tva}" title="#{myBundle.ViewTvaTitle_tva}"/>
+
+                        <h:outputText value="#{myBundle.ViewTvaLabel_libelle}"/>
+                        <h:outputText value="#{tvaController.selected.libelle}" title="#{myBundle.ViewTvaTitle_libelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewTvaLabel_dateHeure}"/>
+                        <h:outputText value="#{tvaController.selected.dateHeure}" title="#{myBundle.ViewTvaTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="TvaViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

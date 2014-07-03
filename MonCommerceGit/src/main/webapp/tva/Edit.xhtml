@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="TvaEditDlg" widgetVar="TvaEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditTvaTitle}" closeOnEscape="true">
+
+            <h:form id="TvaEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{tvaController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditTvaLabel_idtva}" for="idtva" />
+                        <h:outputText id="idtva" value="#{tvaController.selected.idtva}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditTvaLabel_tva}" for="tva" />
+                        <p:inputText id="tva" value="#{tvaController.selected.tva}" title="#{myBundle.EditTvaTitle_tva}" required="true" requiredMessage="#{myBundle.EditTvaRequiredMessage_tva}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditTvaLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{tvaController.selected.libelle}" title="#{myBundle.EditTvaTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditTvaLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{tvaController.selected.dateHeure}" title="#{myBundle.EditTvaTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditTvaRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tvaController.save}" value="#{myBundle.Save}" update="display,:TvaListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TvaEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="TvaEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureClientsCreateDlg" widgetVar="FactureClientsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateFactureClientsTitle}" closeOnEscape="true">
+
+            <h:form id="FactureClientsCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{factureClientsController.selected.referance}" title="#{myBundle.CreateFactureClientsTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_codeBarres}" for="codeBarres" />
+                        <p:inputText id="codeBarres" value="#{factureClientsController.selected.codeBarres}" title="#{myBundle.CreateFactureClientsTitle_codeBarres}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{factureClientsController.selected.date}" title="#{myBundle.CreateFactureClientsTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_remarque}" for="remarque" />
+                        <p:inputTextarea rows="4" cols="30" id="remarque" value="#{factureClientsController.selected.remarque}" title="#{myBundle.CreateFactureClientsTitle_remarque}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_echeance}" for="echeance" />
+                        <p:calendar id="echeance" pattern="MM/dd/yyyy" value="#{factureClientsController.selected.echeance}" title="#{myBundle.CreateFactureClientsTitle_echeance}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{factureClientsController.selected.dateHeure}" title="#{myBundle.CreateFactureClientsTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateFactureClientsRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{factureClientsController.selected.validee}" title="#{myBundle.CreateFactureClientsTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{factureClientsController.selected.remisetotal}" title="#{myBundle.CreateFactureClientsTitle_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_totalTVA}" for="totalTVA" />
+                        <p:inputText id="totalTVA" value="#{factureClientsController.selected.totalTVA}" title="#{myBundle.CreateFactureClientsTitle_totalTVA}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_totalHT}" for="totalHT" />
+                        <p:inputText id="totalHT" value="#{factureClientsController.selected.totalHT}" title="#{myBundle.CreateFactureClientsTitle_totalHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_totalttc}" for="totalttc" />
+                        <p:inputText id="totalttc" value="#{factureClientsController.selected.totalttc}" title="#{myBundle.CreateFactureClientsTitle_totalttc}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_soldee}" for="soldee" />
+                        <p:inputText id="soldee" value="#{factureClientsController.selected.soldee}" title="#{myBundle.CreateFactureClientsTitle_soldee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_tembree}" for="tembree" />
+                        <p:inputText id="tembree" value="#{factureClientsController.selected.tembree}" title="#{myBundle.CreateFactureClientsTitle_tembree}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_reglementClientCollection}" for="reglementClientCollection" />
+                        <p:selectManyMenu id="reglementClientCollection" value="#{factureClientsController.selected.reglementClientCollection}" >
+                            <f:selectItems value="#{reglementClientController.items}"
+                                           var="reglementClientCollectionItem"
+                                           itemValue="#{reglementClientCollectionItem}"
+                                           itemLabel="#{reglementClientCollectionItem.IDReglementClient.toString()}"
+                                           />
+                            <f:converter binding="#{reglementClientConverter}"/>
+                        </p:selectManyMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_IDCommandeClient}" for="IDCommandeClient" />
+                        <p:selectOneMenu id="IDCommandeClient" value="#{factureClientsController.selected.IDCommandeClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeClientController.items}"
+                                           var="IDCommandeClientItem"
+                                           itemValue="#{IDCommandeClientItem}"
+                                           itemLabel="#{IDCommandeClientItem.IDCommandeClient.toString()}"
+                                           />
+                            <f:converter binding="#{commandeClientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_IDClient}" for="IDClient" />
+                        <p:selectOneMenu id="IDClient" value="#{factureClientsController.selected.IDClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.items}"
+                                           var="IDClientItem"
+                                           itemValue="#{IDClientItem}"
+                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                                           />
+                            <f:converter binding="#{clientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_IDModedereglement}" for="IDModedereglement" />
+                        <p:selectOneMenu id="IDModedereglement" value="#{factureClientsController.selected.IDModedereglement}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeDeReglementController.items}"
+                                           var="IDModedereglementItem"
+                                           itemValue="#{IDModedereglementItem}"
+                                           itemLabel="#{IDModedereglementItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{modeDeReglementConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_IDCaisse}" for="IDCaisse" />
+                        <p:selectOneMenu id="IDCaisse" value="#{factureClientsController.selected.IDCaisse}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{caisseController.items}"
+                                           var="IDCaisseItem"
+                                           itemValue="#{IDCaisseItem}"
+                                           itemLabel="#{IDCaisseItem.IDCaisse.toString()}"
+                                           />
+                            <f:converter binding="#{caisseConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{factureClientsController.saveNew}" value="#{myBundle.Save}" update="display,:FactureClientsListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureClientsCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FactureClientsCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ReglementFournisseursEditDlg" widgetVar="ReglementFournisseursEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditReglementFournisseursTitle}" closeOnEscape="true">
+
+            <h:form id="ReglementFournisseursEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{reglementFournisseursController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditReglementFournisseursLabel_IDReglementfournisseurs}" for="IDReglementfournisseurs" />
+                        <h:outputText id="IDReglementfournisseurs" value="#{reglementFournisseursController.selected.IDReglementfournisseurs}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{reglementFournisseursController.selected.date}" title="#{myBundle.EditReglementFournisseursTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{reglementFournisseursController.selected.dateHeure}" title="#{myBundle.EditReglementFournisseursTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditReglementFournisseursRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{reglementFournisseursController.selected.montant}" title="#{myBundle.EditReglementFournisseursTitle_montant}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_validee}" for="validee" />
+                        <p:inputText id="validee" value="#{reglementFournisseursController.selected.validee}" title="#{myBundle.EditReglementFournisseursTitle_validee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{reglementFournisseursController.selected.referance}" title="#{myBundle.EditReglementFournisseursTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_escompte}" for="escompte" />
+                        <p:inputText id="escompte" value="#{reglementFournisseursController.selected.escompte}" title="#{myBundle.EditReglementFournisseursTitle_escompte}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_IDModedereglement}" for="IDModedereglement" />
+                        <p:selectOneMenu id="IDModedereglement" value="#{reglementFournisseursController.selected.IDModedereglement}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeDeReglementController.items}"
+                                           var="IDModedereglementItem"
+                                           itemValue="#{IDModedereglementItem}"
+                                           itemLabel="#{IDModedereglementItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{modeDeReglementConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementFournisseursLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{reglementFournisseursController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reglementFournisseursController.save}" value="#{myBundle.Save}" update="display,:ReglementFournisseursListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ReglementFournisseursEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ReglementFournisseursEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

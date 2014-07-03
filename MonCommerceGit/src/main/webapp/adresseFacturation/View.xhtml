@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdresseFacturationViewDlg" widgetVar="AdresseFacturationViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewAdresseFacturationTitle}" closeOnEscape="true">
+
+            <h:form id="AdresseFacturationViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{adresseFacturationController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_IDAdresse}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.IDAdresse}" title="#{myBundle.ViewAdresseFacturationTitle_IDAdresse}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_adresse}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.adresse}" title="#{myBundle.ViewAdresseFacturationTitle_adresse}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_codePostale}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.codePostale}" title="#{myBundle.ViewAdresseFacturationTitle_codePostale}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_ville}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.ville}" title="#{myBundle.ViewAdresseFacturationTitle_ville}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_pays}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.pays}" title="#{myBundle.ViewAdresseFacturationTitle_pays}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_adresseemail}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.adresseemail}" title="#{myBundle.ViewAdresseFacturationTitle_adresseemail}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_siteInternet}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.siteInternet}" title="#{myBundle.ViewAdresseFacturationTitle_siteInternet}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_telephone}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.telephone}" title="#{myBundle.ViewAdresseFacturationTitle_telephone}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_fax}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.fax}" title="#{myBundle.ViewAdresseFacturationTitle_fax}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_telephone2}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.telephone2}" title="#{myBundle.ViewAdresseFacturationTitle_telephone2}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_portable}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.portable}" title="#{myBundle.ViewAdresseFacturationTitle_portable}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_formejuridique}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.formejuridique}" title="#{myBundle.ViewAdresseFacturationTitle_formejuridique}"/>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_dateHeure}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.dateHeure}" title="#{myBundle.ViewAdresseFacturationTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewAdresseFacturationLabel_IDClient}"/>
+                        <h:outputText value="#{adresseFacturationController.selected.IDClient.IDClient}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="AdresseFacturationViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

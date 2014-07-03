@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactureFournisseurReglementFournisseursCreateDlg" widgetVar="FactureFournisseurReglementFournisseursCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateFactureFournisseurReglementFournisseursTitle}" closeOnEscape="true">
+
+            <h:form id="FactureFournisseurReglementFournisseursCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurReglementFournisseursLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{factureFournisseurReglementFournisseursController.selected.type}" title="#{myBundle.CreateFactureFournisseurReglementFournisseursTitle_type}" required="true" requiredMessage="#{myBundle.CreateFactureFournisseurReglementFournisseursRequiredMessage_type}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurReglementFournisseursLabel_soldee}" for="soldee" />
+                        <p:inputText id="soldee" value="#{factureFournisseurReglementFournisseursController.selected.soldee}" title="#{myBundle.CreateFactureFournisseurReglementFournisseursTitle_soldee}" required="true" requiredMessage="#{myBundle.CreateFactureFournisseurReglementFournisseursRequiredMessage_soldee}"/>
+
+                        <h:outputLabel value="#{myBundle.CreateFactureFournisseurReglementFournisseursLabel_factureFournisseur}" for="factureFournisseur" />
+                        <p:selectOneMenu id="factureFournisseur" value="#{factureFournisseurReglementFournisseursController.selected.factureFournisseur}" required="true" requiredMessage="#{myBundle.CreateFactureFournisseurReglementFournisseursRequiredMessage_factureFournisseur}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{factureFournisseurController.items}"
+                                           var="factureFournisseurItem"
+                                           itemValue="#{factureFournisseurItem}"
+                                           itemLabel="#{factureFournisseurItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{factureFournisseurConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateFactureFournisseurReglementFournisseursLabel_reglementFournisseurs}" for="reglementFournisseurs" />
+                        <p:selectOneMenu id="reglementFournisseurs" value="#{factureFournisseurReglementFournisseursController.selected.reglementFournisseurs}" required="true" requiredMessage="#{myBundle.CreateFactureFournisseurReglementFournisseursRequiredMessage_reglementFournisseurs}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{reglementFournisseursController.items}"
+                                           var="reglementFournisseursItem"
+                                           itemValue="#{reglementFournisseursItem}"
+                                           itemLabel="#{reglementFournisseursItem.IDReglementfournisseurs.toString()}"
+                                           />
+                            <f:converter binding="#{reglementFournisseursConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{factureFournisseurReglementFournisseursController.saveNew}" value="#{myBundle.Save}" update="display,:FactureFournisseurReglementFournisseursListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureFournisseurReglementFournisseursCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FactureFournisseurReglementFournisseursCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

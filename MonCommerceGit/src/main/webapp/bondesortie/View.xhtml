@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BondesortieViewDlg" widgetVar="BondesortieViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewBondesortieTitle}" closeOnEscape="true">
+
+            <h:form id="BondesortieViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bondesortieController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDBondeSortie}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDBondeSortie}" title="#{myBundle.ViewBondesortieTitle_IDBondeSortie}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_referance}"/>
+                        <h:outputText value="#{bondesortieController.selected.referance}" title="#{myBundle.ViewBondesortieTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_date}"/>
+                        <h:outputText value="#{bondesortieController.selected.date}" title="#{myBundle.ViewBondesortieTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_observation}"/>
+                        <h:outputText value="#{bondesortieController.selected.observation}" title="#{myBundle.ViewBondesortieTitle_observation}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_validee}"/>
+                        <h:outputText value="#{bondesortieController.selected.validee}" title="#{myBundle.ViewBondesortieTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_codeBarres}"/>
+                        <h:outputText value="#{bondesortieController.selected.codeBarres}" title="#{myBundle.ViewBondesortieTitle_codeBarres}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_dateHeure}"/>
+                        <h:outputText value="#{bondesortieController.selected.dateHeure}" title="#{myBundle.ViewBondesortieTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_remisetotal}"/>
+                        <h:outputText value="#{bondesortieController.selected.remisetotal}" title="#{myBundle.ViewBondesortieTitle_remisetotal}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_totalTVA}"/>
+                        <h:outputText value="#{bondesortieController.selected.totalTVA}" title="#{myBundle.ViewBondesortieTitle_totalTVA}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_totalHT}"/>
+                        <h:outputText value="#{bondesortieController.selected.totalHT}" title="#{myBundle.ViewBondesortieTitle_totalHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_totalttc}"/>
+                        <h:outputText value="#{bondesortieController.selected.totalttc}" title="#{myBundle.ViewBondesortieTitle_totalttc}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_soldee}"/>
+                        <h:outputText value="#{bondesortieController.selected.soldee}" title="#{myBundle.ViewBondesortieTitle_soldee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDCommandeClient}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDCommandeClient.IDCommandeClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDdepot}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDdepot.IDdepot}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDClient}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDClient.IDClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDFactureClients}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDFactureClients.IDFactureClients}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="BondesortieViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="AccompteClientEditDlg" widgetVar="AccompteClientEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditAccompteClientTitle}" closeOnEscape="true">
+
+            <h:form id="AccompteClientEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{accompteClientController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditAccompteClientLabel_IDAccompteClient}" for="IDAccompteClient" />
+                        <h:outputText id="IDAccompteClient" value="#{accompteClientController.selected.IDAccompteClient}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditAccompteClientLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{accompteClientController.selected.date}" title="#{myBundle.EditAccompteClientTitle_date}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAccompteClientLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{accompteClientController.selected.montant}" title="#{myBundle.EditAccompteClientTitle_montant}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAccompteClientLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{accompteClientController.selected.dateHeure}" title="#{myBundle.EditAccompteClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditAccompteClientRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditAccompteClientLabel_IDFactureClients}" for="IDFactureClients" />
+                        <p:selectOneMenu id="IDFactureClients" value="#{accompteClientController.selected.IDFactureClients}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{factureClientsController.items}"
+                                           var="IDFactureClientsItem"
+                                           itemValue="#{IDFactureClientsItem}"
+                                           itemLabel="#{IDFactureClientsItem.IDFactureClients.toString()}"
+                                           />
+                            <f:converter binding="#{factureClientsConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditAccompteClientLabel_IDCommandeClient}" for="IDCommandeClient" />
+                        <p:selectOneMenu id="IDCommandeClient" value="#{accompteClientController.selected.IDCommandeClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeClientController.items}"
+                                           var="IDCommandeClientItem"
+                                           itemValue="#{IDCommandeClientItem}"
+                                           itemLabel="#{IDCommandeClientItem.IDCommandeClient.toString()}"
+                                           />
+                            <f:converter binding="#{commandeClientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditAccompteClientLabel_IDModedereglement}" for="IDModedereglement" />
+                        <p:selectOneMenu id="IDModedereglement" value="#{accompteClientController.selected.IDModedereglement}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeDeReglementController.items}"
+                                           var="IDModedereglementItem"
+                                           itemValue="#{IDModedereglementItem}"
+                                           itemLabel="#{IDModedereglementItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{modeDeReglementConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{accompteClientController.save}" value="#{myBundle.Save}" update="display,:AccompteClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AccompteClientEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AccompteClientEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

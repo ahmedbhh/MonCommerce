@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommandeProduitCreateDlg" widgetVar="CommandeProduitCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateCommandeProduitTitle}" closeOnEscape="true">
+
+            <h:form id="CommandeProduitCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateCommandeProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{commandeProduitController.selected.quantitee}" title="#{myBundle.CreateCommandeProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateCommandeProduitLabel_prixAchatHT}" for="prixAchatHT" />
+                        <p:inputText id="prixAchatHT" value="#{commandeProduitController.selected.prixAchatHT}" title="#{myBundle.CreateCommandeProduitTitle_prixAchatHT}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_prixAchatHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateCommandeProduitLabel_remise}" for="remise" />
+                        <p:inputText id="remise" value="#{commandeProduitController.selected.remise}" title="#{myBundle.CreateCommandeProduitTitle_remise}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_remise}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateCommandeProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{commandeProduitController.selected.dateHeure}" title="#{myBundle.CreateCommandeProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateCommandeProduitLabel_remisetotal}" for="remisetotal" />
+                        <p:inputText id="remisetotal" value="#{commandeProduitController.selected.remisetotal}" title="#{myBundle.CreateCommandeProduitTitle_remisetotal}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_remisetotal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateCommandeProduitLabel_tva}" for="tva" />
+                        <p:inputText id="tva" value="#{commandeProduitController.selected.tva}" title="#{myBundle.CreateCommandeProduitTitle_tva}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_tva}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateCommandeProduitLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{commandeProduitController.selected.description}" title="#{myBundle.CreateCommandeProduitTitle_description}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_description}" size="50" maxlength="50"/>
+
+                        <h:outputLabel value="#{myBundle.CreateCommandeProduitLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{commandeProduitController.selected.produit}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_produit}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produitController.items}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"
+                                           itemLabel="#{produitItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{produitConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateCommandeProduitLabel_commande}" for="commande" />
+                        <p:selectOneMenu id="commande" value="#{commandeProduitController.selected.commande}" required="true" requiredMessage="#{myBundle.CreateCommandeProduitRequiredMessage_commande}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeController.items}"
+                                           var="commandeItem"
+                                           itemValue="#{commandeItem}"
+                                           itemLabel="#{commandeItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{commandeConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{commandeProduitController.saveNew}" value="#{myBundle.Save}" update="display,:CommandeProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CommandeProduitCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CommandeProduitCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

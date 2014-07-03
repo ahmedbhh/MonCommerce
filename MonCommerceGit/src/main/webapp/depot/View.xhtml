@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DepotViewDlg" widgetVar="DepotViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewDepotTitle}" closeOnEscape="true">
+
+            <h:form id="DepotViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{depotController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_IDdepot}"/>
+                        <h:outputText value="#{depotController.selected.IDdepot}" title="#{myBundle.ViewDepotTitle_IDdepot}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_referance}"/>
+                        <h:outputText value="#{depotController.selected.referance}" title="#{myBundle.ViewDepotTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_adresse}"/>
+                        <h:outputText value="#{depotController.selected.adresse}" title="#{myBundle.ViewDepotTitle_adresse}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_fax}"/>
+                        <h:outputText value="#{depotController.selected.fax}" title="#{myBundle.ViewDepotTitle_fax}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_telephone}"/>
+                        <h:outputText value="#{depotController.selected.telephone}" title="#{myBundle.ViewDepotTitle_telephone}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_surface}"/>
+                        <h:outputText value="#{depotController.selected.surface}" title="#{myBundle.ViewDepotTitle_surface}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_coutLoyer}"/>
+                        <h:outputText value="#{depotController.selected.coutLoyer}" title="#{myBundle.ViewDepotTitle_coutLoyer}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_autreCharge}"/>
+                        <h:outputText value="#{depotController.selected.autreCharge}" title="#{myBundle.ViewDepotTitle_autreCharge}"/>
+
+                        <h:outputText value="#{myBundle.ViewDepotLabel_dateHeure}"/>
+                        <h:outputText value="#{depotController.selected.dateHeure}" title="#{myBundle.ViewDepotTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="DepotViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

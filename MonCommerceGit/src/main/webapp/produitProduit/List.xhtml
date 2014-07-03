@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ProduitProduitListForm">
+
+        <p:panel header="#{myBundle.ListProduitProduitTitle}">
+            <p:dataTable id="datalist" value="#{produitProduitController.items}" var="item"
+                         selectionMode="single" selection="#{produitProduitController.selected}"
+                         rowKey="#{item.produitProduitPK}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.quantitee}" filterBy="#{item.quantitee}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProduitProduitTitle_quantitee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.quantitee}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProduitProduitTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.produit.description}" filterBy="#{item.produit.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProduitProduitTitle_produit}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.produit.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.produit1.description}" filterBy="#{item.produit1.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProduitProduitTitle_produit1}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.produit1.description}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{produitProduitController.prepareCreate}" update=":ProduitProduitCreateForm" oncomplete="ProduitProduitCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":ProduitProduitViewForm" oncomplete="ProduitProduitViewDialog.show()" disabled="#{empty produitProduitController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":ProduitProduitEditForm" oncomplete="ProduitProduitEditDialog.show()" disabled="#{empty produitProduitController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{produitProduitController.delete}" update=":growl,datalist" disabled="#{empty produitProduitController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

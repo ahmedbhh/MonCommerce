@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommandeViewDlg" widgetVar="CommandeViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewCommandeTitle}" closeOnEscape="true">
+
+            <h:form id="CommandeViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{commandeController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_IDCommandefournisseur}"/>
+                        <h:outputText value="#{commandeController.selected.IDCommandefournisseur}" title="#{myBundle.ViewCommandeTitle_IDCommandefournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_referance}"/>
+                        <h:outputText value="#{commandeController.selected.referance}" title="#{myBundle.ViewCommandeTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_date}"/>
+                        <h:outputText value="#{commandeController.selected.date}" title="#{myBundle.ViewCommandeTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_validee}"/>
+                        <h:outputText value="#{commandeController.selected.validee}" title="#{myBundle.ViewCommandeTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_description}"/>
+                        <h:outputText value="#{commandeController.selected.description}" title="#{myBundle.ViewCommandeTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_echeance}"/>
+                        <h:outputText value="#{commandeController.selected.echeance}" title="#{myBundle.ViewCommandeTitle_echeance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_dateHeure}"/>
+                        <h:outputText value="#{commandeController.selected.dateHeure}" title="#{myBundle.ViewCommandeTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_remisetotal}"/>
+                        <h:outputText value="#{commandeController.selected.remisetotal}" title="#{myBundle.ViewCommandeTitle_remisetotal}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_totalTVA}"/>
+                        <h:outputText value="#{commandeController.selected.totalTVA}" title="#{myBundle.ViewCommandeTitle_totalTVA}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_totalHT}"/>
+                        <h:outputText value="#{commandeController.selected.totalHT}" title="#{myBundle.ViewCommandeTitle_totalHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_totalttc}"/>
+                        <h:outputText value="#{commandeController.selected.totalttc}" title="#{myBundle.ViewCommandeTitle_totalttc}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_soldee}"/>
+                        <h:outputText value="#{commandeController.selected.soldee}" title="#{myBundle.ViewCommandeTitle_soldee}"/>
+
+                        <h:outputText value="#{myBundle.ViewCommandeLabel_IDFournisseur}"/>
+                        <h:outputText value="#{commandeController.selected.IDFournisseur.IDFournisseur}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="CommandeViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

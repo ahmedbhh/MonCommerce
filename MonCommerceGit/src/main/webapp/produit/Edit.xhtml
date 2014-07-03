@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ProduitEditDlg" widgetVar="ProduitEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditProduitTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{produitController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditProduitLabel_IDProduit}" for="IDProduit" />
+                        <h:outputText id="IDProduit" value="#{produitController.selected.IDProduit}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{produitController.selected.referance}" title="#{myBundle.EditProduitTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{produitController.selected.libelle}" title="#{myBundle.EditProduitTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_prixAchatHT}" for="prixAchatHT" />
+                        <p:inputText id="prixAchatHT" value="#{produitController.selected.prixAchatHT}" title="#{myBundle.EditProduitTitle_prixAchatHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_prixMoyenPondere}" for="prixMoyenPondere" />
+                        <p:inputText id="prixMoyenPondere" value="#{produitController.selected.prixMoyenPondere}" title="#{myBundle.EditProduitTitle_prixMoyenPondere}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_produitAVendre}" for="produitAVendre" />
+                        <p:inputText id="produitAVendre" value="#{produitController.selected.produitAVendre}" title="#{myBundle.EditProduitTitle_produitAVendre}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_produitComposer}" for="produitComposer" />
+                        <p:inputText id="produitComposer" value="#{produitController.selected.produitComposer}" title="#{myBundle.EditProduitTitle_produitComposer}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_photo}" for="photo" />
+                        <p:inputTextarea rows="4" cols="30" id="photo" value="#{produitController.selected.photo}" title="#{myBundle.EditProduitTitle_photo}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_prixVente}" for="prixVente" />
+                        <p:inputText id="prixVente" value="#{produitController.selected.prixVente}" title="#{myBundle.EditProduitTitle_prixVente}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{produitController.selected.description}" title="#{myBundle.EditProduitTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_stockAlert}" for="stockAlert" />
+                        <p:inputText id="stockAlert" value="#{produitController.selected.stockAlert}" title="#{myBundle.EditProduitTitle_stockAlert}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_stockrepture}" for="stockrepture" />
+                        <p:inputText id="stockrepture" value="#{produitController.selected.stockrepture}" title="#{myBundle.EditProduitTitle_stockrepture}"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_codeBarres}" for="codeBarres" />
+                        <p:inputText id="codeBarres" value="#{produitController.selected.codeBarres}" title="#{myBundle.EditProduitTitle_codeBarres}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{produitController.selected.dateHeure}" title="#{myBundle.EditProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_marque}" for="marque" />
+                        <p:inputText id="marque" value="#{produitController.selected.marque}" title="#{myBundle.EditProduitTitle_marque}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_IDUniteeMesure}" for="IDUniteeMesure" />
+                        <p:selectOneMenu id="IDUniteeMesure" value="#{produitController.selected.IDUniteeMesure}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{uniteemesureController.items}"
+                                           var="IDUniteeMesureItem"
+                                           itemValue="#{IDUniteeMesureItem}"
+                                           itemLabel="#{IDUniteeMesureItem.IDUniteeMesure.toString()}"
+                                           />
+                            <f:converter binding="#{uniteemesureConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_famille}" for="famille" />
+                        <p:selectOneMenu id="famille" value="#{produitController.selected.famille}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{familleController.items}"
+                                           var="familleItem"
+                                           itemValue="#{familleItem}"
+                                           itemLabel="#{familleItem.IDFamille.toString()}"
+                                           />
+                            <f:converter binding="#{familleConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_sousfamille}" for="sousfamille" />
+                        <p:selectOneMenu id="sousfamille" value="#{produitController.selected.sousfamille}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sousfamilleController.items}"
+                                           var="sousfamilleItem"
+                                           itemValue="#{sousfamilleItem}"
+                                           itemLabel="#{sousfamilleItem.libelle.toString()}"
+                                           />
+                            <f:converter binding="#{sousfamilleConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_tva}" for="tva" />
+                        <p:selectOneMenu id="tva" value="#{produitController.selected.tva}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tvaController.items}"
+                                           var="tvaItem"
+                                           itemValue="#{tvaItem}"
+                                           itemLabel="#{tvaItem.idtva.toString()}"
+                                           />
+                            <f:converter binding="#{tvaConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produitController.save}" value="#{myBundle.Save}" update="display,:ProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ProduitEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

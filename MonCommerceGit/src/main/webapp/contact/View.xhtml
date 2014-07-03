@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContactViewDlg" widgetVar="ContactViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewContactTitle}" closeOnEscape="true">
+
+            <h:form id="ContactViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contactController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_IDContact}"/>
+                        <h:outputText value="#{contactController.selected.IDContact}" title="#{myBundle.ViewContactTitle_IDContact}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_nom}"/>
+                        <h:outputText value="#{contactController.selected.nom}" title="#{myBundle.ViewContactTitle_nom}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_portable}"/>
+                        <h:outputText value="#{contactController.selected.portable}" title="#{myBundle.ViewContactTitle_portable}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_fax}"/>
+                        <h:outputText value="#{contactController.selected.fax}" title="#{myBundle.ViewContactTitle_fax}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_adresseemail}"/>
+                        <h:outputText value="#{contactController.selected.adresseemail}" title="#{myBundle.ViewContactTitle_adresseemail}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_skype}"/>
+                        <h:outputText value="#{contactController.selected.skype}" title="#{myBundle.ViewContactTitle_skype}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_principale}"/>
+                        <h:outputText value="#{contactController.selected.principale}" title="#{myBundle.ViewContactTitle_principale}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_date}"/>
+                        <h:outputText value="#{contactController.selected.date}" title="#{myBundle.ViewContactTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_dateHeure}"/>
+                        <h:outputText value="#{contactController.selected.dateHeure}" title="#{myBundle.ViewContactTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_IDFonctionContact}"/>
+                        <h:outputText value="#{contactController.selected.IDFonctionContact.IDFonctionContact}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_IDClient}"/>
+                        <h:outputText value="#{contactController.selected.IDClient.IDClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewContactLabel_IDTitreContact}"/>
+                        <h:outputText value="#{contactController.selected.IDTitreContact.IDTitreContact}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ContactViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

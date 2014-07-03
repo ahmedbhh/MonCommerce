@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AdresseFournisseurListForm">
+
+        <p:panel header="#{myBundle.ListAdresseFournisseurTitle}">
+            <p:dataTable id="datalist" value="#{adresseFournisseurController.items}" var="item"
+                         selectionMode="single" selection="#{adresseFournisseurController.selected}"
+                         rowKey="#{item.IDAdresseFournisseur}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.IDAdresseFournisseur}" filterBy="#{item.IDAdresseFournisseur}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_IDAdresseFournisseur}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDAdresseFournisseur}"/>
+                </p:column>
+                <p:column sortBy="#{item.adresse1}" filterBy="#{item.adresse1}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_adresse1}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.adresse1}"/>
+                </p:column>
+                <p:column sortBy="#{item.adresse2}" filterBy="#{item.adresse2}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_adresse2}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.adresse2}"/>
+                </p:column>
+                <p:column sortBy="#{item.adresse3}" filterBy="#{item.adresse3}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_adresse3}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.adresse3}"/>
+                </p:column>
+                <p:column sortBy="#{item.codePostal}" filterBy="#{item.codePostal}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_codePostal}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codePostal}"/>
+                </p:column>
+                <p:column sortBy="#{item.ville}" filterBy="#{item.ville}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_ville}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ville}"/>
+                </p:column>
+                <p:column sortBy="#{item.pays}" filterBy="#{item.pays}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_pays}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.pays}"/>
+                </p:column>
+                <p:column sortBy="#{item.adresseemail}" filterBy="#{item.adresseemail}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_adresseemail}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.adresseemail}"/>
+                </p:column>
+                <p:column sortBy="#{item.siteInternet}" filterBy="#{item.siteInternet}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_siteInternet}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.siteInternet}"/>
+                </p:column>
+                <p:column sortBy="#{item.telephone}" filterBy="#{item.telephone}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_telephone}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.telephone}"/>
+                </p:column>
+                <p:column sortBy="#{item.telephone2}" filterBy="#{item.telephone2}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_telephone2}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.telephone2}"/>
+                </p:column>
+                <p:column sortBy="#{item.fax}" filterBy="#{item.fax}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_fax}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fax}"/>
+                </p:column>
+                <p:column sortBy="#{item.portable}" filterBy="#{item.portable}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_portable}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.portable}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.IDFournisseur.IDFournisseur}" filterBy="#{item.IDFournisseur.IDFournisseur}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAdresseFournisseurTitle_IDFournisseur}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDFournisseur.IDFournisseur}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{adresseFournisseurController.prepareCreate}" update=":AdresseFournisseurCreateForm" oncomplete="AdresseFournisseurCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":AdresseFournisseurViewForm" oncomplete="AdresseFournisseurViewDialog.show()" disabled="#{empty adresseFournisseurController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":AdresseFournisseurEditForm" oncomplete="AdresseFournisseurEditDialog.show()" disabled="#{empty adresseFournisseurController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{adresseFournisseurController.delete}" update=":growl,datalist" disabled="#{empty adresseFournisseurController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

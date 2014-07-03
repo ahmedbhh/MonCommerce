@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdresseFournisseurCreateDlg" widgetVar="AdresseFournisseurCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateAdresseFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="AdresseFournisseurCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_adresse1}" for="adresse1" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse1" value="#{adresseFournisseurController.selected.adresse1}" title="#{myBundle.CreateAdresseFournisseurTitle_adresse1}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_adresse2}" for="adresse2" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse2" value="#{adresseFournisseurController.selected.adresse2}" title="#{myBundle.CreateAdresseFournisseurTitle_adresse2}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_adresse3}" for="adresse3" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse3" value="#{adresseFournisseurController.selected.adresse3}" title="#{myBundle.CreateAdresseFournisseurTitle_adresse3}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_codePostal}" for="codePostal" />
+                        <p:inputText id="codePostal" value="#{adresseFournisseurController.selected.codePostal}" title="#{myBundle.CreateAdresseFournisseurTitle_codePostal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_ville}" for="ville" />
+                        <p:inputText id="ville" value="#{adresseFournisseurController.selected.ville}" title="#{myBundle.CreateAdresseFournisseurTitle_ville}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_pays}" for="pays" />
+                        <p:inputText id="pays" value="#{adresseFournisseurController.selected.pays}" title="#{myBundle.CreateAdresseFournisseurTitle_pays}" size="64" maxlength="64"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_adresseemail}" for="adresseemail" />
+                        <p:inputText id="adresseemail" value="#{adresseFournisseurController.selected.adresseemail}" title="#{myBundle.CreateAdresseFournisseurTitle_adresseemail}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_siteInternet}" for="siteInternet" />
+                        <p:inputText id="siteInternet" value="#{adresseFournisseurController.selected.siteInternet}" title="#{myBundle.CreateAdresseFournisseurTitle_siteInternet}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{adresseFournisseurController.selected.telephone}" title="#{myBundle.CreateAdresseFournisseurTitle_telephone}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_telephone2}" for="telephone2" />
+                        <p:inputText id="telephone2" value="#{adresseFournisseurController.selected.telephone2}" title="#{myBundle.CreateAdresseFournisseurTitle_telephone2}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{adresseFournisseurController.selected.fax}" title="#{myBundle.CreateAdresseFournisseurTitle_fax}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_portable}" for="portable" />
+                        <p:inputText id="portable" value="#{adresseFournisseurController.selected.portable}" title="#{myBundle.CreateAdresseFournisseurTitle_portable}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{adresseFournisseurController.selected.dateHeure}" title="#{myBundle.CreateAdresseFournisseurTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateAdresseFournisseurRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateAdresseFournisseurLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{adresseFournisseurController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{adresseFournisseurController.saveNew}" value="#{myBundle.Save}" update="display,:AdresseFournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AdresseFournisseurCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="AdresseFournisseurCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

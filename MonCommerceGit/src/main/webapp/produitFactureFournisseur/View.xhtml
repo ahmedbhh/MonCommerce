@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduitFactureFournisseurViewDlg" widgetVar="ProduitFactureFournisseurViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewProduitFactureFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="ProduitFactureFournisseurViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produitFactureFournisseurController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_quantitee}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.quantitee}" title="#{myBundle.ViewProduitFactureFournisseurTitle_quantitee}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_prixAchatHT}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.prixAchatHT}" title="#{myBundle.ViewProduitFactureFournisseurTitle_prixAchatHT}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_remise}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.remise}" title="#{myBundle.ViewProduitFactureFournisseurTitle_remise}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_dateHeure}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.dateHeure}" title="#{myBundle.ViewProduitFactureFournisseurTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_description}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.description}" title="#{myBundle.ViewProduitFactureFournisseurTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_poidsUnitaireBrute}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.poidsUnitaireBrute}" title="#{myBundle.ViewProduitFactureFournisseurTitle_poidsUnitaireBrute}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_poidsUnitaireNet}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.poidsUnitaireNet}" title="#{myBundle.ViewProduitFactureFournisseurTitle_poidsUnitaireNet}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_nombreParcolis}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.nombreParcolis}" title="#{myBundle.ViewProduitFactureFournisseurTitle_nombreParcolis}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_nombreColis}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.nombreColis}" title="#{myBundle.ViewProduitFactureFournisseurTitle_nombreColis}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_produit}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.produit.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewProduitFactureFournisseurLabel_factureFournisseur}"/>
+                        <h:outputText value="#{produitFactureFournisseurController.selected.factureFournisseur.description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ProduitFactureFournisseurViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

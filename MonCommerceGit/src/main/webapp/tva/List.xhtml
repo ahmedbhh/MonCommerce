@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="TvaListForm">
+
+        <p:panel header="#{myBundle.ListTvaTitle}">
+            <p:dataTable id="datalist" value="#{tvaController.items}" var="item"
+                         selectionMode="single" selection="#{tvaController.selected}"
+                         rowKey="#{item.idtva}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.idtva}" filterBy="#{item.idtva}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListTvaTitle_idtva}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idtva}"/>
+                </p:column>
+                <p:column sortBy="#{item.tva}" filterBy="#{item.tva}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListTvaTitle_tva}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tva}"/>
+                </p:column>
+                <p:column sortBy="#{item.libelle}" filterBy="#{item.libelle}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListTvaTitle_libelle}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.libelle}"/>
+                </p:column>
+                <p:column sortBy="#{item.dateHeure}" filterBy="#{item.dateHeure}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListTvaTitle_dateHeure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateHeure}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <f:facet name="footer">
+                    <div class="footer-section">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{tvaController.prepareCreate}" update=":TvaCreateForm" oncomplete="TvaCreateDialog.show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":TvaViewForm" oncomplete="TvaViewDialog.show()" disabled="#{empty tvaController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":TvaEditForm" oncomplete="TvaEditDialog.show()" disabled="#{empty tvaController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{tvaController.delete}" update=":growl,datalist" disabled="#{empty tvaController.selected}">
+                            <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

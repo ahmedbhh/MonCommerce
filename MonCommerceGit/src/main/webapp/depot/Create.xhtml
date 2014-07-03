@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DepotCreateDlg" widgetVar="DepotCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateDepotTitle}" closeOnEscape="true">
+
+            <h:form id="DepotCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_referance}" for="referance" />
+                        <p:inputText id="referance" value="#{depotController.selected.referance}" title="#{myBundle.CreateDepotTitle_referance}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_adresse}" for="adresse" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse" value="#{depotController.selected.adresse}" title="#{myBundle.CreateDepotTitle_adresse}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{depotController.selected.fax}" title="#{myBundle.CreateDepotTitle_fax}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{depotController.selected.telephone}" title="#{myBundle.CreateDepotTitle_telephone}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_surface}" for="surface" />
+                        <p:inputText id="surface" value="#{depotController.selected.surface}" title="#{myBundle.CreateDepotTitle_surface}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_coutLoyer}" for="coutLoyer" />
+                        <p:inputText id="coutLoyer" value="#{depotController.selected.coutLoyer}" title="#{myBundle.CreateDepotTitle_coutLoyer}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_autreCharge}" for="autreCharge" />
+                        <p:inputText id="autreCharge" value="#{depotController.selected.autreCharge}" title="#{myBundle.CreateDepotTitle_autreCharge}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateDepotLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{depotController.selected.dateHeure}" title="#{myBundle.CreateDepotTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateDepotRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{depotController.saveNew}" value="#{myBundle.Save}" update="display,:DepotListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DepotCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="DepotCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

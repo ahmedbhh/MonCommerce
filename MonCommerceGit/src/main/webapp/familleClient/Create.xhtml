@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FamilleClientCreateDlg" widgetVar="FamilleClientCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateFamilleClientTitle}" closeOnEscape="true">
+
+            <h:form id="FamilleClientCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateFamilleClientLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{familleClientController.selected.libelle}" title="#{myBundle.CreateFamilleClientTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFamilleClientLabel_obsersavation}" for="obsersavation" />
+                        <p:inputTextarea rows="4" cols="30" id="obsersavation" value="#{familleClientController.selected.obsersavation}" title="#{myBundle.CreateFamilleClientTitle_obsersavation}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateFamilleClientLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{familleClientController.selected.dateHeure}" title="#{myBundle.CreateFamilleClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateFamilleClientRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{familleClientController.saveNew}" value="#{myBundle.Save}" update="display,:FamilleClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FamilleClientCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FamilleClientCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

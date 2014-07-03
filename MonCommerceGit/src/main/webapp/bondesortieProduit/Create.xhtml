@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BondesortieProduitCreateDlg" widgetVar="BondesortieProduitCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateBondesortieProduitTitle}" closeOnEscape="true">
+
+            <h:form id="BondesortieProduitCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_quantitee}" for="quantitee" />
+                        <p:inputText id="quantitee" value="#{bondesortieProduitController.selected.quantitee}" title="#{myBundle.CreateBondesortieProduitTitle_quantitee}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_quantitee}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_prixUnitaireHT}" for="prixUnitaireHT" />
+                        <p:inputText id="prixUnitaireHT" value="#{bondesortieProduitController.selected.prixUnitaireHT}" title="#{myBundle.CreateBondesortieProduitTitle_prixUnitaireHT}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_prixUnitaireHT}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_remise}" for="remise" />
+                        <p:inputText id="remise" value="#{bondesortieProduitController.selected.remise}" title="#{myBundle.CreateBondesortieProduitTitle_remise}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_remise}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bondesortieProduitController.selected.dateHeure}" title="#{myBundle.CreateBondesortieProduitTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_dateHeure}" showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{bondesortieProduitController.selected.description}" title="#{myBundle.CreateBondesortieProduitTitle_description}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_description}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_poidsUnitaireBrute}" for="poidsUnitaireBrute" />
+                        <p:inputText id="poidsUnitaireBrute" value="#{bondesortieProduitController.selected.poidsUnitaireBrute}" title="#{myBundle.CreateBondesortieProduitTitle_poidsUnitaireBrute}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_poidsUnitaireBrute}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_poidsUnitaireNet}" for="poidsUnitaireNet" />
+                        <p:inputText id="poidsUnitaireNet" value="#{bondesortieProduitController.selected.poidsUnitaireNet}" title="#{myBundle.CreateBondesortieProduitTitle_poidsUnitaireNet}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_poidsUnitaireNet}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_nombreParcolis}" for="nombreParcolis" />
+                        <p:inputText id="nombreParcolis" value="#{bondesortieProduitController.selected.nombreParcolis}" title="#{myBundle.CreateBondesortieProduitTitle_nombreParcolis}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_nombreParcolis}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_nombreColis}" for="nombreColis" />
+                        <p:inputText id="nombreColis" value="#{bondesortieProduitController.selected.nombreColis}" title="#{myBundle.CreateBondesortieProduitTitle_nombreColis}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_nombreColis}"/>
+
+                        <h:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_bondesortie}" for="bondesortie" />
+                        <p:selectOneMenu id="bondesortie" value="#{bondesortieProduitController.selected.bondesortie}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_bondesortie}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bondesortieController.items}"
+                                           var="bondesortieItem"
+                                           itemValue="#{bondesortieItem}"
+                                           itemLabel="#{bondesortieItem.IDBondeSortie.toString()}"
+                                           />
+                            <f:converter binding="#{bondesortieConverter}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.CreateBondesortieProduitLabel_produit}" for="produit" />
+                        <p:selectOneMenu id="produit" value="#{bondesortieProduitController.selected.produit}" required="true" requiredMessage="#{myBundle.CreateBondesortieProduitRequiredMessage_produit}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{produitController.items}"
+                                           var="produitItem"
+                                           itemValue="#{produitItem}"
+                                           itemLabel="#{produitItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{produitConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bondesortieProduitController.saveNew}" value="#{myBundle.Save}" update="display,:BondesortieProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BondesortieProduitCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="BondesortieProduitCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

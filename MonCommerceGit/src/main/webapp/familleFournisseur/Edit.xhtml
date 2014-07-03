@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="FamilleFournisseurEditDlg" widgetVar="FamilleFournisseurEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditFamilleFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="FamilleFournisseurEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{familleFournisseurController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditFamilleFournisseurLabel_IDFamilleFournisseur}" for="IDFamilleFournisseur" />
+                        <h:outputText id="IDFamilleFournisseur" value="#{familleFournisseurController.selected.IDFamilleFournisseur}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditFamilleFournisseurLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{familleFournisseurController.selected.libelle}" title="#{myBundle.EditFamilleFournisseurTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditFamilleFournisseurLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{familleFournisseurController.selected.description}" title="#{myBundle.EditFamilleFournisseurTitle_description}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditFamilleFournisseurLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{familleFournisseurController.selected.dateHeure}" title="#{myBundle.EditFamilleFournisseurTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditFamilleFournisseurRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{familleFournisseurController.save}" value="#{myBundle.Save}" update="display,:FamilleFournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FamilleFournisseurEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="FamilleFournisseurEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

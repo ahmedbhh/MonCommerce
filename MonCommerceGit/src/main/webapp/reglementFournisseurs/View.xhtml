@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReglementFournisseursViewDlg" widgetVar="ReglementFournisseursViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewReglementFournisseursTitle}" closeOnEscape="true">
+
+            <h:form id="ReglementFournisseursViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reglementFournisseursController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_IDReglementfournisseurs}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.IDReglementfournisseurs}" title="#{myBundle.ViewReglementFournisseursTitle_IDReglementfournisseurs}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_date}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.date}" title="#{myBundle.ViewReglementFournisseursTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_dateHeure}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.dateHeure}" title="#{myBundle.ViewReglementFournisseursTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_montant}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.montant}" title="#{myBundle.ViewReglementFournisseursTitle_montant}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_validee}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.validee}" title="#{myBundle.ViewReglementFournisseursTitle_validee}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_referance}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.referance}" title="#{myBundle.ViewReglementFournisseursTitle_referance}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_escompte}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.escompte}" title="#{myBundle.ViewReglementFournisseursTitle_escompte}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_IDModedereglement}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.IDModedereglement.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_IDFournisseur}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.IDFournisseur.IDFournisseur}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="ReglementFournisseursViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

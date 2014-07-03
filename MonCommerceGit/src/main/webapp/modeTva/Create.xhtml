@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ModeTvaCreateDlg" widgetVar="ModeTvaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateModeTvaTitle}" closeOnEscape="true">
+
+            <h:form id="ModeTvaCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateModeTvaLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{modeTvaController.selected.libelle}" title="#{myBundle.CreateModeTvaTitle_libelle}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateModeTvaLabel_dateHeure}" for="dateHeure" />
+                        <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{modeTvaController.selected.dateHeure}" title="#{myBundle.CreateModeTvaTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateModeTvaRequiredMessage_dateHeure}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{modeTvaController.saveNew}" value="#{myBundle.Save}" update="display,:ModeTvaListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ModeTvaCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="ModeTvaCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

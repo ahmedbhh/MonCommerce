@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FamilleFournisseurViewDlg" widgetVar="FamilleFournisseurViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewFamilleFournisseurTitle}" closeOnEscape="true">
+
+            <h:form id="FamilleFournisseurViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{familleFournisseurController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewFamilleFournisseurLabel_IDFamilleFournisseur}"/>
+                        <h:outputText value="#{familleFournisseurController.selected.IDFamilleFournisseur}" title="#{myBundle.ViewFamilleFournisseurTitle_IDFamilleFournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewFamilleFournisseurLabel_libelle}"/>
+                        <h:outputText value="#{familleFournisseurController.selected.libelle}" title="#{myBundle.ViewFamilleFournisseurTitle_libelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewFamilleFournisseurLabel_description}"/>
+                        <h:outputText value="#{familleFournisseurController.selected.description}" title="#{myBundle.ViewFamilleFournisseurTitle_description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFamilleFournisseurLabel_dateHeure}"/>
+                        <h:outputText value="#{familleFournisseurController.selected.dateHeure}" title="#{myBundle.ViewFamilleFournisseurTitle_dateHeure}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="FamilleFournisseurViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
