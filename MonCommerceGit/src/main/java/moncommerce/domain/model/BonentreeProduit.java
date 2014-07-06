@@ -49,43 +49,43 @@ public class BonentreeProduit implements Serializable {
     protected BonentreeProduitPK bonentreeProduitPK;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "quantitee", nullable = false)
+    @Column(name = "quantitee")
     private long quantitee;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PrixAchatHT", nullable = false, precision = 24, scale = 6)
+    @Column(name = "PrixAchatHT")
     private BigDecimal prixAchatHT;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Remise", nullable = false, precision = 24, scale = 6)
+    @Column(name = "Remise")
     private BigDecimal remise;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Poids_Unitaire_Brute", nullable = false)
+    @Column(name = "Poids_Unitaire_Brute")
     private int poidsUnitaireBrute;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Poids_Unitaire_Net", nullable = false)
+    @Column(name = "Poids_Unitaire_Net")
     private int poidsUnitaireNet;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Nombre_Par_colis", nullable = false)
+    @Column(name = "Nombre_Par_colis")
     private int nombreParcolis;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "nombre_Colis", nullable = false)
+    @Column(name = "nombre_Colis")
     private int nombreColis;
-    @JoinColumn(name = "IDBonEntree", referencedColumnName = "IDBonEntree", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDBonEntree", referencedColumnName = "IDBonEntree", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Bonentree bonentree;
-    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Produit produit;
 
     public BonentreeProduit() {

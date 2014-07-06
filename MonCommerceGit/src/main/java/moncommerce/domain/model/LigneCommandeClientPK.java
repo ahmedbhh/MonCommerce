@@ -20,11 +20,11 @@ import javax.validation.constraints.NotNull;
 public class LigneCommandeClientPK implements Serializable {
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDCommande_Client", nullable = false)
+    @Column(name = "IDCommande_Client")
     private long iDCommandeClient;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDProduit", nullable = false)
+    @Column(name = "IDProduit")
     private long iDProduit;
 
     public LigneCommandeClientPK() {

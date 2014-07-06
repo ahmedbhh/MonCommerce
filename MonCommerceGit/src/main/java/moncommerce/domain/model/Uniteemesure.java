@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,8 +33,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "uniteemesure", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Unitee"})})
+@Table(name = "uniteemesure")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Uniteemesure.findAll", query = "SELECT u FROM Uniteemesure u"),
@@ -47,17 +45,17 @@ public class Uniteemesure implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDUniteeMesure", nullable = false)
+    @Column(name = "IDUniteeMesure")
     private Long iDUniteeMesure;
     @Size(max = 20)
-    @Column(name = "Unitee", length = 20)
+    @Column(name = "Unitee")
     private String unitee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "iDUniteeMesure", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDUniteeMesure", fetch = FetchType.LAZY)
     private Collection<Produit> produitCollection;
 
     public Uniteemesure() {

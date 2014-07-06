@@ -20,11 +20,11 @@ import javax.validation.constraints.NotNull;
 public class FactureClientProduitPK implements Serializable {
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDProduit", nullable = false)
+    @Column(name = "IDProduit")
     private long iDProduit;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDFacture_Client", nullable = false)
+    @Column(name = "IDFacture_Client")
     private long iDFactureClient;
 
     public FactureClientProduitPK() {

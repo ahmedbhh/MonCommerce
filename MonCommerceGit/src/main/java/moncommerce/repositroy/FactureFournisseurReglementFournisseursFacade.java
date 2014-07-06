@@ -3,30 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package moncommerce.repositroy;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import moncommerce.domain.model.FactureFournisseurReglementFournisseurs;
+import moncommerce.domain.model.FactureFournisseurReglementFournisseursPK;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author AHMED
  */
-@Stateless
-public class FactureFournisseurReglementFournisseursFacade extends AbstractFacade<FactureFournisseurReglementFournisseurs> {
-    @PersistenceContext(unitName = "com.ppp_MonCommerceGit_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public FactureFournisseurReglementFournisseursFacade() {
-        super(FactureFournisseurReglementFournisseurs.class);
-    }
-    
+public interface FactureFournisseurReglementFournisseursFacade 
+extends JpaRepository<FactureFournisseurReglementFournisseurs, FactureFournisseurReglementFournisseursPK> {
 }

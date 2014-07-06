@@ -23,20 +23,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.Type;
 
 /**
  *
  * @author AHMED
  */
 @Entity
-@Table(name = "mode_de_reglement", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Libelle"})})
+@Table(name = "mode_de_reglement")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ModeDeReglement.findAll", query = "SELECT m FROM ModeDeReglement m"),
@@ -48,29 +47,30 @@ public class ModeDeReglement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDMode_de_reglement", nullable = false)
+    @Column(name = "IDMode_de_reglement")
     private Long iDModedereglement;
     @Size(max = 20)
-    @Column(name = "Libelle", length = 20)
+    @Column(name = "Libelle")
     private String libelle;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Description", length = 2147483647)
+    @Column(name = "Description")
     private String description;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
+    @Type(type="timestamp")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
     private Collection<ReglementClient> reglementClientCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
     private Collection<Accompte> accompteCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
     private Collection<ReglementFournisseurs> reglementFournisseursCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
     private Collection<FactureClients> factureClientsCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
     private Collection<AccompteClient> accompteClientCollection;
 
     public ModeDeReglement() {

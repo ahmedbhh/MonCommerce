@@ -1,16 +1,18 @@
 package moncommerce.web.controller;
 
-import moncommerce.repositroy.AbstractFacade;
-import moncommerce.web.controller.util.JsfUtil;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.event.ActionEvent;
 
 import java.util.ResourceBundle;
-import javax.ejb.EJBException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import moncommerce.service.AbstractCrudService;
+
+import moncommerce.service.EntrepriseService;
+import moncommerce.web.controller.util.JsfUtil;
 
 /**
  * Represents an abstract shell of to be used as JSF Controller to be used in
@@ -19,12 +21,12 @@ import javax.validation.ConstraintViolationException;
  */
 public abstract class AbstractController<T> {
 
-    private AbstractFacade<T> ejbFacade;
+    private AbstractCrudService daoFacade;
     private Class<T> itemClass;
     private T selected;
     private Collection<T> items;
 
-    private enum PersistAction {
+    protected enum PersistAction {
 
         CREATE,
         DELETE,
@@ -40,13 +42,15 @@ public abstract class AbstractController<T> {
 
     public abstract void init();
 
-    protected AbstractFacade<T> getFacade() {
-        return ejbFacade;
+  
+    protected AbstractCrudService getFacade() {
+        return daoFacade;
     }
 
-    protected void setFacade(AbstractFacade<T> ejbFacade) {
-        this.ejbFacade = ejbFacade;
+    protected void setFacade(AbstractCrudService ejbFacade) {
+        this.daoFacade = ejbFacade;
     }
+    
 
     /**
      * Retrieve the currently selected item
@@ -83,7 +87,7 @@ public abstract class AbstractController<T> {
      */
     public Collection<T> getItems() {
         if (items == null) {
-            items = this.ejbFacade.findAll();
+            items = (List<T>) daoFacade.findAll();
         }
         return items;
     }
@@ -103,6 +107,7 @@ public abstract class AbstractController<T> {
      * @param event
      */
     public void save(ActionEvent event) {
+        
         String msg = ResourceBundle.getBundle("/MyBundle").getString(itemClass.getSimpleName() + "Updated");
         persist(PersistAction.UPDATE, msg);
     }
@@ -134,17 +139,22 @@ public abstract class AbstractController<T> {
         }
     }
 
-    private void persist(PersistAction persistAction, String successMessage) {
+    /**
+     *
+     * @param persistAction
+     * @param successMessage
+     */
+   protected void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             this.setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    this.ejbFacade.edit(selected);
+                    this.daoFacade.edit(selected);
                 } else {
-                    this.ejbFacade.remove(selected);
+                    this.daoFacade.remove(selected);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
-            } catch (EJBException ex) {
+            } catch (Exception ex) {
                 String msg = "";
                 Throwable cause = JsfUtil.getRootCause(ex.getCause());
                 if (cause != null) {
@@ -162,9 +172,6 @@ public abstract class AbstractController<T> {
                         }
                     }
                 }
-            } catch (Exception ex) {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/MyBundle").getString("PersistenceErrorOccured"));
             }
         }
     }
@@ -179,7 +186,7 @@ public abstract class AbstractController<T> {
         T newItem;
         try {
             newItem = itemClass.newInstance();
-            this.selected = newItem;
+            this.selected = (T) newItem;
             initializeEmbeddableKey();
             return newItem;
         } catch (InstantiationException ex) {

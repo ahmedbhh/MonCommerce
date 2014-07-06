@@ -45,22 +45,22 @@ public class ProduitCodeTarif implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PrixVente", nullable = false, precision = 24, scale = 6)
+    @Column(name = "PrixVente")
     private BigDecimal prixVente;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "quantitee", nullable = false)
+    @Column(name = "quantitee")
     private long quantitee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @JoinColumn(name = "IDCode_tarif", referencedColumnName = "IDCode_tarif", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDCode_tarif", referencedColumnName = "IDCode_tarif", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private CodeTarif codeTarif;
-    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Produit produit;
 
     public ProduitCodeTarif() {

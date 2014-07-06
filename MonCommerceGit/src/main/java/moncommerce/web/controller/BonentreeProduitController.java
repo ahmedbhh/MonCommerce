@@ -1,19 +1,21 @@
 package moncommerce.web.controller;
 
 import moncommerce.domain.model.BonentreeProduit;
-import moncommerce.repositroy.BonentreeProduitFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import moncommerce.service.BonentreeProduitService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "bonentreeProduitController")
 @ViewScoped
 public class BonentreeProduitController extends AbstractController<BonentreeProduit> implements Serializable {
 
-    @EJB
-    private BonentreeProduitFacade ejbFacade;
+    @Autowired
+    private BonentreeProduitService ejbFacade;
 
     @PostConstruct
     @Override

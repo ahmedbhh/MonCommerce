@@ -44,28 +44,28 @@ public class Accompte implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDAccompte", nullable = false)
+    @Column(name = "IDAccompte")
     private Long iDAccompte;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Montant", precision = 24, scale = 6)
+    @Column(name = "Montant")
     private BigDecimal montant;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
+    @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ModeDeReglement iDModedereglement;
     @JoinColumn(name = "IDFacture_Fournisseur", referencedColumnName = "IDFacture_Fournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private FactureFournisseur iDFactureFournisseur;
     @JoinColumn(name = "IDCommande_fournisseur", referencedColumnName = "IDCommande_fournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Commande iDCommandefournisseur;
-    @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private ModeDeReglement iDModedereglement;
 
     public Accompte() {
     }
@@ -111,6 +111,14 @@ public class Accompte implements Serializable {
         this.dateHeure = dateHeure;
     }
 
+    public ModeDeReglement getIDModedereglement() {
+        return iDModedereglement;
+    }
+
+    public void setIDModedereglement(ModeDeReglement iDModedereglement) {
+        this.iDModedereglement = iDModedereglement;
+    }
+
     public FactureFournisseur getIDFactureFournisseur() {
         return iDFactureFournisseur;
     }
@@ -125,14 +133,6 @@ public class Accompte implements Serializable {
 
     public void setIDCommandefournisseur(Commande iDCommandefournisseur) {
         this.iDCommandefournisseur = iDCommandefournisseur;
-    }
-
-    public ModeDeReglement getIDModedereglement() {
-        return iDModedereglement;
-    }
-
-    public void setIDModedereglement(ModeDeReglement iDModedereglement) {
-        this.iDModedereglement = iDModedereglement;
     }
 
     @Override

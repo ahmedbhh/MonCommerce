@@ -6,27 +6,14 @@
 
 package moncommerce.repositroy;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import moncommerce.domain.model.BondetransfertProduit;
+import moncommerce.domain.model.BondetransfertProduitPK;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author AHMED
  */
-@Stateless
-public class BondetransfertProduitFacade extends AbstractFacade<BondetransfertProduit> {
-    @PersistenceContext(unitName = "com.ppp_MonCommerceGit_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public BondetransfertProduitFacade() {
-        super(BondetransfertProduit.class);
-    }
+public interface BondetransfertProduitFacade extends JpaRepository<BondetransfertProduit,BondetransfertProduitPK> {
     
 }

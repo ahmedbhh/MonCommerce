@@ -20,11 +20,11 @@ import javax.validation.constraints.NotNull;
 public class FactureFournisseurReglementFournisseursPK implements Serializable {
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDReglement_fournisseurs", nullable = false)
+    @Column(name = "IDReglement_fournisseurs")
     private long iDReglementfournisseurs;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDFacture_Fournisseur", nullable = false)
+    @Column(name = "IDFacture_Fournisseur")
     private long iDFactureFournisseur;
 
     public FactureFournisseurReglementFournisseursPK() {

@@ -1,19 +1,21 @@
 package moncommerce.web.controller;
 
 import moncommerce.domain.model.ProduitCodeTarif;
-import moncommerce.repositroy.ProduitCodeTarifFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import moncommerce.service.ProduitCodeTarifService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "produitCodeTarifController")
 @ViewScoped
 public class ProduitCodeTarifController extends AbstractController<ProduitCodeTarif> implements Serializable {
 
-    @EJB
-    private ProduitCodeTarifFacade ejbFacade;
+    @Autowired
+    private ProduitCodeTarifService ejbFacade;
 
     @PostConstruct
     @Override

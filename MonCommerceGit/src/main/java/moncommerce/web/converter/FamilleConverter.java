@@ -1,21 +1,21 @@
 package moncommerce.web.converter;
 
 import moncommerce.domain.model.Famille;
-import moncommerce.repositroy.FamilleFacade;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import moncommerce.service.FamilleService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
 public class FamilleConverter implements Converter {
 
-    @EJB
-    private FamilleFacade ejbFacade;
+    @Autowired
+    private FamilleService ejbFacade;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {

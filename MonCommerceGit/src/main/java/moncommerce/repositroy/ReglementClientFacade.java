@@ -10,23 +10,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import moncommerce.domain.model.ReglementClient;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author AHMED
  */
-@Stateless
-public class ReglementClientFacade extends AbstractFacade<ReglementClient> {
-    @PersistenceContext(unitName = "com.ppp_MonCommerceGit_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public ReglementClientFacade() {
-        super(ReglementClient.class);
-    }
+public interface ReglementClientFacade extends JpaRepository<ReglementClient,Long> {
     
 }

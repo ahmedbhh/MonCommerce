@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,8 +33,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "famille", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Libelle"})})
+@Table(name = "famille")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Famille.findAll", query = "SELECT f FROM Famille f"),
@@ -47,21 +45,21 @@ public class Famille implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDFamille", nullable = false)
+    @Column(name = "IDFamille")
     private Long iDFamille;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "Libelle", nullable = false, length = 20)
+    @Column(name = "Libelle")
     private String libelle;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "famille", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "famille", fetch = FetchType.LAZY)
     private Collection<Produit> produitCollection;
-    @OneToMany(mappedBy = "famillesup", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "famillesup", fetch = FetchType.LAZY)
     private Collection<Sousfamille> sousfamilleCollection;
 
     public Famille() {

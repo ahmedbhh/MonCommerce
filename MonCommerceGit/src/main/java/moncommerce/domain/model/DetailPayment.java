@@ -45,29 +45,29 @@ public class DetailPayment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDdetail_payment", nullable = false)
+    @Column(name = "IDdetail_payment")
     private Long iDdetailpayment;
     @Size(max = 20)
-    @Column(name = "Banque", length = 20)
+    @Column(name = "Banque")
     private String banque;
     @Size(max = 50)
-    @Column(name = "num_cheque", length = 50)
+    @Column(name = "num_cheque")
     private String numCheque;
     @Size(max = 50)
-    @Column(name = "Nom_proprietaire", length = 50)
+    @Column(name = "Nom_proprietaire")
     private String nomproprietaire;
     @Column(name = "Date_versement")
     @Temporal(TemporalType.DATE)
     private Date dateversement;
     @Size(max = 50)
-    @Column(name = "a_lordre", length = 50)
+    @Column(name = "a_lordre")
     private String aLordre;
-    @JoinColumn(name = "IDAccompte_Client", referencedColumnName = "IDAccompte_Client")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private AccompteClient iDAccompteClient;
     @JoinColumn(name = "IDReglement_Client", referencedColumnName = "IDReglement_Client")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ReglementClient iDReglementClient;
+    @JoinColumn(name = "IDAccompte_Client", referencedColumnName = "IDAccompte_Client")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AccompteClient iDAccompteClient;
 
     public DetailPayment() {
     }
@@ -124,20 +124,20 @@ public class DetailPayment implements Serializable {
         this.aLordre = aLordre;
     }
 
-    public AccompteClient getIDAccompteClient() {
-        return iDAccompteClient;
-    }
-
-    public void setIDAccompteClient(AccompteClient iDAccompteClient) {
-        this.iDAccompteClient = iDAccompteClient;
-    }
-
     public ReglementClient getIDReglementClient() {
         return iDReglementClient;
     }
 
     public void setIDReglementClient(ReglementClient iDReglementClient) {
         this.iDReglementClient = iDReglementClient;
+    }
+
+    public AccompteClient getIDAccompteClient() {
+        return iDAccompteClient;
+    }
+
+    public void setIDAccompteClient(AccompteClient iDAccompteClient) {
+        this.iDAccompteClient = iDAccompteClient;
     }
 
     @Override

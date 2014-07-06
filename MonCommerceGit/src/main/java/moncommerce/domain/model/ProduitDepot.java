@@ -44,23 +44,23 @@ public class ProduitDepot implements Serializable {
     protected ProduitDepotPK produitDepotPK;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "quantitee", nullable = false)
+    @Column(name = "quantitee")
     private long quantitee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "emplacement", nullable = false, length = 20)
+    @Column(name = "emplacement")
     private String emplacement;
-    @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Depot depot;
-    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Produit produit;
 
     public ProduitDepot() {

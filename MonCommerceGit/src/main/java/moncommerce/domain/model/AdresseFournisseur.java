@@ -52,33 +52,33 @@ public class AdresseFournisseur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDAdresse_Fournisseur", nullable = false)
+    @Column(name = "IDAdresse_Fournisseur")
     private Long iDAdresseFournisseur;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Adresse_1", length = 2147483647)
+    @Column(name = "Adresse_1")
     private String adresse1;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "adresse_2", length = 2147483647)
+    @Column(name = "adresse_2")
     private String adresse2;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "adresse_3", length = 2147483647)
+    @Column(name = "adresse_3")
     private String adresse3;
     @Column(name = "Code_Postal")
     private Integer codePostal;
     @Size(max = 20)
-    @Column(name = "Ville", length = 20)
+    @Column(name = "Ville")
     private String ville;
     @Size(max = 64)
-    @Column(name = "Pays", length = 64)
+    @Column(name = "Pays")
     private String pays;
     @Size(max = 50)
-    @Column(name = "Adresse_email", length = 50)
+    @Column(name = "Adresse_email")
     private String adresseemail;
     @Size(max = 50)
-    @Column(name = "Site_Internet", length = 50)
+    @Column(name = "Site_Internet")
     private String siteInternet;
     @Column(name = "Telephone")
     private Integer telephone;
@@ -90,11 +90,11 @@ public class AdresseFournisseur implements Serializable {
     private Integer portable;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @JoinColumn(name = "IDFournisseur", referencedColumnName = "IDFournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Fournisseur iDFournisseur;
 
     public AdresseFournisseur() {

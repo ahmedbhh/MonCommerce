@@ -53,26 +53,26 @@ public class AdresseFacturation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDAdresse", nullable = false)
+    @Column(name = "IDAdresse")
     private Long iDAdresse;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Adresse", length = 2147483647)
+    @Column(name = "Adresse")
     private String adresse;
     @Size(max = 10)
-    @Column(name = "Code_Postale", length = 10)
+    @Column(name = "Code_Postale")
     private String codePostale;
     @Size(max = 20)
-    @Column(name = "Ville", length = 20)
+    @Column(name = "Ville")
     private String ville;
     @Size(max = 64)
-    @Column(name = "Pays", length = 64)
+    @Column(name = "Pays")
     private String pays;
     @Size(max = 260)
-    @Column(name = "Adresse_email", length = 260)
+    @Column(name = "Adresse_email")
     private String adresseemail;
     @Size(max = 260)
-    @Column(name = "Site_Internet", length = 260)
+    @Column(name = "Site_Internet")
     private String siteInternet;
     @Column(name = "Telephone")
     private Integer telephone;
@@ -83,15 +83,15 @@ public class AdresseFacturation implements Serializable {
     @Column(name = "Portable")
     private Integer portable;
     @Size(max = 50)
-    @Column(name = "Forme_juridique", length = 50)
+    @Column(name = "Forme_juridique")
     private String formejuridique;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @JoinColumn(name = "IDClient", referencedColumnName = "IDClient")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client iDClient;
 
     public AdresseFacturation() {

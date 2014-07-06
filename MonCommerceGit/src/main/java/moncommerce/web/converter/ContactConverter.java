@@ -1,21 +1,21 @@
 package moncommerce.web.converter;
 
 import moncommerce.domain.model.Contact;
-import moncommerce.repositroy.ContactFacade;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import moncommerce.service.ContactService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
 public class ContactConverter implements Converter {
 
-    @EJB
-    private ContactFacade ejbFacade;
+    @Autowired
+    private ContactService ejbFacade;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {

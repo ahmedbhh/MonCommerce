@@ -49,40 +49,40 @@ public class CommandeProduit implements Serializable {
     protected CommandeProduitPK commandeProduitPK;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "quantitee", nullable = false)
+    @Column(name = "quantitee")
     private long quantitee;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Column(name = "PrixAchatHT", nullable = false, precision = 24, scale = 6)
+    @Column(name = "PrixAchatHT")
     private BigDecimal prixAchatHT;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Remise", nullable = false, precision = 24, scale = 6)
+    @Column(name = "Remise")
     private BigDecimal remise;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Remise_total", nullable = false, precision = 24, scale = 6)
+    @Column(name = "Remise_total")
     private BigDecimal remisetotal;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "tva", nullable = false)
+    @Column(name = "tva")
     private double tva;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "Description", nullable = false, length = 50)
+    @Column(name = "Description")
     private String description;
-    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Produit produit;
-    @JoinColumn(name = "IDCommande_fournisseur", referencedColumnName = "IDCommande_fournisseur", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDCommande_fournisseur", referencedColumnName = "IDCommande_fournisseur", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Commande commande;
 
     public CommandeProduit() {

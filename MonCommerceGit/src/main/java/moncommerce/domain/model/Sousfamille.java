@@ -45,17 +45,17 @@ public class Sousfamille implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "Libelle", nullable = false, length = 20)
+    @Column(name = "Libelle")
     private String libelle;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "sousfamille", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "sousfamille", fetch = FetchType.LAZY)
     private Collection<Produit> produitCollection;
     @JoinColumn(name = "Famille_sup", referencedColumnName = "Libelle")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Famille famillesup;
 
     public Sousfamille() {

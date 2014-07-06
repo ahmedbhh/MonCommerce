@@ -46,32 +46,32 @@ public class ContactFournisseurs implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDContact_fournisseurs", nullable = false)
+    @Column(name = "IDContact_fournisseurs")
     private Long iDContactfournisseurs;
     @Size(max = 50)
-    @Column(name = "Nom", length = 50)
+    @Column(name = "Nom")
     private String nom;
     @Column(name = "Portable")
     private Integer portable;
     @Column(name = "Telephone")
     private Integer telephone;
     @Size(max = 50)
-    @Column(name = "Adresse_email", length = 50)
+    @Column(name = "Adresse_email")
     private String adresseemail;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
+    @JoinColumn(name = "IDTitre_Contact", referencedColumnName = "IDTitre_Contact")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TitreContact iDTitreContact;
     @JoinColumn(name = "IDFournisseur", referencedColumnName = "IDFournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Fournisseur iDFournisseur;
     @JoinColumn(name = "IDFonction_Contact", referencedColumnName = "IDFonction_Contact")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private FonctionContact iDFonctionContact;
-    @JoinColumn(name = "IDTitre_Contact", referencedColumnName = "IDTitre_Contact")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private TitreContact iDTitreContact;
 
     public ContactFournisseurs() {
     }
@@ -133,6 +133,14 @@ public class ContactFournisseurs implements Serializable {
         this.dateHeure = dateHeure;
     }
 
+    public TitreContact getIDTitreContact() {
+        return iDTitreContact;
+    }
+
+    public void setIDTitreContact(TitreContact iDTitreContact) {
+        this.iDTitreContact = iDTitreContact;
+    }
+
     public Fournisseur getIDFournisseur() {
         return iDFournisseur;
     }
@@ -147,14 +155,6 @@ public class ContactFournisseurs implements Serializable {
 
     public void setIDFonctionContact(FonctionContact iDFonctionContact) {
         this.iDFonctionContact = iDFonctionContact;
-    }
-
-    public TitreContact getIDTitreContact() {
-        return iDTitreContact;
-    }
-
-    public void setIDTitreContact(TitreContact iDTitreContact) {
-        this.iDTitreContact = iDTitreContact;
     }
 
     @Override

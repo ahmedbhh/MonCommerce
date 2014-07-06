@@ -20,11 +20,11 @@ import javax.validation.constraints.NotNull;
 public class ProduitCodeTarifPK implements Serializable {
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDCode_tarif", nullable = false)
+    @Column(name = "IDCode_tarif")
     private long iDCodetarif;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDProduit", nullable = false)
+    @Column(name = "IDProduit")
     private long iDProduit;
 
     public ProduitCodeTarifPK() {

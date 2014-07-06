@@ -25,7 +25,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,8 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "depot", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "depot")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Depot.findAll", query = "SELECT d FROM Depot d"),
@@ -55,14 +53,14 @@ public class Depot implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDdepot", nullable = false)
+    @Column(name = "IDdepot")
     private Long iDdepot;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Adresse", length = 2147483647)
+    @Column(name = "Adresse")
     private String adresse;
     @Column(name = "Fax")
     private Integer fax;
@@ -71,26 +69,26 @@ public class Depot implements Serializable {
     @Column(name = "Surface")
     private Integer surface;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "coutLoyer", precision = 24, scale = 6)
+    @Column(name = "coutLoyer")
     private BigDecimal coutLoyer;
-    @Column(name = "autre_charge", precision = 24, scale = 6)
+    @Column(name = "autre_charge")
     private BigDecimal autreCharge;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "idDepotRecepteur", fetch = FetchType.LAZY)
     private Collection<Bondetransfert> bondetransfertCollection;
-    @OneToMany(mappedBy = "idDepotRecepteur", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
     private Collection<Bondetransfert> bondetransfertCollection1;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
     private Collection<Caisse> caisseCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "depot", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "depot", fetch = FetchType.LAZY)
     private Collection<ProduitDepot> produitDepotCollection;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
     private Collection<Bonentree> bonentreeCollection;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
     private Collection<Bondesortie> bondesortieCollection;
 
     public Depot() {

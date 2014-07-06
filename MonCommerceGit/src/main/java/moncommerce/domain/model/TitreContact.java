@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -30,8 +29,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "titre_contact", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Libelle"})})
+@Table(name = "titre_contact")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TitreContact.findAll", query = "SELECT t FROM TitreContact t"),
@@ -42,14 +40,14 @@ public class TitreContact implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDTitre_Contact", nullable = false)
+    @Column(name = "IDTitre_Contact")
     private Long iDTitreContact;
     @Size(max = 20)
-    @Column(name = "Libelle", length = 20)
+    @Column(name = "Libelle")
     private String libelle;
-    @OneToMany(mappedBy = "iDTitreContact", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDTitreContact", fetch = FetchType.LAZY)
     private Collection<Contact> contactCollection;
-    @OneToMany(mappedBy = "iDTitreContact", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDTitreContact", fetch = FetchType.LAZY)
     private Collection<ContactFournisseurs> contactFournisseursCollection;
 
     public TitreContact() {

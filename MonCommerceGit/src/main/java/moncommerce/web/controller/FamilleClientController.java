@@ -7,13 +7,17 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import moncommerce.service.FamilleClientService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "familleClientController")
 @ViewScoped
 public class FamilleClientController extends AbstractController<FamilleClient> implements Serializable {
 
-    @EJB
-    private FamilleClientFacade ejbFacade;
+    @Autowired
+    private FamilleClientService ejbFacade;
 
     @PostConstruct
     @Override

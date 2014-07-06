@@ -22,7 +22,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,9 +33,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "tva", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"tva"}),
-    @UniqueConstraint(columnNames = {"Libelle"})})
+@Table(name = "tva")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Tva.findAll", query = "SELECT t FROM Tva t"),
@@ -49,21 +46,21 @@ public class Tva implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDTVA", nullable = false)
+    @Column(name = "IDTVA")
     private Long idtva;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "tva", nullable = false)
+    @Column(name = "tva")
     private double tva;
     @Size(max = 20)
-    @Column(name = "Libelle", length = 20)
+    @Column(name = "Libelle")
     private String libelle;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "tva", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "tva", fetch = FetchType.LAZY)
     private Collection<Produit> produitCollection;
 
     public Tva() {

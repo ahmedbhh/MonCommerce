@@ -1,19 +1,21 @@
 package moncommerce.web.controller;
 
 import moncommerce.domain.model.Tva;
-import moncommerce.repositroy.TvaFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import moncommerce.service.TvaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "tvaController")
 @ViewScoped
 public class TvaController extends AbstractController<Tva> implements Serializable {
 
-    @EJB
-    private TvaFacade ejbFacade;
+    @Autowired
+    private TvaService ejbFacade;
 
     @PostConstruct
     @Override

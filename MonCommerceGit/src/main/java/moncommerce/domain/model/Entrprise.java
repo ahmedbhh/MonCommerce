@@ -17,7 +17,6 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -26,8 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author AHMED
  */
 @Entity
-@Table(name = "entrprise", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Nom"})})
+@Table(name = "entrprise")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Entrprise.findAll", query = "SELECT e FROM Entrprise e"),
@@ -42,43 +40,43 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Entrprise.findByPays", query = "SELECT e FROM Entrprise e WHERE e.pays = :pays"),
     @NamedQuery(name = "Entrprise.findByMatriculefiscale", query = "SELECT e FROM Entrprise e WHERE e.matriculefiscale = :matriculefiscale")})
 public class Entrprise implements Serializable {
+    @Lob
+    @Column(name = "logo")
+    private byte[] logo;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDEntrprise", nullable = false)
+    @Column(name = "IDEntrprise")
     private Long iDEntrprise;
     @Size(max = 50)
-    @Column(name = "Nom", length = 50)
+    @Column(name = "Nom")
     private String nom;
     @Column(name = "Telephone")
     private Integer telephone;
     @Column(name = "Fax")
     private Integer fax;
-    @Lob
-    @Column(name = "logo")
-    private byte[] logo;
     @Size(max = 50)
-    @Column(name = "slogan", length = 50)
+    @Column(name = "slogan")
     private String slogan;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 50)
-    @Column(name = "email", length = 50)
+    @Column(name = "email")
     private String email;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Adresse", length = 2147483647)
+    @Column(name = "Adresse")
     private String adresse;
     @Column(name = "Code_Postal")
     private Integer codePostal;
     @Size(max = 20)
-    @Column(name = "Ville", length = 20)
+    @Column(name = "Ville")
     private String ville;
     @Size(max = 64)
-    @Column(name = "Pays", length = 64)
+    @Column(name = "Pays")
     private String pays;
     @Size(max = 30)
-    @Column(name = "Matricule_fiscale", length = 30)
+    @Column(name = "Matricule_fiscale")
     private String matriculefiscale;
 
     public Entrprise() {
@@ -118,14 +116,6 @@ public class Entrprise implements Serializable {
 
     public void setFax(Integer fax) {
         this.fax = fax;
-    }
-
-    public byte[] getLogo() {
-        return logo;
-    }
-
-    public void setLogo(byte[] logo) {
-        this.logo = logo;
     }
 
     public String getSlogan() {
@@ -207,6 +197,14 @@ public class Entrprise implements Serializable {
     @Override
     public String toString() {
         return "moncommerce.domain.model.Entrprise[ iDEntrprise=" + iDEntrprise + " ]";
+    }
+
+    public byte[] getLogo() {
+        return logo;
+    }
+
+    public void setLogo(byte[] logo) {
+        this.logo = logo;
     }
     
 }

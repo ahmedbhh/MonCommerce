@@ -26,7 +26,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,8 +37,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "reglement_fournisseurs", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "reglement_fournisseurs")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ReglementFournisseurs.findAll", query = "SELECT r FROM ReglementFournisseurs r"),
@@ -55,34 +53,34 @@ public class ReglementFournisseurs implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDReglement_fournisseurs", nullable = false)
+    @Column(name = "IDReglement_fournisseurs")
     private Long iDReglementfournisseurs;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Montant", precision = 24, scale = 6)
+    @Column(name = "Montant")
     private BigDecimal montant;
     @Column(name = "validee")
     private Short validee;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
-    @Column(name = "Escompte", precision = 24, scale = 6)
+    @Column(name = "Escompte")
     private BigDecimal escompte;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reglementFournisseurs", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reglementFournisseurs", fetch = FetchType.LAZY)
     private Collection<FactureFournisseurReglementFournisseurs> factureFournisseurReglementFournisseursCollection;
-    @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private ModeDeReglement iDModedereglement;
     @JoinColumn(name = "IDFournisseur", referencedColumnName = "IDFournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Fournisseur iDFournisseur;
+    @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ModeDeReglement iDModedereglement;
 
     public ReglementFournisseurs() {
     }
@@ -162,20 +160,20 @@ public class ReglementFournisseurs implements Serializable {
         this.factureFournisseurReglementFournisseursCollection = factureFournisseurReglementFournisseursCollection;
     }
 
-    public ModeDeReglement getIDModedereglement() {
-        return iDModedereglement;
-    }
-
-    public void setIDModedereglement(ModeDeReglement iDModedereglement) {
-        this.iDModedereglement = iDModedereglement;
-    }
-
     public Fournisseur getIDFournisseur() {
         return iDFournisseur;
     }
 
     public void setIDFournisseur(Fournisseur iDFournisseur) {
         this.iDFournisseur = iDFournisseur;
+    }
+
+    public ModeDeReglement getIDModedereglement() {
+        return iDModedereglement;
+    }
+
+    public void setIDModedereglement(ModeDeReglement iDModedereglement) {
+        this.iDModedereglement = iDModedereglement;
     }
 
     @Override

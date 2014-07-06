@@ -52,18 +52,18 @@ public class LigneCommandeClient implements Serializable {
     @Column(name = "quantitee")
     private Integer quantitee;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "prixUnitaireHT", precision = 24, scale = 6)
+    @Column(name = "prixUnitaireHT")
     private BigDecimal prixUnitaireHT;
-    @Column(name = "Remise", precision = 24, scale = 6)
+    @Column(name = "Remise")
     private BigDecimal remise;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Description", length = 2147483647)
+    @Column(name = "Description")
     private String description;
     @Column(name = "Poids_Unitaire_Brute")
     private Integer poidsUnitaireBrute;
@@ -73,11 +73,11 @@ public class LigneCommandeClient implements Serializable {
     private Integer nombreParcolis;
     @Column(name = "nombre_Colis")
     private Integer nombreColis;
-    @JoinColumn(name = "IDCommande_Client", referencedColumnName = "IDCommande_Client", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDCommande_Client", referencedColumnName = "IDCommande_Client", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private CommandeClient commandeClient;
-    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Produit produit;
 
     public LigneCommandeClient() {

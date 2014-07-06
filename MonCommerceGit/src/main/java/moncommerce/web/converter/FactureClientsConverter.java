@@ -1,21 +1,21 @@
 package moncommerce.web.converter;
 
 import moncommerce.domain.model.FactureClients;
-import moncommerce.repositroy.FactureClientsFacade;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import moncommerce.service.FactureClientsService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
 public class FactureClientsConverter implements Converter {
 
-    @EJB
-    private FactureClientsFacade ejbFacade;
+    @Autowired
+    private FactureClientsService ejbFacade;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {

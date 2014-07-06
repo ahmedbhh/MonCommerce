@@ -26,7 +26,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,8 +37,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "bonentree", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "bonentree")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Bonentree.findAll", query = "SELECT b FROM Bonentree b"),
@@ -59,49 +57,49 @@ public class Bonentree implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDBonEntree", nullable = false)
+    @Column(name = "IDBonEntree")
     private Long iDBonEntree;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
     @Column(name = "validee")
     private Short validee;
     @Size(max = 100)
-    @Column(name = "code_Barres", length = 100)
+    @Column(name = "code_Barres")
     private String codeBarres;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "TotalHT", precision = 24, scale = 6)
+    @Column(name = "TotalHT")
     private BigDecimal totalHT;
-    @Column(name = "Totalttc", precision = 24, scale = 6)
+    @Column(name = "Totalttc")
     private BigDecimal totalttc;
-    @Column(name = "TotalTVA", precision = 24, scale = 6)
+    @Column(name = "TotalTVA")
     private BigDecimal totalTVA;
-    @Column(name = "Remise_total", precision = 24, scale = 6)
+    @Column(name = "Remise_total")
     private BigDecimal remisetotal;
     @Column(name = "soldee")
     private Short soldee;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bonentree", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bonentree", fetch = FetchType.LAZY)
     private Collection<BonentreeProduit> bonentreeProduitCollection;
+    @JoinColumn(name = "IDCommande_fournisseur", referencedColumnName = "IDCommande_fournisseur")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Commande iDCommandefournisseur;
     @JoinColumn(name = "IDFacture_Fournisseur", referencedColumnName = "IDFacture_Fournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private FactureFournisseur iDFactureFournisseur;
     @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Depot iDdepot;
     @JoinColumn(name = "IDFournisseur", referencedColumnName = "IDFournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Fournisseur iDFournisseur;
-    @JoinColumn(name = "IDCommande_fournisseur", referencedColumnName = "IDCommande_fournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Commande iDCommandefournisseur;
 
     public Bonentree() {
     }
@@ -213,6 +211,14 @@ public class Bonentree implements Serializable {
         this.bonentreeProduitCollection = bonentreeProduitCollection;
     }
 
+    public Commande getIDCommandefournisseur() {
+        return iDCommandefournisseur;
+    }
+
+    public void setIDCommandefournisseur(Commande iDCommandefournisseur) {
+        this.iDCommandefournisseur = iDCommandefournisseur;
+    }
+
     public FactureFournisseur getIDFactureFournisseur() {
         return iDFactureFournisseur;
     }
@@ -235,14 +241,6 @@ public class Bonentree implements Serializable {
 
     public void setIDFournisseur(Fournisseur iDFournisseur) {
         this.iDFournisseur = iDFournisseur;
-    }
-
-    public Commande getIDCommandefournisseur() {
-        return iDCommandefournisseur;
-    }
-
-    public void setIDCommandefournisseur(Commande iDCommandefournisseur) {
-        this.iDCommandefournisseur = iDCommandefournisseur;
     }
 
     @Override

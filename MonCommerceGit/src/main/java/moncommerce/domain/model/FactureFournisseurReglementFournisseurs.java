@@ -41,17 +41,17 @@ public class FactureFournisseurReglementFournisseurs implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "Type", nullable = false, length = 20)
+    @Column(name = "Type")
     private String type;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "soldee", nullable = false)
+    @Column(name = "soldee")
     private short soldee;
-    @JoinColumn(name = "IDFacture_Fournisseur", referencedColumnName = "IDFacture_Fournisseur", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDFacture_Fournisseur", referencedColumnName = "IDFacture_Fournisseur", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private FactureFournisseur factureFournisseur;
-    @JoinColumn(name = "IDReglement_fournisseurs", referencedColumnName = "IDReglement_fournisseurs", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDReglement_fournisseurs", referencedColumnName = "IDReglement_fournisseurs", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private ReglementFournisseurs reglementFournisseurs;
 
     public FactureFournisseurReglementFournisseurs() {

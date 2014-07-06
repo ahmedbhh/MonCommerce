@@ -1,19 +1,21 @@
 package moncommerce.web.controller;
 
 import moncommerce.domain.model.ReglementFournisseurs;
-import moncommerce.repositroy.ReglementFournisseursFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import moncommerce.service.ReglementFournisseursService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "reglementFournisseursController")
 @ViewScoped
 public class ReglementFournisseursController extends AbstractController<ReglementFournisseurs> implements Serializable {
 
-    @EJB
-    private ReglementFournisseursFacade ejbFacade;
+    @Autowired
+    private ReglementFournisseursService ejbFacade;
 
     @PostConstruct
     @Override

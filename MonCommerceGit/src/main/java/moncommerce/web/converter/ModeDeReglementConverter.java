@@ -1,21 +1,25 @@
 package moncommerce.web.converter;
 
 import moncommerce.domain.model.ModeDeReglement;
-import moncommerce.repositroy.ModeDeReglementFacade;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import moncommerce.service.ModeDeReglementService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@ManagedBean
+@FacesConverter("entrpriseConverter")
+@Component
+
 public class ModeDeReglementConverter implements Converter {
 
-    @EJB
-    private ModeDeReglementFacade ejbFacade;
+    @Autowired
+    private ModeDeReglementService ejbFacade;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {

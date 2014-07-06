@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -26,7 +27,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,8 +38,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "reglement_client", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "reglement_client")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ReglementClient.findAll", query = "SELECT r FROM ReglementClient r"),
@@ -55,35 +54,38 @@ public class ReglementClient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDReglement_Client", nullable = false)
+    @Column(name = "IDReglement_Client")
     private Long iDReglementClient;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Montant", precision = 24, scale = 6)
+    @Column(name = "Montant")
     private BigDecimal montant;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Column(name = "validee")
     private Short validee;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
-    @Column(name = "Escompte", precision = 24, scale = 6)
+    @Column(name = "Escompte")
     private BigDecimal escompte;
-    @ManyToMany(mappedBy = "reglementClientCollection", fetch = FetchType.EAGER)
+    @JoinTable(name = "facture_clients_reglement_client", joinColumns = {
+        @JoinColumn(name = "IDReglement_Client", referencedColumnName = "IDReglement_Client")}, inverseJoinColumns = {
+        @JoinColumn(name = "IDFacture_Clients", referencedColumnName = "IDFacture_Clients")})
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<FactureClients> factureClientsCollection;
-    @JoinColumn(name = "IDClient", referencedColumnName = "IDClient")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Client iDClient;
     @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ModeDeReglement iDModedereglement;
-    @OneToMany(mappedBy = "iDReglementClient", fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDClient", referencedColumnName = "IDClient")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Client iDClient;
+    @OneToMany(mappedBy = "iDReglementClient", fetch = FetchType.LAZY)
     private Collection<DetailPayment> detailPaymentCollection;
 
     public ReglementClient() {
@@ -164,20 +166,20 @@ public class ReglementClient implements Serializable {
         this.factureClientsCollection = factureClientsCollection;
     }
 
-    public Client getIDClient() {
-        return iDClient;
-    }
-
-    public void setIDClient(Client iDClient) {
-        this.iDClient = iDClient;
-    }
-
     public ModeDeReglement getIDModedereglement() {
         return iDModedereglement;
     }
 
     public void setIDModedereglement(ModeDeReglement iDModedereglement) {
         this.iDModedereglement = iDModedereglement;
+    }
+
+    public Client getIDClient() {
+        return iDClient;
+    }
+
+    public void setIDClient(Client iDClient) {
+        this.iDClient = iDClient;
     }
 
     @XmlTransient

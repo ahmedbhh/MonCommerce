@@ -1,19 +1,21 @@
 package moncommerce.web.controller;
 
 import moncommerce.domain.model.CommandeClient;
-import moncommerce.repositroy.CommandeClientFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import moncommerce.service.CommandeClientService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "commandeClientController")
 @ViewScoped
 public class CommandeClientController extends AbstractController<CommandeClient> implements Serializable {
 
-    @EJB
-    private CommandeClientFacade ejbFacade;
+    @Autowired
+    private CommandeClientService ejbFacade;
 
     @PostConstruct
     @Override

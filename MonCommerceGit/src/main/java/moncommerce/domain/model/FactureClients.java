@@ -19,7 +19,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -29,7 +28,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -41,8 +39,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "facture_clients", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "facture_clients")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FactureClients.findAll", query = "SELECT f FROM FactureClients f"),
@@ -64,66 +61,63 @@ public class FactureClients implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDFacture_Clients", nullable = false)
+    @Column(name = "IDFacture_Clients")
     private Long iDFactureClients;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
     @Size(max = 50)
-    @Column(name = "code_Barres", length = 50)
+    @Column(name = "code_Barres")
     private String codeBarres;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "remarque", length = 2147483647)
+    @Column(name = "remarque")
     private String remarque;
     @Column(name = "echeance")
     @Temporal(TemporalType.DATE)
     private Date echeance;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Column(name = "validee")
     private Short validee;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Remise_total", precision = 24, scale = 6)
+    @Column(name = "Remise_total")
     private BigDecimal remisetotal;
-    @Column(name = "TotalTVA", precision = 24, scale = 6)
+    @Column(name = "TotalTVA")
     private BigDecimal totalTVA;
-    @Column(name = "TotalHT", precision = 24, scale = 6)
+    @Column(name = "TotalHT")
     private BigDecimal totalHT;
-    @Column(name = "Totalttc", precision = 24, scale = 6)
+    @Column(name = "Totalttc")
     private BigDecimal totalttc;
     @Column(name = "soldee")
     private Short soldee;
     @Column(name = "Tembree")
     private Short tembree;
-    @JoinTable(name = "facture_clients_reglement_client", joinColumns = {
-        @JoinColumn(name = "IDFacture_Clients", referencedColumnName = "IDFacture_Clients", nullable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "IDReglement_Client", referencedColumnName = "IDReglement_Client", nullable = false)})
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "factureClientsCollection", fetch = FetchType.LAZY)
     private Collection<ReglementClient> reglementClientCollection;
-    @OneToMany(mappedBy = "iDFactureClients", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFactureClients", fetch = FetchType.LAZY)
     private Collection<Bondesortie> bondesortieCollection;
+    @JoinColumn(name = "IDCaisse", referencedColumnName = "IDCaisse")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Caisse iDCaisse;
     @JoinColumn(name = "IDCommande_Client", referencedColumnName = "IDCommande_Client")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private CommandeClient iDCommandeClient;
     @JoinColumn(name = "IDClient", referencedColumnName = "IDClient")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client iDClient;
     @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ModeDeReglement iDModedereglement;
-    @JoinColumn(name = "IDCaisse", referencedColumnName = "IDCaisse")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Caisse iDCaisse;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "factureClients", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "factureClients", fetch = FetchType.LAZY)
     private Collection<FactureClientProduit> factureClientProduitCollection;
-    @OneToMany(mappedBy = "iDFactureClients", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFactureClients", fetch = FetchType.LAZY)
     private Collection<AccompteClient> accompteClientCollection;
 
     public FactureClients() {
@@ -270,6 +264,14 @@ public class FactureClients implements Serializable {
         this.bondesortieCollection = bondesortieCollection;
     }
 
+    public Caisse getIDCaisse() {
+        return iDCaisse;
+    }
+
+    public void setIDCaisse(Caisse iDCaisse) {
+        this.iDCaisse = iDCaisse;
+    }
+
     public CommandeClient getIDCommandeClient() {
         return iDCommandeClient;
     }
@@ -292,14 +294,6 @@ public class FactureClients implements Serializable {
 
     public void setIDModedereglement(ModeDeReglement iDModedereglement) {
         this.iDModedereglement = iDModedereglement;
-    }
-
-    public Caisse getIDCaisse() {
-        return iDCaisse;
-    }
-
-    public void setIDCaisse(Caisse iDCaisse) {
-        this.iDCaisse = iDCaisse;
     }
 
     @XmlTransient

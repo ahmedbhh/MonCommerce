@@ -26,7 +26,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,9 +37,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "client", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Nom"}),
-    @UniqueConstraint(columnNames = {"Matricule_fiscale"})})
+@Table(name = "client")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
@@ -56,51 +53,51 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDClient", nullable = false)
+    @Column(name = "IDClient")
     private Long iDClient;
     @Size(max = 50)
-    @Column(name = "Nom", length = 50)
+    @Column(name = "Nom")
     private String nom;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Obsersavation", length = 2147483647)
+    @Column(name = "Obsersavation")
     private String obsersavation;
     @Size(max = 50)
-    @Column(name = "Risque", length = 50)
+    @Column(name = "Risque")
     private String risque;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Encours", precision = 24, scale = 6)
+    @Column(name = "Encours")
     private BigDecimal encours;
     @Column(name = "bloquee")
     private Short bloquee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Size(max = 30)
-    @Column(name = "Matricule_fiscale", length = 30)
+    @Column(name = "Matricule_fiscale")
     private String matriculefiscale;
+    @JoinColumn(name = "IDMode_TVA", referencedColumnName = "IDMode_TVA")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ModeTva iDModeTVA;
     @JoinColumn(name = "IDCode_tarif", referencedColumnName = "IDCode_tarif")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private CodeTarif iDCodetarif;
     @JoinColumn(name = "IDFamille_client", referencedColumnName = "IDFamille_client")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private FamilleClient iDFamilleclient;
-    @JoinColumn(name = "IDMode_TVA", referencedColumnName = "IDMode_TVA")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private ModeTva iDModeTVA;
-    @OneToMany(mappedBy = "iDClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDClient", fetch = FetchType.LAZY)
     private Collection<Contact> contactCollection;
-    @OneToMany(mappedBy = "iDClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDClient", fetch = FetchType.LAZY)
     private Collection<AdresseFacturation> adresseFacturationCollection;
-    @OneToMany(mappedBy = "iDClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDClient", fetch = FetchType.LAZY)
     private Collection<ReglementClient> reglementClientCollection;
-    @OneToMany(mappedBy = "iDClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDClient", fetch = FetchType.LAZY)
     private Collection<CommandeClient> commandeClientCollection;
-    @OneToMany(mappedBy = "iDClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDClient", fetch = FetchType.LAZY)
     private Collection<Bondesortie> bondesortieCollection;
-    @OneToMany(mappedBy = "iDClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDClient", fetch = FetchType.LAZY)
     private Collection<FactureClients> factureClientsCollection;
 
     public Client() {
@@ -179,6 +176,14 @@ public class Client implements Serializable {
         this.matriculefiscale = matriculefiscale;
     }
 
+    public ModeTva getIDModeTVA() {
+        return iDModeTVA;
+    }
+
+    public void setIDModeTVA(ModeTva iDModeTVA) {
+        this.iDModeTVA = iDModeTVA;
+    }
+
     public CodeTarif getIDCodetarif() {
         return iDCodetarif;
     }
@@ -193,14 +198,6 @@ public class Client implements Serializable {
 
     public void setIDFamilleclient(FamilleClient iDFamilleclient) {
         this.iDFamilleclient = iDFamilleclient;
-    }
-
-    public ModeTva getIDModeTVA() {
-        return iDModeTVA;
-    }
-
-    public void setIDModeTVA(ModeTva iDModeTVA) {
-        this.iDModeTVA = iDModeTVA;
     }
 
     @XmlTransient

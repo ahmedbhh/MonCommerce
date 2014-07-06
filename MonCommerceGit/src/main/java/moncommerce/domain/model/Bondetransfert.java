@@ -25,7 +25,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,8 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "bondetransfert", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "bondetransfert")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Bondetransfert.findAll", query = "SELECT b FROM Bondetransfert b"),
@@ -54,16 +52,16 @@ public class Bondetransfert implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDBonDeTransfert", nullable = false)
+    @Column(name = "IDBonDeTransfert")
     private Long iDBonDeTransfert;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
     @Size(max = 100)
-    @Column(name = "code_Barres", length = 100)
+    @Column(name = "code_Barres")
     private String codeBarres;
     @Column(name = "Heure")
     @Temporal(TemporalType.TIME)
@@ -72,16 +70,16 @@ public class Bondetransfert implements Serializable {
     private Short validee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Depot iDdepot;
     @JoinColumn(name = "IdDepotRecepteur", referencedColumnName = "IDdepot")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Depot idDepotRecepteur;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bondetransfert", fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Depot iDdepot;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bondetransfert", fetch = FetchType.LAZY)
     private Collection<BondetransfertProduit> bondetransfertProduitCollection;
 
     public Bondetransfert() {
@@ -152,20 +150,20 @@ public class Bondetransfert implements Serializable {
         this.dateHeure = dateHeure;
     }
 
-    public Depot getIDdepot() {
-        return iDdepot;
-    }
-
-    public void setIDdepot(Depot iDdepot) {
-        this.iDdepot = iDdepot;
-    }
-
     public Depot getIdDepotRecepteur() {
         return idDepotRecepteur;
     }
 
     public void setIdDepotRecepteur(Depot idDepotRecepteur) {
         this.idDepotRecepteur = idDepotRecepteur;
+    }
+
+    public Depot getIDdepot() {
+        return iDdepot;
+    }
+
+    public void setIDdepot(Depot iDdepot) {
+        this.iDdepot = iDdepot;
     }
 
     @XmlTransient

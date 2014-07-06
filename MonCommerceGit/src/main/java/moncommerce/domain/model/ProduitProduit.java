@@ -42,18 +42,18 @@ public class ProduitProduit implements Serializable {
     protected ProduitProduitPK produitProduitPK;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "quantitee", nullable = false)
+    @Column(name = "quantitee")
     private long quantitee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @JoinColumn(name = "IDProduitComposant", referencedColumnName = "IDProduit", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDProduitComposant", referencedColumnName = "IDProduit", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Produit produit;
-    @JoinColumn(name = "IDProduitComposee", referencedColumnName = "IDProduit", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDProduitComposee", referencedColumnName = "IDProduit", insertable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Produit produit1;
 
     public ProduitProduit() {

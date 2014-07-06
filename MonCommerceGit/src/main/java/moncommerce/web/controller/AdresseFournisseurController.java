@@ -1,19 +1,20 @@
 package moncommerce.web.controller;
 
 import moncommerce.domain.model.AdresseFournisseur;
-import moncommerce.repositroy.AdresseFournisseurFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
+import moncommerce.service.AdresseFournisseurService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+@Controller
 @ManagedBean(name = "adresseFournisseurController")
 @ViewScoped
 public class AdresseFournisseurController extends AbstractController<AdresseFournisseur> implements Serializable {
 
-    @EJB
-    private AdresseFournisseurFacade ejbFacade;
+    @Autowired
+    private AdresseFournisseurService ejbFacade;
 
     @PostConstruct
     @Override

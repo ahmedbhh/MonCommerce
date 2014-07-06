@@ -27,7 +27,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -39,8 +38,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "commande_client", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "commande_client")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CommandeClient.findAll", query = "SELECT c FROM CommandeClient c"),
@@ -60,22 +58,22 @@ public class CommandeClient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDCommande_Client", nullable = false)
+    @Column(name = "IDCommande_Client")
     private Long iDCommandeClient;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "remarque", length = 2147483647)
+    @Column(name = "remarque")
     private String remarque;
     @Column(name = "echeance")
     @Temporal(TemporalType.DATE)
@@ -83,26 +81,26 @@ public class CommandeClient implements Serializable {
     @Column(name = "validee")
     private Short validee;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Remise_total", precision = 24, scale = 6)
+    @Column(name = "Remise_total")
     private BigDecimal remisetotal;
-    @Column(name = "TotalTVA", precision = 24, scale = 6)
+    @Column(name = "TotalTVA")
     private BigDecimal totalTVA;
-    @Column(name = "TotalHT", precision = 24, scale = 6)
+    @Column(name = "TotalHT")
     private BigDecimal totalHT;
-    @Column(name = "Totalttc", precision = 24, scale = 6)
+    @Column(name = "Totalttc")
     private BigDecimal totalttc;
     @Column(name = "soldee")
     private Short soldee;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandeClient", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandeClient", fetch = FetchType.LAZY)
     private Collection<LigneCommandeClient> ligneCommandeClientCollection;
     @JoinColumn(name = "IDClient", referencedColumnName = "IDClient")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client iDClient;
-    @OneToMany(mappedBy = "iDCommandeClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDCommandeClient", fetch = FetchType.LAZY)
     private Collection<Bondesortie> bondesortieCollection;
-    @OneToMany(mappedBy = "iDCommandeClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDCommandeClient", fetch = FetchType.LAZY)
     private Collection<FactureClients> factureClientsCollection;
-    @OneToMany(mappedBy = "iDCommandeClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDCommandeClient", fetch = FetchType.LAZY)
     private Collection<AccompteClient> accompteClientCollection;
 
     public CommandeClient() {

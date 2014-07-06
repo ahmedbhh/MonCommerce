@@ -23,7 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -35,8 +34,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "forme_juridique", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Libelle"})})
+@Table(name = "forme_juridique")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FormeJuridique.findAll", query = "SELECT f FROM FormeJuridique f"),
@@ -48,21 +46,21 @@ public class FormeJuridique implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDForme_Juridique", nullable = false)
+    @Column(name = "IDForme_Juridique")
     private Long iDFormeJuridique;
     @Size(max = 20)
-    @Column(name = "Libelle", length = 20)
+    @Column(name = "Libelle")
     private String libelle;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Description", length = 2147483647)
+    @Column(name = "Description")
     private String description;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "iDFormeJuridique", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFormeJuridique", fetch = FetchType.LAZY)
     private Collection<Fournisseur> fournisseurCollection;
 
     public FormeJuridique() {

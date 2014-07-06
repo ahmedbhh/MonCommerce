@@ -27,7 +27,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -39,8 +38,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "bondesortie", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "bondesortie")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Bondesortie.findAll", query = "SELECT b FROM Bondesortie b"),
@@ -60,52 +58,52 @@ public class Bondesortie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDBondeSortie", nullable = false)
+    @Column(name = "IDBondeSortie")
     private Long iDBondeSortie;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "observation", length = 2147483647)
+    @Column(name = "observation")
     private String observation;
     @Column(name = "validee")
     private Short validee;
     @Size(max = 50)
-    @Column(name = "code_Barres", length = 50)
+    @Column(name = "code_Barres")
     private String codeBarres;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Remise_total", precision = 24, scale = 6)
+    @Column(name = "Remise_total")
     private BigDecimal remisetotal;
-    @Column(name = "TotalTVA", precision = 24, scale = 6)
+    @Column(name = "TotalTVA")
     private BigDecimal totalTVA;
-    @Column(name = "TotalHT", precision = 24, scale = 6)
+    @Column(name = "TotalHT")
     private BigDecimal totalHT;
-    @Column(name = "Totalttc", precision = 24, scale = 6)
+    @Column(name = "Totalttc")
     private BigDecimal totalttc;
     @Column(name = "soldee")
     private Short soldee;
+    @JoinColumn(name = "IDFacture_Clients", referencedColumnName = "IDFacture_Clients")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private FactureClients iDFactureClients;
     @JoinColumn(name = "IDCommande_Client", referencedColumnName = "IDCommande_Client")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private CommandeClient iDCommandeClient;
     @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Depot iDdepot;
     @JoinColumn(name = "IDClient", referencedColumnName = "IDClient")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client iDClient;
-    @JoinColumn(name = "IDFacture_Clients", referencedColumnName = "IDFacture_Clients")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private FactureClients iDFactureClients;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bondesortie", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bondesortie", fetch = FetchType.LAZY)
     private Collection<BondesortieProduit> bondesortieProduitCollection;
 
     public Bondesortie() {
@@ -216,6 +214,14 @@ public class Bondesortie implements Serializable {
         this.soldee = soldee;
     }
 
+    public FactureClients getIDFactureClients() {
+        return iDFactureClients;
+    }
+
+    public void setIDFactureClients(FactureClients iDFactureClients) {
+        this.iDFactureClients = iDFactureClients;
+    }
+
     public CommandeClient getIDCommandeClient() {
         return iDCommandeClient;
     }
@@ -238,14 +244,6 @@ public class Bondesortie implements Serializable {
 
     public void setIDClient(Client iDClient) {
         this.iDClient = iDClient;
-    }
-
-    public FactureClients getIDFactureClients() {
-        return iDFactureClients;
-    }
-
-    public void setIDFactureClients(FactureClients iDFactureClients) {
-        this.iDFactureClients = iDFactureClients;
     }
 
     @XmlTransient

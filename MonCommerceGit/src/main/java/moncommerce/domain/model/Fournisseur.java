@@ -25,7 +25,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,8 +36,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "fournisseur", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Nom"})})
+@Table(name = "fournisseur")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Fournisseur.findAll", query = "SELECT f FROM Fournisseur f"),
@@ -53,42 +51,42 @@ public class Fournisseur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDFournisseur", nullable = false)
+    @Column(name = "IDFournisseur")
     private Long iDFournisseur;
     @Size(max = 50)
-    @Column(name = "Nom", length = 50)
+    @Column(name = "Nom")
     private String nom;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Credit_Accorde", precision = 24, scale = 6)
+    @Column(name = "Credit_Accorde")
     private BigDecimal creditAccorde;
     @Size(max = 50)
-    @Column(name = "Risque", length = 50)
+    @Column(name = "Risque")
     private String risque;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Size(max = 30)
-    @Column(name = "Matricule_fiscale", length = 30)
+    @Column(name = "Matricule_fiscale")
     private String matriculefiscale;
-    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.LAZY)
     private Collection<AdresseFournisseur> adresseFournisseurCollection;
-    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.LAZY)
     private Collection<ContactFournisseurs> contactFournisseursCollection;
-    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.LAZY)
     private Collection<ReglementFournisseurs> reglementFournisseursCollection;
-    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.LAZY)
     private Collection<FactureFournisseur> factureFournisseurCollection;
-    @JoinColumn(name = "IDForme_Juridique", referencedColumnName = "IDForme_Juridique")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private FormeJuridique iDFormeJuridique;
     @JoinColumn(name = "IDFamille_Fournisseur", referencedColumnName = "IDFamille_Fournisseur")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private FamilleFournisseur iDFamilleFournisseur;
-    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.EAGER)
+    @JoinColumn(name = "IDForme_Juridique", referencedColumnName = "IDForme_Juridique")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private FormeJuridique iDFormeJuridique;
+    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.LAZY)
     private Collection<Bonentree> bonentreeCollection;
-    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDFournisseur", fetch = FetchType.LAZY)
     private Collection<Commande> commandeCollection;
 
     public Fournisseur() {
@@ -191,20 +189,20 @@ public class Fournisseur implements Serializable {
         this.factureFournisseurCollection = factureFournisseurCollection;
     }
 
-    public FormeJuridique getIDFormeJuridique() {
-        return iDFormeJuridique;
-    }
-
-    public void setIDFormeJuridique(FormeJuridique iDFormeJuridique) {
-        this.iDFormeJuridique = iDFormeJuridique;
-    }
-
     public FamilleFournisseur getIDFamilleFournisseur() {
         return iDFamilleFournisseur;
     }
 
     public void setIDFamilleFournisseur(FamilleFournisseur iDFamilleFournisseur) {
         this.iDFamilleFournisseur = iDFamilleFournisseur;
+    }
+
+    public FormeJuridique getIDFormeJuridique() {
+        return iDFormeJuridique;
+    }
+
+    public void setIDFormeJuridique(FormeJuridique iDFormeJuridique) {
+        this.iDFormeJuridique = iDFormeJuridique;
     }
 
     @XmlTransient

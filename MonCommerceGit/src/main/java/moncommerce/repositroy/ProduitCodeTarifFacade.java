@@ -6,27 +6,14 @@
 
 package moncommerce.repositroy;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import moncommerce.domain.model.ProduitCodeTarif;
+import moncommerce.domain.model.ProduitCodeTarifPK;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author AHMED
  */
-@Stateless
-public class ProduitCodeTarifFacade extends AbstractFacade<ProduitCodeTarif> {
-    @PersistenceContext(unitName = "com.ppp_MonCommerceGit_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public ProduitCodeTarifFacade() {
-        super(ProduitCodeTarif.class);
-    }
+public interface ProduitCodeTarifFacade extends JpaRepository<ProduitCodeTarif,ProduitCodeTarifPK> {
     
 }

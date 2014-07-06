@@ -48,30 +48,30 @@ public class AccompteClient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDAccompte_Client", nullable = false)
+    @Column(name = "IDAccompte_Client")
     private Long iDAccompteClient;
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "Montant", precision = 24, scale = 6)
+    @Column(name = "Montant")
     private BigDecimal montant;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "iDAccompteClient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDAccompteClient", fetch = FetchType.LAZY)
     private Collection<DetailPayment> detailPaymentCollection;
+    @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ModeDeReglement iDModedereglement;
     @JoinColumn(name = "IDFacture_Clients", referencedColumnName = "IDFacture_Clients")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private FactureClients iDFactureClients;
     @JoinColumn(name = "IDCommande_Client", referencedColumnName = "IDCommande_Client")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private CommandeClient iDCommandeClient;
-    @JoinColumn(name = "IDMode_de_reglement", referencedColumnName = "IDMode_de_reglement")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private ModeDeReglement iDModedereglement;
 
     public AccompteClient() {
     }
@@ -127,6 +127,14 @@ public class AccompteClient implements Serializable {
         this.detailPaymentCollection = detailPaymentCollection;
     }
 
+    public ModeDeReglement getIDModedereglement() {
+        return iDModedereglement;
+    }
+
+    public void setIDModedereglement(ModeDeReglement iDModedereglement) {
+        this.iDModedereglement = iDModedereglement;
+    }
+
     public FactureClients getIDFactureClients() {
         return iDFactureClients;
     }
@@ -141,14 +149,6 @@ public class AccompteClient implements Serializable {
 
     public void setIDCommandeClient(CommandeClient iDCommandeClient) {
         this.iDCommandeClient = iDCommandeClient;
-    }
-
-    public ModeDeReglement getIDModedereglement() {
-        return iDModedereglement;
-    }
-
-    public void setIDModedereglement(ModeDeReglement iDModedereglement) {
-        this.iDModedereglement = iDModedereglement;
     }
 
     @Override

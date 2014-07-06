@@ -24,7 +24,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,8 +35,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "caisse", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Libelle"})})
+@Table(name = "caisse")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Caisse.findAll", query = "SELECT c FROM Caisse c"),
@@ -49,20 +47,20 @@ public class Caisse implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDCaisse", nullable = false)
+    @Column(name = "IDCaisse")
     private Long iDCaisse;
     @Size(max = 20)
-    @Column(name = "Libelle", length = 20)
+    @Column(name = "Libelle")
     private String libelle;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Depot iDdepot;
-    @OneToMany(mappedBy = "iDCaisse", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDCaisse", fetch = FetchType.LAZY)
     private Collection<FactureClients> factureClientsCollection;
 
     public Caisse() {

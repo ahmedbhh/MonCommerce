@@ -27,7 +27,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -39,9 +38,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author AHMED
  */
 @Entity
-@Table(name = "produit", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Libelle"}),
-    @UniqueConstraint(columnNames = {"Referance"})})
+@Table(name = "produit")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Produit.findAll", query = "SELECT p FROM Produit p"),
@@ -59,84 +56,84 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Produit.findByDateHeure", query = "SELECT p FROM Produit p WHERE p.dateHeure = :dateHeure"),
     @NamedQuery(name = "Produit.findByMarque", query = "SELECT p FROM Produit p WHERE p.marque = :marque")})
 public class Produit implements Serializable {
+    @Lob
+    @Column(name = "Photo")
+    private byte[] photo;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDProduit", nullable = false)
+    @Column(name = "IDProduit")
     private Long iDProduit;
     @Size(max = 20)
-    @Column(name = "Referance", length = 20)
+    @Column(name = "Referance")
     private String referance;
     @Size(max = 20)
-    @Column(name = "Libelle", length = 20)
+    @Column(name = "Libelle")
     private String libelle;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "PrixAchatHT", precision = 24, scale = 6)
+    @Column(name = "PrixAchatHT")
     private BigDecimal prixAchatHT;
-    @Column(name = "PrixMoyenPondere", precision = 24, scale = 6)
+    @Column(name = "PrixMoyenPondere")
     private BigDecimal prixMoyenPondere;
     @Column(name = "ProduitAVendre")
     private Short produitAVendre;
     @Column(name = "ProduitComposer")
     private Short produitComposer;
-    @Lob
-    @Column(name = "Photo")
-    private byte[] photo;
-    @Column(name = "PrixVente", precision = 24, scale = 6)
+    @Column(name = "PrixVente")
     private BigDecimal prixVente;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "Description", length = 2147483647)
+    @Column(name = "Description")
     private String description;
     @Column(name = "Stock_Alert")
     private Integer stockAlert;
     @Column(name = "Stock_repture")
     private Integer stockrepture;
     @Size(max = 50)
-    @Column(name = "code_Barres", length = 50)
+    @Column(name = "code_Barres")
     private String codeBarres;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @Size(max = 20)
-    @Column(name = "Marque", length = 20)
+    @Column(name = "Marque")
     private String marque;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<BondetransfertProduit> bondetransfertProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<BonentreeProduit> bonentreeProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<LigneCommandeClient> ligneCommandeClientCollection;
+    @JoinColumn(name = "Tva", referencedColumnName = "tva")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Tva tva;
     @JoinColumn(name = "IDUniteeMesure", referencedColumnName = "IDUniteeMesure")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Uniteemesure iDUniteeMesure;
     @JoinColumn(name = "Famille", referencedColumnName = "Libelle")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Famille famille;
     @JoinColumn(name = "Sous_famille", referencedColumnName = "Libelle")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Sousfamille sousfamille;
-    @JoinColumn(name = "Tva", referencedColumnName = "tva")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Tva tva;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<CommandeProduit> commandeProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<ProduitDepot> produitDepotCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<ProduitProduit> produitProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit1", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit1", fetch = FetchType.LAZY)
     private Collection<ProduitProduit> produitProduitCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<BondesortieProduit> bondesortieProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<ProduitFactureFournisseur> produitFactureFournisseurCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<FactureClientProduit> factureClientProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit", fetch = FetchType.LAZY)
     private Collection<ProduitCodeTarif> produitCodeTarifCollection;
 
     public Produit() {
@@ -205,14 +202,6 @@ public class Produit implements Serializable {
 
     public void setProduitComposer(Short produitComposer) {
         this.produitComposer = produitComposer;
-    }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
     }
 
     public BigDecimal getPrixVente() {
@@ -301,6 +290,14 @@ public class Produit implements Serializable {
         this.ligneCommandeClientCollection = ligneCommandeClientCollection;
     }
 
+    public Tva getTva() {
+        return tva;
+    }
+
+    public void setTva(Tva tva) {
+        this.tva = tva;
+    }
+
     public Uniteemesure getIDUniteeMesure() {
         return iDUniteeMesure;
     }
@@ -323,14 +320,6 @@ public class Produit implements Serializable {
 
     public void setSousfamille(Sousfamille sousfamille) {
         this.sousfamille = sousfamille;
-    }
-
-    public Tva getTva() {
-        return tva;
-    }
-
-    public void setTva(Tva tva) {
-        this.tva = tva;
     }
 
     @XmlTransient
@@ -436,6 +425,14 @@ public class Produit implements Serializable {
     @Override
     public String toString() {
         return "moncommerce.domain.model.Produit[ iDProduit=" + iDProduit + " ]";
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
     
 }

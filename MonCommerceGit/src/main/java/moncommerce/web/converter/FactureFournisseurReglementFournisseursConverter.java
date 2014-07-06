@@ -1,21 +1,21 @@
 package moncommerce.web.converter;
 
 import moncommerce.domain.model.FactureFournisseurReglementFournisseurs;
-import moncommerce.repositroy.FactureFournisseurReglementFournisseursFacade;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import moncommerce.service.FactureFournisseurReglementFournisseursService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
 public class FactureFournisseurReglementFournisseursConverter implements Converter {
 
-    @EJB
-    private FactureFournisseurReglementFournisseursFacade ejbFacade;
+    @Autowired
+    private FactureFournisseurReglementFournisseursService ejbFacade;
 
     private static final String SEPARATOR = "#";
     private static final String SEPARATOR_ESCAPED = "\\#";

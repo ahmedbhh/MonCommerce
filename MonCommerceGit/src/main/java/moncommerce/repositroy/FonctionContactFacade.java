@@ -6,27 +6,13 @@
 
 package moncommerce.repositroy;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import moncommerce.domain.model.FonctionContact;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author AHMED
  */
-@Stateless
-public class FonctionContactFacade extends AbstractFacade<FonctionContact> {
-    @PersistenceContext(unitName = "com.ppp_MonCommerceGit_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public FonctionContactFacade() {
-        super(FonctionContact.class);
-    }
+public interface FonctionContactFacade extends JpaRepository<FonctionContact,Long> {
     
 }

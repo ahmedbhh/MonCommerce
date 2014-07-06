@@ -46,19 +46,19 @@ public class CodeTarif implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDCode_tarif", nullable = false)
+    @Column(name = "IDCode_tarif")
     private Long iDCodetarif;
     @Size(max = 20)
-    @Column(name = "Code_taif", length = 20)
+    @Column(name = "Code_taif")
     private String codetaif;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure", nullable = false)
+    @Column(name = "DateHeure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "iDCodetarif", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "iDCodetarif", fetch = FetchType.LAZY)
     private Collection<Client> clientCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeTarif", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeTarif", fetch = FetchType.LAZY)
     private Collection<ProduitCodeTarif> produitCodeTarifCollection;
 
     public CodeTarif() {

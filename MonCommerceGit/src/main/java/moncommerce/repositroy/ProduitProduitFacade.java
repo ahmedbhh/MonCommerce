@@ -6,27 +6,15 @@
 
 package moncommerce.repositroy;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import moncommerce.domain.model.ProduitProduit;
+import moncommerce.domain.model.ProduitProduitPK;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author AHMED
  */
-@Stateless
-public class ProduitProduitFacade extends AbstractFacade<ProduitProduit> {
-    @PersistenceContext(unitName = "com.ppp_MonCommerceGit_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public ProduitProduitFacade() {
-        super(ProduitProduit.class);
-    }
+public interface ProduitProduitFacade extends JpaRepository<ProduitProduit,ProduitProduitPK> {
+    
     
 }

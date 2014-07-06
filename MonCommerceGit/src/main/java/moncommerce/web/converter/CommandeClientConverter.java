@@ -1,21 +1,21 @@
 package moncommerce.web.converter;
 
 import moncommerce.domain.model.CommandeClient;
-import moncommerce.repositroy.CommandeClientFacade;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import moncommerce.service.CommandeClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
 public class CommandeClientConverter implements Converter {
 
-    @EJB
-    private CommandeClientFacade ejbFacade;
+    @Autowired
+    private CommandeClientService ejbFacade;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {

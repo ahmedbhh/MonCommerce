@@ -1,19 +1,21 @@
 package moncommerce.web.controller;
 
 import moncommerce.domain.model.Contact;
-import moncommerce.repositroy.ContactFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import moncommerce.service.ContactService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "contactController")
 @ViewScoped
 public class ContactController extends AbstractController<Contact> implements Serializable {
 
-    @EJB
-    private ContactFacade ejbFacade;
+    @Autowired
+    private ContactService ejbFacade;
 
     @PostConstruct
     @Override
