@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.FactureFournisseurReglementFournisseurs;
+import moncommerce.gestionFournisseur.domain.model.FactureFournisseurReglementFournisseurs;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.service.FactureFournisseurReglementFournisseursService;
+import moncommerce.gestionFournisseur.service.FactureFournisseurReglementFournisseursService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
@@ -28,16 +28,16 @@ public class FactureFournisseurReglementFournisseursConverter implements Convert
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.FactureFournisseurReglementFournisseursPK getKey(String value) {
-        moncommerce.domain.model.FactureFournisseurReglementFournisseursPK key;
+    moncommerce.gestionFournisseur.domain.model.FactureFournisseurReglementFournisseursPK getKey(String value) {
+        moncommerce.gestionFournisseur.domain.model.FactureFournisseurReglementFournisseursPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.FactureFournisseurReglementFournisseursPK();
+        key = new moncommerce.gestionFournisseur.domain.model.FactureFournisseurReglementFournisseursPK();
         key.setIDReglementfournisseurs(Long.parseLong(values[0]));
         key.setIDFactureFournisseur(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.FactureFournisseurReglementFournisseursPK value) {
+    String getStringKey(moncommerce.gestionFournisseur.domain.model.FactureFournisseurReglementFournisseursPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDReglementfournisseurs());
         sb.append(SEPARATOR);

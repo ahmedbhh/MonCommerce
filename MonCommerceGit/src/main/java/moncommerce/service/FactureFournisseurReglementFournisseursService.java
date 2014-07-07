@@ -1,8 +1,0 @@
-package moncommerce.service;
-
-import moncommerce.domain.model.FactureFournisseurReglementFournisseurs;
-import moncommerce.domain.model.FactureFournisseurReglementFournisseursPK;
-
-public interface FactureFournisseurReglementFournisseursService 
-extends AbstractCrudService<FactureFournisseurReglementFournisseurs,FactureFournisseurReglementFournisseursPK> {
-}

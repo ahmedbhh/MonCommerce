@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.ProduitFactureFournisseur;
+import moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseur;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.service.ProduitFactureFournisseurService;
+import moncommerce.gestionFournisseur.service.ProduitFactureFournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
@@ -28,16 +28,16 @@ public class ProduitFactureFournisseurConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.ProduitFactureFournisseurPK getKey(String value) {
-        moncommerce.domain.model.ProduitFactureFournisseurPK key;
+    moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK getKey(String value) {
+        moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.ProduitFactureFournisseurPK();
+        key = new moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK();
         key.setIDFactureFournisseur(Long.parseLong(values[0]));
         key.setIDProduit(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.ProduitFactureFournisseurPK value) {
+    String getStringKey(moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDFactureFournisseur());
         sb.append(SEPARATOR);

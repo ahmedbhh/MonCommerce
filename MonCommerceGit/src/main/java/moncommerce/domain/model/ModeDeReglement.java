@@ -6,6 +6,11 @@
 
 package moncommerce.domain.model;
 
+import moncommerce.gestionFournisseur.domain.model.Accompte;
+import moncommerce.gestionFournisseur.domain.model.ReglementFournisseurs;
+import moncommerce.gestionClient.domain.model.FactureClients;
+import moncommerce.gestionClient.domain.model.AccompteClient;
+import moncommerce.gestionClient.domain.model.ReglementClient;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;

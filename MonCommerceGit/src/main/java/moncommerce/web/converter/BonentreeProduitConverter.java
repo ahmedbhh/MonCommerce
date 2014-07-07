@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.BonentreeProduit;
+import moncommerce.gestionFournisseur.domain.model.BonentreeProduit;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.service.BonentreeProduitService;
+import moncommerce.gestionFournisseur.service.BonentreeProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
@@ -28,16 +28,16 @@ public class BonentreeProduitConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.BonentreeProduitPK getKey(String value) {
-        moncommerce.domain.model.BonentreeProduitPK key;
+    moncommerce.gestionFournisseur.domain.model.BonentreeProduitPK getKey(String value) {
+        moncommerce.gestionFournisseur.domain.model.BonentreeProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.BonentreeProduitPK();
+        key = new moncommerce.gestionFournisseur.domain.model.BonentreeProduitPK();
         key.setIDProduit(Long.parseLong(values[0]));
         key.setIDBonEntree(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.BonentreeProduitPK value) {
+    String getStringKey(moncommerce.gestionFournisseur.domain.model.BonentreeProduitPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDProduit());
         sb.append(SEPARATOR);

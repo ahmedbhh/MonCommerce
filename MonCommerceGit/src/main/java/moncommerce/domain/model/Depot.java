@@ -6,6 +6,10 @@
 
 package moncommerce.domain.model;
 
+import moncommerce.gestionFournisseur.domain.model.Bonentree;
+import moncommerce.produit.domain.model.ProduitDepot;
+import moncommerce.gestionClient.domain.model.Caisse;
+import moncommerce.gestionClient.domain.model.Bondesortie;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;

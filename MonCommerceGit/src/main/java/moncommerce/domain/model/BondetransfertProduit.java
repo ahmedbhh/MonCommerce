@@ -6,6 +6,7 @@
 
 package moncommerce.domain.model;
 
+import moncommerce.produit.domain.model.Produit;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
