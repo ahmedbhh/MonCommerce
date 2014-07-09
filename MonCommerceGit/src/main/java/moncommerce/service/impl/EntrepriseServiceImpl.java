@@ -7,7 +7,7 @@ package moncommerce.service.impl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.Entrprise;
+import moncommerce.domain.model.Entreprise;
 import moncommerce.repositroy.EntrpriseFacade;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,7 +21,7 @@ import moncommerce.service.EntrepriseService;
 @Transactional(propagation = Propagation.REQUIRED)
 @Service
 public class EntrepriseServiceImpl
-        extends AbstractServiceImpl<Entrprise,Long> implements EntrepriseService {
+        extends AbstractServiceImpl<Entreprise,Long> implements EntrepriseService {
 
     @Resource
     EntrpriseFacade repository;

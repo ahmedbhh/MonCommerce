@@ -1,6 +1,6 @@
 package moncommerce.produit.web.converter;
 
-import moncommerce.produit.domain.model.Uniteemesure;
+import moncommerce.domain.model.produit.Uniteemesure;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.produit.service.UniteemesureService;
+import moncommerce.service.produit.UniteemesureService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean

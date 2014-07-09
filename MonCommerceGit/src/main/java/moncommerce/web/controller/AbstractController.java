@@ -11,7 +11,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import moncommerce.service.AbstractCrudService;
 
-import moncommerce.service.EntrepriseService;
 import moncommerce.web.controller.util.JsfUtil;
 
 /**

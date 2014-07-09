@@ -6,13 +6,13 @@
 
 package moncommerce.repositroy;
 
-import moncommerce.domain.model.Entrprise;
+import moncommerce.domain.model.Entreprise;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author AHMED
  */
-public interface EntrpriseFacade extends JpaRepository<Entrprise,Long> {
+public interface EntrpriseFacade extends JpaRepository<Entreprise,Long> {
     
 }

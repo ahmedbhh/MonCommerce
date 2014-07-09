@@ -6,14 +6,12 @@
 
 package moncommerce.domain.model;
 
-import moncommerce.produit.domain.model.Produit;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -23,6 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import moncommerce.domain.model.produit.Produit;
 
 /**
  *
@@ -33,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "BondetransfertProduit.findAll", query = "SELECT b FROM BondetransfertProduit b"),
-    @NamedQuery(name = "BondetransfertProduit.findByIDProduit", query = "SELECT b FROM BondetransfertProduit b WHERE b.bondetransfertProduitPK.iDProduit = :iDProduit"),
+    @NamedQuery(name = "BondetransfertProduit.findByIdProduit", query = "SELECT b FROM BondetransfertProduit b WHERE b.bondetransfertProduitPK.idProduit = :idProduit"),
     @NamedQuery(name = "BondetransfertProduit.findByIDBonDeTransfert", query = "SELECT b FROM BondetransfertProduit b WHERE b.bondetransfertProduitPK.iDBonDeTransfert = :iDBonDeTransfert"),
     @NamedQuery(name = "BondetransfertProduit.findByQuantitee", query = "SELECT b FROM BondetransfertProduit b WHERE b.quantitee = :quantitee"),
     @NamedQuery(name = "BondetransfertProduit.findByDateHeure", query = "SELECT b FROM BondetransfertProduit b WHERE b.dateHeure = :dateHeure")})
@@ -47,14 +46,14 @@ public class BondetransfertProduit implements Serializable {
     private long quantitee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure")
+    @Column(name = "Date_Heure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
     @JoinColumn(name = "IDBonDeTransfert", referencedColumnName = "IDBonDeTransfert", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Bondetransfert bondetransfert;
-    @JoinColumn(name = "IDProduit", referencedColumnName = "IDProduit", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_produit", referencedColumnName = "id_produit", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
     private Produit produit;
 
     public BondetransfertProduit() {
@@ -70,8 +69,8 @@ public class BondetransfertProduit implements Serializable {
         this.dateHeure = dateHeure;
     }
 
-    public BondetransfertProduit(long iDProduit, long iDBonDeTransfert) {
-        this.bondetransfertProduitPK = new BondetransfertProduitPK(iDProduit, iDBonDeTransfert);
+    public BondetransfertProduit(long idProduit, long iDBonDeTransfert) {
+        this.bondetransfertProduitPK = new BondetransfertProduitPK(idProduit, iDBonDeTransfert);
     }
 
     public BondetransfertProduitPK getBondetransfertProduitPK() {
@@ -136,7 +135,7 @@ public class BondetransfertProduit implements Serializable {
 
     @Override
     public String toString() {
-        return "moncommerce.domain.model.BondetransfertProduit[ bondetransfertProduitPK=" + bondetransfertProduitPK + " ]";
+        return "moncommerce.domain.model.test.BondetransfertProduit[ bondetransfertProduitPK=" + bondetransfertProduitPK + " ]";
     }
     
 }

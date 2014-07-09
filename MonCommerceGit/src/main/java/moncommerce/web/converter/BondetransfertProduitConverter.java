@@ -32,14 +32,14 @@ public class BondetransfertProduitConverter implements Converter {
         moncommerce.domain.model.BondetransfertProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
         key = new moncommerce.domain.model.BondetransfertProduitPK();
-        key.setIDProduit(Long.parseLong(values[0]));
+        key.setIdProduit(Long.parseLong(values[0]));
         key.setIDBonDeTransfert(Long.parseLong(values[1]));
         return key;
     }
 
     String getStringKey(moncommerce.domain.model.BondetransfertProduitPK value) {
         StringBuffer sb = new StringBuffer();
-        sb.append(value.getIDProduit());
+        sb.append(value.getIdProduit());
         sb.append(SEPARATOR);
         sb.append(value.getIDBonDeTransfert());
         return sb.toString();

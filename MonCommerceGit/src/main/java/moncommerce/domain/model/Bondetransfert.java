@@ -13,7 +13,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -70,16 +69,16 @@ public class Bondetransfert implements Serializable {
     private Short validee;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure")
+    @Column(name = "Date_Heure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @JoinColumn(name = "IdDepotRecepteur", referencedColumnName = "IDdepot")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Depot idDepotRecepteur;
-    @JoinColumn(name = "IDdepot", referencedColumnName = "IDdepot")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_depot", referencedColumnName = "ID_depot")
+    @ManyToOne
     private Depot iDdepot;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bondetransfert", fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdDepotRecepteur", referencedColumnName = "ID_depot")
+    @ManyToOne
+    private Depot idDepotRecepteur;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bondetransfert")
     private Collection<BondetransfertProduit> bondetransfertProduitCollection;
 
     public Bondetransfert() {
@@ -150,20 +149,20 @@ public class Bondetransfert implements Serializable {
         this.dateHeure = dateHeure;
     }
 
-    public Depot getIdDepotRecepteur() {
-        return idDepotRecepteur;
-    }
-
-    public void setIdDepotRecepteur(Depot idDepotRecepteur) {
-        this.idDepotRecepteur = idDepotRecepteur;
-    }
-
     public Depot getIDdepot() {
         return iDdepot;
     }
 
     public void setIDdepot(Depot iDdepot) {
         this.iDdepot = iDdepot;
+    }
+
+    public Depot getIdDepotRecepteur() {
+        return idDepotRecepteur;
+    }
+
+    public void setIdDepotRecepteur(Depot idDepotRecepteur) {
+        this.idDepotRecepteur = idDepotRecepteur;
     }
 
     @XmlTransient
@@ -198,7 +197,7 @@ public class Bondetransfert implements Serializable {
 
     @Override
     public String toString() {
-        return "moncommerce.domain.model.Bondetransfert[ iDBonDeTransfert=" + iDBonDeTransfert + " ]";
+        return "moncommerce.domain.model.test.Bondetransfert[ iDBonDeTransfert=" + iDBonDeTransfert + " ]";
     }
     
 }

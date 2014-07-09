@@ -1,6 +1,6 @@
 package moncommerce.web.controller;
 
-import moncommerce.domain.model.Entrprise;
+import moncommerce.domain.model.Entreprise;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @ManagedBean
 @ViewScoped
-public class EntrpriseController extends AbstractController<Entrprise> implements Serializable {
+public class EntrpriseController extends AbstractController<Entreprise> implements Serializable {
 
     @Autowired
     private EntrepriseService ejbFacade;
@@ -25,7 +25,7 @@ public class EntrpriseController extends AbstractController<Entrprise> implement
     }
 
     public EntrpriseController() {
-        super(Entrprise.class);
+        super(Entreprise.class);
     }
 
 }

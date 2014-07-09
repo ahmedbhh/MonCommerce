@@ -26,7 +26,7 @@
     <!--
         Configures Spring Data JPA and sets the base package of my DAOs.
     -->
-   <jpa:repositories base-package="moncommerce.client.repositroy, moncommerce.fournisseur.repositroy, moncommerce.gestionClient.repositroy, moncommerce.gestionFournisseur.repositroy, moncommerce.produit.repositroy, moncommerce.repositroy" />
+   <jpa:repositories base-package="moncommerce.repositroy" />
     <!--
 <jpa:repositories base-package="moncommerce.fournisseur.repositroy"/>
     <jpa:repositories base-package="moncommerce.gestionClient.repositroy"/>

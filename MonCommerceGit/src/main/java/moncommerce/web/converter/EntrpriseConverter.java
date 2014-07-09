@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.Entrprise;
+import moncommerce.domain.model.Entreprise;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,11 +43,11 @@ public class EntrpriseConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof Entrprise) {
-            Entrprise o = (Entrprise) object;
+        if (object instanceof Entreprise) {
+            Entreprise o = (Entreprise) object;
             return getStringKey(o.getIDEntrprise());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Entrprise.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Entreprise.class.getName()});
             return null;
         }
     }

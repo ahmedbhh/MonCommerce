@@ -5,13 +5,13 @@
  */
 package moncommerce.service;
 
-import moncommerce.domain.model.Entrprise;
+import moncommerce.domain.model.Entreprise;
 
 /**
  *
  * @author AHMED
  */
-public interface EntrepriseService extends AbstractCrudService<Entrprise,Long>{
+public interface EntrepriseService extends AbstractCrudService<Entreprise,Long>{
 
     
 }

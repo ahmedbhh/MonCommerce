@@ -241,6 +241,7 @@
             <version>4.9</version>
             <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>

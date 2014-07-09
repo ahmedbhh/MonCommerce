@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.gestionFournisseur.domain.model.Commande;
+import moncommerce.domain.model.gestionFournisseur.Commande;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.gestionFournisseur.service.CommandeService;
+import moncommerce.service.gestionFournisseur.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean

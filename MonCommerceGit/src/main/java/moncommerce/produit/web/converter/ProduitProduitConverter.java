@@ -1,6 +1,6 @@
 package moncommerce.produit.web.converter;
 
-import moncommerce.produit.domain.model.ProduitProduit;
+import moncommerce.domain.model.produit.ProduitProduit;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.produit.service.ProduitProduitService;
+import moncommerce.service.produit.ProduitProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
@@ -28,16 +28,16 @@ public class ProduitProduitConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.produit.domain.model.ProduitProduitPK getKey(String value) {
-        moncommerce.produit.domain.model.ProduitProduitPK key;
+    moncommerce.domain.model.produit.ProduitProduitPK getKey(String value) {
+        moncommerce.domain.model.produit.ProduitProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.produit.domain.model.ProduitProduitPK();
+        key = new moncommerce.domain.model.produit.ProduitProduitPK();
         key.setIDProduitComposant(Long.parseLong(values[0]));
         key.setIDProduitComposee(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.produit.domain.model.ProduitProduitPK value) {
+    String getStringKey(moncommerce.domain.model.produit.ProduitProduitPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDProduitComposant());
         sb.append(SEPARATOR);

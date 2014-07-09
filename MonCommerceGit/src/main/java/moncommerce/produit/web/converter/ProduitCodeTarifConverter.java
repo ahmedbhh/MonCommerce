@@ -1,6 +1,6 @@
 package moncommerce.produit.web.converter;
 
-import moncommerce.produit.domain.model.ProduitCodeTarif;
+import moncommerce.domain.model.produit.ProduitCodeTarif;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.produit.service.ProduitCodeTarifService;
+import moncommerce.service.produit.ProduitCodeTarifService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
@@ -28,20 +28,20 @@ public class ProduitCodeTarifConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.produit.domain.model.ProduitCodeTarifPK getKey(String value) {
-        moncommerce.produit.domain.model.ProduitCodeTarifPK key;
+    moncommerce.domain.model.produit.ProduitCodeTarifPK getKey(String value) {
+        moncommerce.domain.model.produit.ProduitCodeTarifPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.produit.domain.model.ProduitCodeTarifPK();
+        key = new moncommerce.domain.model.produit.ProduitCodeTarifPK();
         key.setIDCodetarif(Long.parseLong(values[0]));
-        key.setIDProduit(Long.parseLong(values[1]));
+        key.setIdProduit(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.produit.domain.model.ProduitCodeTarifPK value) {
+    String getStringKey(moncommerce.domain.model.produit.ProduitCodeTarifPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDCodetarif());
         sb.append(SEPARATOR);
-        sb.append(value.getIDProduit());
+        sb.append(value.getIdProduit());
         return sb.toString();
     }
 

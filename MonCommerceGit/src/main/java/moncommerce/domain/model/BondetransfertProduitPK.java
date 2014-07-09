@@ -20,8 +20,8 @@ import javax.validation.constraints.NotNull;
 public class BondetransfertProduitPK implements Serializable {
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDProduit")
-    private long iDProduit;
+    @Column(name = "id_produit")
+    private long idProduit;
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDBonDeTransfert")
@@ -30,17 +30,17 @@ public class BondetransfertProduitPK implements Serializable {
     public BondetransfertProduitPK() {
     }
 
-    public BondetransfertProduitPK(long iDProduit, long iDBonDeTransfert) {
-        this.iDProduit = iDProduit;
+    public BondetransfertProduitPK(long idProduit, long iDBonDeTransfert) {
+        this.idProduit = idProduit;
         this.iDBonDeTransfert = iDBonDeTransfert;
     }
 
-    public long getIDProduit() {
-        return iDProduit;
+    public long getIdProduit() {
+        return idProduit;
     }
 
-    public void setIDProduit(long iDProduit) {
-        this.iDProduit = iDProduit;
+    public void setIdProduit(long idProduit) {
+        this.idProduit = idProduit;
     }
 
     public long getIDBonDeTransfert() {
@@ -54,7 +54,7 @@ public class BondetransfertProduitPK implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) iDProduit;
+        hash += (int) idProduit;
         hash += (int) iDBonDeTransfert;
         return hash;
     }
@@ -66,7 +66,7 @@ public class BondetransfertProduitPK implements Serializable {
             return false;
         }
         BondetransfertProduitPK other = (BondetransfertProduitPK) object;
-        if (this.iDProduit != other.iDProduit) {
+        if (this.idProduit != other.idProduit) {
             return false;
         }
         if (this.iDBonDeTransfert != other.iDBonDeTransfert) {
@@ -77,7 +77,7 @@ public class BondetransfertProduitPK implements Serializable {
 
     @Override
     public String toString() {
-        return "moncommerce.domain.model.BondetransfertProduitPK[ iDProduit=" + iDProduit + ", iDBonDeTransfert=" + iDBonDeTransfert + " ]";
+        return "moncommerce.domain.model.test.BondetransfertProduitPK[ idProduit=" + idProduit + ", iDBonDeTransfert=" + iDBonDeTransfert + " ]";
     }
     
 }

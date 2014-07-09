@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.gestionFournisseur.domain.model.Bonentree;
+import moncommerce.domain.model.gestionFournisseur.Bonentree;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.gestionFournisseur.service.BonentreeService;
+import moncommerce.service.gestionFournisseur.BonentreeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean

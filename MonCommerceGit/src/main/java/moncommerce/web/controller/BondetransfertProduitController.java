@@ -28,7 +28,7 @@ public class BondetransfertProduitController extends AbstractController<Bondetra
     @Override
     protected void setEmbeddableKeys() {
         this.getSelected().getBondetransfertProduitPK().setIDBonDeTransfert(this.getSelected().getBondetransfert().getIDBonDeTransfert());
-        this.getSelected().getBondetransfertProduitPK().setIDProduit(this.getSelected().getProduit().getIDProduit());
+        this.getSelected().getBondetransfertProduitPK().setIdProduit(this.getSelected().getBondetransfertProduitPK().getIdProduit());
     }
 
     @Override

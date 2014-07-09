@@ -1,6 +1,6 @@
 package moncommerce.produit.web.converter;
 
-import moncommerce.produit.domain.model.CodeTarif;
+import moncommerce.domain.model.produit.CodeTarif;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.produit.service.CodeTarifService;
+import moncommerce.service.produit.CodeTarifService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean

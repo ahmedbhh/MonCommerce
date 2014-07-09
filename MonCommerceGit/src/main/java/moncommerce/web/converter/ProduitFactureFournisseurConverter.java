@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseur;
+import moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseur;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.gestionFournisseur.service.ProduitFactureFournisseurService;
+import moncommerce.service.gestionFournisseur.ProduitFactureFournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ManagedBean
@@ -28,20 +28,20 @@ public class ProduitFactureFournisseurConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK getKey(String value) {
-        moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK key;
+    moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK getKey(String value) {
+        moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK();
+        key = new moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK();
         key.setIDFactureFournisseur(Long.parseLong(values[0]));
-        key.setIDProduit(Long.parseLong(values[1]));
+        key.setIdProduit(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.gestionFournisseur.domain.model.ProduitFactureFournisseurPK value) {
+    String getStringKey(moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDFactureFournisseur());
         sb.append(SEPARATOR);
-        sb.append(value.getIDProduit());
+        sb.append(value.getIdProduit());
         return sb.toString();
     }
 

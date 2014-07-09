@@ -6,18 +6,17 @@
 
 package moncommerce.domain.model;
 
-import moncommerce.gestionFournisseur.domain.model.Accompte;
-import moncommerce.gestionFournisseur.domain.model.ReglementFournisseurs;
-import moncommerce.gestionClient.domain.model.FactureClients;
-import moncommerce.gestionClient.domain.model.AccompteClient;
-import moncommerce.gestionClient.domain.model.ReglementClient;
+import moncommerce.domain.model.gestionFournisseur.Accompte;
+import moncommerce.domain.model.gestionFournisseur.ReglementFournisseurs;
+import moncommerce.domain.model.gestionClient.FactureClients;
+import moncommerce.domain.model.gestionClient.ReglementClient;
+import moncommerce.domain.model.gestionClient.AccompteClient;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +32,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.hibernate.annotations.Type;
 
 /**
  *
@@ -52,7 +50,7 @@ public class ModeDeReglement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDMode_de_reglement")
+    @Column(name = "ID_Mode_de_reglement")
     private Long iDModedereglement;
     @Size(max = 20)
     @Column(name = "Libelle")
@@ -63,19 +61,18 @@ public class ModeDeReglement implements Serializable {
     private String description;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure")
-    @Type(type="timestamp")
+    @Column(name = "Date_Heure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDModedereglement")
     private Collection<ReglementClient> reglementClientCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDModedereglement")
     private Collection<Accompte> accompteCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDModedereglement")
     private Collection<ReglementFournisseurs> reglementFournisseursCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDModedereglement")
     private Collection<FactureClients> factureClientsCollection;
-    @OneToMany(mappedBy = "iDModedereglement", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDModedereglement")
     private Collection<AccompteClient> accompteClientCollection;
 
     public ModeDeReglement() {
@@ -194,7 +191,7 @@ public class ModeDeReglement implements Serializable {
 
     @Override
     public String toString() {
-        return "moncommerce.domain.model.ModeDeReglement[ iDModedereglement=" + iDModedereglement + " ]";
+        return "moncommerce.domain.model.test.ModeDeReglement[ iDModedereglement=" + iDModedereglement + " ]";
     }
     
 }

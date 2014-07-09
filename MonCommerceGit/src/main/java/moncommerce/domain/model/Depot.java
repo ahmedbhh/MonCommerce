@@ -6,10 +6,9 @@
 
 package moncommerce.domain.model;
 
-import moncommerce.gestionFournisseur.domain.model.Bonentree;
-import moncommerce.produit.domain.model.ProduitDepot;
-import moncommerce.gestionClient.domain.model.Caisse;
-import moncommerce.gestionClient.domain.model.Bondesortie;
+import moncommerce.domain.model.gestionFournisseur.Bonentree;
+import moncommerce.domain.model.gestionClient.Caisse;
+import moncommerce.domain.model.gestionClient.Bondesortie;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -18,7 +17,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +31,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import moncommerce.domain.model.produit.ProduitDepot;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
@@ -57,7 +56,7 @@ public class Depot implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDdepot")
+    @Column(name = "ID_depot")
     private Long iDdepot;
     @Size(max = 20)
     @Column(name = "Referance")
@@ -79,20 +78,20 @@ public class Depot implements Serializable {
     private BigDecimal autreCharge;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "DateHeure")
+    @Column(name = "Date_Heure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "idDepotRecepteur", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDdepot")
     private Collection<Bondetransfert> bondetransfertCollection;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idDepotRecepteur")
     private Collection<Bondetransfert> bondetransfertCollection1;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDdepot")
     private Collection<Caisse> caisseCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "depot", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "depot")
     private Collection<ProduitDepot> produitDepotCollection;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDdepot")
     private Collection<Bonentree> bonentreeCollection;
-    @OneToMany(mappedBy = "iDdepot", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "iDdepot")
     private Collection<Bondesortie> bondesortieCollection;
 
     public Depot() {
@@ -261,7 +260,7 @@ public class Depot implements Serializable {
 
     @Override
     public String toString() {
-        return "moncommerce.domain.model.Depot[ iDdepot=" + iDdepot + " ]";
+        return "moncommerce.domain.model.test.Depot[ iDdepot=" + iDdepot + " ]";
     }
     
 }

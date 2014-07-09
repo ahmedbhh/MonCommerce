@@ -34,7 +34,7 @@ public abstract class AbstractServiceImpl<T extends Object,ID extends Serializab
     }
 
     public void edit(T entity) {
-        repository.save(entity);
+        repository.sa(entity);
     }
 
     public void remove(T entity) {
