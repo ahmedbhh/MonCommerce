@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionFournisseur;
 
-import moncommerce.domain.model.gestionFournisseur.Accompte;
+import moncommerce.domain.model.test.Accompte;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

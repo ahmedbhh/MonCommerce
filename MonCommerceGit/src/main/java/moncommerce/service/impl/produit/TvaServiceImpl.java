@@ -3,7 +3,7 @@ package moncommerce.service.impl.produit;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.produit.TvaService;
-import moncommerce.domain.model.produit.Tva;
+import moncommerce.domain.model.test.Tva;
 import moncommerce.repositroy.produit.TvaFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

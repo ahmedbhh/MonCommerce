@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionClient;
 
-import moncommerce.domain.model.gestionClient.DetailPayment;
+import moncommerce.domain.model.test.DetailPayment;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

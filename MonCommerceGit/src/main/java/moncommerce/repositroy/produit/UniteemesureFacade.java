@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.produit;
 
-import moncommerce.domain.model.produit.Uniteemesure;
+import moncommerce.domain.model.test.Uniteemesure;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

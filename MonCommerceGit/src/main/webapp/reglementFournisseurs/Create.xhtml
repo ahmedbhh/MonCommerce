@@ -40,18 +40,6 @@
                         <p:inputText id="escompte" value="#{reglementFournisseursController.selected.escompte}" title="#{myBundle.CreateReglementFournisseursTitle_escompte}"/>
 
 
-                        <p:outputLabel value="#{myBundle.CreateReglementFournisseursLabel_IDModedereglement}" for="IDModedereglement" />
-                        <p:selectOneMenu id="IDModedereglement" value="#{reglementFournisseursController.selected.IDModedereglement}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{modeDeReglementController.items}"
-                                           var="IDModedereglementItem"
-                                           itemValue="#{IDModedereglementItem}"
-                                           itemLabel="#{IDModedereglementItem.description.toString()}"
-                                           />
-                            <f:converter binding="#{modeDeReglementConverter}"/>
-                        </p:selectOneMenu>
-
-
                         <p:outputLabel value="#{myBundle.CreateReglementFournisseursLabel_IDFournisseur}" for="IDFournisseur" />
                         <p:selectOneMenu id="IDFournisseur" value="#{reglementFournisseursController.selected.IDFournisseur}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -61,6 +49,18 @@
                                            itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
                                            />
                             <f:converter binding="#{fournisseurConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateReglementFournisseursLabel_IDModedereglement}" for="IDModedereglement" />
+                        <p:selectOneMenu id="IDModedereglement" value="#{reglementFournisseursController.selected.IDModedereglement}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeDeReglementController.items}"
+                                           var="IDModedereglementItem"
+                                           itemValue="#{IDModedereglementItem}"
+                                           itemLabel="#{IDModedereglementItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{modeDeReglementConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reglementFournisseursController.saveNew}" value="#{myBundle.Save}" update="display,:ReglementFournisseursListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ReglementFournisseursCreateDialog);">

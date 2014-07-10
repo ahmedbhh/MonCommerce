@@ -70,15 +70,40 @@
                         <p:inputText id="tembree" value="#{factureClientsController.selected.tembree}" title="#{myBundle.EditFactureClientsTitle_tembree}"/>
 
 
-                        <p:outputLabel value="#{myBundle.EditFactureClientsLabel_reglementClientCollection}" for="reglementClientCollection" />
-                        <p:selectManyMenu id="reglementClientCollection" value="#{factureClientsController.selected.reglementClientCollection}" >
-                            <f:selectItems value="#{reglementClientController.items}"
-                                           var="reglementClientCollectionItem"
-                                           itemValue="#{reglementClientCollectionItem}"
-                                           itemLabel="#{reglementClientCollectionItem.IDReglementClient.toString()}"
+                        <p:outputLabel value="#{myBundle.EditFactureClientsLabel_bondesortie}" for="bondesortie" />
+                        <p:selectOneMenu id="bondesortie" value="#{factureClientsController.selected.bondesortie}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bondesortieController.items}"
+                                           var="bondesortieItem"
+                                           itemValue="#{bondesortieItem}"
+                                           itemLabel="#{bondesortieItem.IDBondesortie.toString()}"
                                            />
-                            <f:converter binding="#{reglementClientConverter}"/>
-                        </p:selectManyMenu>
+                            <f:converter binding="#{bondesortieConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientsLabel_IDCaisse}" for="IDCaisse" />
+                        <p:selectOneMenu id="IDCaisse" value="#{factureClientsController.selected.IDCaisse}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{caisseController.items}"
+                                           var="IDCaisseItem"
+                                           itemValue="#{IDCaisseItem}"
+                                           itemLabel="#{IDCaisseItem.IDCaisse.toString()}"
+                                           />
+                            <f:converter binding="#{caisseConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditFactureClientsLabel_IDemployee}" for="IDemployee" />
+                        <p:selectOneMenu id="IDemployee" value="#{factureClientsController.selected.IDemployee}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{employeeController.items}"
+                                           var="IDemployeeItem"
+                                           itemValue="#{IDemployeeItem}"
+                                           itemLabel="#{IDemployeeItem.IDemployee.toString()}"
+                                           />
+                            <f:converter binding="#{employeeConverter}"/>
+                        </p:selectOneMenu>
 
 
                         <p:outputLabel value="#{myBundle.EditFactureClientsLabel_IDCommandeClient}" for="IDCommandeClient" />
@@ -117,15 +142,15 @@
                         </p:selectOneMenu>
 
 
-                        <p:outputLabel value="#{myBundle.EditFactureClientsLabel_IDCaisse}" for="IDCaisse" />
-                        <p:selectOneMenu id="IDCaisse" value="#{factureClientsController.selected.IDCaisse}" >
+                        <p:outputLabel value="#{myBundle.EditFactureClientsLabel_factureClientProduit}" for="factureClientProduit" />
+                        <p:selectOneMenu id="factureClientProduit" value="#{factureClientsController.selected.factureClientProduit}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{caisseController.items}"
-                                           var="IDCaisseItem"
-                                           itemValue="#{IDCaisseItem}"
-                                           itemLabel="#{IDCaisseItem.IDCaisse.toString()}"
+                            <f:selectItems value="#{factureClientProduitController.items}"
+                                           var="factureClientProduitItem"
+                                           itemValue="#{factureClientProduitItem}"
+                                           itemLabel="#{factureClientProduitItem.description.toString()}"
                                            />
-                            <f:converter binding="#{caisseConverter}"/>
+                            <f:converter binding="#{factureClientProduitConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{factureClientsController.save}" value="#{myBundle.Save}" update="display,:FactureClientsListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureClientsEditDialog);">

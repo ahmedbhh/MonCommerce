@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.produit;
 
-import moncommerce.domain.model.produit.Tva;
+import moncommerce.domain.model.test.Tva;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

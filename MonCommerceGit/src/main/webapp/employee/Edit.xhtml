@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="EmployeeEditDlg" widgetVar="EmployeeEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditEmployeeTitle}" closeOnEscape="true">
+
+            <h:form id="EmployeeEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{employeeController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditEmployeeLabel_IDemployee}" for="IDemployee" />
+                        <h:outputText id="IDemployee" value="#{employeeController.selected.IDemployee}" />
+
+
+                        <p:outputLabel value="#{myBundle.EditEmployeeLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{employeeController.selected.nom}" title="#{myBundle.EditEmployeeTitle_nom}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEmployeeLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{employeeController.selected.prenom}" title="#{myBundle.EditEmployeeTitle_prenom}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEmployeeLabel_dateNaissance}" for="dateNaissance" />
+                        <p:calendar id="dateNaissance" pattern="MM/dd/yyyy" value="#{employeeController.selected.dateNaissance}" title="#{myBundle.EditEmployeeTitle_dateNaissance}"  showOn="button"/>
+
+
+                        <p:outputLabel value="#{myBundle.EditEmployeeLabel_dateentreeentreprise}" for="dateentreeentreprise" />
+                        <p:calendar id="dateentreeentreprise" pattern="MM/dd/yyyy" value="#{employeeController.selected.dateentreeentreprise}" title="#{myBundle.EditEmployeeTitle_dateentreeentreprise}"  showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{employeeController.save}" value="#{myBundle.Save}" update="display,:EmployeeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,EmployeeEditDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="EmployeeEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

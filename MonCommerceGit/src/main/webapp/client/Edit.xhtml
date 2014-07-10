@@ -19,7 +19,7 @@
 
 
                         <p:outputLabel value="#{myBundle.EditClientLabel_nom}" for="nom" />
-                        <p:inputText id="nom" value="#{clientController.selected.nom}" title="#{myBundle.EditClientTitle_nom}" size="50" maxlength="50"/>
+                        <p:inputText id="nom" value="#{clientController.selected.nom}" title="#{myBundle.EditClientTitle_nom}" size="30" maxlength="30"/>
 
 
                         <p:outputLabel value="#{myBundle.EditClientLabel_obsersavation}" for="obsersavation" />
@@ -27,7 +27,7 @@
 
 
                         <p:outputLabel value="#{myBundle.EditClientLabel_risque}" for="risque" />
-                        <p:inputText id="risque" value="#{clientController.selected.risque}" title="#{myBundle.EditClientTitle_risque}" size="50" maxlength="50"/>
+                        <p:inputText id="risque" value="#{clientController.selected.risque}" title="#{myBundle.EditClientTitle_risque}" size="20" maxlength="20"/>
 
 
                         <p:outputLabel value="#{myBundle.EditClientLabel_encours}" for="encours" />
@@ -44,18 +44,6 @@
 
                         <p:outputLabel value="#{myBundle.EditClientLabel_matriculefiscale}" for="matriculefiscale" />
                         <p:inputText id="matriculefiscale" value="#{clientController.selected.matriculefiscale}" title="#{myBundle.EditClientTitle_matriculefiscale}" size="30" maxlength="30"/>
-
-
-                        <p:outputLabel value="#{myBundle.EditClientLabel_IDCodetarif}" for="IDCodetarif" />
-                        <p:selectOneMenu id="IDCodetarif" value="#{clientController.selected.IDCodetarif}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{codeTarifController.items}"
-                                           var="IDCodetarifItem"
-                                           itemValue="#{IDCodetarifItem}"
-                                           itemLabel="#{IDCodetarifItem.IDCodetarif.toString()}"
-                                           />
-                            <f:converter binding="#{codeTarifConverter}"/>
-                        </p:selectOneMenu>
 
 
                         <p:outputLabel value="#{myBundle.EditClientLabel_IDFamilleclient}" for="IDFamilleclient" />
@@ -79,6 +67,18 @@
                                            itemLabel="#{IDModeTVAItem.IDModeTVA.toString()}"
                                            />
                             <f:converter binding="#{modeTvaConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditClientLabel_IDCodetarif}" for="IDCodetarif" />
+                        <p:selectOneMenu id="IDCodetarif" value="#{clientController.selected.IDCodetarif}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{codeTarifController.items}"
+                                           var="IDCodetarifItem"
+                                           itemValue="#{IDCodetarifItem}"
+                                           itemLabel="#{IDCodetarifItem.IDCodetarif.toString()}"
+                                           />
+                            <f:converter binding="#{codeTarifConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{clientController.save}" value="#{myBundle.Save}" update="display,:ClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ClientEditDialog);">

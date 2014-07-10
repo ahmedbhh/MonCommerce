@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy;
 
-import moncommerce.domain.model.ModeDeReglement;
+import moncommerce.domain.model.test.ModeDeReglement;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

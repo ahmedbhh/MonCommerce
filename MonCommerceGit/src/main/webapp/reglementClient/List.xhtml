@@ -54,29 +54,23 @@
                     </f:facet>
                     <h:outputText value="#{item.validee}"/>
                 </p:column>
-                <p:column sortBy="#{item.referance}" filterBy="#{item.referance}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListReglementClientTitle_referance}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.referance}"/>
-                </p:column>
                 <p:column sortBy="#{item.escompte}" filterBy="#{item.escompte}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListReglementClientTitle_escompte}"/>
                     </f:facet>
                     <h:outputText value="#{item.escompte}"/>
                 </p:column>
-                <p:column sortBy="#{item.IDClient.IDClient}" filterBy="#{item.IDClient.IDClient}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListReglementClientTitle_IDClient}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDClient.IDClient}"/>
-                </p:column>
                 <p:column sortBy="#{item.IDModedereglement.description}" filterBy="#{item.IDModedereglement.description}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListReglementClientTitle_IDModedereglement}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDModedereglement.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDClient.IDClient}" filterBy="#{item.IDClient.IDClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReglementClientTitle_IDClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDClient.IDClient}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

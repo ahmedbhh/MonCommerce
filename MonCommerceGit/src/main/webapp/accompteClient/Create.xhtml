@@ -28,6 +28,18 @@
                         <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{accompteClientController.selected.dateHeure}" title="#{myBundle.CreateAccompteClientTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateAccompteClientRequiredMessage_dateHeure}" showOn="button"/>
 
 
+                        <p:outputLabel value="#{myBundle.CreateAccompteClientLabel_IDModedereglement}" for="IDModedereglement" />
+                        <p:selectOneMenu id="IDModedereglement" value="#{accompteClientController.selected.IDModedereglement}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeDeReglementController.items}"
+                                           var="IDModedereglementItem"
+                                           itemValue="#{IDModedereglementItem}"
+                                           itemLabel="#{IDModedereglementItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{modeDeReglementConverter}"/>
+                        </p:selectOneMenu>
+
+
                         <p:outputLabel value="#{myBundle.CreateAccompteClientLabel_IDFactureClients}" for="IDFactureClients" />
                         <p:selectOneMenu id="IDFactureClients" value="#{accompteClientController.selected.IDFactureClients}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -49,18 +61,6 @@
                                            itemLabel="#{IDCommandeClientItem.IDCommandeClient.toString()}"
                                            />
                             <f:converter binding="#{commandeClientConverter}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel value="#{myBundle.CreateAccompteClientLabel_IDModedereglement}" for="IDModedereglement" />
-                        <p:selectOneMenu id="IDModedereglement" value="#{accompteClientController.selected.IDModedereglement}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{modeDeReglementController.items}"
-                                           var="IDModedereglementItem"
-                                           itemValue="#{IDModedereglementItem}"
-                                           itemLabel="#{IDModedereglementItem.description.toString()}"
-                                           />
-                            <f:converter binding="#{modeDeReglementConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{accompteClientController.saveNew}" value="#{myBundle.Save}" update="display,:AccompteClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AccompteClientCreateDialog);">

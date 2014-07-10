@@ -7,8 +7,8 @@ package moncommerce.service.impl.gestionClient;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.gestionClient.BondesortieProduit;
-import moncommerce.domain.model.gestionClient.BondesortieProduitPK;
+import moncommerce.domain.model.test.BondesortieProduit;
+import moncommerce.domain.model.test.BondesortieProduitPK;
 import moncommerce.repositroy.gestionClient.BondesortieProduitFacade;
 import moncommerce.service.gestionClient.BondesortieProduitService;
 import moncommerce.service.impl.AbstractServiceImpl;

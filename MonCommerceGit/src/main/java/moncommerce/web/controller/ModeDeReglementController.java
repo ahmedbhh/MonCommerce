@@ -1,6 +1,6 @@
 package moncommerce.web.controller;
 
-import moncommerce.domain.model.ModeDeReglement;
+import moncommerce.domain.model.test.ModeDeReglement;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

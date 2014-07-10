@@ -11,7 +11,7 @@
         <p:panel header="#{myBundle.ListBondesortieTitle}">
             <p:dataTable id="datalist" value="#{bondesortieController.items}" var="item"
                          selectionMode="single" selection="#{bondesortieController.selected}"
-                         rowKey="#{item.IDBondeSortie}"
+                         rowKey="#{item.IDBondesortie}"
                          paginator="true"
                          rows="10"
                          rowsPerPageTemplate="10,20,30"
@@ -20,11 +20,11 @@
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                <p:column sortBy="#{item.IDBondeSortie}" filterBy="#{item.IDBondeSortie}">
+                <p:column sortBy="#{item.IDBondesortie}" filterBy="#{item.IDBondesortie}">
                     <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDBondeSortie}"/>
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDBondesortie}"/>
                     </f:facet>
-                    <h:outputText value="#{item.IDBondeSortie}"/>
+                    <h:outputText value="#{item.IDBondesortie}"/>
                 </p:column>
                 <p:column sortBy="#{item.referance}" filterBy="#{item.referance}">
                     <f:facet name="header">
@@ -96,6 +96,18 @@
                     </f:facet>
                     <h:outputText value="#{item.soldee}"/>
                 </p:column>
+                <p:column sortBy="#{item.IDemployee.IDemployee}" filterBy="#{item.IDemployee.IDemployee}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDemployee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDemployee.IDemployee}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDFactureClients.IDFactureClients}" filterBy="#{item.IDFactureClients.IDFactureClients}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDFactureClients}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDFactureClients.IDFactureClients}"/>
+                </p:column>
                 <p:column sortBy="#{item.IDCommandeClient.IDCommandeClient}" filterBy="#{item.IDCommandeClient.IDCommandeClient}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListBondesortieTitle_IDCommandeClient}"/>
@@ -113,12 +125,6 @@
                         <h:outputText value="#{myBundle.ListBondesortieTitle_IDClient}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDClient.IDClient}"/>
-                </p:column>
-                <p:column sortBy="#{item.IDFactureClients.IDFactureClients}" filterBy="#{item.IDFactureClients.IDFactureClients}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListBondesortieTitle_IDFactureClients}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDFactureClients.IDFactureClients}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

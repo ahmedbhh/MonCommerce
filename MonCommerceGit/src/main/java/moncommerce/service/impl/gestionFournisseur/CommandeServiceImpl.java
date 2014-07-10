@@ -1,7 +1,7 @@
 package moncommerce.service.impl.gestionFournisseur;
 
 import moncommerce.service.gestionFournisseur.CommandeService;
-import moncommerce.domain.model.gestionFournisseur.Commande;
+import moncommerce.domain.model.test.Commande;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.repositroy.gestionFournisseur.CommandeFacade;

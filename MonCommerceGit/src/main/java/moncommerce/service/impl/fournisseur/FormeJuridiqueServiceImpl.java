@@ -3,7 +3,7 @@ package moncommerce.service.impl.fournisseur;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.fournisseur.FormeJuridiqueService;
-import moncommerce.domain.model.fournisseur.FormeJuridique;
+import moncommerce.domain.model.test.FormeJuridique;
 import moncommerce.repositroy.fournisseur.FormeJuridiqueFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

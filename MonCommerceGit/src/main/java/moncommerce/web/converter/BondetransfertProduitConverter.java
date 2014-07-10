@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.BondetransfertProduit;
+import moncommerce.domain.model.test.BondetransfertProduit;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class BondetransfertProduitConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.BondetransfertProduitPK getKey(String value) {
-        moncommerce.domain.model.BondetransfertProduitPK key;
+    moncommerce.domain.model.test.BondetransfertProduitPK getKey(String value) {
+        moncommerce.domain.model.test.BondetransfertProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.BondetransfertProduitPK();
+        key = new moncommerce.domain.model.test.BondetransfertProduitPK();
         key.setIdProduit(Long.parseLong(values[0]));
         key.setIDBonDeTransfert(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.BondetransfertProduitPK value) {
+    String getStringKey(moncommerce.domain.model.test.BondetransfertProduitPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIdProduit());
         sb.append(SEPARATOR);

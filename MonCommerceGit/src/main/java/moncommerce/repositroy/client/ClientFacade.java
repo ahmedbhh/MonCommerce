@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.client;
 
-import moncommerce.domain.model.client.Client;
+import moncommerce.domain.model.test.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

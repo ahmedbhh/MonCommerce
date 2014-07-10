@@ -31,14 +31,14 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
 
+                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDModedereglement}"/>
+                        <h:outputText value="#{accompteClientController.selected.IDModedereglement.description}"/>
+
                         <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDFactureClients}"/>
                         <h:outputText value="#{accompteClientController.selected.IDFactureClients.IDFactureClients}"/>
 
                         <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDCommandeClient}"/>
                         <h:outputText value="#{accompteClientController.selected.IDCommandeClient.IDCommandeClient}"/>
-
-                        <h:outputText value="#{myBundle.ViewAccompteClientLabel_IDModedereglement}"/>
-                        <h:outputText value="#{accompteClientController.selected.IDModedereglement.description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="AccompteClientViewDialog.hide()"/>
                 </h:panelGroup>

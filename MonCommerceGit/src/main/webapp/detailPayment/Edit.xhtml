@@ -38,18 +38,6 @@
                         <p:inputText id="ALordre" value="#{detailPaymentController.selected.ALordre}" title="#{myBundle.EditDetailPaymentTitle_ALordre}" size="50" maxlength="50"/>
 
 
-                        <p:outputLabel value="#{myBundle.EditDetailPaymentLabel_IDAccompteClient}" for="IDAccompteClient" />
-                        <p:selectOneMenu id="IDAccompteClient" value="#{detailPaymentController.selected.IDAccompteClient}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{accompteClientController.items}"
-                                           var="IDAccompteClientItem"
-                                           itemValue="#{IDAccompteClientItem}"
-                                           itemLabel="#{IDAccompteClientItem.IDAccompteClient.toString()}"
-                                           />
-                            <f:converter binding="#{accompteClientConverter}"/>
-                        </p:selectOneMenu>
-
-
                         <p:outputLabel value="#{myBundle.EditDetailPaymentLabel_IDReglementClient}" for="IDReglementClient" />
                         <p:selectOneMenu id="IDReglementClient" value="#{detailPaymentController.selected.IDReglementClient}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -59,6 +47,18 @@
                                            itemLabel="#{IDReglementClientItem.IDReglementClient.toString()}"
                                            />
                             <f:converter binding="#{reglementClientConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditDetailPaymentLabel_IDAccompteClient}" for="IDAccompteClient" />
+                        <p:selectOneMenu id="IDAccompteClient" value="#{detailPaymentController.selected.IDAccompteClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{accompteClientController.items}"
+                                           var="IDAccompteClientItem"
+                                           itemValue="#{IDAccompteClientItem}"
+                                           itemLabel="#{IDAccompteClientItem.IDAccompteClient.toString()}"
+                                           />
+                            <f:converter binding="#{accompteClientConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{detailPaymentController.save}" value="#{myBundle.Save}" update="display,:DetailPaymentListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,DetailPaymentEditDialog);">

@@ -6,8 +6,8 @@
 
 package moncommerce.repositroy;
 
-import moncommerce.domain.model.BondetransfertProduit;
-import moncommerce.domain.model.BondetransfertProduitPK;
+import moncommerce.domain.model.test.BondetransfertProduit;
+import moncommerce.domain.model.test.BondetransfertProduitPK;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

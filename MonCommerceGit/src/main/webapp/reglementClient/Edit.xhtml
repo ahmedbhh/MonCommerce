@@ -34,24 +34,19 @@
                         <p:inputText id="validee" value="#{reglementClientController.selected.validee}" title="#{myBundle.EditReglementClientTitle_validee}"/>
 
 
-                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_referance}" for="referance" />
-                        <p:inputText id="referance" value="#{reglementClientController.selected.referance}" title="#{myBundle.EditReglementClientTitle_referance}" size="20" maxlength="20"/>
-
-
                         <p:outputLabel value="#{myBundle.EditReglementClientLabel_escompte}" for="escompte" />
                         <p:inputText id="escompte" value="#{reglementClientController.selected.escompte}" title="#{myBundle.EditReglementClientTitle_escompte}"/>
 
 
-                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_IDClient}" for="IDClient" />
-                        <p:selectOneMenu id="IDClient" value="#{reglementClientController.selected.IDClient}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{clientController.items}"
-                                           var="IDClientItem"
-                                           itemValue="#{IDClientItem}"
-                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_factureClientsCollection}" for="factureClientsCollection" />
+                        <p:selectManyMenu id="factureClientsCollection" value="#{reglementClientController.selected.factureClientsCollection}" >
+                            <f:selectItems value="#{factureClientsController.items}"
+                                           var="factureClientsCollectionItem"
+                                           itemValue="#{factureClientsCollectionItem}"
+                                           itemLabel="#{factureClientsCollectionItem.IDFactureClients.toString()}"
                                            />
-                            <f:converter binding="#{clientConverter}"/>
-                        </p:selectOneMenu>
+                            <f:converter binding="#{factureClientsConverter}"/>
+                        </p:selectManyMenu>
 
 
                         <p:outputLabel value="#{myBundle.EditReglementClientLabel_IDModedereglement}" for="IDModedereglement" />
@@ -63,6 +58,18 @@
                                            itemLabel="#{IDModedereglementItem.description.toString()}"
                                            />
                             <f:converter binding="#{modeDeReglementConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditReglementClientLabel_IDClient}" for="IDClient" />
+                        <p:selectOneMenu id="IDClient" value="#{reglementClientController.selected.IDClient}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.items}"
+                                           var="IDClientItem"
+                                           itemValue="#{IDClientItem}"
+                                           itemLabel="#{IDClientItem.IDClient.toString()}"
+                                           />
+                            <f:converter binding="#{clientConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reglementClientController.save}" value="#{myBundle.Save}" update="display,:ReglementClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ReglementClientEditDialog);">

@@ -1,6 +1,6 @@
 package moncommerce.produit.web.converter;
 
-import moncommerce.domain.model.produit.ProduitCodeTarif;
+import moncommerce.domain.model.test.ProduitCodeTarif;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class ProduitCodeTarifConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.produit.ProduitCodeTarifPK getKey(String value) {
-        moncommerce.domain.model.produit.ProduitCodeTarifPK key;
+    moncommerce.domain.model.test.ProduitCodeTarifPK getKey(String value) {
+        moncommerce.domain.model.test.ProduitCodeTarifPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.produit.ProduitCodeTarifPK();
+        key = new moncommerce.domain.model.test.ProduitCodeTarifPK();
         key.setIDCodetarif(Long.parseLong(values[0]));
         key.setIdProduit(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.produit.ProduitCodeTarifPK value) {
+    String getStringKey(moncommerce.domain.model.test.ProduitCodeTarifPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDCodetarif());
         sb.append(SEPARATOR);

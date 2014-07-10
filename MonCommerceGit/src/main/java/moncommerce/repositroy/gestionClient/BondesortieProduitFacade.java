@@ -6,8 +6,8 @@
 
 package moncommerce.repositroy.gestionClient;
 
-import moncommerce.domain.model.gestionClient.BondesortieProduit;
-import moncommerce.domain.model.gestionClient.BondesortieProduitPK;
+import moncommerce.domain.model.test.BondesortieProduit;
+import moncommerce.domain.model.test.BondesortieProduitPK;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

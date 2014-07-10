@@ -5,7 +5,7 @@
  */
 package moncommerce.service;
 
-import moncommerce.domain.model.Entreprise;
+import moncommerce.domain.model.test.Entreprise;
 
 /**
  *

@@ -106,7 +106,7 @@ public abstract class AbstractController<T> {
      * @param event
      */
     public void save(ActionEvent event) {
-        
+        System.out.println("update");
         String msg = ResourceBundle.getBundle("/MyBundle").getString(itemClass.getSimpleName() + "Updated");
         persist(PersistAction.UPDATE, msg);
     }
@@ -144,16 +144,20 @@ public abstract class AbstractController<T> {
      * @param successMessage
      */
    protected void persist(PersistAction persistAction, String successMessage) {
+       
+       System.out.println("persist : "+getSelected());
         if (selected != null) {
             this.setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
+                    System.out.println("edit");
                     this.daoFacade.edit(selected);
                 } else {
                     this.daoFacade.remove(selected);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (Exception ex) {
+                System.out.println("ba3333333333333333333333333333333333333333333");
                 String msg = "";
                 Throwable cause = JsfUtil.getRootCause(ex.getCause());
                 if (cause != null) {

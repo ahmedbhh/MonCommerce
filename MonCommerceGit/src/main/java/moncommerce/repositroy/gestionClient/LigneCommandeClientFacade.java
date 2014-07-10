@@ -6,8 +6,8 @@
 
 package moncommerce.repositroy.gestionClient;
 
-import moncommerce.domain.model.gestionClient.LigneCommandeClient;
-import moncommerce.domain.model.gestionClient.LigneCommandeClientPK;
+import moncommerce.domain.model.test.LigneCommandeClient;
+import moncommerce.domain.model.test.LigneCommandeClientPK;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

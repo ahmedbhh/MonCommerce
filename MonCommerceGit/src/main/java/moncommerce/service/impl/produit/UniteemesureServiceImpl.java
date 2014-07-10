@@ -2,7 +2,7 @@ package moncommerce.service.impl.produit;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.produit.Uniteemesure;
+import moncommerce.domain.model.test.Uniteemesure;
 import moncommerce.repositroy.EntrpriseFacade;
 import moncommerce.service.produit.UniteemesureService;
 import moncommerce.service.impl.AbstractServiceImpl;

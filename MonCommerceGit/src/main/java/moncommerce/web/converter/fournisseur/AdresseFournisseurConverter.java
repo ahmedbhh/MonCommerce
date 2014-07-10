@@ -1,6 +1,6 @@
 package moncommerce.web.converter.fournisseur;
 
-import moncommerce.domain.model.fournisseur.AdresseFournisseur;
+import moncommerce.domain.model.test.AdresseFournisseur;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;

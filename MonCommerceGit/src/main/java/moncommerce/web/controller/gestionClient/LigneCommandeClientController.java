@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionClient;
 
-import moncommerce.domain.model.gestionClient.LigneCommandeClient;
+import moncommerce.domain.model.test.LigneCommandeClient;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -36,7 +36,7 @@ public class LigneCommandeClientController extends AbstractController<LigneComma
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setLigneCommandeClientPK(new moncommerce.domain.model.gestionClient.LigneCommandeClientPK());
+        this.getSelected().setLigneCommandeClientPK(new moncommerce.domain.model.test.LigneCommandeClientPK());
     }
 
 }

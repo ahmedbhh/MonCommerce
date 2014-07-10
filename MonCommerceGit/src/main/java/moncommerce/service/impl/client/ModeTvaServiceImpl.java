@@ -3,7 +3,7 @@ package moncommerce.service.impl.client;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.client.ModeTvaService;
-import moncommerce.domain.model.client.ModeTva;
+import moncommerce.domain.model.test.ModeTva;
 import moncommerce.repositroy.client.ModeTvaFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

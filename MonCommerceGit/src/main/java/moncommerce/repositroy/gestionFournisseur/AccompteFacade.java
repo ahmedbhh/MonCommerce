@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.gestionFournisseur;
 
-import moncommerce.domain.model.gestionFournisseur.Accompte;
+import moncommerce.domain.model.test.Accompte;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

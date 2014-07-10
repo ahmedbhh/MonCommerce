@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionClient;
 
-import moncommerce.domain.model.gestionClient.BondesortieProduit;
+import moncommerce.domain.model.test.BondesortieProduit;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -35,7 +35,7 @@ public class BondesortieProduitController extends AbstractController<Bondesortie
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setBondesortieProduitPK(new moncommerce.domain.model.gestionClient.BondesortieProduitPK());
+        this.getSelected().setBondesortieProduitPK(new moncommerce.domain.model.test.BondesortieProduitPK());
     }
 
 }

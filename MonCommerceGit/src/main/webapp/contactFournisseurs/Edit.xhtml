@@ -38,6 +38,18 @@
                         <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{contactFournisseursController.selected.dateHeure}" title="#{myBundle.EditContactFournisseursTitle_dateHeure}" required="true" requiredMessage="#{myBundle.EditContactFournisseursRequiredMessage_dateHeure}" showOn="button"/>
 
 
+                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_IDTitreContact}" for="IDTitreContact" />
+                        <p:selectOneMenu id="IDTitreContact" value="#{contactFournisseursController.selected.IDTitreContact}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{titreContactController.items}"
+                                           var="IDTitreContactItem"
+                                           itemValue="#{IDTitreContactItem}"
+                                           itemLabel="#{IDTitreContactItem.IDTitreContact.toString()}"
+                                           />
+                            <f:converter binding="#{titreContactConverter}"/>
+                        </p:selectOneMenu>
+
+
                         <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_IDFournisseur}" for="IDFournisseur" />
                         <p:selectOneMenu id="IDFournisseur" value="#{contactFournisseursController.selected.IDFournisseur}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -59,18 +71,6 @@
                                            itemLabel="#{IDFonctionContactItem.IDFonctionContact.toString()}"
                                            />
                             <f:converter binding="#{fonctionContactConverter}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel value="#{myBundle.EditContactFournisseursLabel_IDTitreContact}" for="IDTitreContact" />
-                        <p:selectOneMenu id="IDTitreContact" value="#{contactFournisseursController.selected.IDTitreContact}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{titreContactController.items}"
-                                           var="IDTitreContactItem"
-                                           itemValue="#{IDTitreContactItem}"
-                                           itemLabel="#{IDTitreContactItem.IDTitreContact.toString()}"
-                                           />
-                            <f:converter binding="#{titreContactConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contactFournisseursController.save}" value="#{myBundle.Save}" update="display,:ContactFournisseursListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ContactFournisseursEditDialog);">

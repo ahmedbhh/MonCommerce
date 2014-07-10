@@ -42,11 +42,11 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
 
-                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_IDdepot}"/>
-                        <h:outputText value="#{bondetransfertController.selected.IDdepot.IDdepot}"/>
-
                         <h:outputText value="#{myBundle.ViewBondetransfertLabel_idDepotRecepteur}"/>
                         <h:outputText value="#{bondetransfertController.selected.idDepotRecepteur.IDdepot}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondetransfertLabel_IDdepot}"/>
+                        <h:outputText value="#{bondetransfertController.selected.IDdepot.IDdepot}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="BondetransfertViewDialog.hide()"/>
                 </h:panelGroup>

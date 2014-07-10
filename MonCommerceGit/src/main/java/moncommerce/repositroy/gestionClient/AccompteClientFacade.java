@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.gestionClient;
 
-import moncommerce.domain.model.gestionClient.AccompteClient;
+import moncommerce.domain.model.test.AccompteClient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

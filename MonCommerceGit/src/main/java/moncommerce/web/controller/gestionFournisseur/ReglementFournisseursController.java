@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionFournisseur;
 
-import moncommerce.domain.model.gestionFournisseur.ReglementFournisseurs;
+import moncommerce.domain.model.test.ReglementFournisseurs;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

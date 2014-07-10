@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.gestionFournisseur.FactureFournisseurReglementFournisseurs;
+import moncommerce.domain.model.test.FactureFournisseurReglementFournisseurs;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class FactureFournisseurReglementFournisseursConverter implements Convert
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.gestionFournisseur.FactureFournisseurReglementFournisseursPK getKey(String value) {
-        moncommerce.domain.model.gestionFournisseur.FactureFournisseurReglementFournisseursPK key;
+    moncommerce.domain.model.test.FactureFournisseurReglementFournisseursPK getKey(String value) {
+        moncommerce.domain.model.test.FactureFournisseurReglementFournisseursPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.gestionFournisseur.FactureFournisseurReglementFournisseursPK();
+        key = new moncommerce.domain.model.test.FactureFournisseurReglementFournisseursPK();
         key.setIDReglementfournisseurs(Long.parseLong(values[0]));
         key.setIDFactureFournisseur(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.gestionFournisseur.FactureFournisseurReglementFournisseursPK value) {
+    String getStringKey(moncommerce.domain.model.test.FactureFournisseurReglementFournisseursPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDReglementfournisseurs());
         sb.append(SEPARATOR);

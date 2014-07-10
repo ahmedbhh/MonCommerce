@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionClient;
 
-import moncommerce.domain.model.gestionClient.FactureClientProduit;
+import moncommerce.domain.model.test.FactureClientProduit;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -36,7 +36,7 @@ public class FactureClientProduitController extends AbstractController<FactureCl
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setFactureClientProduitPK(new moncommerce.domain.model.gestionClient.FactureClientProduitPK());
+        this.getSelected().setFactureClientProduitPK(new moncommerce.domain.model.test.FactureClientProduitPK());
     }
 
 }

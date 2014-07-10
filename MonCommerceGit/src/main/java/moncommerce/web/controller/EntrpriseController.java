@@ -1,6 +1,6 @@
 package moncommerce.web.controller;
 
-import moncommerce.domain.model.Entreprise;
+import moncommerce.domain.model.test.Entreprise;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 

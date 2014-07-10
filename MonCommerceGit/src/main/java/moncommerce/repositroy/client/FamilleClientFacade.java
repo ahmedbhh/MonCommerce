@@ -5,7 +5,7 @@
  */
 package moncommerce.repositroy.client;
 
-import moncommerce.domain.model.client.FamilleClient;
+import moncommerce.domain.model.test.FamilleClient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

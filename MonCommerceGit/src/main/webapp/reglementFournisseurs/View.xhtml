@@ -40,11 +40,11 @@
                         <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_escompte}"/>
                         <h:outputText value="#{reglementFournisseursController.selected.escompte}" title="#{myBundle.ViewReglementFournisseursTitle_escompte}"/>
 
-                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_IDModedereglement}"/>
-                        <h:outputText value="#{reglementFournisseursController.selected.IDModedereglement.description}"/>
-
                         <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_IDFournisseur}"/>
                         <h:outputText value="#{reglementFournisseursController.selected.IDFournisseur.IDFournisseur}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementFournisseursLabel_IDModedereglement}"/>
+                        <h:outputText value="#{reglementFournisseursController.selected.IDModedereglement.description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="ReglementFournisseursViewDialog.hide()"/>
                 </h:panelGroup>

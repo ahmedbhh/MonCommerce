@@ -4,7 +4,7 @@ import moncommerce.service.gestionFournisseur.BonentreeService;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.*;
-import moncommerce.domain.model.gestionFournisseur.Bonentree;
+import moncommerce.domain.model.test.Bonentree;
 import moncommerce.repositroy.gestionFournisseur.BonentreeFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

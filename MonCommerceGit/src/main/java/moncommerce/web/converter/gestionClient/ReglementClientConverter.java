@@ -1,6 +1,6 @@
 package moncommerce.web.converter.gestionClient;
 
-import moncommerce.domain.model.gestionClient.ReglementClient;
+import moncommerce.domain.model.test.ReglementClient;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;

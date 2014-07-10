@@ -1,6 +1,6 @@
 package moncommerce.web.controller.produit;
 
-import moncommerce.domain.model.produit.Sousfamille;
+import moncommerce.domain.model.test.Sousfamille;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

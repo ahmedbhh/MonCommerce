@@ -3,7 +3,7 @@ package moncommerce.service.impl.client;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.client.ContactService;
-import moncommerce.domain.model.client.Contact;
+import moncommerce.domain.model.test.Contact;
 import moncommerce.repositroy.client.ContactFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

@@ -98,17 +98,23 @@
                     </f:facet>
                     <h:outputText value="#{item.soldee}"/>
                 </p:column>
-                <p:column sortBy="#{item.IDFournisseur.IDFournisseur}" filterBy="#{item.IDFournisseur.IDFournisseur}">
+                <p:column sortBy="#{item.IDemployee.IDemployee}" filterBy="#{item.IDemployee.IDemployee}">
                     <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListFactureFournisseurTitle_IDFournisseur}"/>
+                        <h:outputText value="#{myBundle.ListFactureFournisseurTitle_IDemployee}"/>
                     </f:facet>
-                    <h:outputText value="#{item.IDFournisseur.IDFournisseur}"/>
+                    <h:outputText value="#{item.IDemployee.IDemployee}"/>
                 </p:column>
                 <p:column sortBy="#{item.IDCommandefournisseur.description}" filterBy="#{item.IDCommandefournisseur.description}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListFactureFournisseurTitle_IDCommandefournisseur}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDCommandefournisseur.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDFournisseur.IDFournisseur}" filterBy="#{item.IDFournisseur.IDFournisseur}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListFactureFournisseurTitle_IDFournisseur}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDFournisseur.IDFournisseur}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

@@ -35,11 +35,11 @@
                         <h:outputText value="#{myBundle.ViewFournisseurLabel_matriculefiscale}"/>
                         <h:outputText value="#{fournisseurController.selected.matriculefiscale}" title="#{myBundle.ViewFournisseurTitle_matriculefiscale}"/>
 
-                        <h:outputText value="#{myBundle.ViewFournisseurLabel_IDFormeJuridique}"/>
-                        <h:outputText value="#{fournisseurController.selected.IDFormeJuridique.description}"/>
-
                         <h:outputText value="#{myBundle.ViewFournisseurLabel_IDFamilleFournisseur}"/>
                         <h:outputText value="#{fournisseurController.selected.IDFamilleFournisseur.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFournisseurLabel_IDFormeJuridique}"/>
+                        <h:outputText value="#{fournisseurController.selected.IDFormeJuridique.description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="FournisseurViewDialog.hide()"/>
                 </h:panelGroup>

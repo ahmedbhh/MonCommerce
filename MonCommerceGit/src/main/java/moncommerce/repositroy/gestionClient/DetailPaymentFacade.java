@@ -9,7 +9,7 @@ package moncommerce.repositroy.gestionClient;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import moncommerce.domain.model.gestionClient.DetailPayment;
+import moncommerce.domain.model.test.DetailPayment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy;
 
-import moncommerce.domain.model.Bondetransfert;
+import moncommerce.domain.model.test.Bondetransfert;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

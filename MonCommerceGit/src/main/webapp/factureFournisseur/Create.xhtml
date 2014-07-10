@@ -60,15 +60,15 @@
                         <p:inputText id="soldee" value="#{factureFournisseurController.selected.soldee}" title="#{myBundle.CreateFactureFournisseurTitle_soldee}"/>
 
 
-                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_IDFournisseur}" for="IDFournisseur" />
-                        <p:selectOneMenu id="IDFournisseur" value="#{factureFournisseurController.selected.IDFournisseur}" >
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_IDemployee}" for="IDemployee" />
+                        <p:selectOneMenu id="IDemployee" value="#{factureFournisseurController.selected.IDemployee}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{fournisseurController.items}"
-                                           var="IDFournisseurItem"
-                                           itemValue="#{IDFournisseurItem}"
-                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                            <f:selectItems value="#{employeeController.items}"
+                                           var="IDemployeeItem"
+                                           itemValue="#{IDemployeeItem}"
+                                           itemLabel="#{IDemployeeItem.IDemployee.toString()}"
                                            />
-                            <f:converter binding="#{fournisseurConverter}"/>
+                            <f:converter binding="#{employeeConverter}"/>
                         </p:selectOneMenu>
 
 
@@ -81,6 +81,18 @@
                                            itemLabel="#{IDCommandefournisseurItem.description.toString()}"
                                            />
                             <f:converter binding="#{commandeConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFactureFournisseurLabel_IDFournisseur}" for="IDFournisseur" />
+                        <p:selectOneMenu id="IDFournisseur" value="#{factureFournisseurController.selected.IDFournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fournisseurController.items}"
+                                           var="IDFournisseurItem"
+                                           itemValue="#{IDFournisseurItem}"
+                                           itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
+                                           />
+                            <f:converter binding="#{fournisseurConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{factureFournisseurController.saveNew}" value="#{myBundle.Save}" update="display,:FactureFournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureFournisseurCreateDialog);">

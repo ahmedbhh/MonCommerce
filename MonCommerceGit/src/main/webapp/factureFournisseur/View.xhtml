@@ -57,11 +57,14 @@
                         <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_soldee}"/>
                         <h:outputText value="#{factureFournisseurController.selected.soldee}" title="#{myBundle.ViewFactureFournisseurTitle_soldee}"/>
 
-                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_IDFournisseur}"/>
-                        <h:outputText value="#{factureFournisseurController.selected.IDFournisseur.IDFournisseur}"/>
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_IDemployee}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.IDemployee.IDemployee}"/>
 
                         <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_IDCommandefournisseur}"/>
                         <h:outputText value="#{factureFournisseurController.selected.IDCommandefournisseur.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureFournisseurLabel_IDFournisseur}"/>
+                        <h:outputText value="#{factureFournisseurController.selected.IDFournisseur.IDFournisseur}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="FactureFournisseurViewDialog.hide()"/>
                 </h:panelGroup>

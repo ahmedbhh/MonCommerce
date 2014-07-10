@@ -1,6 +1,6 @@
 package moncommerce.web.controller.produit;
 
-import moncommerce.domain.model.produit.ProduitProduit;
+import moncommerce.domain.model.test.ProduitProduit;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -36,7 +36,7 @@ public class ProduitProduitController extends AbstractController<ProduitProduit>
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setProduitProduitPK(new moncommerce.domain.model.produit.ProduitProduitPK());
+        this.getSelected().setProduitProduitPK(new moncommerce.domain.model.test.ProduitProduitPK());
     }
 
 }

@@ -7,7 +7,7 @@ package moncommerce.service.impl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.Entreprise;
+import moncommerce.domain.model.test.Entreprise;
 import moncommerce.repositroy.EntrpriseFacade;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionFournisseur;
 
-import moncommerce.domain.model.gestionFournisseur.BonentreeProduit;
+import moncommerce.domain.model.test.BonentreeProduit;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -36,7 +36,7 @@ public class BonentreeProduitController extends AbstractController<BonentreeProd
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setBonentreeProduitPK(new moncommerce.domain.model.gestionFournisseur.BonentreeProduitPK());
+        this.getSelected().setBonentreeProduitPK(new moncommerce.domain.model.test.BonentreeProduitPK());
     }
 
 }

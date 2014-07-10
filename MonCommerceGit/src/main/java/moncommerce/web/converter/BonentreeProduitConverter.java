@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.gestionFournisseur.BonentreeProduit;
+import moncommerce.domain.model.test.BonentreeProduit;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class BonentreeProduitConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.gestionFournisseur.BonentreeProduitPK getKey(String value) {
-        moncommerce.domain.model.gestionFournisseur.BonentreeProduitPK key;
+    moncommerce.domain.model.test.BonentreeProduitPK getKey(String value) {
+        moncommerce.domain.model.test.BonentreeProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.gestionFournisseur.BonentreeProduitPK();
+        key = new moncommerce.domain.model.test.BonentreeProduitPK();
         key.setIdProduit(Long.parseLong(values[0]));
         key.setIDBonEntree(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.gestionFournisseur.BonentreeProduitPK value) {
+    String getStringKey(moncommerce.domain.model.test.BonentreeProduitPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIdProduit());
         sb.append(SEPARATOR);

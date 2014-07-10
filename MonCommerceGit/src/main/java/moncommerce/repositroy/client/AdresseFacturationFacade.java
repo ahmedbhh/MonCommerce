@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.client;
 
-import moncommerce.domain.model.client.AdresseFacturation;
+import moncommerce.domain.model.test.AdresseFacturation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

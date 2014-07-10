@@ -1,6 +1,6 @@
 package moncommerce.web.controller.produit;
 
-import moncommerce.domain.model.produit.ProduitCodeTarif;
+import moncommerce.domain.model.test.ProduitCodeTarif;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -36,7 +36,7 @@ public class ProduitCodeTarifController extends AbstractController<ProduitCodeTa
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setProduitCodeTarifPK(new moncommerce.domain.model.produit.ProduitCodeTarifPK());
+        this.getSelected().setProduitCodeTarifPK(new moncommerce.domain.model.test.ProduitCodeTarifPK());
     }
 
 }

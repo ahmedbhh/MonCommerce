@@ -1,6 +1,6 @@
 package moncommerce.produit.web.converter;
 
-import moncommerce.domain.model.produit.Famille;
+import moncommerce.domain.model.test.Famille;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;

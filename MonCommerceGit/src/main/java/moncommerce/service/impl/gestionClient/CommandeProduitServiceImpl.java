@@ -2,8 +2,8 @@ package moncommerce.service.impl.gestionClient;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.gestionFournisseur.CommandeProduit;
-import moncommerce.domain.model.gestionFournisseur.CommandeProduitPK;
+import moncommerce.domain.model.test.CommandeProduit;
+import moncommerce.domain.model.test.CommandeProduitPK;
 import moncommerce.repositroy.gestionFournisseur.CommandeProduitFacade;
 import moncommerce.service.gestionClient.CommandeProduitService;
 import moncommerce.service.impl.AbstractServiceImpl;

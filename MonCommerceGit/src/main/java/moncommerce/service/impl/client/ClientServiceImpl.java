@@ -2,7 +2,7 @@ package moncommerce.service.impl.client;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.client.Client;
+import moncommerce.domain.model.test.Client;
 import moncommerce.repositroy.client.ClientFacade;
 import moncommerce.service.client.ClientService;
 import moncommerce.service.impl.AbstractServiceImpl;

@@ -1,6 +1,6 @@
 package moncommerce.web.controller.fournisseur;
 
-import moncommerce.domain.model.fournisseur.AdresseFournisseur;
+import moncommerce.domain.model.test.AdresseFournisseur;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

@@ -2,8 +2,8 @@ package moncommerce.service.impl.produit;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.produit.ProduitProduit;
-import moncommerce.domain.model.produit.ProduitProduitPK;
+import moncommerce.domain.model.test.ProduitProduit;
+import moncommerce.domain.model.test.ProduitProduitPK;
 import moncommerce.repositroy.produit.ProduitProduitFacade;
 import moncommerce.service.produit.ProduitProduitService;
 import moncommerce.service.impl.AbstractServiceImpl;

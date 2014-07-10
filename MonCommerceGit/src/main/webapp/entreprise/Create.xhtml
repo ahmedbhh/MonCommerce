@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntrepriseCreateDlg" widgetVar="EntrepriseCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateEntrepriseTitle}" closeOnEscape="true">
+
+            <h:form id="EntrepriseCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{entrepriseController.selected.nom}" title="#{myBundle.CreateEntrepriseTitle_nom}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_telephone}" for="telephone" />
+                        <p:inputText id="telephone" value="#{entrepriseController.selected.telephone}" title="#{myBundle.CreateEntrepriseTitle_telephone}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_fax}" for="fax" />
+                        <p:inputText id="fax" value="#{entrepriseController.selected.fax}" title="#{myBundle.CreateEntrepriseTitle_fax}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_logo}" for="logo" />
+                        <p:inputTextarea rows="4" cols="30" id="logo" value="#{entrepriseController.selected.logo}" title="#{myBundle.CreateEntrepriseTitle_logo}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_slogan}" for="slogan" />
+                        <p:inputText id="slogan" value="#{entrepriseController.selected.slogan}" title="#{myBundle.CreateEntrepriseTitle_slogan}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{entrepriseController.selected.email}" title="#{myBundle.CreateEntrepriseTitle_email}" size="50" maxlength="50"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_adresse}" for="adresse" />
+                        <p:inputTextarea rows="4" cols="30" id="adresse" value="#{entrepriseController.selected.adresse}" title="#{myBundle.CreateEntrepriseTitle_adresse}" />
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_codePostal}" for="codePostal" />
+                        <p:inputText id="codePostal" value="#{entrepriseController.selected.codePostal}" title="#{myBundle.CreateEntrepriseTitle_codePostal}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_ville}" for="ville" />
+                        <p:inputText id="ville" value="#{entrepriseController.selected.ville}" title="#{myBundle.CreateEntrepriseTitle_ville}" size="20" maxlength="20"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_pays}" for="pays" />
+                        <p:inputText id="pays" value="#{entrepriseController.selected.pays}" title="#{myBundle.CreateEntrepriseTitle_pays}" size="64" maxlength="64"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateEntrepriseLabel_matriculefiscale}" for="matriculefiscale" />
+                        <p:inputText id="matriculefiscale" value="#{entrepriseController.selected.matriculefiscale}" title="#{myBundle.CreateEntrepriseTitle_matriculefiscale}" size="30" maxlength="30"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{entrepriseController.saveNew}" value="#{myBundle.Save}" update="display,:EntrepriseListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,EntrepriseCreateDialog);">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="EntrepriseCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

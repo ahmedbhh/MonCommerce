@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntrepriseViewDlg" widgetVar="EntrepriseViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewEntrepriseTitle}" closeOnEscape="true">
+
+            <h:form id="EntrepriseViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{entrepriseController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_IDEntrprise}"/>
+                        <h:outputText value="#{entrepriseController.selected.IDEntrprise}" title="#{myBundle.ViewEntrepriseTitle_IDEntrprise}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_nom}"/>
+                        <h:outputText value="#{entrepriseController.selected.nom}" title="#{myBundle.ViewEntrepriseTitle_nom}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_telephone}"/>
+                        <h:outputText value="#{entrepriseController.selected.telephone}" title="#{myBundle.ViewEntrepriseTitle_telephone}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_fax}"/>
+                        <h:outputText value="#{entrepriseController.selected.fax}" title="#{myBundle.ViewEntrepriseTitle_fax}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_logo}"/>
+                        <h:outputText value="#{entrepriseController.selected.logo}" title="#{myBundle.ViewEntrepriseTitle_logo}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_slogan}"/>
+                        <h:outputText value="#{entrepriseController.selected.slogan}" title="#{myBundle.ViewEntrepriseTitle_slogan}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_email}"/>
+                        <h:outputText value="#{entrepriseController.selected.email}" title="#{myBundle.ViewEntrepriseTitle_email}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_adresse}"/>
+                        <h:outputText value="#{entrepriseController.selected.adresse}" title="#{myBundle.ViewEntrepriseTitle_adresse}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_codePostal}"/>
+                        <h:outputText value="#{entrepriseController.selected.codePostal}" title="#{myBundle.ViewEntrepriseTitle_codePostal}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_ville}"/>
+                        <h:outputText value="#{entrepriseController.selected.ville}" title="#{myBundle.ViewEntrepriseTitle_ville}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_pays}"/>
+                        <h:outputText value="#{entrepriseController.selected.pays}" title="#{myBundle.ViewEntrepriseTitle_pays}"/>
+
+                        <h:outputText value="#{myBundle.ViewEntrepriseLabel_matriculefiscale}"/>
+                        <h:outputText value="#{entrepriseController.selected.matriculefiscale}" title="#{myBundle.ViewEntrepriseTitle_matriculefiscale}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="EntrepriseViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

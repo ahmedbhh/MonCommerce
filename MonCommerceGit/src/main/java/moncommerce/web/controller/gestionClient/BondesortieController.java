@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionClient;
 
-import moncommerce.domain.model.gestionClient.Bondesortie;
+import moncommerce.domain.model.test.Bondesortie;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

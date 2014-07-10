@@ -34,17 +34,24 @@
                         <h:outputText value="#{myBundle.ViewReglementClientLabel_validee}"/>
                         <h:outputText value="#{reglementClientController.selected.validee}" title="#{myBundle.ViewReglementClientTitle_validee}"/>
 
-                        <h:outputText value="#{myBundle.ViewReglementClientLabel_referance}"/>
-                        <h:outputText value="#{reglementClientController.selected.referance}" title="#{myBundle.ViewReglementClientTitle_referance}"/>
-
                         <h:outputText value="#{myBundle.ViewReglementClientLabel_escompte}"/>
                         <h:outputText value="#{reglementClientController.selected.escompte}" title="#{myBundle.ViewReglementClientTitle_escompte}"/>
 
-                        <h:outputText value="#{myBundle.ViewReglementClientLabel_IDClient}"/>
-                        <h:outputText value="#{reglementClientController.selected.IDClient.IDClient}"/>
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_factureClientsCollection}"/>
+                        <h:selectManyMenu>
+                            <f:selectItems value="#{reglementClientController.selected.factureClientsCollection}"
+                                           var="factureClientsCollectionItem"
+                                           itemValue="#{factureClientsCollectionItem}"
+                                           itemLabel="#{factureClientsCollectionItem.IDFactureClients.toString()}"
+                                           />
+                            <f:converter binding="#{factureClientsConverter}"/>
+                        </h:selectManyMenu>
 
                         <h:outputText value="#{myBundle.ViewReglementClientLabel_IDModedereglement}"/>
                         <h:outputText value="#{reglementClientController.selected.IDModedereglement.description}"/>
+
+                        <h:outputText value="#{myBundle.ViewReglementClientLabel_IDClient}"/>
+                        <h:outputText value="#{reglementClientController.selected.IDClient.IDClient}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="ReglementClientViewDialog.hide()"/>
                 </h:panelGroup>

@@ -4,7 +4,7 @@ import moncommerce.service.gestionClient.CommandeClientService;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.*;
-import moncommerce.domain.model.gestionClient.CommandeClient;
+import moncommerce.domain.model.test.CommandeClient;
 import moncommerce.repositroy.gestionClient.CommandeClientFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionFournisseur;
 
-import moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseur;
+import moncommerce.domain.model.test.ProduitFactureFournisseur;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -36,7 +36,7 @@ public class ProduitFactureFournisseurController extends AbstractController<Prod
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setProduitFactureFournisseurPK(new moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK());
+        this.getSelected().setProduitFactureFournisseurPK(new moncommerce.domain.model.test.ProduitFactureFournisseurPK());
     }
 
 }

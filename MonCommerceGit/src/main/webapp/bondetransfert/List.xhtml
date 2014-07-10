@@ -68,17 +68,17 @@
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:outputText>
                 </p:column>
-                <p:column sortBy="#{item.IDdepot.IDdepot}" filterBy="#{item.IDdepot.IDdepot}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListBondetransfertTitle_IDdepot}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDdepot.IDdepot}"/>
-                </p:column>
                 <p:column sortBy="#{item.idDepotRecepteur.IDdepot}" filterBy="#{item.idDepotRecepteur.IDdepot}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListBondetransfertTitle_idDepotRecepteur}"/>
                     </f:facet>
                     <h:outputText value="#{item.idDepotRecepteur.IDdepot}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDdepot.IDdepot}" filterBy="#{item.IDdepot.IDdepot}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListBondetransfertTitle_IDdepot}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDdepot.IDdepot}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

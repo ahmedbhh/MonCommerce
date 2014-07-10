@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.gestionClient;
 
-import moncommerce.domain.model.gestionClient.CommandeClient;
+import moncommerce.domain.model.test.CommandeClient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

@@ -9,7 +9,7 @@ package moncommerce.repositroy.gestionFournisseur;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import moncommerce.domain.model.gestionFournisseur.Bonentree;
+import moncommerce.domain.model.test.Bonentree;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

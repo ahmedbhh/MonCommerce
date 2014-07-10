@@ -35,14 +35,14 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
 
+                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDTitreContact}"/>
+                        <h:outputText value="#{contactFournisseursController.selected.IDTitreContact.IDTitreContact}"/>
+
                         <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDFournisseur}"/>
                         <h:outputText value="#{contactFournisseursController.selected.IDFournisseur.IDFournisseur}"/>
 
                         <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDFonctionContact}"/>
                         <h:outputText value="#{contactFournisseursController.selected.IDFonctionContact.IDFonctionContact}"/>
-
-                        <h:outputText value="#{myBundle.ViewContactFournisseursLabel_IDTitreContact}"/>
-                        <h:outputText value="#{contactFournisseursController.selected.IDTitreContact.IDTitreContact}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="ContactFournisseursViewDialog.hide()"/>
                 </h:panelGroup>

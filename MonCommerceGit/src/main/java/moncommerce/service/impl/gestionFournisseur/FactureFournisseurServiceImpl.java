@@ -4,7 +4,7 @@ import moncommerce.service.gestionFournisseur.FactureFournisseurService;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.*;
-import moncommerce.domain.model.gestionFournisseur.FactureFournisseur;
+import moncommerce.domain.model.test.FactureFournisseur;
 import moncommerce.repositroy.gestionFournisseur.FactureFournisseurFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

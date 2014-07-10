@@ -1,7 +1,7 @@
 package moncommerce.service.produit;
 
-import moncommerce.domain.model.produit.ProduitCodeTarif;
-import moncommerce.domain.model.produit.ProduitCodeTarifPK;
+import moncommerce.domain.model.test.ProduitCodeTarif;
+import moncommerce.domain.model.test.ProduitCodeTarifPK;
 import moncommerce.service.AbstractCrudService;
 
 public interface ProduitCodeTarifService

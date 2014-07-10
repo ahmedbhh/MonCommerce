@@ -4,7 +4,7 @@ import moncommerce.service.produit.CodeTarifService;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.*;
-import moncommerce.domain.model.produit.CodeTarif;
+import moncommerce.domain.model.test.CodeTarif;
 import moncommerce.repositroy.produit.CodeTarifFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

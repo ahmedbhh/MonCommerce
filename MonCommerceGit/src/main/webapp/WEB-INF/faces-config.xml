@@ -9,6 +9,10 @@
             <base-name>/MyBundle</base-name>
             <var>myBundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/MyBundle</base-name>
+            <var>myBundle</var>
+        </resource-bundle>
     </application>
     
     

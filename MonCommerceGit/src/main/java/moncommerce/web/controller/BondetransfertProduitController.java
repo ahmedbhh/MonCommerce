@@ -1,6 +1,6 @@
 package moncommerce.web.controller;
 
-import moncommerce.domain.model.BondetransfertProduit;
+import moncommerce.domain.model.test.BondetransfertProduit;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -33,7 +33,7 @@ public class BondetransfertProduitController extends AbstractController<Bondetra
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setBondetransfertProduitPK(new moncommerce.domain.model.BondetransfertProduitPK());
+        this.getSelected().setBondetransfertProduitPK(new moncommerce.domain.model.test.BondetransfertProduitPK());
     }
 
 }

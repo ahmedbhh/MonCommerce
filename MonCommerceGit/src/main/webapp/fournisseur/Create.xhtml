@@ -25,7 +25,7 @@
 
 
                         <p:outputLabel value="#{myBundle.CreateFournisseurLabel_risque}" for="risque" />
-                        <p:inputText id="risque" value="#{fournisseurController.selected.risque}" title="#{myBundle.CreateFournisseurTitle_risque}" size="50" maxlength="50"/>
+                        <p:inputText id="risque" value="#{fournisseurController.selected.risque}" title="#{myBundle.CreateFournisseurTitle_risque}" size="20" maxlength="20"/>
 
 
                         <p:outputLabel value="#{myBundle.CreateFournisseurLabel_dateHeure}" for="dateHeure" />
@@ -34,18 +34,6 @@
 
                         <p:outputLabel value="#{myBundle.CreateFournisseurLabel_matriculefiscale}" for="matriculefiscale" />
                         <p:inputText id="matriculefiscale" value="#{fournisseurController.selected.matriculefiscale}" title="#{myBundle.CreateFournisseurTitle_matriculefiscale}" size="30" maxlength="30"/>
-
-
-                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_IDFormeJuridique}" for="IDFormeJuridique" />
-                        <p:selectOneMenu id="IDFormeJuridique" value="#{fournisseurController.selected.IDFormeJuridique}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{formeJuridiqueController.items}"
-                                           var="IDFormeJuridiqueItem"
-                                           itemValue="#{IDFormeJuridiqueItem}"
-                                           itemLabel="#{IDFormeJuridiqueItem.description.toString()}"
-                                           />
-                            <f:converter binding="#{formeJuridiqueConverter}"/>
-                        </p:selectOneMenu>
 
 
                         <p:outputLabel value="#{myBundle.CreateFournisseurLabel_IDFamilleFournisseur}" for="IDFamilleFournisseur" />
@@ -57,6 +45,18 @@
                                            itemLabel="#{IDFamilleFournisseurItem.description.toString()}"
                                            />
                             <f:converter binding="#{familleFournisseurConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateFournisseurLabel_IDFormeJuridique}" for="IDFormeJuridique" />
+                        <p:selectOneMenu id="IDFormeJuridique" value="#{fournisseurController.selected.IDFormeJuridique}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{formeJuridiqueController.items}"
+                                           var="IDFormeJuridiqueItem"
+                                           itemValue="#{IDFormeJuridiqueItem}"
+                                           itemLabel="#{IDFormeJuridiqueItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{formeJuridiqueConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{fournisseurController.saveNew}" value="#{myBundle.Save}" update="display,:FournisseurListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FournisseurCreateDialog);">

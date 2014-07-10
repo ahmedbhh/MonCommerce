@@ -3,7 +3,7 @@ package moncommerce.service.impl.gestionFournisseur;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.gestionFournisseur.AccompteService;
-import moncommerce.domain.model.gestionFournisseur.Accompte;
+import moncommerce.domain.model.test.Accompte;
 import moncommerce.repositroy.gestionFournisseur.AccompteFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

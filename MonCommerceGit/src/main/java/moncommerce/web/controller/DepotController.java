@@ -1,6 +1,6 @@
 package moncommerce.web.controller;
 
-import moncommerce.domain.model.Depot;
+import moncommerce.domain.model.test.Depot;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

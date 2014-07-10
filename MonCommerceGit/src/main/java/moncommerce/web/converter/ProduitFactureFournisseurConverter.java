@@ -1,6 +1,6 @@
 package moncommerce.web.converter;
 
-import moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseur;
+import moncommerce.domain.model.test.ProduitFactureFournisseur;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class ProduitFactureFournisseurConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK getKey(String value) {
-        moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK key;
+    moncommerce.domain.model.test.ProduitFactureFournisseurPK getKey(String value) {
+        moncommerce.domain.model.test.ProduitFactureFournisseurPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK();
+        key = new moncommerce.domain.model.test.ProduitFactureFournisseurPK();
         key.setIDFactureFournisseur(Long.parseLong(values[0]));
         key.setIdProduit(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseurPK value) {
+    String getStringKey(moncommerce.domain.model.test.ProduitFactureFournisseurPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDFactureFournisseur());
         sb.append(SEPARATOR);

@@ -52,6 +52,12 @@
                         <h:outputText value="#{myBundle.ViewBonentreeLabel_soldee}"/>
                         <h:outputText value="#{bonentreeController.selected.soldee}" title="#{myBundle.ViewBonentreeTitle_soldee}"/>
 
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDemployee}"/>
+                        <h:outputText value="#{bonentreeController.selected.IDemployee.IDemployee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDCommandefournisseur}"/>
+                        <h:outputText value="#{bonentreeController.selected.IDCommandefournisseur.description}"/>
+
                         <h:outputText value="#{myBundle.ViewBonentreeLabel_IDFactureFournisseur}"/>
                         <h:outputText value="#{bonentreeController.selected.IDFactureFournisseur.description}"/>
 
@@ -60,9 +66,6 @@
 
                         <h:outputText value="#{myBundle.ViewBonentreeLabel_IDFournisseur}"/>
                         <h:outputText value="#{bonentreeController.selected.IDFournisseur.IDFournisseur}"/>
-
-                        <h:outputText value="#{myBundle.ViewBonentreeLabel_IDCommandefournisseur}"/>
-                        <h:outputText value="#{bonentreeController.selected.IDCommandefournisseur.description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="BonentreeViewDialog.hide()"/>
                 </h:panelGroup>

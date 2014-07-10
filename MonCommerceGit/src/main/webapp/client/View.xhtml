@@ -41,14 +41,14 @@
                         <h:outputText value="#{myBundle.ViewClientLabel_matriculefiscale}"/>
                         <h:outputText value="#{clientController.selected.matriculefiscale}" title="#{myBundle.ViewClientTitle_matriculefiscale}"/>
 
-                        <h:outputText value="#{myBundle.ViewClientLabel_IDCodetarif}"/>
-                        <h:outputText value="#{clientController.selected.IDCodetarif.IDCodetarif}"/>
-
                         <h:outputText value="#{myBundle.ViewClientLabel_IDFamilleclient}"/>
                         <h:outputText value="#{clientController.selected.IDFamilleclient.IDFamilleclient}"/>
 
                         <h:outputText value="#{myBundle.ViewClientLabel_IDModeTVA}"/>
                         <h:outputText value="#{clientController.selected.IDModeTVA.IDModeTVA}"/>
+
+                        <h:outputText value="#{myBundle.ViewClientLabel_IDCodetarif}"/>
+                        <h:outputText value="#{clientController.selected.IDCodetarif.IDCodetarif}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="ClientViewDialog.hide()"/>
                 </h:panelGroup>

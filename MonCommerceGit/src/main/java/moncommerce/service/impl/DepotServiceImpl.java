@@ -3,7 +3,7 @@ package moncommerce.service.impl;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.DepotService;
-import moncommerce.domain.model.Depot;
+import moncommerce.domain.model.test.Depot;
 import moncommerce.repositroy.DepotFacade;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

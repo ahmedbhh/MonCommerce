@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.fournisseur;
 
-import moncommerce.domain.model.fournisseur.FonctionContact;
+import moncommerce.domain.model.test.FonctionContact;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

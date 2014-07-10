@@ -1,6 +1,6 @@
 package moncommerce.produit.web.converter;
 
-import moncommerce.domain.model.produit.ProduitProduit;
+import moncommerce.domain.model.test.ProduitProduit;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class ProduitProduitConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.produit.ProduitProduitPK getKey(String value) {
-        moncommerce.domain.model.produit.ProduitProduitPK key;
+    moncommerce.domain.model.test.ProduitProduitPK getKey(String value) {
+        moncommerce.domain.model.test.ProduitProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.produit.ProduitProduitPK();
+        key = new moncommerce.domain.model.test.ProduitProduitPK();
         key.setIDProduitComposant(Long.parseLong(values[0]));
         key.setIDProduitComposee(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.produit.ProduitProduitPK value) {
+    String getStringKey(moncommerce.domain.model.test.ProduitProduitPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDProduitComposant());
         sb.append(SEPARATOR);

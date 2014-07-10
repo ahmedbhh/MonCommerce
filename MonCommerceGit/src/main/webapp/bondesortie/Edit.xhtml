@@ -14,8 +14,8 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{bondesortieController.selected != null}">
 
-                        <h:outputLabel value="#{myBundle.EditBondesortieLabel_IDBondeSortie}" for="IDBondeSortie" />
-                        <h:outputText id="IDBondeSortie" value="#{bondesortieController.selected.IDBondeSortie}" />
+                        <h:outputLabel value="#{myBundle.EditBondesortieLabel_IDBondesortie}" for="IDBondesortie" />
+                        <h:outputText id="IDBondesortie" value="#{bondesortieController.selected.IDBondesortie}" />
 
 
                         <p:outputLabel value="#{myBundle.EditBondesortieLabel_referance}" for="referance" />
@@ -62,6 +62,30 @@
                         <p:inputText id="soldee" value="#{bondesortieController.selected.soldee}" title="#{myBundle.EditBondesortieTitle_soldee}"/>
 
 
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDemployee}" for="IDemployee" />
+                        <p:selectOneMenu id="IDemployee" value="#{bondesortieController.selected.IDemployee}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{employeeController.items}"
+                                           var="IDemployeeItem"
+                                           itemValue="#{IDemployeeItem}"
+                                           itemLabel="#{IDemployeeItem.IDemployee.toString()}"
+                                           />
+                            <f:converter binding="#{employeeConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDFactureClients}" for="IDFactureClients" />
+                        <p:selectOneMenu id="IDFactureClients" value="#{bondesortieController.selected.IDFactureClients}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{factureClientsController.items}"
+                                           var="IDFactureClientsItem"
+                                           itemValue="#{IDFactureClientsItem}"
+                                           itemLabel="#{IDFactureClientsItem.IDFactureClients.toString()}"
+                                           />
+                            <f:converter binding="#{factureClientsConverter}"/>
+                        </p:selectOneMenu>
+
+
                         <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDCommandeClient}" for="IDCommandeClient" />
                         <p:selectOneMenu id="IDCommandeClient" value="#{bondesortieController.selected.IDCommandeClient}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -95,18 +119,6 @@
                                            itemLabel="#{IDClientItem.IDClient.toString()}"
                                            />
                             <f:converter binding="#{clientConverter}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel value="#{myBundle.EditBondesortieLabel_IDFactureClients}" for="IDFactureClients" />
-                        <p:selectOneMenu id="IDFactureClients" value="#{bondesortieController.selected.IDFactureClients}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{factureClientsController.items}"
-                                           var="IDFactureClientsItem"
-                                           itemValue="#{IDFactureClientsItem}"
-                                           itemLabel="#{IDFactureClientsItem.IDFactureClients.toString()}"
-                                           />
-                            <f:converter binding="#{factureClientsConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{bondesortieController.save}" value="#{myBundle.Save}" update="display,:BondesortieListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BondesortieEditDialog);">

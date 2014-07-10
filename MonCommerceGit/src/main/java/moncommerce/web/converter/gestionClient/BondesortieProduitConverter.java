@@ -1,6 +1,6 @@
 package moncommerce.web.converter.gestionClient;
 
-import moncommerce.domain.model.gestionClient.BondesortieProduit;
+import moncommerce.domain.model.test.BondesortieProduit;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class BondesortieProduitConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.gestionClient.BondesortieProduitPK getKey(String value) {
-        moncommerce.domain.model.gestionClient.BondesortieProduitPK key;
+    moncommerce.domain.model.test.BondesortieProduitPK getKey(String value) {
+        moncommerce.domain.model.test.BondesortieProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.gestionClient.BondesortieProduitPK();
+        key = new moncommerce.domain.model.test.BondesortieProduitPK();
         key.setIdProduit(Long.parseLong(values[0]));
         key.setIDBondesortie(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.gestionClient.BondesortieProduitPK value) {
+    String getStringKey(moncommerce.domain.model.test.BondesortieProduitPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIdProduit());
         sb.append(SEPARATOR);

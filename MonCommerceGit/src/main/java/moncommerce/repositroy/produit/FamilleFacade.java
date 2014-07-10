@@ -9,7 +9,7 @@ package moncommerce.repositroy.produit;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import moncommerce.domain.model.produit.Famille;
+import moncommerce.domain.model.test.Famille;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

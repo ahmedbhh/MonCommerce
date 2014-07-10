@@ -72,6 +72,18 @@
                         <p:inputText id="marque" value="#{produitController.selected.marque}" title="#{myBundle.CreateProduitTitle_marque}" size="20" maxlength="20"/>
 
 
+                        <p:outputLabel value="#{myBundle.CreateProduitLabel_tva}" for="tva" />
+                        <p:selectOneMenu id="tva" value="#{produitController.selected.tva}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tvaController.items}"
+                                           var="tvaItem"
+                                           itemValue="#{tvaItem}"
+                                           itemLabel="#{tvaItem.idTva.toString()}"
+                                           />
+                            <f:converter binding="#{tvaConverter}"/>
+                        </p:selectOneMenu>
+
+
                         <p:outputLabel value="#{myBundle.CreateProduitLabel_IDUniteeMesure}" for="IDUniteeMesure" />
                         <p:selectOneMenu id="IDUniteeMesure" value="#{produitController.selected.IDUniteeMesure}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -105,18 +117,6 @@
                                            itemLabel="#{sousfamilleItem.libelle.toString()}"
                                            />
                             <f:converter binding="#{sousfamilleConverter}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel value="#{myBundle.CreateProduitLabel_tva}" for="tva" />
-                        <p:selectOneMenu id="tva" value="#{produitController.selected.tva}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{tvaController.items}"
-                                           var="tvaItem"
-                                           itemValue="#{tvaItem}"
-                                           itemLabel="#{tvaItem.idtva.toString()}"
-                                           />
-                            <f:converter binding="#{tvaConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{produitController.saveNew}" value="#{myBundle.Save}" update="display,:ProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitCreateDialog);">

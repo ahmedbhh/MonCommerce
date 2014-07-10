@@ -66,17 +66,17 @@
                     </f:facet>
                     <h:outputText value="#{item.escompte}"/>
                 </p:column>
-                <p:column sortBy="#{item.IDModedereglement.description}" filterBy="#{item.IDModedereglement.description}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListReglementFournisseursTitle_IDModedereglement}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDModedereglement.description}"/>
-                </p:column>
                 <p:column sortBy="#{item.IDFournisseur.IDFournisseur}" filterBy="#{item.IDFournisseur.IDFournisseur}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListReglementFournisseursTitle_IDFournisseur}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDFournisseur.IDFournisseur}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDModedereglement.description}" filterBy="#{item.IDModedereglement.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReglementFournisseursTitle_IDModedereglement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDModedereglement.description}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

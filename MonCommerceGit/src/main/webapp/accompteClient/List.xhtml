@@ -48,6 +48,12 @@
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:outputText>
                 </p:column>
+                <p:column sortBy="#{item.IDModedereglement.description}" filterBy="#{item.IDModedereglement.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListAccompteClientTitle_IDModedereglement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDModedereglement.description}"/>
+                </p:column>
                 <p:column sortBy="#{item.IDFactureClients.IDFactureClients}" filterBy="#{item.IDFactureClients.IDFactureClients}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListAccompteClientTitle_IDFactureClients}"/>
@@ -59,12 +65,6 @@
                         <h:outputText value="#{myBundle.ListAccompteClientTitle_IDCommandeClient}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDCommandeClient.IDCommandeClient}"/>
-                </p:column>
-                <p:column sortBy="#{item.IDModedereglement.description}" filterBy="#{item.IDModedereglement.description}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListAccompteClientTitle_IDModedereglement}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDModedereglement.description}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

@@ -1,6 +1,6 @@
 package moncommerce.web.converter.gestionClient;
 
-import moncommerce.domain.model.gestionClient.LigneCommandeClient;
+import moncommerce.domain.model.test.LigneCommandeClient;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +28,16 @@ public class LigneCommandeClientConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.gestionClient.LigneCommandeClientPK getKey(String value) {
-        moncommerce.domain.model.gestionClient.LigneCommandeClientPK key;
+    moncommerce.domain.model.test.LigneCommandeClientPK getKey(String value) {
+        moncommerce.domain.model.test.LigneCommandeClientPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.gestionClient.LigneCommandeClientPK();
+        key = new moncommerce.domain.model.test.LigneCommandeClientPK();
         key.setIDCommandeClient(Long.parseLong(values[0]));
         key.setIdProduit(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.gestionClient.LigneCommandeClientPK value) {
+    String getStringKey(moncommerce.domain.model.test.LigneCommandeClientPK value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value.getIDCommandeClient());
         sb.append(SEPARATOR);

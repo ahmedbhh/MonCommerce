@@ -1,6 +1,6 @@
 package moncommerce.service.gestionFournisseur;
 
-import moncommerce.domain.model.gestionFournisseur.FactureFournisseur;
+import moncommerce.domain.model.test.FactureFournisseur;
 import moncommerce.service.AbstractCrudService;
 
 

@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.fournisseur;
 
-import moncommerce.domain.model.fournisseur.FormeJuridique;
+import moncommerce.domain.model.test.FormeJuridique;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

@@ -11,7 +11,7 @@
         <p:panel header="#{myBundle.ListProduitTitle}">
             <p:dataTable id="datalist" value="#{produitController.items}" var="item"
                          selectionMode="single" selection="#{produitController.selected}"
-                         rowKey="#{item.IDProduit}"
+                         rowKey="#{item.idProduit}"
                          paginator="true"
                          rows="10"
                          rowsPerPageTemplate="10,20,30"
@@ -20,11 +20,11 @@
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                <p:column sortBy="#{item.IDProduit}" filterBy="#{item.IDProduit}">
+                <p:column sortBy="#{item.idProduit}" filterBy="#{item.idProduit}">
                     <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProduitTitle_IDProduit}"/>
+                        <h:outputText value="#{myBundle.ListProduitTitle_idProduit}"/>
                     </f:facet>
-                    <h:outputText value="#{item.IDProduit}"/>
+                    <h:outputText value="#{item.idProduit}"/>
                 </p:column>
                 <p:column sortBy="#{item.referance}" filterBy="#{item.referance}">
                     <f:facet name="header">
@@ -112,6 +112,12 @@
                     </f:facet>
                     <h:outputText value="#{item.marque}"/>
                 </p:column>
+                <p:column sortBy="#{item.tva.idTva}" filterBy="#{item.tva.idTva}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListProduitTitle_tva}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tva.idTva}"/>
+                </p:column>
                 <p:column sortBy="#{item.IDUniteeMesure.IDUniteeMesure}" filterBy="#{item.IDUniteeMesure.IDUniteeMesure}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListProduitTitle_IDUniteeMesure}"/>
@@ -129,12 +135,6 @@
                         <h:outputText value="#{myBundle.ListProduitTitle_sousfamille}"/>
                     </f:facet>
                     <h:outputText value="#{item.sousfamille.libelle}"/>
-                </p:column>
-                <p:column sortBy="#{item.tva.idtva}" filterBy="#{item.tva.idtva}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListProduitTitle_tva}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.tva.idtva}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

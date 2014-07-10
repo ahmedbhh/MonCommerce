@@ -70,12 +70,6 @@
                     </f:facet>
                     <h:outputText value="#{item.matriculefiscale}"/>
                 </p:column>
-                <p:column sortBy="#{item.IDCodetarif.IDCodetarif}" filterBy="#{item.IDCodetarif.IDCodetarif}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListClientTitle_IDCodetarif}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDCodetarif.IDCodetarif}"/>
-                </p:column>
                 <p:column sortBy="#{item.IDFamilleclient.IDFamilleclient}" filterBy="#{item.IDFamilleclient.IDFamilleclient}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListClientTitle_IDFamilleclient}"/>
@@ -87,6 +81,12 @@
                         <h:outputText value="#{myBundle.ListClientTitle_IDModeTVA}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDModeTVA.IDModeTVA}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDCodetarif.IDCodetarif}" filterBy="#{item.IDCodetarif.IDCodetarif}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListClientTitle_IDCodetarif}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDCodetarif.IDCodetarif}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

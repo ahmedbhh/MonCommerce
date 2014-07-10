@@ -2,8 +2,8 @@ package moncommerce.service.impl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.BondetransfertProduit;
-import moncommerce.domain.model.BondetransfertProduitPK;
+import moncommerce.domain.model.test.BondetransfertProduit;
+import moncommerce.domain.model.test.BondetransfertProduitPK;
 import moncommerce.repositroy.BondetransfertProduitFacade;
 
 import moncommerce.service.BondetransfertProduitService;

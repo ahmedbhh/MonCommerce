@@ -1,6 +1,6 @@
 package moncommerce.web.controller.fournisseur;
 
-import moncommerce.domain.model.fournisseur.FonctionContact;
+import moncommerce.domain.model.test.FonctionContact;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

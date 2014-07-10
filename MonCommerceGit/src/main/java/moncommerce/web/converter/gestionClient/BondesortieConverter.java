@@ -1,6 +1,6 @@
 package moncommerce.web.converter.gestionClient;
 
-import moncommerce.domain.model.gestionClient.Bondesortie;
+import moncommerce.domain.model.test.Bondesortie;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -1,6 +1,6 @@
 package moncommerce.web.controller.client;
 
-import moncommerce.domain.model.client.ModeTva;
+import moncommerce.domain.model.test.ModeTva;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

@@ -58,17 +58,17 @@
                     </f:facet>
                     <h:outputText value="#{item.ALordre}"/>
                 </p:column>
-                <p:column sortBy="#{item.IDAccompteClient.IDAccompteClient}" filterBy="#{item.IDAccompteClient.IDAccompteClient}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_IDAccompteClient}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDAccompteClient.IDAccompteClient}"/>
-                </p:column>
                 <p:column sortBy="#{item.IDReglementClient.IDReglementClient}" filterBy="#{item.IDReglementClient.IDReglementClient}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListDetailPaymentTitle_IDReglementClient}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDReglementClient.IDReglementClient}"/>
+                </p:column>
+                <p:column sortBy="#{item.IDAccompteClient.IDAccompteClient}" filterBy="#{item.IDAccompteClient.IDAccompteClient}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDetailPaymentTitle_IDAccompteClient}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDAccompteClient.IDAccompteClient}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

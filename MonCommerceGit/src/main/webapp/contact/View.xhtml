@@ -46,14 +46,14 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
 
+                        <h:outputText value="#{myBundle.ViewContactLabel_IDTitreContact}"/>
+                        <h:outputText value="#{contactController.selected.IDTitreContact.IDTitreContact}"/>
+
                         <h:outputText value="#{myBundle.ViewContactLabel_IDFonctionContact}"/>
                         <h:outputText value="#{contactController.selected.IDFonctionContact.IDFonctionContact}"/>
 
                         <h:outputText value="#{myBundle.ViewContactLabel_IDClient}"/>
                         <h:outputText value="#{contactController.selected.IDClient.IDClient}"/>
-
-                        <h:outputText value="#{myBundle.ViewContactLabel_IDTitreContact}"/>
-                        <h:outputText value="#{contactController.selected.IDTitreContact.IDTitreContact}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="ContactViewDialog.hide()"/>
                 </h:panelGroup>

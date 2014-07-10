@@ -63,15 +63,14 @@
                         <h:outputText value="#{myBundle.ViewFactureClientsLabel_tembree}"/>
                         <h:outputText value="#{factureClientsController.selected.tembree}" title="#{myBundle.ViewFactureClientsTitle_tembree}"/>
 
-                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_reglementClientCollection}"/>
-                        <h:selectManyMenu>
-                            <f:selectItems value="#{factureClientsController.selected.reglementClientCollection}"
-                                           var="reglementClientCollectionItem"
-                                           itemValue="#{reglementClientCollectionItem}"
-                                           itemLabel="#{reglementClientCollectionItem.IDReglementClient.toString()}"
-                                           />
-                            <f:converter binding="#{reglementClientConverter}"/>
-                        </h:selectManyMenu>
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_bondesortie}"/>
+                        <h:outputText value="#{factureClientsController.selected.bondesortie.IDBondesortie}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDCaisse}"/>
+                        <h:outputText value="#{factureClientsController.selected.IDCaisse.IDCaisse}"/>
+
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDemployee}"/>
+                        <h:outputText value="#{factureClientsController.selected.IDemployee.IDemployee}"/>
 
                         <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDCommandeClient}"/>
                         <h:outputText value="#{factureClientsController.selected.IDCommandeClient.IDCommandeClient}"/>
@@ -82,8 +81,8 @@
                         <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDModedereglement}"/>
                         <h:outputText value="#{factureClientsController.selected.IDModedereglement.description}"/>
 
-                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_IDCaisse}"/>
-                        <h:outputText value="#{factureClientsController.selected.IDCaisse.IDCaisse}"/>
+                        <h:outputText value="#{myBundle.ViewFactureClientsLabel_factureClientProduit}"/>
+                        <h:outputText value="#{factureClientsController.selected.factureClientProduit.description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="FactureClientsViewDialog.hide()"/>
                 </h:panelGroup>

@@ -14,8 +14,8 @@
                 <h:panelGroup id="display">
                     <p:panelGrid  columns="2" rendered="#{produitController.selected != null}">
 
-                        <h:outputLabel value="#{myBundle.EditProduitLabel_IDProduit}" for="IDProduit" />
-                        <h:outputText id="IDProduit" value="#{produitController.selected.IDProduit}" />
+                        <h:outputLabel value="#{myBundle.EditProduitLabel_idProduit}" for="idProduit" />
+                        <h:outputText id="idProduit" value="#{produitController.selected.idProduit}" />
 
 
                         <p:outputLabel value="#{myBundle.EditProduitLabel_referance}" for="referance" />
@@ -74,6 +74,18 @@
                         <p:inputText id="marque" value="#{produitController.selected.marque}" title="#{myBundle.EditProduitTitle_marque}" size="20" maxlength="20"/>
 
 
+                        <p:outputLabel value="#{myBundle.EditProduitLabel_tva}" for="tva" />
+                        <p:selectOneMenu id="tva" value="#{produitController.selected.tva}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tvaController.items}"
+                                           var="tvaItem"
+                                           itemValue="#{tvaItem}"
+                                           itemLabel="#{tvaItem.idTva.toString()}"
+                                           />
+                            <f:converter binding="#{tvaConverter}"/>
+                        </p:selectOneMenu>
+
+
                         <p:outputLabel value="#{myBundle.EditProduitLabel_IDUniteeMesure}" for="IDUniteeMesure" />
                         <p:selectOneMenu id="IDUniteeMesure" value="#{produitController.selected.IDUniteeMesure}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -107,18 +119,6 @@
                                            itemLabel="#{sousfamilleItem.libelle.toString()}"
                                            />
                             <f:converter binding="#{sousfamilleConverter}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel value="#{myBundle.EditProduitLabel_tva}" for="tva" />
-                        <p:selectOneMenu id="tva" value="#{produitController.selected.tva}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{tvaController.items}"
-                                           var="tvaItem"
-                                           itemValue="#{tvaItem}"
-                                           itemLabel="#{tvaItem.idtva.toString()}"
-                                           />
-                            <f:converter binding="#{tvaConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{produitController.save}" value="#{myBundle.Save}" update="display,:ProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProduitEditDialog);">

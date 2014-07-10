@@ -1,6 +1,6 @@
 package moncommerce.web.controller.client;
 
-import moncommerce.domain.model.client.FamilleClient;
+import moncommerce.domain.model.test.FamilleClient;
 import moncommerce.repositroy.client.FamilleClientFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;

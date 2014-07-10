@@ -3,7 +3,7 @@ package moncommerce.service.impl.gestionClient;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.gestionClient.FactureClientsService;
-import moncommerce.domain.model.gestionClient.FactureClients;
+import moncommerce.domain.model.test.FactureClients;
 import moncommerce.repositroy.EntrpriseFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

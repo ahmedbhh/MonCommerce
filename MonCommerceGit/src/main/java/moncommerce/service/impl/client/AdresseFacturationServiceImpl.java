@@ -3,7 +3,7 @@ package moncommerce.service.impl.client;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.client.AdresseFacturationService;
-import moncommerce.domain.model.client.AdresseFacturation;
+import moncommerce.domain.model.test.AdresseFacturation;
 import moncommerce.repositroy.client.AdresseFacturationFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

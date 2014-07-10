@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.client;
 
-import moncommerce.domain.model.client.ModeTva;
+import moncommerce.domain.model.test.ModeTva;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

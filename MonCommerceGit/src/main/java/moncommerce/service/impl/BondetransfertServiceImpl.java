@@ -2,7 +2,7 @@ package moncommerce.service.impl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.Bondetransfert;
+import moncommerce.domain.model.test.Bondetransfert;
 import moncommerce.repositroy.BondetransfertFacade;
 import moncommerce.service.BondetransfertService;
 import org.springframework.stereotype.Service;

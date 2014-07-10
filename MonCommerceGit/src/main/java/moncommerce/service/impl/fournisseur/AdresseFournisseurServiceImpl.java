@@ -3,7 +3,7 @@ package moncommerce.service.impl.fournisseur;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.fournisseur.AdresseFournisseurService;
-import moncommerce.domain.model.fournisseur.AdresseFournisseur;
+import moncommerce.domain.model.test.AdresseFournisseur;
 import moncommerce.repositroy.fournisseur.AdresseFournisseurFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

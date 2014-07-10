@@ -4,7 +4,7 @@ import moncommerce.service.gestionClient.CaisseService;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.*;
-import moncommerce.domain.model.gestionClient.Caisse;
+import moncommerce.domain.model.test.Caisse;
 import moncommerce.repositroy.gestionClient.CaisseFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;

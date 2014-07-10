@@ -56,6 +56,30 @@
                         <p:inputText id="soldee" value="#{bonentreeController.selected.soldee}" title="#{myBundle.CreateBonentreeTitle_soldee}"/>
 
 
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDemployee}" for="IDemployee" />
+                        <p:selectOneMenu id="IDemployee" value="#{bonentreeController.selected.IDemployee}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{employeeController.items}"
+                                           var="IDemployeeItem"
+                                           itemValue="#{IDemployeeItem}"
+                                           itemLabel="#{IDemployeeItem.IDemployee.toString()}"
+                                           />
+                            <f:converter binding="#{employeeConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDCommandefournisseur}" for="IDCommandefournisseur" />
+                        <p:selectOneMenu id="IDCommandefournisseur" value="#{bonentreeController.selected.IDCommandefournisseur}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commandeController.items}"
+                                           var="IDCommandefournisseurItem"
+                                           itemValue="#{IDCommandefournisseurItem}"
+                                           itemLabel="#{IDCommandefournisseurItem.description.toString()}"
+                                           />
+                            <f:converter binding="#{commandeConverter}"/>
+                        </p:selectOneMenu>
+
+
                         <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDFactureFournisseur}" for="IDFactureFournisseur" />
                         <p:selectOneMenu id="IDFactureFournisseur" value="#{bonentreeController.selected.IDFactureFournisseur}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -89,18 +113,6 @@
                                            itemLabel="#{IDFournisseurItem.IDFournisseur.toString()}"
                                            />
                             <f:converter binding="#{fournisseurConverter}"/>
-                        </p:selectOneMenu>
-
-
-                        <p:outputLabel value="#{myBundle.CreateBonentreeLabel_IDCommandefournisseur}" for="IDCommandefournisseur" />
-                        <p:selectOneMenu id="IDCommandefournisseur" value="#{bonentreeController.selected.IDCommandefournisseur}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{commandeController.items}"
-                                           var="IDCommandefournisseurItem"
-                                           itemValue="#{IDCommandefournisseurItem}"
-                                           itemLabel="#{IDCommandefournisseurItem.description.toString()}"
-                                           />
-                            <f:converter binding="#{commandeConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{bonentreeController.saveNew}" value="#{myBundle.Save}" update="display,:BonentreeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,BonentreeCreateDialog);">

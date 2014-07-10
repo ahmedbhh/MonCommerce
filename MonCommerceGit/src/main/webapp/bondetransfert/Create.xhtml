@@ -40,18 +40,6 @@
                         <p:calendar id="dateHeure" pattern="MM/dd/yyyy HH:mm:ss" value="#{bondetransfertController.selected.dateHeure}" title="#{myBundle.CreateBondetransfertTitle_dateHeure}" required="true" requiredMessage="#{myBundle.CreateBondetransfertRequiredMessage_dateHeure}" showOn="button"/>
 
 
-                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_IDdepot}" for="IDdepot" />
-                        <p:selectOneMenu id="IDdepot" value="#{bondetransfertController.selected.IDdepot}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{depotController.items}"
-                                           var="IDdepotItem"
-                                           itemValue="#{IDdepotItem}"
-                                           itemLabel="#{IDdepotItem.IDdepot.toString()}"
-                                           />
-                            <f:converter binding="#{depotConverter}"/>
-                        </p:selectOneMenu>
-
-
                         <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_idDepotRecepteur}" for="idDepotRecepteur" />
                         <p:selectOneMenu id="idDepotRecepteur" value="#{bondetransfertController.selected.idDepotRecepteur}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
@@ -59,6 +47,18 @@
                                            var="idDepotRecepteurItem"
                                            itemValue="#{idDepotRecepteurItem}"
                                            itemLabel="#{idDepotRecepteurItem.IDdepot.toString()}"
+                                           />
+                            <f:converter binding="#{depotConverter}"/>
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="#{myBundle.CreateBondetransfertLabel_IDdepot}" for="IDdepot" />
+                        <p:selectOneMenu id="IDdepot" value="#{bondetransfertController.selected.IDdepot}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{depotController.items}"
+                                           var="IDdepotItem"
+                                           itemValue="#{IDdepotItem}"
+                                           itemLabel="#{IDdepotItem.IDdepot.toString()}"
                                            />
                             <f:converter binding="#{depotConverter}"/>
                         </p:selectOneMenu>

@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.gestionClient;
 
-import moncommerce.domain.model.gestionClient.Caisse;
+import moncommerce.domain.model.test.Caisse;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

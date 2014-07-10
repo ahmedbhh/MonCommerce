@@ -1,7 +1,7 @@
 package moncommerce.service.gestionClient;
 
-import moncommerce.domain.model.gestionClient.LigneCommandeClient;
-import moncommerce.domain.model.gestionClient.LigneCommandeClientPK;
+import moncommerce.domain.model.test.LigneCommandeClient;
+import moncommerce.domain.model.test.LigneCommandeClientPK;
 import moncommerce.service.AbstractCrudService;
 
 public interface LigneCommandeClientService 

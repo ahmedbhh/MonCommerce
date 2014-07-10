@@ -2,7 +2,7 @@ package moncommerce.service.impl.gestionClient;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.gestionClient.AccompteClient;
+import moncommerce.domain.model.test.AccompteClient;
 import moncommerce.repositroy.gestionClient.AccompteClientFacade;
 import moncommerce.service.gestionClient.AccompteClientService;
 import moncommerce.service.impl.AbstractServiceImpl;

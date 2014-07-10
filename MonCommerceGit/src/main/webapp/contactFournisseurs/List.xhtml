@@ -58,6 +58,12 @@
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:outputText>
                 </p:column>
+                <p:column sortBy="#{item.IDTitreContact.IDTitreContact}" filterBy="#{item.IDTitreContact.IDTitreContact}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContactFournisseursTitle_IDTitreContact}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.IDTitreContact.IDTitreContact}"/>
+                </p:column>
                 <p:column sortBy="#{item.IDFournisseur.IDFournisseur}" filterBy="#{item.IDFournisseur.IDFournisseur}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListContactFournisseursTitle_IDFournisseur}"/>
@@ -69,12 +75,6 @@
                         <h:outputText value="#{myBundle.ListContactFournisseursTitle_IDFonctionContact}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDFonctionContact.IDFonctionContact}"/>
-                </p:column>
-                <p:column sortBy="#{item.IDTitreContact.IDTitreContact}" filterBy="#{item.IDTitreContact.IDTitreContact}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListContactFournisseursTitle_IDTitreContact}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.IDTitreContact.IDTitreContact}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

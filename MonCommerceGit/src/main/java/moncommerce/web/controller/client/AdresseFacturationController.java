@@ -1,6 +1,6 @@
 package moncommerce.web.controller.client;
 
-import moncommerce.domain.model.client.AdresseFacturation;
+import moncommerce.domain.model.test.AdresseFacturation;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

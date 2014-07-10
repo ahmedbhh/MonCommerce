@@ -15,8 +15,8 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{produitController.selected != null}">
 
-                        <h:outputText value="#{myBundle.ViewProduitLabel_IDProduit}"/>
-                        <h:outputText value="#{produitController.selected.IDProduit}" title="#{myBundle.ViewProduitTitle_IDProduit}"/>
+                        <h:outputText value="#{myBundle.ViewProduitLabel_idProduit}"/>
+                        <h:outputText value="#{produitController.selected.idProduit}" title="#{myBundle.ViewProduitTitle_idProduit}"/>
 
                         <h:outputText value="#{myBundle.ViewProduitLabel_referance}"/>
                         <h:outputText value="#{produitController.selected.referance}" title="#{myBundle.ViewProduitTitle_referance}"/>
@@ -62,6 +62,9 @@
                         <h:outputText value="#{myBundle.ViewProduitLabel_marque}"/>
                         <h:outputText value="#{produitController.selected.marque}" title="#{myBundle.ViewProduitTitle_marque}"/>
 
+                        <h:outputText value="#{myBundle.ViewProduitLabel_tva}"/>
+                        <h:outputText value="#{produitController.selected.tva.idTva}"/>
+
                         <h:outputText value="#{myBundle.ViewProduitLabel_IDUniteeMesure}"/>
                         <h:outputText value="#{produitController.selected.IDUniteeMesure.IDUniteeMesure}"/>
 
@@ -70,9 +73,6 @@
 
                         <h:outputText value="#{myBundle.ViewProduitLabel_sousfamille}"/>
                         <h:outputText value="#{produitController.selected.sousfamille.libelle}"/>
-
-                        <h:outputText value="#{myBundle.ViewProduitLabel_tva}"/>
-                        <h:outputText value="#{produitController.selected.tva.idtva}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="ProduitViewDialog.hide()"/>
                 </h:panelGroup>

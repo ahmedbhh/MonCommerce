@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.fournisseur;
 
-import moncommerce.domain.model.fournisseur.FamilleFournisseur;
+import moncommerce.domain.model.test.FamilleFournisseur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

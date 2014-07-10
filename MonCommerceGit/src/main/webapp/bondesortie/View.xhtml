@@ -15,8 +15,8 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{bondesortieController.selected != null}">
 
-                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDBondeSortie}"/>
-                        <h:outputText value="#{bondesortieController.selected.IDBondeSortie}" title="#{myBundle.ViewBondesortieTitle_IDBondeSortie}"/>
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDBondesortie}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDBondesortie}" title="#{myBundle.ViewBondesortieTitle_IDBondesortie}"/>
 
                         <h:outputText value="#{myBundle.ViewBondesortieLabel_referance}"/>
                         <h:outputText value="#{bondesortieController.selected.referance}" title="#{myBundle.ViewBondesortieTitle_referance}"/>
@@ -55,6 +55,12 @@
                         <h:outputText value="#{myBundle.ViewBondesortieLabel_soldee}"/>
                         <h:outputText value="#{bondesortieController.selected.soldee}" title="#{myBundle.ViewBondesortieTitle_soldee}"/>
 
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDemployee}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDemployee.IDemployee}"/>
+
+                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDFactureClients}"/>
+                        <h:outputText value="#{bondesortieController.selected.IDFactureClients.IDFactureClients}"/>
+
                         <h:outputText value="#{myBundle.ViewBondesortieLabel_IDCommandeClient}"/>
                         <h:outputText value="#{bondesortieController.selected.IDCommandeClient.IDCommandeClient}"/>
 
@@ -63,9 +69,6 @@
 
                         <h:outputText value="#{myBundle.ViewBondesortieLabel_IDClient}"/>
                         <h:outputText value="#{bondesortieController.selected.IDClient.IDClient}"/>
-
-                        <h:outputText value="#{myBundle.ViewBondesortieLabel_IDFactureClients}"/>
-                        <h:outputText value="#{bondesortieController.selected.IDFactureClients.IDFactureClients}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="BondesortieViewDialog.hide()"/>
                 </h:panelGroup>

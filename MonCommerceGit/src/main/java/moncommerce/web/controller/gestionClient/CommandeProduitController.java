@@ -1,6 +1,6 @@
 package moncommerce.web.controller.gestionClient;
 
-import moncommerce.domain.model.gestionFournisseur.CommandeProduit;
+import moncommerce.domain.model.test.CommandeProduit;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -34,7 +34,7 @@ public class CommandeProduitController extends AbstractController<CommandeProdui
 
     @Override
     protected void initializeEmbeddableKey() {
-        this.getSelected().setCommandeProduitPK(new moncommerce.domain.model.gestionFournisseur.CommandeProduitPK());
+        this.getSelected().setCommandeProduitPK(new moncommerce.domain.model.test.CommandeProduitPK());
     }
 
 }

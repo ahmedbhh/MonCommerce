@@ -10,85 +10,54 @@
         <h:form id="menuForm">
             <p:menubar>
                 <p:menuitem value="#{myBundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                <!-- test -->
                 <p:submenu label="#{myBundle.Maintenance}">
-                    <p:menuitem value="Entrprise" outcome="/entrprise/index" />
+                   <p:menuitem value="Bondetransfert" outcome="/bondetransfert/index" />
+                    <!--<p:menuitem value="BondetransfertProduit" outcome="/bondetransfertProduit/index" />
+                    <p:menuitem value="Depot" outcome="/depot/index" />
+                    <p:menuitem value="Entreprise" outcome="/entreprise/index" />
                     <p:menuitem value="ModeDeReglement" outcome="/modeDeReglement/index" />
-                    <p:menuitem value="FamilleFournisseur" outcome="/familleFournisseur/index" />
+                    <p:menuitem value="AdresseFacturation" outcome="/adresseFacturation/index" />
+                    <p:menuitem value="Client" outcome="/client/index" />
+                    <p:menuitem value="Contact" outcome="/contact/index" />
                     <p:menuitem value="FamilleClient" outcome="/familleClient/index" />
-                    <p:menuitem value="CodeTarif" outcome="/codeTarif/index" />
-                    <p:menuitem value="FonctionContact" outcome="/fonctionContact/index" />
                     <p:menuitem value="ModeTva" outcome="/modeTva/index" />
-                    <p:menuitem value="UnitéeMesure" outcome="/uniteemesure/index" />
+                    <p:menuitem value="TitreContact" outcome="/titreContact/index" />
                     <p:menuitem value="AdresseFournisseur" outcome="/adresseFournisseur/index" />
                     <p:menuitem value="ContactFournisseurs" outcome="/contactFournisseurs/index" />
-                </p:submenu>
-              
-                <p:submenu label="Listes">
-                    <p:menuitem value="Client" outcome="/client/index" />
-
+                    <p:menuitem value="FamilleFournisseur" outcome="/familleFournisseur/index" />
+                    <p:menuitem value="FonctionContact" outcome="/fonctionContact/index" />
+                    <p:menuitem value="FormeJuridique" outcome="/formeJuridique/index" />
                     <p:menuitem value="Fournisseur" outcome="/fournisseur/index" />
-                    <p:menuitem value="Produit" outcome="/produit/index" />
-                    <p:menuitem value="ProduitDepot" outcome="/produitDepot/index" />
-
-                    <p:menuitem value="Tva" outcome="/tva/index" />
-
-                    <p:menuitem value="Depot" outcome="/depot/index" />
-
-                    <p:menuitem value="Caisse" outcome="/caisse/index" />
-
-
-
-
-                </p:submenu>   
-                <p:submenu label="Ventes">
-                    <p:menuitem value="CommandeClient" outcome="/commandeClient/index" />
-                    <p:menuitem value="LigneCommandeClient" outcome="/ligneCommandeClient/index" />
-                    <p:menuitem value="FactureClientProduit" outcome="/factureClientProduit/index" />
-                    <p:menuitem value="FactureClients" outcome="/factureClients/index" />
+                    <p:menuitem value="AccompteClient" outcome="/accompteClient/index" />
                     <p:menuitem value="Bondesortie" outcome="/bondesortie/index" />
                     <p:menuitem value="BondesortieProduit" outcome="/bondesortieProduit/index" />
-                    <p:menuitem value="ReglementClient" outcome="/reglementClient/index" />
-                    <p:menuitem value="AccompteClient" outcome="/accompteClient/index" />
+                    <p:menuitem value="Caisse" outcome="/caisse/index" />
+                    <p:menuitem value="CommandeClient" outcome="/commandeClient/index" />
                     <p:menuitem value="DetailPayment" outcome="/detailPayment/index" />
-                                    
-                </p:submenu>                
-
-                <p:submenu label="Achats">
-
+                    <p:menuitem value="FactureClientProduit" outcome="/factureClientProduit/index" />
+                    <p:menuitem value="FactureClients" outcome="/factureClients/index" />
+                    <p:menuitem value="LigneCommandeClient" outcome="/ligneCommandeClient/index" />
+                    <p:menuitem value="ReglementClient" outcome="/reglementClient/index" />
+                    <p:menuitem value="Accompte" outcome="/accompte/index" />
+                    <p:menuitem value="Bonentree" outcome="/bonentree/index" />
+                    <p:menuitem value="BonentreeProduit" outcome="/bonentreeProduit/index" />
                     <p:menuitem value="Commande" outcome="/commande/index" />
                     <p:menuitem value="CommandeProduit" outcome="/commandeProduit/index" />
-
                     <p:menuitem value="FactureFournisseur" outcome="/factureFournisseur/index" />
-                    <p:menuitem value="ProduitFactureFournisseur" outcome="/produitFactureFournisseur/index" />
-
-
-                    <p:menuitem value="Bonentrée" outcome="/bonentree/index" />
-                    <p:menuitem value="BonentréeProduit" outcome="/bonentreeProduit/index" />
-
-
-                    <p:menuitem value="ReglementFournisseurs" outcome="/reglementFournisseurs/index" />
                     <p:menuitem value="FactureFournisseurReglementFournisseurs" outcome="/factureFournisseurReglementFournisseurs/index" />
-
-                    <p:menuitem value="Accompte" outcome="/accompte/index" />
-
-
-
-                </p:submenu>
-
-                <p:submenu label="Stock">
+                    <p:menuitem value="ProduitFactureFournisseur" outcome="/produitFactureFournisseur/index" />
+                    <p:menuitem value="ReglementFournisseurs" outcome="/reglementFournisseurs/index" />
+                    <p:menuitem value="CodeTarif" outcome="/codeTarif/index" />-->
+                    <p:menuitem value="Famille" outcome="/famille/index" />
+                   <p:menuitem value="Produit" outcome="/produit/index" />
                     <p:menuitem value="ProduitCodeTarif" outcome="/produitCodeTarif/index" />
+                    <p:menuitem value="ProduitDepot" outcome="/produitDepot/index" />
                     <p:menuitem value="ProduitProduit" outcome="/produitProduit/index" />
-
+                    <p:menuitem value="Sousfamille" outcome="/sousfamille/index" />
+                    <p:menuitem value="Tva" outcome="/tva/index" />
+                    <p:menuitem value="Uniteemesure" outcome="/uniteemesure/index" />
+                    <p:menuitem value="Employee" outcome="/employee/index" />
                 </p:submenu>
-
-                <p:submenu label="Caisse">
-                </p:submenu>
-
-                <p:submenu label="Etats">
-                </p:submenu>
-
-                
             </p:menubar>
         </h:form>
     </ui:composition>

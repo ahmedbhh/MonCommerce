@@ -3,7 +3,7 @@ package moncommerce.service.impl;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.ModeDeReglementService;
-import moncommerce.domain.model.ModeDeReglement;
+import moncommerce.domain.model.test.ModeDeReglement;
 import moncommerce.repositroy.ModeDeReglementFacade;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

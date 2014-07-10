@@ -6,7 +6,7 @@
 
 package moncommerce.repositroy.gestionFournisseur;
 
-import moncommerce.domain.model.gestionFournisseur.ProduitFactureFournisseur;
+import moncommerce.domain.model.test.ProduitFactureFournisseur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

@@ -1,6 +1,6 @@
 package moncommerce.web.controller.fournisseur;
 
-import moncommerce.domain.model.fournisseur.FormeJuridique;
+import moncommerce.domain.model.test.FormeJuridique;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;

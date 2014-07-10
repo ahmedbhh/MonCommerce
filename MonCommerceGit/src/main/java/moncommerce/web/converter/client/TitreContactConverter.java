@@ -1,6 +1,6 @@
 package moncommerce.web.converter.client;
 
-import moncommerce.domain.model.client.TitreContact;
+import moncommerce.domain.model.test.TitreContact;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;

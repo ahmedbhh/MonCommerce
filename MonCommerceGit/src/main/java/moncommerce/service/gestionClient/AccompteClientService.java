@@ -1,6 +1,6 @@
 package moncommerce.service.gestionClient;
 
-import moncommerce.domain.model.gestionClient.AccompteClient;
+import moncommerce.domain.model.test.AccompteClient;
 import moncommerce.service.AbstractCrudService;
 
 
