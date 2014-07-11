@@ -1,7 +1,6 @@
-package moncommerce.produit.web.converter;
+package moncommerce.web.converter.produit;
 
 import moncommerce.domain.model.test.Famille;
-import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -10,7 +9,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import moncommerce.service.produit.FamilleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 @ManagedBean
 public class FamilleConverter implements Converter {
 
@@ -19,10 +20,20 @@ public class FamilleConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-        if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
+        System.out.println("getAsObject" + value);
+        /*if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
+         return null;
+         }*/
+
+        try {
+
+            //System.out.println(this.ejbFacade.find(new Long(value)));
+            return this.ejbFacade.find(new Long(1));
+        } catch (Exception e) {
+            System.out.println("expection getAsObject: " + e);
             return null;
         }
-        return this.ejbFacade.find(getKey(value));
+
     }
 
     java.lang.Long getKey(String value) {
@@ -32,6 +43,7 @@ public class FamilleConverter implements Converter {
     }
 
     String getStringKey(java.lang.Long value) {
+        System.out.println("getStringKey");
         StringBuffer sb = new StringBuffer();
         sb.append(value);
         return sb.toString();
@@ -39,6 +51,7 @@ public class FamilleConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+        System.out.println("getAsString");
         if (object == null
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;

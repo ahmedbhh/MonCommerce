@@ -10,7 +10,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import moncommerce.service.client.AdresseFacturationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 @ManagedBean
 public class AdresseFacturationConverter implements Converter {
 

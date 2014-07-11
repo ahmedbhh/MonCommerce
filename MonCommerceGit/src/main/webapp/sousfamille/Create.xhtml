@@ -29,7 +29,7 @@
                             <f:selectItems value="#{familleController.items}"
                                            var="famillesupItem"
                                            itemValue="#{famillesupItem}"
-                                           itemLabel="#{famillesupItem.IDFamille.toString()}"
+                                           itemLabel="#{famillesupItem.libelle}"
                                            />
                             <f:converter binding="#{familleConverter}"/>
                         </p:selectOneMenu>

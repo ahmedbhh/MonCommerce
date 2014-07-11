@@ -11,7 +11,9 @@ import javax.faces.convert.Converter;
 import moncommerce.domain.model.test.CommandeProduitPK;
 import moncommerce.service.gestionClient.CommandeProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 @ManagedBean
 public class CommandeProduitConverter implements Converter {
 

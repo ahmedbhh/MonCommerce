@@ -10,7 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import moncommerce.service.gestionFournisseur.BonentreeService;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+@Component
 @ManagedBean
 public class BonentreeConverter implements Converter {
 

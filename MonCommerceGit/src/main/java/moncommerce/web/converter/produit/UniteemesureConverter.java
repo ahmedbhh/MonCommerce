@@ -1,4 +1,4 @@
-package moncommerce.produit.web.converter;
+package moncommerce.web.converter.produit;
 
 import moncommerce.domain.model.test.Uniteemesure;
 import moncommerce.web.controller.util.JsfUtil;
@@ -10,11 +10,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import moncommerce.service.produit.UniteemesureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 @ManagedBean
 public class UniteemesureConverter implements Converter {
 
-    
     @Autowired
     private UniteemesureService ejbFacade;
 

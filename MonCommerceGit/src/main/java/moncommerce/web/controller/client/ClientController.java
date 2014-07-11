@@ -19,8 +19,6 @@ public class ClientController extends AbstractController<Client> implements Seri
     @Autowired
     private ClientService ejbFacade;
 
-    @Autowired
-    private FamilleClientService familleFacade;
 
     @PostConstruct
     @Override
@@ -32,20 +30,4 @@ public class ClientController extends AbstractController<Client> implements Seri
         super(Client.class);
     }
 
-   @Override
-    public void persist(PersistAction persistAction, String successMessage) {
-       
-        
-        System.out.println("teeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssst");
-        FamilleClient famille=familleFacade.find(new Long(1));
-        System.out.println(famille);
-        
-        getSelected().setNom("name");
-        getSelected().setIDFamilleclient(famille);
-        
-        ejbFacade.edit(getSelected());
-        System.out.println("ooooooooooooooooooooooooooooooooooooookkkkkkkkkkkkkkkkk");
-     //   getSelected().setIDFamilleclient(familleFacade.find(new Long(1)));
-       
-    }
 }

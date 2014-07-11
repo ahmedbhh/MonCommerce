@@ -24,13 +24,24 @@
 
     <dependencies>
         
-<!--
+        <!--   com.mysema.querydsl -->
         <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-            <version>2.9.1</version>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-core</artifactId>
+            <version>2.3.2</version>
         </dependency>
--->
+ 
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+ 
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>2.3.2</version>
+        </dependency>
         <!-- PrimeFaces -->
         <dependency>
             <groupId>org.primefaces</groupId>

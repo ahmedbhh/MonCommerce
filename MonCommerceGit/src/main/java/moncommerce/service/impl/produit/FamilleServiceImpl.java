@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author AHMED
  */
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 @Service
 public class FamilleServiceImpl extends AbstractServiceImpl<Famille,Long> implements FamilleService {
 

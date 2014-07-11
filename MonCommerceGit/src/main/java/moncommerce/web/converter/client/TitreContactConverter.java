@@ -10,7 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import moncommerce.service.client.TitreContactService;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+@Component
 @ManagedBean
 public class TitreContactConverter implements Converter {
 

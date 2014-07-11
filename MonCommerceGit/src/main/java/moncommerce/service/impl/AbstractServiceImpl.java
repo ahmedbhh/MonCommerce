@@ -43,6 +43,8 @@ public abstract class AbstractServiceImpl<T extends Object,ID extends Serializab
 
     
     public T find(ID id) {
+        System.out.println("find");
+        System.out.println(repository.findOne(id));
         return (T) repository.findOne(id);
     }
 

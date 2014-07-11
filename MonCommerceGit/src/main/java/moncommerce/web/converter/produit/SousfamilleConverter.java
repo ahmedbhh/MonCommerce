@@ -1,6 +1,6 @@
-package moncommerce.produit.web.converter;
+package moncommerce.web.converter.produit;
 
-import moncommerce.domain.model.test.CodeTarif;
+import moncommerce.domain.model.test.Sousfamille;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,14 +8,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.service.produit.CodeTarifService;
+import moncommerce.service.produit.SousfamilleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 @ManagedBean
-public class CodeTarifConverter implements Converter {
+public class SousfamilleConverter implements Converter {
 
     @Autowired
-    private CodeTarifService ejbFacade;
+    private SousfamilleService ejbFacade;
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -25,13 +27,13 @@ public class CodeTarifConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    java.lang.Long getKey(String value) {
-        java.lang.Long key;
-        key = Long.valueOf(value);
+    java.lang.String getKey(String value) {
+        java.lang.String key;
+        key = value;
         return key;
     }
 
-    String getStringKey(java.lang.Long value) {
+    String getStringKey(java.lang.String value) {
         StringBuffer sb = new StringBuffer();
         sb.append(value);
         return sb.toString();
@@ -43,11 +45,11 @@ public class CodeTarifConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof CodeTarif) {
-            CodeTarif o = (CodeTarif) object;
-            return getStringKey(o.getIDCodetarif());
+        if (object instanceof Sousfamille) {
+            Sousfamille o = (Sousfamille) object;
+            return getStringKey(o.getLibelle());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), CodeTarif.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Sousfamille.class.getName()});
             return null;
         }
     }

@@ -1,6 +1,6 @@
-package moncommerce.produit.web.converter;
+package moncommerce.web.converter.produit;
 
-import moncommerce.domain.model.test.ProduitDepot;
+import moncommerce.domain.model.test.ProduitProduit;
 import moncommerce.web.controller.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,14 +8,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import moncommerce.service.produit.ProduitDepotService;
+import moncommerce.service.produit.ProduitProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 @ManagedBean
-public class ProduitDepotConverter implements Converter {
+public class ProduitProduitConverter implements Converter {
 
     @Autowired
-    private ProduitDepotService ejbFacade;
+    private ProduitProduitService ejbFacade;
 
     private static final String SEPARATOR = "#";
     private static final String SEPARATOR_ESCAPED = "\\#";
@@ -28,20 +30,20 @@ public class ProduitDepotConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    moncommerce.domain.model.test.ProduitDepotPK getKey(String value) {
-        moncommerce.domain.model.test.ProduitDepotPK key;
+    moncommerce.domain.model.test.ProduitProduitPK getKey(String value) {
+        moncommerce.domain.model.test.ProduitProduitPK key;
         String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new moncommerce.domain.model.test.ProduitDepotPK();
-        key.setIDdepot(Long.parseLong(values[0]));
-        key.setIdProduit(Long.parseLong(values[1]));
+        key = new moncommerce.domain.model.test.ProduitProduitPK();
+        key.setIDProduitComposant(Long.parseLong(values[0]));
+        key.setIDProduitComposee(Long.parseLong(values[1]));
         return key;
     }
 
-    String getStringKey(moncommerce.domain.model.test.ProduitDepotPK value) {
+    String getStringKey(moncommerce.domain.model.test.ProduitProduitPK value) {
         StringBuffer sb = new StringBuffer();
-        sb.append(value.getIDdepot());
+        sb.append(value.getIDProduitComposant());
         sb.append(SEPARATOR);
-        sb.append(value.getIdProduit());
+        sb.append(value.getIDProduitComposee());
         return sb.toString();
     }
 
@@ -51,11 +53,11 @@ public class ProduitDepotConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof ProduitDepot) {
-            ProduitDepot o = (ProduitDepot) object;
-            return getStringKey(o.getProduitDepotPK());
+        if (object instanceof ProduitProduit) {
+            ProduitProduit o = (ProduitProduit) object;
+            return getStringKey(o.getProduitProduitPK());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), ProduitDepot.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), ProduitProduit.class.getName()});
             return null;
         }
     }

@@ -8,12 +8,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
 import moncommerce.service.ModeDeReglementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@FacesConverter("entrpriseConverter")
+@ManagedBean
 @Component
 
 public class ModeDeReglementConverter implements Converter {

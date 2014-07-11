@@ -10,7 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import moncommerce.service.gestionFournisseur.FactureFournisseurReglementFournisseursService;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+@Component
 @ManagedBean
 public class FactureFournisseurReglementFournisseursConverter implements Converter {
 
