@@ -1,11 +1,15 @@
-package moncommerce.service.impl.produit;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package moncommerce.service.impl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import moncommerce.domain.model.test.Uniteemesure;
-import moncommerce.repositroy.produit.UniteemesureFacade;
-import moncommerce.service.produit.UniteemesureService;
-import moncommerce.service.impl.AbstractServiceImpl;
+import moncommerce.domain.model.test.Employee;
+import moncommerce.repositroy.EmployeeFacade;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,14 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author AHMED
  */
+
 @Transactional(propagation = Propagation.REQUIRED)
 @Service
-public class UniteemesureServiceImpl 
-extends AbstractServiceImpl<Uniteemesure,Long> 
-implements UniteemesureService {
-
+public class EmployeeServiceImpl extends AbstractServiceImpl<Employee, Long>{
     @Resource
-    UniteemesureFacade repository;
+    EmployeeFacade repository;
 
     @PostConstruct
     public void init() {

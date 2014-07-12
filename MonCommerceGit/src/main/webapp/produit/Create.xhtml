@@ -83,18 +83,18 @@
                             <f:converter binding="#{tvaConverter}"/>
                         </p:selectOneMenu>
 
-
+<!--
                         <p:outputLabel value="#{myBundle.CreateProduitLabel_IDUniteeMesure}" for="IDUniteeMesure" />
                         <p:selectOneMenu id="IDUniteeMesure" value="#{produitController.selected.IDUniteeMesure}" >
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{uniteemesureController.items}"
                                            var="IDUniteeMesureItem"
                                            itemValue="#{IDUniteeMesureItem}"
-                                           itemLabel="#{IDUniteeMesureItem.IDUniteeMesure.toString()}"
+                                           itemLabel="#{IDUniteeMesureItem.unitee}"
                                            />
                             <f:converter binding="#{uniteemesureConverter}"/>
                         </p:selectOneMenu>
-
+-->
 
                         <p:outputLabel value="#{myBundle.CreateProduitLabel_famille}" for="famille" />
                         <p:selectOneMenu id="famille" value="#{produitController.selected.famille}" >

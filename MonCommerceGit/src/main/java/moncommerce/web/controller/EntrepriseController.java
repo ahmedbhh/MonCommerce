@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-@ManagedBean
+@ManagedBean(name = "entrepriseController")
 @ViewScoped
-public class EntrpriseController extends AbstractController<Entreprise> implements Serializable {
+public class EntrepriseController extends AbstractController<Entreprise> implements Serializable {
 
     @Autowired
     private EntrepriseService ejbFacade;
@@ -24,7 +24,7 @@ public class EntrpriseController extends AbstractController<Entreprise> implemen
         super.setFacade(ejbFacade);
     }
 
-    public EntrpriseController() {
+    public EntrepriseController() {
         super(Entreprise.class);
     }
 
