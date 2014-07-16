@@ -100,12 +100,6 @@ public class Produit implements Serializable {
     @Size(max = 20)
     @Column(name = "Marque")
     private String marque;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<BondetransfertProduit> bondetransfertProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<BonentreeProduit> bonentreeProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<LigneCommandeClient> ligneCommandeClientCollection;
     @JoinColumn(name = "Tva", referencedColumnName = "tva")
     @ManyToOne
     private Tva tva;
@@ -119,21 +113,7 @@ public class Produit implements Serializable {
     @ManyToOne
     private Sousfamille sousfamille;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<CommandeProduit> commandeProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<ProduitDepot> produitDepotCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<ProduitProduit> produitProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit1")
-    private Collection<ProduitProduit> produitProduitCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<BondesortieProduit> bondesortieProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<ProduitFactureFournisseur> produitFactureFournisseurCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
     private Collection<FactureClientProduit> factureClientProduitCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Collection<ProduitCodeTarif> produitCodeTarifCollection;
 
     public Produit() {
     }
@@ -267,36 +247,6 @@ public class Produit implements Serializable {
         this.marque = marque;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<BondetransfertProduit> getBondetransfertProduitCollection() {
-        return bondetransfertProduitCollection;
-    }
-
-    public void setBondetransfertProduitCollection(Collection<BondetransfertProduit> bondetransfertProduitCollection) {
-        this.bondetransfertProduitCollection = bondetransfertProduitCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<BonentreeProduit> getBonentreeProduitCollection() {
-        return bonentreeProduitCollection;
-    }
-
-    public void setBonentreeProduitCollection(Collection<BonentreeProduit> bonentreeProduitCollection) {
-        this.bonentreeProduitCollection = bonentreeProduitCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<LigneCommandeClient> getLigneCommandeClientCollection() {
-        return ligneCommandeClientCollection;
-    }
-
-    public void setLigneCommandeClientCollection(Collection<LigneCommandeClient> ligneCommandeClientCollection) {
-        this.ligneCommandeClientCollection = ligneCommandeClientCollection;
-    }
-
     public Tva getTva() {
         return tva;
     }
@@ -331,82 +281,12 @@ public class Produit implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<CommandeProduit> getCommandeProduitCollection() {
-        return commandeProduitCollection;
-    }
-
-    public void setCommandeProduitCollection(Collection<CommandeProduit> commandeProduitCollection) {
-        this.commandeProduitCollection = commandeProduitCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProduitDepot> getProduitDepotCollection() {
-        return produitDepotCollection;
-    }
-
-    public void setProduitDepotCollection(Collection<ProduitDepot> produitDepotCollection) {
-        this.produitDepotCollection = produitDepotCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProduitProduit> getProduitProduitCollection() {
-        return produitProduitCollection;
-    }
-
-    public void setProduitProduitCollection(Collection<ProduitProduit> produitProduitCollection) {
-        this.produitProduitCollection = produitProduitCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProduitProduit> getProduitProduitCollection1() {
-        return produitProduitCollection1;
-    }
-
-    public void setProduitProduitCollection1(Collection<ProduitProduit> produitProduitCollection1) {
-        this.produitProduitCollection1 = produitProduitCollection1;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<BondesortieProduit> getBondesortieProduitCollection() {
-        return bondesortieProduitCollection;
-    }
-
-    public void setBondesortieProduitCollection(Collection<BondesortieProduit> bondesortieProduitCollection) {
-        this.bondesortieProduitCollection = bondesortieProduitCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProduitFactureFournisseur> getProduitFactureFournisseurCollection() {
-        return produitFactureFournisseurCollection;
-    }
-
-    public void setProduitFactureFournisseurCollection(Collection<ProduitFactureFournisseur> produitFactureFournisseurCollection) {
-        this.produitFactureFournisseurCollection = produitFactureFournisseurCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public Collection<FactureClientProduit> getFactureClientProduitCollection() {
         return factureClientProduitCollection;
     }
 
     public void setFactureClientProduitCollection(Collection<FactureClientProduit> factureClientProduitCollection) {
         this.factureClientProduitCollection = factureClientProduitCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProduitCodeTarif> getProduitCodeTarifCollection() {
-        return produitCodeTarifCollection;
-    }
-
-    public void setProduitCodeTarifCollection(Collection<ProduitCodeTarif> produitCodeTarifCollection) {
-        this.produitCodeTarifCollection = produitCodeTarifCollection;
     }
 
     @Override

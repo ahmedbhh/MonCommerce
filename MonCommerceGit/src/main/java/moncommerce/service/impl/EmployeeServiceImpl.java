@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package moncommerce.service.impl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.domain.model.test.Employee;
 import moncommerce.repositroy.EmployeeFacade;
+import moncommerce.service.EmployeeService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author AHMED
  */
-
 @Transactional(propagation = Propagation.REQUIRED)
 @Service
-public class EmployeeServiceImpl extends AbstractServiceImpl<Employee, Long>{
+public class EmployeeServiceImpl extends AbstractServiceImpl<Employee, Long> implements EmployeeService{
+
     @Resource
     EmployeeFacade repository;
 

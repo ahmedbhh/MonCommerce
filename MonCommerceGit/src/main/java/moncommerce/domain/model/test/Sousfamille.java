@@ -74,7 +74,6 @@ public class Sousfamille implements Serializable {
     }
 
     public void setLibelle(String libelle) {
-        System.out.println("setLibelle :" + libelle);
         this.libelle = libelle;
     }
 
@@ -101,7 +100,6 @@ public class Sousfamille implements Serializable {
     }
 
     public void setFamillesup(Famille famillesup) {
-        System.out.println("setFamillesup :"+ famillesup);
         this.famillesup = famillesup;
     }
 

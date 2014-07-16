@@ -68,17 +68,7 @@
                         <p:inputText id="tembree" value="#{factureClientsController.selected.tembree}" title="#{myBundle.CreateFactureClientsTitle_tembree}"/>
 
 
-                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_bondesortie}" for="bondesortie" />
-                        <p:selectOneMenu id="bondesortie" value="#{factureClientsController.selected.bondesortie}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bondesortieController.items}"
-                                           var="bondesortieItem"
-                                           itemValue="#{bondesortieItem}"
-                                           itemLabel="#{bondesortieItem.IDBondesortie.toString()}"
-                                           />
-                            <f:converter binding="#{bondesortieConverter}"/>
-                        </p:selectOneMenu>
-
+                     
 
                         <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_IDCaisse}" for="IDCaisse" />
                         <p:selectOneMenu id="IDCaisse" value="#{factureClientsController.selected.IDCaisse}" >
@@ -140,16 +130,7 @@
                         </p:selectOneMenu>
 
 
-                        <p:outputLabel value="#{myBundle.CreateFactureClientsLabel_factureClientProduit}" for="factureClientProduit" />
-                        <p:selectOneMenu id="factureClientProduit" value="#{factureClientsController.selected.factureClientProduit}" >
-                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{factureClientProduitController.items}"
-                                           var="factureClientProduitItem"
-                                           itemValue="#{factureClientProduitItem}"
-                                           itemLabel="#{factureClientProduitItem.description.toString()}"
-                                           />
-                            <f:converter binding="#{factureClientProduitConverter}"/>
-                        </p:selectOneMenu>
+                     
                     </p:panelGrid>
                     <p:commandButton actionListener="#{factureClientsController.saveNew}" value="#{myBundle.Save}" update="display,:FactureClientsListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureClientsCreateDialog);">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>

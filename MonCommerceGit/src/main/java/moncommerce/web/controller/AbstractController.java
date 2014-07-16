@@ -157,8 +157,7 @@ public abstract class AbstractController<T> {
                 }
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (Exception ex) {
-                System.out.println("ba3333333333333333333333333333333333333333333");
-                String msg = "";
+                            String msg = "";
                 Throwable cause = JsfUtil.getRootCause(ex.getCause());
                 if (cause != null) {
                     if (cause instanceof ConstraintViolationException) {

@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -68,7 +67,7 @@ public class Depot implements Serializable {
     @Column(name = "Surface")
     private Integer surface;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "coutLoyer")
+    @Column(name = "cout_loyer")
     private BigDecimal coutLoyer;
     @Column(name = "autre_charge")
     private BigDecimal autreCharge;
@@ -77,18 +76,8 @@ public class Depot implements Serializable {
     @Column(name = "Date_Heure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
-    @OneToMany(mappedBy = "idDepotRecepteur")
-    private Collection<Bondetransfert> bondetransfertCollection;
-    @OneToMany(mappedBy = "iDdepot")
-    private Collection<Bondetransfert> bondetransfertCollection1;
     @OneToMany(mappedBy = "iDdepot")
     private Collection<Caisse> caisseCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "depot")
-    private Collection<ProduitDepot> produitDepotCollection;
-    @OneToMany(mappedBy = "iDdepot")
-    private Collection<Bonentree> bonentreeCollection;
-    @OneToMany(mappedBy = "iDdepot")
-    private Collection<Bondesortie> bondesortieCollection;
 
     public Depot() {
     }
@@ -176,62 +165,12 @@ public class Depot implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<Bondetransfert> getBondetransfertCollection() {
-        return bondetransfertCollection;
-    }
-
-    public void setBondetransfertCollection(Collection<Bondetransfert> bondetransfertCollection) {
-        this.bondetransfertCollection = bondetransfertCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Bondetransfert> getBondetransfertCollection1() {
-        return bondetransfertCollection1;
-    }
-
-    public void setBondetransfertCollection1(Collection<Bondetransfert> bondetransfertCollection1) {
-        this.bondetransfertCollection1 = bondetransfertCollection1;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public Collection<Caisse> getCaisseCollection() {
         return caisseCollection;
     }
 
     public void setCaisseCollection(Collection<Caisse> caisseCollection) {
         this.caisseCollection = caisseCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProduitDepot> getProduitDepotCollection() {
-        return produitDepotCollection;
-    }
-
-    public void setProduitDepotCollection(Collection<ProduitDepot> produitDepotCollection) {
-        this.produitDepotCollection = produitDepotCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Bonentree> getBonentreeCollection() {
-        return bonentreeCollection;
-    }
-
-    public void setBonentreeCollection(Collection<Bonentree> bonentreeCollection) {
-        this.bonentreeCollection = bonentreeCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Bondesortie> getBondesortieCollection() {
-        return bondesortieCollection;
-    }
-
-    public void setBondesortieCollection(Collection<Bondesortie> bondesortieCollection) {
-        this.bondesortieCollection = bondesortieCollection;
     }
 
     @Override

@@ -4,7 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import moncommerce.service.gestionClient.FactureClientsService;
 import moncommerce.domain.model.test.FactureClients;
-import moncommerce.repositroy.EntrpriseFacade;
+import moncommerce.repositroy.gestionClient.FactureClientsFacade;
 import moncommerce.service.impl.AbstractServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,11 +21,12 @@ public class FactureClientsServiceImpl
         implements FactureClientsService {
 
     @Resource
-    EntrpriseFacade repository;
+    FactureClientsFacade repository;
 
     @PostConstruct
     public void init() {
         super.setJpaRepository(repository);
 
     }
+    
 }

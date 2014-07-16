@@ -62,13 +62,7 @@ public class ModeDeReglement implements Serializable {
     @OneToMany(mappedBy = "iDModedereglement")
     private Collection<ReglementClient> reglementClientCollection;
     @OneToMany(mappedBy = "iDModedereglement")
-    private Collection<Accompte> accompteCollection;
-    @OneToMany(mappedBy = "iDModedereglement")
-    private Collection<ReglementFournisseurs> reglementFournisseursCollection;
-    @OneToMany(mappedBy = "iDModedereglement")
     private Collection<FactureClients> factureClientsCollection;
-    @OneToMany(mappedBy = "iDModedereglement")
-    private Collection<AccompteClient> accompteClientCollection;
 
     public ModeDeReglement() {
     }
@@ -126,42 +120,12 @@ public class ModeDeReglement implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<Accompte> getAccompteCollection() {
-        return accompteCollection;
-    }
-
-    public void setAccompteCollection(Collection<Accompte> accompteCollection) {
-        this.accompteCollection = accompteCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ReglementFournisseurs> getReglementFournisseursCollection() {
-        return reglementFournisseursCollection;
-    }
-
-    public void setReglementFournisseursCollection(Collection<ReglementFournisseurs> reglementFournisseursCollection) {
-        this.reglementFournisseursCollection = reglementFournisseursCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public Collection<FactureClients> getFactureClientsCollection() {
         return factureClientsCollection;
     }
 
     public void setFactureClientsCollection(Collection<FactureClients> factureClientsCollection) {
         this.factureClientsCollection = factureClientsCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<AccompteClient> getAccompteClientCollection() {
-        return accompteClientCollection;
-    }
-
-    public void setAccompteClientCollection(Collection<AccompteClient> accompteClientCollection) {
-        this.accompteClientCollection = accompteClientCollection;
     }
 
     @Override

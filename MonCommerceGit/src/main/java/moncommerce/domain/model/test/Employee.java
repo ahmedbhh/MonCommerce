@@ -46,7 +46,7 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IDemployee")
-    private Integer iDemployee;
+    private Long iDemployee;
     @Size(max = 20)
     @Column(name = "Nom")
     private String nom;
@@ -60,26 +60,20 @@ public class Employee implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateentreeentreprise;
     @OneToMany(mappedBy = "iDemployee")
-    private Collection<FactureFournisseur> factureFournisseurCollection;
-    @OneToMany(mappedBy = "iDemployee")
-    private Collection<Bonentree> bonentreeCollection;
-    @OneToMany(mappedBy = "iDemployee")
-    private Collection<Bondesortie> bondesortieCollection;
-    @OneToMany(mappedBy = "iDemployee")
     private Collection<FactureClients> factureClientsCollection;
 
     public Employee() {
     }
 
-    public Employee(Integer iDemployee) {
+    public Employee(Long iDemployee) {
         this.iDemployee = iDemployee;
     }
 
-    public Integer getIDemployee() {
+    public Long getIDemployee() {
         return iDemployee;
     }
 
-    public void setIDemployee(Integer iDemployee) {
+    public void setIDemployee(Long iDemployee) {
         this.iDemployee = iDemployee;
     }
 
@@ -113,36 +107,6 @@ public class Employee implements Serializable {
 
     public void setDateentreeentreprise(Date dateentreeentreprise) {
         this.dateentreeentreprise = dateentreeentreprise;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<FactureFournisseur> getFactureFournisseurCollection() {
-        return factureFournisseurCollection;
-    }
-
-    public void setFactureFournisseurCollection(Collection<FactureFournisseur> factureFournisseurCollection) {
-        this.factureFournisseurCollection = factureFournisseurCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Bonentree> getBonentreeCollection() {
-        return bonentreeCollection;
-    }
-
-    public void setBonentreeCollection(Collection<Bonentree> bonentreeCollection) {
-        this.bonentreeCollection = bonentreeCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Bondesortie> getBondesortieCollection() {
-        return bondesortieCollection;
-    }
-
-    public void setBondesortieCollection(Collection<Bondesortie> bondesortieCollection) {
-        this.bondesortieCollection = bondesortieCollection;
     }
 
     @XmlTransient

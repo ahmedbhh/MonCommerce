@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,8 +56,6 @@ public class CodeTarif implements Serializable {
     private Date dateHeure;
     @OneToMany(mappedBy = "iDCodetarif")
     private Collection<Client> clientCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeTarif")
-    private Collection<ProduitCodeTarif> produitCodeTarifCollection;
 
     public CodeTarif() {
     }
@@ -104,16 +101,6 @@ public class CodeTarif implements Serializable {
 
     public void setClientCollection(Collection<Client> clientCollection) {
         this.clientCollection = clientCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<ProduitCodeTarif> getProduitCodeTarifCollection() {
-        return produitCodeTarifCollection;
-    }
-
-    public void setProduitCodeTarifCollection(Collection<ProduitCodeTarif> produitCodeTarifCollection) {
-        this.produitCodeTarifCollection = produitCodeTarifCollection;
     }
 
     @Override

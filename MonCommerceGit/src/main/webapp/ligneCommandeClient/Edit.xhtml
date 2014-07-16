@@ -54,7 +54,7 @@
                         <h:outputText id="commandeClient" value="#{ligneCommandeClientController.selected.commandeClient}" />
 
                         <h:outputLabel value="#{myBundle.EditLigneCommandeClientLabel_produit}" for="produit" />
-                        <h:outputText id="produit" value="#{ligneCommandeClientController.selected.produit}" />
+                        <h:outputText id="produit" value="#{ligneCommandeClientController.selected.produit.libelle}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{ligneCommandeClientController.save}" value="#{myBundle.Save}" update="display,:LigneCommandeClientListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,LigneCommandeClientEditDialog);">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>

@@ -68,7 +68,7 @@
                             <f:selectItems value="#{produitController.items}"
                                            var="produitItem"
                                            itemValue="#{produitItem}"
-                                           itemLabel="#{produitItem.description.toString()}"
+                                           itemLabel="#{produitItem.libelle}"
                                            />
                             <f:converter binding="#{produitConverter}"/>
                         </p:selectOneMenu>

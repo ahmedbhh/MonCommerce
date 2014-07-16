@@ -110,12 +110,6 @@
                     </f:facet>
                     <h:outputText value="#{item.tembree}"/>
                 </p:column>
-                <p:column sortBy="#{item.bondesortie.IDBondesortie}" filterBy="#{item.bondesortie.IDBondesortie}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListFactureClientsTitle_bondesortie}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.bondesortie.IDBondesortie}"/>
-                </p:column>
                 <p:column sortBy="#{item.IDCaisse.IDCaisse}" filterBy="#{item.IDCaisse.IDCaisse}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListFactureClientsTitle_IDCaisse}"/>
@@ -145,12 +139,6 @@
                         <h:outputText value="#{myBundle.ListFactureClientsTitle_IDModedereglement}"/>
                     </f:facet>
                     <h:outputText value="#{item.IDModedereglement.description}"/>
-                </p:column>
-                <p:column sortBy="#{item.factureClientProduit.description}" filterBy="#{item.factureClientProduit.description}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListFactureClientsTitle_factureClientProduit}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.factureClientProduit.description}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

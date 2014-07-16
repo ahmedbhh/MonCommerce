@@ -29,4 +29,8 @@ public class FactureClientProduitServiceImpl
         super.setJpaRepository(repository);
 
     }
+    @Override
+    public void remove(FactureClientProduitPK entity) {
+        repository.delete(entity);
+    }
 }

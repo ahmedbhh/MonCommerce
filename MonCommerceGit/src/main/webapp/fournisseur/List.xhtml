@@ -58,17 +58,17 @@
                     </f:facet>
                     <h:outputText value="#{item.matriculefiscale}"/>
                 </p:column>
-                <p:column sortBy="#{item.IDFamilleFournisseur.description}" filterBy="#{item.IDFamilleFournisseur.description}">
+                <p:column sortBy="#{item.IDFamilleFournisseur.description}" filterBy="#{item.IDFamilleFournisseur.libelle}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListFournisseurTitle_IDFamilleFournisseur}"/>
                     </f:facet>
-                    <h:outputText value="#{item.IDFamilleFournisseur.description}"/>
+                    <h:outputText value="#{item.IDFamilleFournisseur.libelle}"/>
                 </p:column>
-                <p:column sortBy="#{item.IDFormeJuridique.description}" filterBy="#{item.IDFormeJuridique.description}">
+                <p:column sortBy="#{item.IDFormeJuridique.description}" filterBy="#{item.IDFormeJuridique.libelle}">
                     <f:facet name="header">
                         <h:outputText value="#{myBundle.ListFournisseurTitle_IDFormeJuridique}"/>
                     </f:facet>
-                    <h:outputText value="#{item.IDFormeJuridique.description}"/>
+                    <h:outputText value="#{item.IDFormeJuridique.libelle}"/>
                 </p:column>
                 <f:facet name="footer">
                     <div class="footer-section">

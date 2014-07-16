@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -90,17 +89,11 @@ public class CommandeClient implements Serializable {
     private BigDecimal totalttc;
     @Column(name = "soldee")
     private Short soldee;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandeClient")
-    private Collection<LigneCommandeClient> ligneCommandeClientCollection;
+    @OneToMany(mappedBy = "iDCommandeClient")
+    private Collection<FactureClients> factureClientsCollection;
     @JoinColumn(name = "ID_Client", referencedColumnName = "ID_Client")
     @ManyToOne
     private Client iDClient;
-    @OneToMany(mappedBy = "iDCommandeClient")
-    private Collection<Bondesortie> bondesortieCollection;
-    @OneToMany(mappedBy = "iDCommandeClient")
-    private Collection<FactureClients> factureClientsCollection;
-    @OneToMany(mappedBy = "iDCommandeClient")
-    private Collection<AccompteClient> accompteClientCollection;
 
     public CommandeClient() {
     }
@@ -212,34 +205,6 @@ public class CommandeClient implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<LigneCommandeClient> getLigneCommandeClientCollection() {
-        return ligneCommandeClientCollection;
-    }
-
-    public void setLigneCommandeClientCollection(Collection<LigneCommandeClient> ligneCommandeClientCollection) {
-        this.ligneCommandeClientCollection = ligneCommandeClientCollection;
-    }
-
-    public Client getIDClient() {
-        return iDClient;
-    }
-
-    public void setIDClient(Client iDClient) {
-        this.iDClient = iDClient;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Bondesortie> getBondesortieCollection() {
-        return bondesortieCollection;
-    }
-
-    public void setBondesortieCollection(Collection<Bondesortie> bondesortieCollection) {
-        this.bondesortieCollection = bondesortieCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public Collection<FactureClients> getFactureClientsCollection() {
         return factureClientsCollection;
     }
@@ -248,14 +213,12 @@ public class CommandeClient implements Serializable {
         this.factureClientsCollection = factureClientsCollection;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public Collection<AccompteClient> getAccompteClientCollection() {
-        return accompteClientCollection;
+    public Client getIDClient() {
+        return iDClient;
     }
 
-    public void setAccompteClientCollection(Collection<AccompteClient> accompteClientCollection) {
-        this.accompteClientCollection = accompteClientCollection;
+    public void setIDClient(Client iDClient) {
+        this.iDClient = iDClient;
     }
 
     @Override

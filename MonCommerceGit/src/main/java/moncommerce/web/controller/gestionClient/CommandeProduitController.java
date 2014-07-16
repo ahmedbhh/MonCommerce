@@ -8,7 +8,9 @@ import javax.faces.bean.ViewScoped;
 import moncommerce.service.gestionClient.CommandeProduitService;
 import moncommerce.web.controller.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "commandeProduitController")
 @ViewScoped
 public class CommandeProduitController extends AbstractController<CommandeProduit> implements Serializable {

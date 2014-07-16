@@ -22,7 +22,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -79,8 +78,6 @@ public class ReglementClient implements Serializable {
     @JoinColumn(name = "ID_Client", referencedColumnName = "ID_Client")
     @ManyToOne
     private Client iDClient;
-    @OneToMany(mappedBy = "iDReglementClient")
-    private Collection<DetailPayment> detailPaymentCollection;
 
     public ReglementClient() {
     }
@@ -166,16 +163,6 @@ public class ReglementClient implements Serializable {
 
     public void setIDClient(Client iDClient) {
         this.iDClient = iDClient;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<DetailPayment> getDetailPaymentCollection() {
-        return detailPaymentCollection;
-    }
-
-    public void setDetailPaymentCollection(Collection<DetailPayment> detailPaymentCollection) {
-        this.detailPaymentCollection = detailPaymentCollection;
     }
 
     @Override

@@ -24,6 +24,7 @@ public class FactureClientProduitConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+        System.out.println("    tessssssssssssssssssssssssssst");
         if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
             return null;
         }

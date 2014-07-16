@@ -18,7 +18,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -89,12 +88,12 @@ public class FactureClientProduit implements Serializable {
     @NotNull
     @Column(name = "nombre_Colis")
     private int nombreColis;
-    @JoinColumn(name = "ID_Facture_Clients", referencedColumnName = "ID_Facture_Clients", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private FactureClients factureClients;
     @JoinColumn(name = "id_produit", referencedColumnName = "id_produit", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Produit produit;
+    @JoinColumn(name = "ID_Facture_Clients", referencedColumnName = "ID_Facture_Clients", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private FactureClients factureClients;
 
     public FactureClientProduit() {
     }
@@ -200,20 +199,20 @@ public class FactureClientProduit implements Serializable {
         this.nombreColis = nombreColis;
     }
 
-    public FactureClients getFactureClients() {
-        return factureClients;
-    }
-
-    public void setFactureClients(FactureClients factureClients) {
-        this.factureClients = factureClients;
-    }
-
     public Produit getProduit() {
         return produit;
     }
 
     public void setProduit(Produit produit) {
         this.produit = produit;
+    }
+
+    public FactureClients getFactureClients() {
+        return factureClients;
+    }
+
+    public void setFactureClients(FactureClients factureClients) {
+        this.factureClients = factureClients;
     }
 
     @Override

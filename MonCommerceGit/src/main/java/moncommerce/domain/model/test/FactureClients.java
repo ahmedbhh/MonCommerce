@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,7 +25,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -100,9 +100,7 @@ public class FactureClients implements Serializable {
     @Column(name = "Tembree")
     private Short tembree;
     @ManyToMany(mappedBy = "factureClientsCollection")
-    private Collection<ReglementClient> reglementClientCollection;
-    @OneToOne(mappedBy = "iDFactureClients")
-    private Bondesortie bondesortie;
+    private Set<ReglementClient> reglementClientCollection;
     @JoinColumn(name = "ID_Caisse", referencedColumnName = "ID_Caisse")
     @ManyToOne
     private Caisse iDCaisse;
@@ -118,11 +116,9 @@ public class FactureClients implements Serializable {
     @JoinColumn(name = "ID_Mode_de_reglement", referencedColumnName = "ID_Mode_de_reglement")
     @ManyToOne
     private ModeDeReglement iDModedereglement;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "factureClients")
-    private FactureClientProduit factureClientProduit;
-    @OneToMany(mappedBy = "iDFactureClients")
-    private Collection<AccompteClient> accompteClientCollection;
-
+    @OneToMany( mappedBy = "factureClients" , cascade = CascadeType.REMOVE , orphanRemoval = true)
+    private Set<FactureClientProduit> factureClientProduitCollection;
+    
     public FactureClients() {
     }
 
@@ -253,16 +249,8 @@ public class FactureClients implements Serializable {
         return reglementClientCollection;
     }
 
-    public void setReglementClientCollection(Collection<ReglementClient> reglementClientCollection) {
+    public void setReglementClientCollection(Set<ReglementClient> reglementClientCollection) {
         this.reglementClientCollection = reglementClientCollection;
-    }
-
-    public Bondesortie getBondesortie() {
-        return bondesortie;
-    }
-
-    public void setBondesortie(Bondesortie bondesortie) {
-        this.bondesortie = bondesortie;
     }
 
     public Caisse getIDCaisse() {
@@ -305,22 +293,14 @@ public class FactureClients implements Serializable {
         this.iDModedereglement = iDModedereglement;
     }
 
-    public FactureClientProduit getFactureClientProduit() {
-        return factureClientProduit;
-    }
-
-    public void setFactureClientProduit(FactureClientProduit factureClientProduit) {
-        this.factureClientProduit = factureClientProduit;
-    }
-
     @XmlTransient
     @JsonIgnore
-    public Collection<AccompteClient> getAccompteClientCollection() {
-        return accompteClientCollection;
+    public Set<FactureClientProduit> getFactureClientProduitCollection() {
+        return factureClientProduitCollection;
     }
 
-    public void setAccompteClientCollection(Collection<AccompteClient> accompteClientCollection) {
-        this.accompteClientCollection = accompteClientCollection;
+    public void setFactureClientProduitCollection(Set<FactureClientProduit> factureClientProduitCollection) {
+        this.factureClientProduitCollection = factureClientProduitCollection;
     }
 
     @Override

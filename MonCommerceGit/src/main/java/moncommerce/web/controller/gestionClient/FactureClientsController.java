@@ -8,12 +8,13 @@ import javax.faces.bean.ViewScoped;
 import moncommerce.service.gestionClient.FactureClientsService;
 import moncommerce.web.controller.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller
 @ManagedBean(name = "factureClientsController")
 @ViewScoped
 public class FactureClientsController extends AbstractController<FactureClients> implements Serializable {
 
-    
     @Autowired
     private FactureClientsService ejbFacade;
 

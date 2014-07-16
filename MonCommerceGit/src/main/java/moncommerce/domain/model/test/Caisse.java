@@ -56,11 +56,11 @@ public class Caisse implements Serializable {
     @Column(name = "Date_Heure")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeure;
+    @OneToMany(mappedBy = "iDCaisse")
+    private Collection<FactureClients> factureClientsCollection;
     @JoinColumn(name = "ID_depot", referencedColumnName = "ID_depot")
     @ManyToOne
     private Depot iDdepot;
-    @OneToMany(mappedBy = "iDCaisse")
-    private Collection<FactureClients> factureClientsCollection;
 
     public Caisse() {
     }
@@ -98,14 +98,6 @@ public class Caisse implements Serializable {
         this.dateHeure = dateHeure;
     }
 
-    public Depot getIDdepot() {
-        return iDdepot;
-    }
-
-    public void setIDdepot(Depot iDdepot) {
-        this.iDdepot = iDdepot;
-    }
-
     @XmlTransient
     @JsonIgnore
     public Collection<FactureClients> getFactureClientsCollection() {
@@ -114,6 +106,14 @@ public class Caisse implements Serializable {
 
     public void setFactureClientsCollection(Collection<FactureClients> factureClientsCollection) {
         this.factureClientsCollection = factureClientsCollection;
+    }
+
+    public Depot getIDdepot() {
+        return iDdepot;
+    }
+
+    public void setIDdepot(Depot iDdepot) {
+        this.iDdepot = iDdepot;
     }
 
     @Override

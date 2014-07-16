@@ -5,4 +5,5 @@ import moncommerce.domain.model.test.FactureClientProduitPK;
 import moncommerce.service.AbstractCrudService;
 
 public interface FactureClientProduitService extends AbstractCrudService<FactureClientProduit,FactureClientProduitPK> {
+    public void remove(FactureClientProduitPK entity);
 }

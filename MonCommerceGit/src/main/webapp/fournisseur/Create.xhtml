@@ -42,7 +42,7 @@
                             <f:selectItems value="#{familleFournisseurController.items}"
                                            var="IDFamilleFournisseurItem"
                                            itemValue="#{IDFamilleFournisseurItem}"
-                                           itemLabel="#{IDFamilleFournisseurItem.description.toString()}"
+                                           itemLabel="#{IDFamilleFournisseurItem.libelle.toString()}"
                                            />
                             <f:converter binding="#{familleFournisseurConverter}"/>
                         </p:selectOneMenu>
@@ -54,7 +54,7 @@
                             <f:selectItems value="#{formeJuridiqueController.items}"
                                            var="IDFormeJuridiqueItem"
                                            itemValue="#{IDFormeJuridiqueItem}"
-                                           itemLabel="#{IDFormeJuridiqueItem.description.toString()}"
+                                           itemLabel="#{IDFormeJuridiqueItem.libelle.toString()}"
                                            />
                             <f:converter binding="#{formeJuridiqueConverter}"/>
                         </p:selectOneMenu>

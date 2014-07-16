@@ -54,7 +54,7 @@
                         <h:outputText id="factureClients" value="#{factureClientProduitController.selected.factureClients}" />
 
                         <h:outputLabel value="#{myBundle.EditFactureClientProduitLabel_produit}" for="produit" />
-                        <h:outputText id="produit" value="#{factureClientProduitController.selected.produit}" />
+                        <h:outputText id="produit" value="#{factureClientProduitController.selected.produit.libelle}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{factureClientProduitController.save}" value="#{myBundle.Save}" update="display,:FactureClientProduitListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FactureClientProduitEditDialog);">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>

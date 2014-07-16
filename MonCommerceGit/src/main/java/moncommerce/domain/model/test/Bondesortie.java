@@ -106,7 +106,7 @@ public class Bondesortie implements Serializable {
     @JoinColumn(name = "ID_Client", referencedColumnName = "ID_Client")
     @ManyToOne
     private Client iDClient;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bondesortie")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "bondesortie")
     private Collection<BondesortieProduit> bondesortieProduitCollection;
 
     public Bondesortie() {

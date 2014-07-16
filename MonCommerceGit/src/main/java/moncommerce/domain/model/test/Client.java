@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -88,17 +87,11 @@ public class Client implements Serializable {
     @ManyToOne
     private CodeTarif iDCodetarif;
     @OneToMany(mappedBy = "iDClient")
-    private Collection<Contact> contactCollection;
-    @OneToMany(mappedBy = "iDClient")
-    private Collection<AdresseFacturation> adresseFacturationCollection;
-    @OneToMany(mappedBy = "iDClient")
     private Collection<ReglementClient> reglementClientCollection;
     @OneToMany(mappedBy = "iDClient")
-    private Collection<CommandeClient> commandeClientCollection;
-    @OneToMany(mappedBy = "iDClient")
-    private Collection<Bondesortie> bondesortieCollection;
-    @OneToMany(mappedBy = "iDClient")
     private Collection<FactureClients> factureClientsCollection;
+    @OneToMany(mappedBy = "iDClient")
+    private Collection<CommandeClient> commandeClientCollection;
 
     public Client() {
     }
@@ -202,26 +195,6 @@ public class Client implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<Contact> getContactCollection() {
-        return contactCollection;
-    }
-
-    public void setContactCollection(Collection<Contact> contactCollection) {
-        this.contactCollection = contactCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<AdresseFacturation> getAdresseFacturationCollection() {
-        return adresseFacturationCollection;
-    }
-
-    public void setAdresseFacturationCollection(Collection<AdresseFacturation> adresseFacturationCollection) {
-        this.adresseFacturationCollection = adresseFacturationCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public Collection<ReglementClient> getReglementClientCollection() {
         return reglementClientCollection;
     }
@@ -232,32 +205,22 @@ public class Client implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public Collection<CommandeClient> getCommandeClientCollection() {
-        return commandeClientCollection;
-    }
-
-    public void setCommandeClientCollection(Collection<CommandeClient> commandeClientCollection) {
-        this.commandeClientCollection = commandeClientCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<Bondesortie> getBondesortieCollection() {
-        return bondesortieCollection;
-    }
-
-    public void setBondesortieCollection(Collection<Bondesortie> bondesortieCollection) {
-        this.bondesortieCollection = bondesortieCollection;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public Collection<FactureClients> getFactureClientsCollection() {
         return factureClientsCollection;
     }
 
     public void setFactureClientsCollection(Collection<FactureClients> factureClientsCollection) {
         this.factureClientsCollection = factureClientsCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<CommandeClient> getCommandeClientCollection() {
+        return commandeClientCollection;
+    }
+
+    public void setCommandeClientCollection(Collection<CommandeClient> commandeClientCollection) {
+        this.commandeClientCollection = commandeClientCollection;
     }
 
     @Override
