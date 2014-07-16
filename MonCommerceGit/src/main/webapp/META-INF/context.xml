@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/MonCommerceGit"/>
+<Context antiJARLocking="true" path="/MonCommerceGit">
+    <Loader loaderClass="org.springframework.instrument.classloading.tomcat.TomcatInstrumentableClassLoader"
+        useSystemClassLoaderAsParent="false"/>
+</Context>
